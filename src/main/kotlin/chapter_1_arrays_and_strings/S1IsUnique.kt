@@ -13,11 +13,9 @@ class S1IsUnique {
     }
 
     fun runTest() {
-        val val1 = "aaaa"
-        val val2 = "abcd"
-        val val3 = "aAbB"
-        println("isUnique1(\"$val1\"): ${isUnique1(val1)}")
-        println("isUnique1(\"$val2\"): ${isUnique1(val2)}")
-        println("isUnique1(\"$val3\"): ${isUnique1(val3)}")
+        val testCases = arrayListOf("aaaa", "abcd", "aAbB")
+        for (testCase in testCases) {
+            println("isUnique1(\"$testCase\"): ${isUnique1(testCase)}")
+        }
     }
 }

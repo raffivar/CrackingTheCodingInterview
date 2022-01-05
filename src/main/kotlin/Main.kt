@@ -1,6 +1,6 @@
-import chapter_1_arrays_and_strings.S3URLlify
+import chapter_1_arrays_and_strings.S4PalindromePermutation
 
 fun main() {
-    val solution = S3URLlify()
+    val solution = S4PalindromePermutation()
     solution.runTest()
 }

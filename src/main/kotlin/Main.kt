@@ -1,6 +1,6 @@
-import chapter_1_arrays_and_strings.S1IsUnique
+import chapter_1_arrays_and_strings.S2CheckPermutation
 
 fun main() {
-    val solution = S1IsUnique()
+    val solution = S2CheckPermutation()
     solution.runTest()
 }

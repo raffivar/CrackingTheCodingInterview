@@ -1,6 +1,6 @@
-import chapter_1_arrays_and_strings.S2CheckPermutation
+import chapter_1_arrays_and_strings.S3URLlify
 
 fun main() {
-    val solution = S2CheckPermutation()
+    val solution = S3URLlify()
     solution.runTest()
 }

@@ -6,11 +6,8 @@ class S4PalindromePermutation {
 
         for (char in str.lowercase()) {
             if (char != ' ') {
-                if (instancesOfChars.containsKey(char)) {
-                    instancesOfChars[char] = instancesOfChars[char]!! + 1
-                } else {
-                    instancesOfChars[char] = 1
-                }
+                instancesOfChars[char] = instancesOfChars[char] ?: 0
+                instancesOfChars[char] = instancesOfChars[char]!! + 1
             }
         }
 

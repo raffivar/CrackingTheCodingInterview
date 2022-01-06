@@ -4,11 +4,13 @@ class S4PalindromePermutation {
     private fun isPalindromePermutation(str: String): Boolean {
         val instancesOfChars = HashMap<Char, Int>()
 
-        for (char in str) {
-            if (instancesOfChars.containsKey(char)) {
-                instancesOfChars[char] = instancesOfChars[char]!! + 1
-            } else {
-                instancesOfChars[char] = 1
+        for (char in str.lowercase()) {
+            if (char != ' ') {
+                if (instancesOfChars.containsKey(char)) {
+                    instancesOfChars[char] = instancesOfChars[char]!! + 1
+                } else {
+                    instancesOfChars[char] = 1
+                }
             }
         }
 
@@ -27,7 +29,7 @@ class S4PalindromePermutation {
 
     fun runTest() {
         val functions = arrayListOf(this::isPalindromePermutation)
-        val testCases = arrayListOf("aaabaaa")
+        val testCases = arrayListOf("aaabaaa", "Tact Coa")
         for (function in functions) {
             println("------------------------------------------")
             for (testCase in testCases) {

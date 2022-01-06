@@ -43,9 +43,8 @@ class S5OneAway {
             Pair("pale", "ple"),
             Pair("pales", "pale"),
             Pair("pale", "bale"),
-            Pair("pale", "bake"),
-
-            )
+            Pair("pale", "bake"))
+        
         for (function in functions) {
             println("------------------------------------------")
             for (testCase in testCases) {

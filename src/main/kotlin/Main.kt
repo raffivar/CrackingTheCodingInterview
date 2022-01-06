@@ -1,6 +1,6 @@
-import chapter_1_arrays_and_strings.S6StringCompression
+import chapter_1_arrays_and_strings.S5OneAway
 
 fun main() {
-    val solution = S6StringCompression()
+    val solution = S5OneAway()
     solution.runTest()
 }

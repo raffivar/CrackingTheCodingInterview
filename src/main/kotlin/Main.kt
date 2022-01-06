@@ -1,6 +1,6 @@
-import chapter_1_arrays_and_strings.S4PalindromePermutation
+import chapter_1_arrays_and_strings.S5StringCompression
 
 fun main() {
-    val solution = S4PalindromePermutation()
+    val solution = S5StringCompression()
     solution.runTest()
 }

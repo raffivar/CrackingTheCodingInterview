@@ -8,10 +8,6 @@ class S5OneAway {
             return false
         }
 
-        if (str1 == str2) {
-            return true
-        }
-
         var i = 0
         var j = 0
 

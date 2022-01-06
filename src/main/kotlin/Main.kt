@@ -1,6 +1,6 @@
-import chapter_1_arrays_and_strings.S8ZeroMatrix
+import chapter_1_arrays_and_strings.S9StringRotation
 
 fun main() {
-    val solution = S8ZeroMatrix()
+    val solution = S9StringRotation()
     solution.runTest()
 }

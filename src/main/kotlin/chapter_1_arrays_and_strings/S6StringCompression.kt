@@ -2,7 +2,7 @@ package chapter_1_arrays_and_strings
 
 import java.lang.StringBuilder
 
-class S5StringCompression {
+class S6StringCompression {
     private fun compressString(str: String): String {
         if (str.isBlank()) {
             return ""

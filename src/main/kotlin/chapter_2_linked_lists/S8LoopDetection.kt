@@ -28,24 +28,32 @@ class S8LoopDetection {
             curr2 = curr2.next?.next
 
             if (curr1 == curr2) { // loop detected
-                curr2 = curr2!!.next
-                var loopSize = 1
-
-                while (curr2 != curr1) {
-                    curr2 = curr2!!.next
-                    loopSize++
-                }
-
                 curr1 = node
-                while (true) {
-                    for (i in 0..loopSize) {
-                        if (curr2 == curr1) {
-                            return curr2
-                        }
-                        curr2 = curr2!!.next
-                    }
+                while (curr1 != curr2) {
                     curr1 = curr1!!.next
+                    curr2 = curr2!!.next
                 }
+
+                return curr1
+
+//                curr2 = curr2!!.next
+//                var loopSize = 1
+//
+//                while (curr2 != curr1) {
+//                    curr2 = curr2!!.next
+//                    loopSize++
+//                }
+//
+//                curr1 = node
+//                while (true) {
+//                    for (i in 0..loopSize) {
+//                        if (curr2 == curr1) {
+//                            return curr2
+//                        }
+//                        curr2 = curr2!!.next
+//                    }
+//                    curr1 = curr1!!.next
+//                }
             }
         }
 

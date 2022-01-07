@@ -1,7 +1,6 @@
-import chapter_2_linked_lists.S3DeleteMiddleNode
-import chapter_2_linked_lists.S8LoopDetection
+import chapter_2_linked_lists.S2KthToLast
 
 fun main() {
-    val solution = S3DeleteMiddleNode()
-    solution.runTest()
+    val solution = S2KthToLast()
+    solution.runTest2()
 }

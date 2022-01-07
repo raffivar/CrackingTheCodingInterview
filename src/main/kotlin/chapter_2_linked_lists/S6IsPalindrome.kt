@@ -5,6 +5,9 @@ import chapter_2_linked_lists.helpers.Node
 import java.util.*
 
 class S6IsPalindrome {
+    //Another approach: reverse and compare
+    //Another approach: recursion
+
     private fun isPalindrome(node: Node?): Boolean {
         var size = 0
         var current = node
@@ -33,6 +36,11 @@ class S6IsPalindrome {
         var size = 0
         var current = node
 
+        // Size can be found in a more efficient way
+        // if we take a "slow" pointer and a "fast" pointer.
+        // p1 runs 1 step, p2 runs 2 steps,
+        // we are in the middle of the list when p2 hits the end
+        // This way we don not have to run over the list twice.
         while (current != null) {
             size++
             current = current.next

@@ -7,6 +7,12 @@ object ListBuilder {
     val list4 = Node(3, Node(5, Node(8, Node(5, Node(10, Node(2, Node(1, null)))))))
     val list5 = Node(3, Node(10, Node(8, Node(5, Node(10, Node(2, Node(1, null)))))))
 
+    val sumList1 = Node(7, Node(1, Node(6, null)))
+    val sumList2 = Node(5, Node(9, Node(2, null)))
+
+    val sumList3 = Node(7, Node(1, Node(6, null)))
+    val sumList4 = Node(5, Node(9, null))
+
     fun listAsString(node: Node?): String {
         val sb = StringBuilder()
         var current = node

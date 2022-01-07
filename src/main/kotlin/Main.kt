@@ -1,6 +1,6 @@
-import chapter_2_linked_lists.S4Partition
+import chapter_2_linked_lists.S5SumLists
 
 fun main() {
-    val solution = S4Partition()
+    val solution = S5SumLists()
     solution.runTest()
 }

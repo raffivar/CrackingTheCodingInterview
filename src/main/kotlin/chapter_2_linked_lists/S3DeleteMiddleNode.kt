@@ -4,7 +4,7 @@ import chapter_2_linked_lists.helpers.ListBuilder
 import chapter_2_linked_lists.helpers.Node
 
 class S3DeleteMiddleNode {
-    private fun removeDuplicates(node: Node) {
+    private fun deleteMiddleNode1(node: Node) {
         var current = node
         while (current.next?.next != null) {
             current.value = current.next!!.value
@@ -12,6 +12,14 @@ class S3DeleteMiddleNode {
         }
         current.value = current.next!!.value
         current.next = null
+    }
+
+    private fun deleteMiddleNode2(node: Node?) {
+        if (node?.next == null) {
+            return
+        }
+        node.value = node.next!!.value
+        node.next = node.next!!.next
     }
 
     private fun getMiddleNode(head: Node): Node {
@@ -29,15 +37,14 @@ class S3DeleteMiddleNode {
     }
 
     fun runTest() {
-        val functions = arrayListOf(this::removeDuplicates)
-
-        val testCases = arrayListOf(
-            ListBuilder.list1,
-            ListBuilder.list2,
-            ListBuilder.list3,
-        )
+        val functions = arrayListOf(this::deleteMiddleNode1, this::deleteMiddleNode2)
 
         for (function in functions) {
+            val testCases = arrayListOf(
+                Node(1, Node(2, Node(3, Node(4, Node(5, Node(6, Node(7, null))))))),
+                Node(1, Node(2, Node(3, Node(4, null)))),
+                Node(1, Node(2, null))
+            )
             for (testCase in testCases) {
                 println("------------------------------------------")
                 println("B: ${ListBuilder.listAsString(testCase)}")

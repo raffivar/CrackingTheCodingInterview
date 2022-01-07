@@ -1,7 +1,7 @@
 import chapter_2_linked_lists.S6IsPalindrome
-import chapter_2_linked_lists.S8LoopDetection
+import chapter_3_stacks_and_queues.S3StackOfPlates
 
 fun main() {
-    val solution = S8LoopDetection()
+    val solution = S3StackOfPlates()
     solution.runTest()
 }

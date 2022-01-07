@@ -2,6 +2,7 @@ package chapter_2_linked_lists
 
 import chapter_2_linked_lists.helpers.ListBuilder
 import chapter_2_linked_lists.helpers.Node
+import java.util.*
 
 class S6IsPalindrome {
     private fun isPalindrome(node: Node?): Boolean {
@@ -28,8 +29,38 @@ class S6IsPalindrome {
         return true
     }
 
+    private fun isPalindrome2(node: Node?): Boolean {
+        var size = 0
+        var current = node
+
+        while (current != null) {
+            size++
+            current = current.next
+        }
+
+        current = node
+        val stack = Stack<Int>()
+
+        for (i in 0..size / 2) {
+            stack.push(current!!.value)
+            current = current.next
+        }
+
+        if (size % 2 == 1) {
+            current = current!!.next
+        }
+
+        while (current != null) {
+            if (current.value != stack.pop()) {
+                return false
+            }
+        }
+
+        return true
+    }
+
     fun runTest() {
-        val functions = arrayListOf(this::isPalindrome)
+        val functions = arrayListOf(this::isPalindrome, this::isPalindrome2)
 
         val testCases = arrayListOf(
             ListBuilder.list1,
@@ -40,6 +71,7 @@ class S6IsPalindrome {
         )
 
         for (function in functions) {
+            println("--------------------------------------------------------------------------")
             for (testCase in testCases) {
                 println("${ListBuilder.listAsString(testCase)} -> ${isPalindrome(testCase)}")
             }

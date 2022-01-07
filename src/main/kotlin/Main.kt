@@ -1,6 +1,6 @@
-import chapter_2_linked_lists.S2KthToLast
+import chapter_2_linked_lists.S6IsPalindrome
 
 fun main() {
-    val solution = S2KthToLast()
-    solution.runTest2()
+    val solution = S6IsPalindrome()
+    solution.runTest()
 }

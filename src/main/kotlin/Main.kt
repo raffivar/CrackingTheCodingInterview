@@ -1,6 +1,6 @@
-import chapter_2_linked_lists.S6IsPalindrome
+import chapter_2_linked_lists.S7Intersection
 
 fun main() {
-    val solution = S6IsPalindrome()
+    val solution = S7Intersection()
     solution.runTest()
 }

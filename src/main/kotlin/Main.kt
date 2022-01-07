@@ -1,6 +1,6 @@
-import chapter_2_linked_lists.S5SumLists
+import chapter_2_linked_lists.S6IsPalindrome
 
 fun main() {
-    val solution = S5SumLists()
+    val solution = S6IsPalindrome()
     solution.runTest()
 }

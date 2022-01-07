@@ -6,6 +6,8 @@ object ListBuilder {
     val list3 = Node(1, Node(2, null))
     val list4 = Node(3, Node(5, Node(8, Node(5, Node(10, Node(2, Node(1, null)))))))
     val list5 = Node(3, Node(10, Node(8, Node(5, Node(10, Node(2, Node(1, null)))))))
+    val list6 = Node(1, Node(2, Node(3, Node(4, Node(3, Node(2, Node(1, null)))))))
+    val list7 = Node(1, null)
 
     val sumList1 = Node(7, Node(1, Node(6, null)))
     val sumList2 = Node(5, Node(9, Node(2, null)))

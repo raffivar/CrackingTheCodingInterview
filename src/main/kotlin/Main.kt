@@ -1,6 +1,6 @@
-import chapter_3_stacks_and_queues.S4QueueViaStacks
+import chapter_3_stacks_and_queues.S5SortStack
 
 fun main() {
-    val solution = S4QueueViaStacks()
+    val solution = S5SortStack()
     solution.runTest()
 }

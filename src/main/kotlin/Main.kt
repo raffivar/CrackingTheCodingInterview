@@ -1,6 +1,6 @@
-import chapter_1_arrays_and_strings.S9StringRotation
+import chapter_2_linked_lists.S1RemoveDuplicates
 
 fun main() {
-    val solution = S9StringRotation()
+    val solution = S1RemoveDuplicates()
     solution.runTest()
 }

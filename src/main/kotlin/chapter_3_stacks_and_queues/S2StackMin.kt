@@ -4,7 +4,7 @@ import java.util.*
 
 class S2StackMin {
     class MyStack : Stack<Int>(){
-        private var min: Int = Int.MIN_VALUE
+        private var min: Int = Int.MAX_VALUE
 
         fun min(): Int {
             return min

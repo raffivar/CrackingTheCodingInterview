@@ -36,6 +36,8 @@ class S4QueueViaStacks {
             return first!!
         }
 
+        fun size(): Int = stack1.size
+
         fun isEmpty(): Boolean {
             return stack1.isEmpty()
         }
@@ -45,8 +47,46 @@ class S4QueueViaStacks {
         }
     }
 
+    class MyQueue2<T> {
+        private val stackOldest = Stack<T>()
+        private val stackNewest = Stack<T>()
+
+        fun push(item: T) {
+            stackNewest.push(item)
+        }
+
+        fun pop(): T {
+            shiftStacks()
+            return stackOldest.pop()
+        }
+
+        fun peek(): T {
+            shiftStacks()
+            return stackOldest.peek()
+        }
+
+        fun size(): Int = stackOldest.size + stackNewest.size
+
+        fun isEmpty(): Boolean {
+            return stackOldest.isEmpty() && stackNewest.isEmpty()
+        }
+
+        fun isNotEmpty(): Boolean {
+            return !isEmpty()
+        }
+
+        private fun shiftStacks() {
+            if (stackOldest.isEmpty()) {
+                while (stackNewest.isNotEmpty()) {
+                    stackOldest.push(stackNewest.pop())
+                }
+            }
+        }
+    }
+
+
     fun runTest() {
-        val myQueue = MyQueue<Int>()
+        val myQueue = MyQueue2<Int>()
         for (num in 1..10) {
             myQueue.push(num)
         }

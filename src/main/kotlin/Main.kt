@@ -1,6 +1,6 @@
-import chapter_3_stacks_and_queues.S5SortStack
+import chapter_3_stacks_and_queues.S6AnimalShelter
 
 fun main() {
-    val solution = S5SortStack()
+    val solution = S6AnimalShelter()
     solution.runTest()
 }

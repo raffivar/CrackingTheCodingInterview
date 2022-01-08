@@ -26,6 +26,12 @@ class S3StackOfPlates {
             return stackNode.stack.pop()
         }
 
+        /**
+         * For this specific function, one could argue that all stacks must be at full capacity all the time
+         * Meaning, that if we pop something from one stack, we should move elements around from the rest
+         * There is no "right" or "wrong" answer, this is something you should discuss with your interviewer
+         * This solution assumes that NOT all stacks are in full capacity at all times
+         */
         fun popAt(i: Int): T {
             var current = stackNode
             for (j in 0 until i) {

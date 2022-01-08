@@ -3,6 +3,13 @@ package chapter_3_stacks_and_queues
 import java.lang.Exception
 
 class S6AnimalShelter {
+    /**
+     * Another solution to this problem can be two lists (dogs + cats)
+     * And for "Animal" to contain "timestamp"
+     * This way, when performing dequeueAny(), if there are dogs **and** cats available,
+     * we compare the timestamp and return the oldest
+     */
+
     open class Animal(val name: String)
     class Cat(name: String) : Animal(name)
     class Dog(name: String) : Animal(name)

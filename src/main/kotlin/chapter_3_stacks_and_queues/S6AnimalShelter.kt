@@ -37,58 +37,39 @@ class S6AnimalShelter {
         }
 
         fun dequeueDog(): Dog {
-            var p = head
-            while (p?.next != null && p.animal !is Dog && p.next!!.animal !is Dog) {
-                p = p.next
-            }
-
-            if (p == null) {
-                throw Exception("No dog found")
-            }
-
-            //First node is dog
-            if (p.animal is Dog) {
-                val animal = p.animal
-                head = head!!.next
-                return animal as Dog
-            }
-
-            if (p.next == null) {
-                throw Exception("No dog found")
-            }
-
-            //next must be Dog
-            val animal = p.next!!.animal
-            p.next = p.next!!.next
-            return animal as Dog
+            return dequeueSpecific()
         }
 
 
         fun dequeueCat(): Cat {
+            return dequeueSpecific()
+        }
+
+        private inline fun<reified T> dequeueSpecific(): T {
             var p = head
-            while (p?.next != null && p.animal !is Cat && p.next!!.animal !is Cat) {
+            while (p?.next != null && p.animal !is T && p.next!!.animal !is T) {
                 p = p.next
             }
 
             if (p == null) {
-                throw Exception("No cat found")
+                throw Exception("No ${T::class.simpleName} found")
             }
 
-            //First node is cat
-            if (p.animal is Cat) {
+            //first node is T
+            if (p.animal is T) {
                 val animal = p.animal
                 head = head!!.next
-                return animal as Cat
+                return animal as T
             }
 
             if (p.next == null) {
-                throw Exception("No cat found")
+                throw Exception("No ${T::class.simpleName} found")
             }
 
-            //next must be cat
+            //next must be T
             val animal = p.next!!.animal
             p.next = p.next!!.next
-            return animal as Cat
+            return animal as T
         }
 
         fun printCurrentState() {
@@ -113,6 +94,12 @@ class S6AnimalShelter {
         shelter.enqueue(Cat("Woop"))
         shelter.printCurrentState()
         printOutput(shelter.dequeueDog())
+        shelter.printCurrentState()
+        printOutput(shelter.dequeueAny())
+        shelter.printCurrentState()
+        printOutput(shelter.dequeueAny())
+        shelter.printCurrentState()
+        printOutput(shelter.dequeueAny())
         shelter.printCurrentState()
         printOutput(shelter.dequeueAny())
         shelter.printCurrentState()

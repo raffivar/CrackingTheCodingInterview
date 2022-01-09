@@ -9,19 +9,16 @@ class S6Successor {
             return null
         }
 
-        val right = node.right
-        if (right != null && !right.visited) {
+        if (node.right != null) {
             return node.right
         }
 
-        node.visited = true
-
-        val parent = node.parent
-        if (parent != null && parent.left == node) {
-            return parent
+        var current = node
+        while (current!!.parent != null && current.parent!!.right == current) {
+            current = current.parent
         }
 
-        return getSuccessor(parent)
+        return current.parent
     }
 
     fun runTest() {
@@ -30,7 +27,12 @@ class S6Successor {
         TreeWithParentsUtil.printBinaryTreeViaDepths(tree)
 
         val testCases = arrayListOf(
-            TreeWithParentsUtil.node3
+            TreeWithParentsUtil.node0,
+            TreeWithParentsUtil.node1,
+            TreeWithParentsUtil.node2,
+            TreeWithParentsUtil.node3,
+            TreeWithParentsUtil.node4,
+            TreeWithParentsUtil.node5,
         )
 
         for (function in functions) {

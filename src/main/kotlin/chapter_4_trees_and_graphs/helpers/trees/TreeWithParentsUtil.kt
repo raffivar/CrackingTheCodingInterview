@@ -1,6 +1,5 @@
 package chapter_4_trees_and_graphs.helpers.trees
 
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
 import chapter_4_trees_and_graphs.helpers.trees.binary.NodeWithParent
 
 object TreeWithParentsUtil {
@@ -9,7 +8,7 @@ object TreeWithParentsUtil {
     val node2 = NodeWithParent(2, node1)
     val node3 = NodeWithParent(6, node1)
     val node4 = NodeWithParent(10, node0)
-    val node6 = NodeWithParent(20, node4)
+    val node5 = NodeWithParent(20, node4)
 
     fun buildTreeWithParents(): NodeWithParent {
         node0.left = node1
@@ -18,7 +17,7 @@ object TreeWithParentsUtil {
         node1.left = node2
         node1.right = node3
 
-        node4.right = node6
+        node4.right = node5
 
         return node0
     }

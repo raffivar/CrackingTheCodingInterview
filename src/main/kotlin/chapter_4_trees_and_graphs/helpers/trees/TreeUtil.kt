@@ -134,4 +134,20 @@ object TreeUtil {
     fun buildBinaryTree6(): Node? {
         return null
     }
+
+    fun buildBST(): Node? {
+        return Node(
+            8,
+            Node(
+                4,
+                Node(2),
+                Node(6)
+            ),
+            Node(
+                10,
+                null,
+                Node(20)
+            )
+        )
+    }
 }

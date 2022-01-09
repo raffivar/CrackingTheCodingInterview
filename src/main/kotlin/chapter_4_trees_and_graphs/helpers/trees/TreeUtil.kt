@@ -24,26 +24,40 @@ object TreeUtil {
         printBinaryTree(root.left, level + 1)
     }
 
-//    fun printDepthsList(list: List<List<Node?>>) {
-//        var level = 0
-//        for (depth in list) {
-//            for (node in depth) {
-//                if (node == null) {
-//                    print("?".padStart(list.size - level + 1))
-//                } else {
-//                    print("${node.value}".padStart(list.size - level + 1))
-//                }
-//            }
-//            println()
-//            if (level < list.size - 1) {
-//                for (node in depth) {
-//                    print("/ \\".padStart(list.size - level + 2))
-//                }
-//            }
-//            println()
-//            level++
-//        }
-//    }
+    fun printDepthsList(list: List<List<Node?>>) {
+        for ((level, depth) in list.withIndex()) {
+            val defaultValuePadding = list.size - level + 1
+            val defaultLegPadding = list.size - level + 2
+            // print values
+            for ((i, node) in depth.withIndex()) {
+                val value = when (node) {
+                    null -> "?"
+                    else -> node.value
+                }
+                val padding = when ((level > 1) && (i % 2 == 1) && (list[level - 1][i / 2] == null)) {
+                    true -> 4
+                    false -> defaultValuePadding
+                }
+                print(value.toString().padStart(padding))
+            }
+            println()
+            // print "legs"
+            if (level < list.size - 1) { // not printing legs for last level
+                for (node in depth) {
+                    val value = when (node) {
+                        null -> ""
+                        else -> "/ \\"
+                    }
+                    val padding = when (node) {
+                        null -> 1
+                        else -> defaultLegPadding
+                    }
+                    print(value.padStart(padding))
+                }
+            }
+            println()
+        }
+    }
 
     fun buildBinaryTree(): Node {
         return Node(
@@ -92,12 +106,32 @@ object TreeUtil {
         )
     }
 
-
     fun buildBinaryTree4(): Node {
+        return Node(
+            1,
+            Node(
+                2,
+                Node(4),
+                Node(
+                    5,
+                    Node(8),
+                    Node(9)
+                )
+            ),
+            Node(
+                3,
+                null,
+                Node(7)
+            )
+        )
+    }
+
+
+    fun buildBinaryTree5(): Node {
         return Node(1)
     }
 
-    fun buildBinaryTree5(): Node? {
+    fun buildBinaryTree6(): Node? {
         return null
     }
 }

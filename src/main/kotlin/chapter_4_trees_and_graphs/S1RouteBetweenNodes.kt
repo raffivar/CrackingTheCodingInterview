@@ -35,7 +35,7 @@ class S1RouteBetweenNodes {
         printResult(root, graph.nodes[2], graph.nodes[4])
     }
 
-    private fun printResult(graph: Node, node1: Node, node2: Node) {
-        println("From ${node1.value} and ${node2.value} -> ${routeBetweenNodes(graph, node1, node2)}")
+    private fun printResult(root: Node, node1: Node, node2: Node) {
+        println("From ${node1.value} and ${node2.value} -> ${routeBetweenNodes(root, node1, node2)}")
     }
 }

@@ -1,8 +1,5 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.TreeWithParentsUtil
-import chapter_4_trees_and_graphs.helpers.trees.binary.NodeWithParent
-
 class S7BuildOrder {
     private class Project(
         val name: Char,
@@ -30,12 +27,28 @@ class S7BuildOrder {
     }
 
     private fun buildOrder(projects: List<Project>, dependencies: List<Pair<Project, Project>>): List<Project> {
-        val ordered = mutableListOf<Project>()
         for (dependency in dependencies) {
             dependency.first.children.add(dependency.second)
         }
+
+        // check validity
+        validate(projects)
+
+        val ordered = mutableListOf<Project>()
         return ordered
     }
 
+    private fun validate(projects: List<Project>) {
+        for (project in projects) {
+            if (isValid(project)) {
+                println("Project ${project.name} - OK")
+            } else {
+                println("Project ${project.name} - Corrupted (found loop)")
+            }
+        }
+    }
 
+    private fun isValid(project: Project): Boolean {
+        return true
+    }
 }

@@ -1,7 +1,6 @@
-import chapter_3_stacks_and_queues.S4QueueViaStacks
-import chapter_3_stacks_and_queues.S6AnimalShelter
+import chapter_4_trees_and_graphs.S1RouteBetweenNodes
 
 fun main() {
-    val solution = S4QueueViaStacks()
+    val solution = S1RouteBetweenNodes()
     solution.runTest()
 }

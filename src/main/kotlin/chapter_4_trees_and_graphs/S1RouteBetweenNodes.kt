@@ -10,9 +10,11 @@ class S1RouteBetweenNodes {
             if (child == node2) {
                 return true
             }
-            child!!.visited = true
-            if (!child.visited && routeBetweenNodes(child, node2)) {
-                return true
+            if (!child!!.visited) {
+                child.visited = true
+                if (routeBetweenNodes(child, node2)) {
+                    return true
+                }
             }
         }
         return false
@@ -21,15 +23,21 @@ class S1RouteBetweenNodes {
     fun runTest() {
         val graph = GraphBuilder.Graph()
         printResult(graph.nodes[3], graph.nodes[2])
+        graph.reset()
         printResult(graph.nodes[0], graph.nodes[1])
+        graph.reset()
         printResult(graph.nodes[3], graph.nodes[4])
+        graph.reset()
         printResult(graph.nodes[0], graph.nodes[4])
+        graph.reset()
         printResult(graph.nodes[4], graph.nodes[3])
+        graph.reset()
         printResult(graph.nodes[5], graph.nodes[4])
+        graph.reset()
         printResult(graph.nodes[2], graph.nodes[4])
     }
 
     private fun printResult(node1: Node, node2: Node) {
-        println("From ${node1.value} and ${node2.value} -> ${routeBetweenNodes(node1, node2)}")
+        println("${node1.value} -> ${node2.value} -> ${routeBetweenNodes(node1, node2)}")
     }
 }

@@ -7,11 +7,13 @@ class S1RouteBetweenNodes {
     private fun routeBetweenNodes(root: Node, node1: Node, node2: Node): Boolean {
         root.visited = true
         for (child in root.children!!) {
-            if (haveRoute(root, child, node1, node2)) {
-                return true
-            }
-            if (!child.visited && routeBetweenNodes(child, node1, node2)) {
-                return true
+            if (child != null) {
+                if (haveRoute(root, child, node1, node2)) {
+                    return true
+                }
+                if (!child.visited && routeBetweenNodes(child, node1, node2)) {
+                    return true
+                }
             }
         }
         return false

@@ -1,6 +1,7 @@
 package chapter_4_trees_and_graphs.helpers.trees
 
 import chapter_4_trees_and_graphs.helpers.trees.binary.Node
+import chapter_4_trees_and_graphs.helpers.trees.binary.NodeWithParent
 
 object TreeUtil {
     fun printBinaryTree(root: Node?) {
@@ -22,6 +23,33 @@ object TreeUtil {
         }
 
         printBinaryTree(root.left, level + 1)
+    }
+
+    fun printBinaryTreeViaDepths(root: Node?) {
+        printDepthsList(listOfDepth(root))
+    }
+
+    private fun listOfDepth(root: Node?): List<List<Node?>> {
+        val lists = mutableListOf<MutableList<Node?>>()
+        if (root == null) {
+            return lists
+        }
+        addDepths(root, lists, 0)
+        lists.removeLast() //Removing last level, all null
+        return lists
+    }
+
+    private fun addDepths(root: Node?, lists: MutableList<MutableList<Node?>>, level: Int) {
+        if (level >= lists.size) { //new depth
+            val list = mutableListOf<Node?>()
+            lists.add(list)
+        }
+        val depthList = lists[level]
+        depthList.add(root)
+        root?.let {
+            addDepths(it.left, lists, level + 1)
+            addDepths(it.right, lists, level + 1)
+        }
     }
 
     fun printDepthsList(list: List<List<Node?>>) {
@@ -149,5 +177,24 @@ object TreeUtil {
                 Node(20)
             )
         )
+    }
+
+    fun buildTreeWithParents(): NodeWithParent {
+        val node0 = NodeWithParent(8)
+        val node1 = NodeWithParent(4, node0)
+        val node2 = NodeWithParent(2, node1)
+        val node3 = NodeWithParent(6, node1)
+        val node4 = NodeWithParent(10, node0)
+        val node6 = NodeWithParent(20, node4)
+
+        node0.left = node1
+        node0.right = node4
+
+        node1.left = node2
+        node1.right = node3
+
+        node4.right = node6
+
+        return node3
     }
 }

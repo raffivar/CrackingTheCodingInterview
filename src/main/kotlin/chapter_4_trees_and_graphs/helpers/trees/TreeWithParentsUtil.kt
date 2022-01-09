@@ -4,6 +4,26 @@ import chapter_4_trees_and_graphs.helpers.trees.binary.Node
 import chapter_4_trees_and_graphs.helpers.trees.binary.NodeWithParent
 
 object TreeWithParentsUtil {
+    val node0 = NodeWithParent(8)
+    val node1 = NodeWithParent(4, node0)
+    val node2 = NodeWithParent(2, node1)
+    val node3 = NodeWithParent(6, node1)
+    val node4 = NodeWithParent(10, node0)
+    val node6 = NodeWithParent(20, node4)
+
+    fun buildTreeWithParents(): NodeWithParent {
+        node0.left = node1
+        node0.right = node4
+
+        node1.left = node2
+        node1.right = node3
+
+        node4.right = node6
+
+        return node0
+    }
+
+
     fun printBinaryTreeViaDepths(root: NodeWithParent?) {
         printDepthsList(listOfDepth(root))
     }
@@ -64,25 +84,5 @@ object TreeWithParentsUtil {
             }
             println()
         }
-    }
-
-
-    fun buildTreeWithParents(): NodeWithParent {
-        val node0 = NodeWithParent(8)
-        val node1 = NodeWithParent(4, node0)
-        val node2 = NodeWithParent(2, node1)
-        val node3 = NodeWithParent(6, node1)
-        val node4 = NodeWithParent(10, node0)
-        val node6 = NodeWithParent(20, node4)
-
-        node0.left = node1
-        node0.right = node4
-
-        node1.left = node2
-        node1.right = node3
-
-        node4.right = node6
-
-        return node3
     }
 }

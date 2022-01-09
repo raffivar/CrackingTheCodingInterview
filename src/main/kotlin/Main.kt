@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S7BuildOrder
+import chapter_4_trees_and_graphs.S6Successor
 
 fun main() {
-    val solution = S7BuildOrder()
+    val solution = S6Successor()
     solution.runTest()
 }

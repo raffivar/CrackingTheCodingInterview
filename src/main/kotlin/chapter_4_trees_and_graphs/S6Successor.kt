@@ -9,23 +9,33 @@ class S6Successor {
             return null
         }
 
-        if (node.parent == null || node.right != null) {
+        val right = node.right
+        if (right != null && !right.visited) {
             return node.right
         }
 
-        return null
+        node.visited = true
+
+        val parent = node.parent
+        if (parent != null && parent.left == node) {
+            return parent
+        }
+
+        return getSuccessor(parent)
     }
 
     fun runTest() {
         val functions = arrayListOf(this::getSuccessor)
+        val tree = TreeWithParentsUtil.buildTreeWithParents()
+        TreeWithParentsUtil.printBinaryTreeViaDepths(tree)
+
         val testCases = arrayListOf(
-            TreeWithParentsUtil.buildTreeWithParents()
+            TreeWithParentsUtil.node3
         )
 
         for (function in functions) {
             for (testCase in testCases) {
-                TreeWithParentsUtil.printBinaryTreeViaDepths(testCase)
-                println(function(testCase))
+                println("${testCase.value} -> ${function(testCase)?.value}")
             }
         }
     }

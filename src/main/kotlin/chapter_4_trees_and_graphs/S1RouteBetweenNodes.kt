@@ -1,7 +1,7 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.GraphBuilder
-import chapter_4_trees_and_graphs.helpers.Node
+import chapter_4_trees_and_graphs.helpers.graphs.GraphBuilder
+import chapter_4_trees_and_graphs.helpers.graphs.Node
 
 class S1RouteBetweenNodes {
     private fun routeBetweenNodes(root: Node, node1: Node, node2: Node): Boolean {

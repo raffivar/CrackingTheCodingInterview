@@ -1,7 +1,7 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.Node
-import chapter_4_trees_and_graphs.helpers.TreeUtil
+import chapter_4_trees_and_graphs.helpers.trees.binary.Node
+import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
 
 class S2MinimalTree {
     private fun buildMinimalTree(array: Array<Int>): Node? {
@@ -9,11 +9,8 @@ class S2MinimalTree {
             return null
         }
         val root = Node(array[0])
-        val left = null
-        val right = buildMinimalTree(array.sliceArray(1 until array.size))
-        val children = arrayOf(left, right)
-        root.children = children
-
+        root.left = null
+        root.right = buildMinimalTree(array.sliceArray(1 until array.size))
         return root
     }
 

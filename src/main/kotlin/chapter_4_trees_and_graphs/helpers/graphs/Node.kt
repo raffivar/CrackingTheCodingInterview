@@ -1,4 +1,4 @@
-package chapter_4_trees_and_graphs.helpers
+package chapter_4_trees_and_graphs.helpers.graphs
 
 class Node(
     var value: Int,

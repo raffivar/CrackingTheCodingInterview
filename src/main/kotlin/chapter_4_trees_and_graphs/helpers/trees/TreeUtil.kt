@@ -1,4 +1,6 @@
-package chapter_4_trees_and_graphs.helpers
+package chapter_4_trees_and_graphs.helpers.trees
+
+import chapter_4_trees_and_graphs.helpers.trees.binary.Node
 
 object TreeUtil {
     fun printBinaryTree(root: Node?) {
@@ -11,7 +13,7 @@ object TreeUtil {
             return
         }
 
-        printBinaryTree(root.children?.get(1), level + 1)
+        printBinaryTree(root.right, level + 1)
 
         if (level != 0) {
             for (i in 0 until level - 1) print("|\t")
@@ -20,6 +22,6 @@ object TreeUtil {
             println(root.value)
         }
 
-        printBinaryTree(root.children?.get(0), level + 1)
+        printBinaryTree(root.left, level + 1)
     }
 }

@@ -19,12 +19,12 @@ object GraphBuilder {
         }
 
         val nodes = arrayOf(
-            Node(value = 0),
-            Node(value = 1),
-            Node(value = 2),
-            Node(value = 3),
-            Node(value = 4),
-            Node(value = 5))
+            Node(0),
+            Node(1),
+            Node(2),
+            Node(3),
+            Node(4),
+            Node(5))
 
         init {
             nodes[0].children = arrayOf(nodes[1], nodes[4], nodes[5])

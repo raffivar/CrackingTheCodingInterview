@@ -13,13 +13,13 @@ class S8FirstCommonAncestor {
             return null
         }
 
-        val current = when {
+        val next = when {
             isAncestor(root.left, node1) && isAncestor(root.left, node2) -> root.left
             isAncestor(root.right, node1) && isAncestor(root.right, node2) -> root.right
             else -> return root
         }
 
-        return firstCommonAncestor(current, node1, node2)
+        return firstCommonAncestor(next, node1, node2)
     }
 
     private fun isAncestor(node1: Node?, node2: Node?): Boolean {

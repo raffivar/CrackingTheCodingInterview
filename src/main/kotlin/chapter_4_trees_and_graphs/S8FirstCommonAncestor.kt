@@ -14,9 +14,9 @@ class S8FirstCommonAncestor {
         }
 
         return when {
-            isAncestor(root.left, node1) && isAncestor(root.left, node2) ->
+            firstCommonAncestor(root.left, node1, node2) != null ->
                 firstCommonAncestor(root.left, node1, node2)
-            isAncestor(root.right, node1) && isAncestor(root.right, node2) ->
+            firstCommonAncestor(root.left, node1, node2) != null ->
                 firstCommonAncestor(root.right, node1, node2)
             else -> root
         }

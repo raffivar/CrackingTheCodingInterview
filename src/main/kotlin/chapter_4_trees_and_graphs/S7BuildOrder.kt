@@ -51,23 +51,25 @@ class S7BuildOrder {
                 return null
             }
         }
+
+        // build order
         var head: ProjectNode? = null
         for (project in projects) {
             val projectNode = ProjectNode(project, null)
+            var previous: ProjectNode? = null
             var current = head
-            while (current?.next != null && !isDependant(project, current.next!!.project)) {
+            while (current != null && !isDependant(project, current.project)) {
+                previous = current
                 current = current.next
             }
-            when {
-                current == null -> head = projectNode
-                current == head && isDependant(project, head.project) -> {
+            when (current) {
+                head -> { //beginning
                     projectNode.next = current
                     head = projectNode
                 }
-                current.next == null -> current.next = projectNode
-                else -> {
-                    projectNode.next = current.next
-                    current.next = projectNode
+                else -> { //middle or end
+                    projectNode.next = current
+                    previous!!.next = projectNode
                 }
             }
         }

@@ -9,7 +9,7 @@ class S8FirstCommonAncestor {
             return null
         }
 
-        if (!isAncestor(root, node1) && !isAncestor(root, node2)) {
+        if (!isAncestor(root, node1) || !isAncestor(root, node2)) {
             return null
         }
 

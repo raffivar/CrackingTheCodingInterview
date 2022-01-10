@@ -21,7 +21,7 @@ class S7BuildOrder {
             Pair(f, b),
             Pair(b, d),
             Pair(f, a),
-            Pair(d, c)
+            Pair(d, c),
         )
 
         val orderedList = buildOrder(projects, dependencies)
@@ -33,22 +33,33 @@ class S7BuildOrder {
             dependency.first.children.add(dependency.second)
         }
 
-        // check graph validity
-        validate(projects)
-
         val ordered = mutableListOf<Project>()
+
+        // check graph validity
+        when (validate(projects)) {
+            true -> println("Graph is valid")
+            false -> {
+                println("Invalid graph, please take care of")
+                return ordered
+            }
+        }
+
         return ordered
     }
 
-    private fun validate(projects: List<Project>) {
+    private fun validate(projects: List<Project>): Boolean {
+        var isValid = true
         for (project in projects) {
             if (routeBetweenNodes(project, project)) {
                 println("Project ${project.name} - Corrupted (found loop)")
+                isValid =  false
             } else {
                 println("Project ${project.name} - OK (no loop)")
             }
             resetVisited(projects)
         }
+        println("---------------------------------------------------------------")
+        return isValid
     }
 
     private fun routeBetweenNodes(node1: Project, node2: Project): Boolean {

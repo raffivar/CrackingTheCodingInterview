@@ -3,7 +3,8 @@ package chapter_4_trees_and_graphs
 class S7BuildOrder {
     private class Project(
         val name: Char,
-        val children: MutableList<Project> = mutableListOf()
+        val children: MutableList<Project> = mutableListOf(),
+        var visited: Boolean = false
     )
 
     private val a = Project('a')
@@ -20,18 +21,19 @@ class S7BuildOrder {
             Pair(f, b),
             Pair(b, d),
             Pair(f, a),
-            Pair(d, c),
+            Pair(d, c)
         )
 
         val orderedList = buildOrder(projects, dependencies)
     }
 
     private fun buildOrder(projects: List<Project>, dependencies: List<Pair<Project, Project>>): List<Project> {
+        // build graph
         for (dependency in dependencies) {
             dependency.first.children.add(dependency.second)
         }
 
-        // check validity
+        // check graph validity
         validate(projects)
 
         val ordered = mutableListOf<Project>()
@@ -40,15 +42,34 @@ class S7BuildOrder {
 
     private fun validate(projects: List<Project>) {
         for (project in projects) {
-            if (isValid(project)) {
-                println("Project ${project.name} - OK")
-            } else {
+            if (routeBetweenNodes(project, project)) {
                 println("Project ${project.name} - Corrupted (found loop)")
+            } else {
+                println("Project ${project.name} - OK (no loop)")
             }
+            resetVisited(projects)
         }
     }
 
-    private fun isValid(project: Project): Boolean {
-        return true
+    private fun routeBetweenNodes(node1: Project, node2: Project): Boolean {
+        val children = node1.children
+        for (child in children) {
+            if (child == node2) {
+                return true
+            }
+            if (!child.visited) {
+                child.visited = true
+                if (routeBetweenNodes(child, node2)) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    private fun resetVisited(projects: List<Project>) {
+        for (project in projects) {
+            project.visited = false
+        }
     }
 }

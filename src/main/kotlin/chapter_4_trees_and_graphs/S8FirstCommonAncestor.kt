@@ -13,13 +13,17 @@ class S8FirstCommonAncestor {
             return null
         }
 
-        return when {
-            firstCommonAncestor(root.left, node1, node2) != null ->
-                firstCommonAncestor(root.left, node1, node2)
-            firstCommonAncestor(root.left, node1, node2) != null ->
-                firstCommonAncestor(root.right, node1, node2)
-            else -> root
+        val left = firstCommonAncestor(root.left, node1, node2)
+        if (left != null) {
+            return left
         }
+
+        val right = firstCommonAncestor(root.right, node1, node2)
+        if (right != null) {
+            return right
+        }
+
+        return root
     }
 
     private fun isAncestor(node1: Node?, node2: Node?): Boolean {
@@ -35,13 +39,13 @@ class S8FirstCommonAncestor {
         val root = buildTree()
         TreeUtil.printBinaryTreeViaDepths(root)
         printResult(root, nodes[5], nodes[6])
+        printResult(root, nodes[3], nodes[6])
         printResult(root, nodes[3], nodes[7])
         printResult(root, nodes[3], nodes[4])
         printResult(root, nodes[5], nodes[7])
         printResult(root, nodes[5], nodes[2])
+        printResult(root, nodes[5], nodes[1])
         printResult(root, nodes[3], nodes[0])
-        printResult(root, nodes[3], nodes[6])
-        printResult(root, nodes[1], nodes[5])
     }
 
     private fun printResult(root: Node?, node1: Node?, node2: Node?) {

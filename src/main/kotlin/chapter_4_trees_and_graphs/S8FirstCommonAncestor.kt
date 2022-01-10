@@ -9,14 +9,16 @@ class S8FirstCommonAncestor {
             return null
         }
 
+        if (!isAncestor(root, node1) && !isAncestor(root, node2)) {
+            return null
+        }
+
         var current = root
 
-        if (isAncestor(current, node1) && isAncestor(current, node2)) {
-            current = when {
-                isAncestor(current.left, node1) && isAncestor(current.left, node2) -> current.left
-                isAncestor(current.right, node1) && isAncestor(current.right, node2) -> current.right
-                else -> return current
-            }
+        current = when {
+            isAncestor(current.left, node1) && isAncestor(current.left, node2) -> current.left
+            isAncestor(current.right, node1) && isAncestor(current.right, node2) -> current.right
+            else -> return current
         }
 
         return firstCommonAncestor(current, node1, node2)
@@ -28,7 +30,8 @@ class S8FirstCommonAncestor {
         }
 
         if (node1.left == node2 || node1.right == node2 ||
-            isAncestor(node1.left, node2) || isAncestor(node1.right, node2)) {
+            isAncestor(node1.left, node2) || isAncestor(node1.right, node2)
+        ) {
             return true
         }
 

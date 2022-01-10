@@ -13,12 +13,10 @@ class S8FirstCommonAncestor {
             return null
         }
 
-        var current = root
-
-        current = when {
-            isAncestor(current.left, node1) && isAncestor(current.left, node2) -> current.left
-            isAncestor(current.right, node1) && isAncestor(current.right, node2) -> current.right
-            else -> return current
+        val current = when {
+            isAncestor(root.left, node1) && isAncestor(root.left, node2) -> root.left
+            isAncestor(root.right, node1) && isAncestor(root.right, node2) -> root.right
+            else -> return root
         }
 
         return firstCommonAncestor(current, node1, node2)

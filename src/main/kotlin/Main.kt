@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S5ValidateBST
+import chapter_4_trees_and_graphs.S3ListOfDepths
 
 fun main() {
-    val solution = S5ValidateBST()
+    val solution = S3ListOfDepths()
     solution.runTest()
 }

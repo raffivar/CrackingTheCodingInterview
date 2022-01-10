@@ -5,27 +5,14 @@ import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
 
 class S5ValidateBST {
     private fun isBinarySearchTree(root: Node?): Boolean {
-        if (root == null) {
-            return true
+        return when {
+            root == null -> true
+            root.left != null && root.left!!.value > root.value -> false
+            root.right != null && root.right!!.value < root.value -> false
+            !isBinarySearchTree(root.left) -> false
+            !isBinarySearchTree(root.right) -> false
+            else -> true
         }
-
-        val left = root.left
-        val right = root.right
-
-        if (left != null && left.value > root.value ||
-            right != null && right.value < root.value) {
-            return false
-        }
-
-        if (!isBinarySearchTree(left)) {
-            return false
-        }
-
-        if (!isBinarySearchTree(right)) {
-            return false
-        }
-
-        return true
     }
 
     fun runTest() {

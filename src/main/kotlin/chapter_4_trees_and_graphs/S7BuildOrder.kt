@@ -7,6 +7,11 @@ class S7BuildOrder {
         var visited: Boolean = false
     )
 
+    private class ProjectNode(
+        val project: Project,
+        var next: ProjectNode?
+    )
+
     private val a = Project('a')
     private val b = Project('b')
     private val c = Project('c')
@@ -24,27 +29,54 @@ class S7BuildOrder {
             Pair(d, c),
         )
 
-        val orderedList = buildOrder(projects, dependencies)
+        var current = buildOrder(projects, dependencies)
+        while (current != null) {
+            print("${current.project.name} -> ")
+            current = current.next
+        }
+        println("||")
     }
 
-    private fun buildOrder(projects: List<Project>, dependencies: List<Pair<Project, Project>>): List<Project> {
+    private fun buildOrder(projects: List<Project>, dependencies: List<Pair<Project, Project>>): ProjectNode? {
         // build graph
         for (dependency in dependencies) {
             dependency.first.children.add(dependency.second)
         }
-
-        val ordered = mutableListOf<Project>()
 
         // check graph validity
         when (validate(projects)) {
             true -> println("Graph is valid")
             false -> {
                 println("Invalid graph, please take care of")
-                return ordered
+                return null
+            }
+        }
+        var head: ProjectNode? = null
+        for (project in projects) {
+            val projectNode = ProjectNode(project, null)
+            var current = head
+            while (current?.next != null && !isDependant(project, current.next!!.project)) {
+                current = current.next
+            }
+            when {
+                current == null -> head = projectNode
+                current == head && isDependant(project, head.project) -> {
+                    projectNode.next = current
+                    head = projectNode
+                }
+                current.next == null -> current.next = projectNode
+                else -> {
+                    projectNode.next = current.next
+                    current.next = projectNode
+                }
             }
         }
 
-        return ordered
+        return head
+    }
+
+    private fun isDependant(project1: Project, project2: Project): Boolean {
+        return project1.children.contains(project2)
     }
 
     private fun validate(projects: List<Project>): Boolean {
@@ -52,7 +84,7 @@ class S7BuildOrder {
         for (project in projects) {
             if (routeBetweenNodes(project, project)) {
                 println("Project ${project.name} - Corrupted (found loop)")
-                isValid =  false
+                isValid = false
             } else {
                 println("Project ${project.name} - OK (no loop)")
             }

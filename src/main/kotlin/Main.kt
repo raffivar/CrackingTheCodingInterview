@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S9BSTSequence
+import chapter_4_trees_and_graphs.S10CheckSubtree
 
 fun main() {
-    val solution = S9BSTSequence()
+    val solution = S10CheckSubtree()
     solution.runTest()
 }

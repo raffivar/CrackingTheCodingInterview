@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S7BuildOrder
+import chapter_4_trees_and_graphs.S8FirstCommonAncestor
 
 fun main() {
-    val solution = S7BuildOrder()
+    val solution = S8FirstCommonAncestor()
     solution.runTest()
 }

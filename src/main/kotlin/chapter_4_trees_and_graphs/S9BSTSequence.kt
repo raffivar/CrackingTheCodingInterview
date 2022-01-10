@@ -2,12 +2,54 @@ package chapter_4_trees_and_graphs
 
 import chapter_4_trees_and_graphs.helpers.trees.binary.Node
 import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
+import kotlin.math.pow
 
 class S9BSTSequence {
-    private fun getBstSequence(root: Node?): List<List<Int>> {
-        return listOf()
+    private fun allSequences(root: Node?): MutableList<MutableList<Int>> {
+        val result = mutableListOf<MutableList<Int>>()
+        if (root == null) {
+            result.add(mutableListOf())
+            return result
+        }
+        val prefix = mutableListOf<Int>()
+        prefix.add(root.value)
+
+        val leftScq = allSequences(root.left)
+        val rightScq = allSequences(root.right)
+
+        for (left in leftScq) {
+            for (right in rightScq) {
+                val weaved = mutableListOf<MutableList<Int>>()
+                weaveLists(left, right, weaved, prefix)
+                result.addAll(weaved)
+            }
+        }
+        return result
     }
-    
+
+    private fun weaveLists(first: MutableList<Int>, second: MutableList<Int>, results: MutableList<MutableList<Int>>, prefix: MutableList<Int>) {
+        if (first.isEmpty() || second.isEmpty()) {
+            val result = prefix.toMutableList()
+            result.addAll(first)
+            result.addAll(second)
+            results.add(result)
+            return
+        }
+
+        val headFirst = first.removeFirst()
+        prefix.add(headFirst)
+        weaveLists(first, second, results, prefix)
+        prefix.removeLast()
+        first.add(0, headFirst)
+
+        val headSecond = second.removeFirst()
+        prefix.add(headSecond)
+        weaveLists(first, second, results, prefix)
+        prefix.removeLast()
+        second.add(0, headSecond)
+    }
+
+
     fun runTest() {
         val root = buildTree()
         TreeUtil.printBinaryTreeViaDepths(root)
@@ -15,7 +57,7 @@ class S9BSTSequence {
     }
 
     private fun printResult(root: Node?) {
-        val result = getBstSequence(root)
+        val result = allSequences(root)
         for (list in result) {
             for (num in list) {
                 print("$num -> ")

@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S10CheckSubtree
+import chapter_4_trees_and_graphs.S2MinimalTree
 
 fun main() {
-    val solution = S10CheckSubtree()
+    val solution = S2MinimalTree()
     solution.runTest()
 }

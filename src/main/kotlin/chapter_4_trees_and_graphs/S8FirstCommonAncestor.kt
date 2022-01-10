@@ -23,17 +23,12 @@ class S8FirstCommonAncestor {
     }
 
     private fun isAncestor(node1: Node?, node2: Node?): Boolean {
-        if (node1 == null) {
-            return false
+        return when {
+            node1 == null -> false
+            node1.left == node2 || node1.right == node2 -> true
+            isAncestor(node1.left, node2) || isAncestor(node1.right, node2) -> true
+            else -> false
         }
-
-        if (node1.left == node2 || node1.right == node2 ||
-            isAncestor(node1.left, node2) || isAncestor(node1.right, node2)
-        ) {
-            return true
-        }
-
-        return false
     }
 
     fun runTest() {

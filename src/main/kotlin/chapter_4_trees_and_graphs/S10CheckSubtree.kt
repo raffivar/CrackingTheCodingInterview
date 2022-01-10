@@ -16,8 +16,8 @@ class S10CheckSubtree {
 
     private fun isSameTree(root1: Node?, root2: Node?): Boolean {
         return when {
-            root1 == null && root2 == null -> return true
-            root1 == null || root2 == null -> return false
+            root1 == null && root2 == null -> true
+            root1 == null || root2 == null -> false
             root1.value != root2.value -> false
             !isSameTree(root1.left, root2.left) -> false
             !isSameTree(root1.right, root2.right) -> false

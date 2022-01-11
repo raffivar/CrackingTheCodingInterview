@@ -16,7 +16,7 @@ class S4CheckBalanced {
 
     private fun treeHeight(node: Node?): Int {
         return when (node) {
-            null -> 0
+            null -> -1
             else -> 1 + max(treeHeight(node.left), treeHeight(node.right))
         }
     }

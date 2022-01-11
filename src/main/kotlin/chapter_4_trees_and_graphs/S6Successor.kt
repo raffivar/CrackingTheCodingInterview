@@ -32,8 +32,7 @@ class S6Successor {
             TreeWithParentsUtil.node2,
             TreeWithParentsUtil.node3,
             TreeWithParentsUtil.node4,
-            TreeWithParentsUtil.node5,
-        )
+            TreeWithParentsUtil.node5)
 
         for (function in functions) {
             for (testCase in testCases) {

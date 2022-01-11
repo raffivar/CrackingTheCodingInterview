@@ -154,7 +154,6 @@ object TreeUtil {
         )
     }
 
-
     fun buildBinaryTree5(): Node {
         return Node(1)
     }
@@ -175,13 +174,29 @@ object TreeUtil {
                 -3,
                 Node(6),
                 Node(
-                    7)
+                    7
+                )
             )
         )
     }
 
 
-    fun buildBST(): Node? {
+    fun buildBinaryTree8(): Node {
+        return Node(
+            1,
+            Node(
+                3,
+                null,
+                Node(
+                    7,
+                    Node(8),
+                    Node(9)
+                )
+            )
+        )
+    }
+
+    fun buildBST(): Node {
         return Node(
             8,
             Node(

@@ -1,7 +1,6 @@
-import chapter_4_trees_and_graphs.S11RandomNode
-import chapter_4_trees_and_graphs.S12PathsWithSum
+import chapter_4_trees_and_graphs.S4CheckBalanced
 
 fun main() {
-    val solution = S12PathsWithSum()
+    val solution = S4CheckBalanced()
     solution.runTest()
 }

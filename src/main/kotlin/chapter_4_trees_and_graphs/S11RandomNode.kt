@@ -127,11 +127,19 @@ class S11RandomNode {
     fun runTest() {
         val original = buildMinimalTree(arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         val tree = MyBST(original)
+        TreeUtil.printBinaryTreeViaDepths(tree.root())
         tree.insert(15)
         TreeUtil.printBinaryTreeViaDepths(tree.root())
-        val randomNode = tree.randomNode()
-        randomNode?.let {
-            println(it.value)
+        tree.remove(15)
+        TreeUtil.printBinaryTreeViaDepths(tree.root())
+        val num = 10
+        when (val node = tree.find(num)) {
+            null -> println("[$num] not found\n")
+            else -> println("node object id for [$num]: $node\n")
+        }
+        when (val node = tree.randomNode()) {
+            null -> println("not found\n")
+            else -> println("random node: ${node.value}\n")
         }
     }
 

@@ -26,7 +26,9 @@ class S5ValidateBST {
 
         for (function in functions) {
             for (testCase in testCases) {
-                println(function(testCase))
+                println("--------------------------------------")
+                println("is BST (Binary Search Tree)? -> ${function(testCase)}\n")
+                TreeUtil.printBinaryTreeViaDepths(testCase)
             }
         }
     }

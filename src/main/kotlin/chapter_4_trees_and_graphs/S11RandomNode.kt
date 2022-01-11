@@ -2,6 +2,7 @@ package chapter_4_trees_and_graphs
 
 import chapter_4_trees_and_graphs.helpers.trees.binary.Node
 import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
+import com.sun.source.tree.Tree
 
 class S11RandomNode {
     class MyBST {
@@ -14,6 +15,19 @@ class S11RandomNode {
 
         fun root(): Node? {
             return root
+        }
+
+        fun find(num: Int): Node? {
+            return find(root, num)
+        }
+
+        private fun find(root: Node?, num: Int): Node? {
+            return when {
+                root == null -> null // num not found
+                root.value > num -> find(root.left, num)
+                root.value < num -> find(root.right, num)
+                else -> root // num found
+            }
         }
 
         fun insert(num: Int) {
@@ -46,7 +60,7 @@ class S11RandomNode {
             when {
                 root == null -> return // number not found
                 root!!.value > num -> remove(root!!, root!!.left!!, num)
-                root!!.value < num  -> remove(root!!, root!!.right!!, num)
+                root!!.value < num -> remove(root!!, root!!.right!!, num)
                 else -> root = null // root is the number
             }
         }
@@ -92,6 +106,8 @@ class S11RandomNode {
         TreeUtil.printBinaryTreeViaDepths(tree.root())
         tree.remove(4)
         TreeUtil.printBinaryTreeViaDepths(tree.root())
+        val result = tree.find(14)
+        TreeUtil.printBinaryTreeViaDepths(result)
     }
 
     private fun buildMinimalTree(array: Array<Int>): Node? {

@@ -67,18 +67,18 @@ class S11RandomNode {
             }
         }
 
-        private fun remove(parent: TreeNode, root: TreeNode?, num: Int) {
+        private fun remove(parent: TreeNode, node: TreeNode?, num: Int) {
             when {
-                root == null -> return // number not found
-                root.value > num -> remove(root, root.left, num)
-                root.value < num -> remove(root, root.right, num)
+                node == null -> return // number not found
+                node.value > num -> remove(node, node.left, num)
+                node.value < num -> remove(node, node.right, num)
                 else -> { // number found
                     when {
-                        root.left == null -> skipOverNode(parent, root, root.right)
-                        root.right == null -> skipOverNode(parent, root, root.left)
+                        node.left == null -> skipOverNode(parent, node, node.right)
+                        node.right == null -> skipOverNode(parent, node, node.left)
                         else -> {
-                            joinTrees(root.left!!, root.right!!)
-                            skipOverNode(parent, root, root.left)
+                            joinTrees(node.left!!, node.right!!)
+                            skipOverNode(parent, node, node.left)
                         }
                     }
                 }

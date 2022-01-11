@@ -28,11 +28,12 @@ class S12PathsWithSum {
     }
 
     fun runTest() {
-        val root = TreeUtil.buildBinaryTree7()
+        val root = TreeUtil.buildBinaryTree9()
         TreeUtil.printBinaryTreeViaDepths(root)
         printResult(root, 7)
         printResult(root, 5)
         printResult(root, -2)
+        printResult(root, 18)
     }
 
     private fun printResult(root: TreeNode?, sum: Int) {

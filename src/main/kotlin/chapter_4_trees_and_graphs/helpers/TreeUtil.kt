@@ -177,7 +177,6 @@ object TreeUtil {
         )
     }
 
-
     fun buildBinaryTree8(): TreeNode {
         return TreeNode(
             1,
@@ -189,6 +188,30 @@ object TreeUtil {
                     TreeNode(8),
                     TreeNode(9)
                 )
+            )
+        )
+    }
+
+    fun buildBinaryTree9(): TreeNode {
+        return TreeNode(
+            10,
+            TreeNode(
+                5,
+                TreeNode(
+                    3,
+                    TreeNode(3),
+                    TreeNode(-2)
+                ),
+                TreeNode(
+                    2,
+                    null,
+                    TreeNode(1)
+                )
+            ),
+            TreeNode(
+                -3,
+                null,
+                TreeNode(11)
             )
         )
     }

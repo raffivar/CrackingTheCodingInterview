@@ -22,22 +22,22 @@ class S1RouteBetweenNodes {
 
     fun runTest() {
         val graph = GraphUtil.Graph()
-        printResult(graph.nodes[3], graph.nodes[2])
-        graph.reset()
-        printResult(graph.nodes[0], graph.nodes[1])
-        graph.reset()
-        printResult(graph.nodes[3], graph.nodes[4])
-        graph.reset()
-        printResult(graph.nodes[0], graph.nodes[4])
-        graph.reset()
-        printResult(graph.nodes[4], graph.nodes[3])
-        graph.reset()
-        printResult(graph.nodes[5], graph.nodes[4])
-        graph.reset()
-        printResult(graph.nodes[2], graph.nodes[4])
-    }
+        val functions = arrayListOf(this::routeBetweenNodes)
+        val testCases = arrayListOf(
+            Pair(graph.nodes[3], graph.nodes[2]),
+            Pair(graph.nodes[0], graph.nodes[1]),
+            Pair(graph.nodes[3], graph.nodes[4]),
+            Pair(graph.nodes[0], graph.nodes[4]),
+            Pair(graph.nodes[4], graph.nodes[3]),
+            Pair(graph.nodes[5], graph.nodes[4]),
+            Pair(graph.nodes[2], graph.nodes[4])
+        )
 
-    private fun printResult(node1: GraphNode, node2: GraphNode) {
-        println("${node1.value} -> ${node2.value} -> ${routeBetweenNodes(node1, node2)}")
+        for (function in functions) {
+            for (testCase in testCases) {
+                println("${testCase.first.value} -> ${testCase.second.value} -> ${function(testCase.first, testCase.second)}")
+                graph.resetVisited()
+            }
+        }
     }
 }

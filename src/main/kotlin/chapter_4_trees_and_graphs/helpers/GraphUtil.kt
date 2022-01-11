@@ -8,11 +8,7 @@ object GraphUtil {
      * 5    4 <- 3
      */
     class Graph {
-        fun build(): GraphNode {
-            return nodes[0]
-        }
-
-        fun reset() {
+        fun resetVisited() {
             for (node in nodes) {
                 node.visited = false
             }

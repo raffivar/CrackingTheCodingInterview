@@ -1,7 +1,9 @@
 package chapter_4_trees_and_graphs
 
 import chapter_4_trees_and_graphs.helpers.TreeNode
+import chapter_4_trees_and_graphs.helpers.TreeNodeWithParent
 import chapter_4_trees_and_graphs.helpers.TreeUtil
+import chapter_4_trees_and_graphs.helpers.TreeWithParentsUtil
 
 class S8FirstCommonAncestor {
     private fun firstCommonAncestor(root: TreeNode?, node1: TreeNode?, node2: TreeNode?): TreeNode? {
@@ -35,26 +37,55 @@ class S8FirstCommonAncestor {
         }
     }
 
-    fun runTest() {
-        val root = buildTree()
-        TreeUtil.printBinaryTreeViaDepths(root)
-        printResult(root, nodes[5], nodes[6])
-        printResult(root, nodes[3], nodes[6])
-        printResult(root, nodes[3], nodes[7])
-        printResult(root, nodes[3], nodes[4])
-        printResult(root, nodes[5], nodes[7])
-        printResult(root, nodes[5], nodes[2])
-        printResult(root, nodes[5], nodes[1])
-        printResult(root, nodes[3], nodes[0])
+    private fun firstCommonAncestorWithParent(node1: TreeNodeWithParent, node2: TreeNodeWithParent): TreeNodeWithParent? {
+        
+        return null
     }
 
-    private fun printResult(root: TreeNode?, node1: TreeNode?, node2: TreeNode?) {
-        val commonAncestor = firstCommonAncestor(root, node1, node2)
-        val result = when (commonAncestor) {
-            null -> "No mutual parent"
-            else -> commonAncestor.value
+    fun runTest() {
+        val functions = arrayListOf(this::firstCommonAncestor)
+        val testCases = arrayListOf(
+            Pair(nodes[5], nodes[6]),
+            Pair(nodes[3], nodes[6]),
+            Pair(nodes[3], nodes[7]),
+            Pair(nodes[3], nodes[4]),
+            Pair(nodes[5], nodes[7]),
+            Pair(nodes[5], nodes[2]),
+            Pair(nodes[5], nodes[1]),
+            Pair(nodes[3], nodes[0])
+        )
+        val root = buildTree()
+        TreeUtil.printBinaryTreeViaDepths(root)
+        for (function in functions) {
+            for (case in testCases) {
+                val result = when (val commonAncestor = firstCommonAncestor(root, case.first, case.second)) {
+                    null -> "No mutual parent"
+                    else -> commonAncestor.value
+                }
+                println("[${case.first.value}] + [${case.first.value}] -> $result")
+            }
         }
-        println("[${node1!!.value}] + [${node2!!.value}] -> $result")
+        println("\n====================== AND NOW, WITH PARENTS! :D ========================")
+        val rootWithParents = TreeWithParentsUtil.buildTreeWithParents()
+        val functionsWithParents = arrayListOf(this::firstCommonAncestorWithParent)
+        val testCasesWithParents = arrayListOf(
+            Pair(TreeWithParentsUtil.node0, TreeWithParentsUtil.node1),
+            Pair(TreeWithParentsUtil.node1, TreeWithParentsUtil.node4),
+            Pair(TreeWithParentsUtil.node3, TreeWithParentsUtil.node2),
+            Pair(TreeWithParentsUtil.node0, TreeWithParentsUtil.node5),
+            Pair(TreeWithParentsUtil.node2, TreeWithParentsUtil.node4),
+            Pair(TreeWithParentsUtil.node1, TreeWithParentsUtil.node1)
+        )
+        TreeWithParentsUtil.printBinaryTreeViaDepths(rootWithParents)
+        for (function in functionsWithParents) {
+            for (case in testCasesWithParents) {
+                val result = when (val commonAncestor = firstCommonAncestorWithParent(case.first, case.second)) {
+                    null -> "No mutual parent"
+                    else -> commonAncestor.value
+                }
+                println("[${case.first.value}] + [${case.second.value}] -> $result")
+            }
+        }
     }
 
     private val nodes = listOf(

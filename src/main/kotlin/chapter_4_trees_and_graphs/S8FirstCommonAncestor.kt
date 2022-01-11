@@ -37,9 +37,22 @@ class S8FirstCommonAncestor {
         }
     }
 
-    private fun firstCommonAncestorWithParent(node1: TreeNodeWithParent, node2: TreeNodeWithParent): TreeNodeWithParent? {
-        
-        return null
+    private fun firstCommonAncestorWithParent(node1: TreeNodeWithParent?, node2: TreeNodeWithParent?): TreeNodeWithParent? {
+        return when {
+            node1 == null || node2 == null -> null
+            node1.parent == null -> null
+            isAncestor(node1.parent, node2) -> node1.parent
+            else -> firstCommonAncestorWithParent(node1.parent, node2)
+        }
+    }
+
+    private fun isAncestor(node1: TreeNodeWithParent?, node2: TreeNodeWithParent?): Boolean {
+        return when {
+            node1 == null -> false
+            node1.left == node2 || node1.right == node2 -> true
+            isAncestor(node1.left, node2) || isAncestor(node1.right, node2) -> true
+            else -> false
+        }
     }
 
     fun runTest() {
@@ -66,7 +79,7 @@ class S8FirstCommonAncestor {
             }
         }
         println("\n====================== AND NOW, WITH PARENTS! :D ========================")
-        val rootWithParents = TreeWithParentsUtil.buildTreeWithParents()
+        val rootWithParents = TreeWithParentsUtil.buildTreeWithParents2()
         val functionsWithParents = arrayListOf(this::firstCommonAncestorWithParent)
         val testCasesWithParents = arrayListOf(
             Pair(TreeWithParentsUtil.node0, TreeWithParentsUtil.node1),
@@ -74,6 +87,8 @@ class S8FirstCommonAncestor {
             Pair(TreeWithParentsUtil.node3, TreeWithParentsUtil.node2),
             Pair(TreeWithParentsUtil.node0, TreeWithParentsUtil.node5),
             Pair(TreeWithParentsUtil.node2, TreeWithParentsUtil.node4),
+            Pair(TreeWithParentsUtil.node3, TreeWithParentsUtil.node7),
+            Pair(TreeWithParentsUtil.node2, TreeWithParentsUtil.node7),
             Pair(TreeWithParentsUtil.node1, TreeWithParentsUtil.node1)
         )
         TreeWithParentsUtil.printBinaryTreeViaDepths(rootWithParents)

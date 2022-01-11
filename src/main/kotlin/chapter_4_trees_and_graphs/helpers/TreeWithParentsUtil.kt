@@ -7,6 +7,9 @@ object TreeWithParentsUtil {
     val node3 = TreeNodeWithParent(6, parent = node1)
     val node4 = TreeNodeWithParent(10, parent = node0)
     val node5 = TreeNodeWithParent(20, parent = node4)
+    val node6 = TreeNodeWithParent(5, parent = node3)
+    val node7 = TreeNodeWithParent(7, parent = node3)
+    val node8 = TreeNodeWithParent(9, parent = node4)
 
     fun buildTreeWithParents(): TreeNodeWithParent {
         node0.left = node1
@@ -16,6 +19,22 @@ object TreeWithParentsUtil {
         node1.right = node3
 
         node4.right = node5
+
+        return node0
+    }
+
+    fun buildTreeWithParents2(): TreeNodeWithParent {
+        node0.left = node1
+        node0.right = node4
+
+        node1.left = node2
+        node1.right = node3
+
+        node4.left = node8
+        node4.right = node5
+
+        node3.left = node6
+        node3.right = node7
 
         return node0
     }

@@ -14,25 +14,25 @@ class S12PathsWithSum {
         return paths.numOfPaths
     }
 
-    private fun numOfPaths(root: Node?, sum: Int, paths: Paths) {
-        if (root == null) {
+    private fun numOfPaths(node: Node?, sum: Int, paths: Paths) {
+        if (node == null) {
             return
         }
-        numOfPathsFromRoot(root, 0, sum, paths)
-        numOfPaths(root.left, sum, paths)
-        numOfPaths(root.right, sum, paths)
+        numOfPathsFromSpecificNode(node, 0, sum, paths)
+        numOfPaths(node.left, sum, paths)
+        numOfPaths(node.right, sum, paths)
     }
 
-    private fun numOfPathsFromRoot(root: Node?, currentSum: Int, totalSum: Int, paths: Paths) {
-        if (root == null) {
+    private fun numOfPathsFromSpecificNode(node: Node?, currentSum: Int, totalSum: Int, paths: Paths) {
+        if (node == null) {
             return
         }
-        val sum = currentSum + root.value
+        val sum = currentSum + node.value
         if (sum == totalSum) {
             paths.numOfPaths++
         }
-        numOfPathsFromRoot(root.left, sum, totalSum, paths)
-        numOfPathsFromRoot(root.right, sum, totalSum, paths)
+        numOfPathsFromSpecificNode(node.left, sum, totalSum, paths)
+        numOfPathsFromSpecificNode(node.right, sum, totalSum, paths)
     }
 
 

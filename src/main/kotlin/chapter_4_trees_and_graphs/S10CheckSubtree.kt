@@ -26,11 +26,17 @@ class S10CheckSubtree {
     }
 
     fun runTest() {
-        val tree1 = buildTree1()
-        val tree2 = buildTree2()
-        TreeUtil.printBinaryTreeViaDepths(tree1)
-        TreeUtil.printBinaryTreeViaDepths(tree2)
-        println(isSubtree(tree1, tree2))
+        val functions = arrayListOf(this::isSubtree)
+        val testCases = arrayListOf(Pair(buildTree1(), buildTree2()))
+        for (function in functions) {
+            for (case in testCases) {
+                println("Is this tree")
+                TreeUtil.printBinaryTreeViaDepths(case.second)
+                println("A subtree of this tree?")
+                TreeUtil.printBinaryTreeViaDepths(case.first)
+                println("Answer: ${function(case.first, case.second)}")
+            }
+        }
     }
 
     private val nodes = listOf(

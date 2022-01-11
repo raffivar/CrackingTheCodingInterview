@@ -2,16 +2,18 @@ package chapter_3_stacks_and_queues
 
 import java.util.*
 
-private const val THRESHOLD = 5
 
 class S3StackOfPlates {
+
     class StackNode<T>(val stack: Stack<T>, val next: StackNode<T>?)
 
     class MyStack<T> {
+        private val threshold = 5
+
         var stackNode = StackNode(Stack<T>(), null)
 
         fun push(item: T) {
-            if (stackNode.stack.size == THRESHOLD) {
+            if (stackNode.stack.size == threshold) {
                 stackNode = StackNode(Stack<T>(), stackNode)
             }
             stackNode.stack.push(item)

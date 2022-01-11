@@ -28,8 +28,6 @@ object GraphUtil {
             nodes[1].children = arrayOf(nodes[3], nodes[4])
             nodes[2].children = arrayOf(nodes[1])
             nodes[3].children = arrayOf(nodes[2], nodes[4])
-            nodes[4].children = arrayOf()
-            nodes[5].children = arrayOf()
         }
     }
 }

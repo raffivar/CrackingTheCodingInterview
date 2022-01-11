@@ -4,37 +4,28 @@ import chapter_4_trees_and_graphs.helpers.trees.binary.Node
 import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
 
 class S12PathsWithSum {
-    class Paths {
-        var numOfPaths = 0
-    }
-
-    private fun numOfPaths(root: Node?, sum: Int): Int {
-        val paths = Paths()
-        numOfPaths(root, sum, paths)
-        return paths.numOfPaths
-    }
-
-    private fun numOfPaths(node: Node?, sum: Int, paths: Paths) {
-        if (node == null) {
-            return
+    private fun numOfPaths(node: Node?, sum: Int): Int {
+        return when (node) {
+            null -> 0
+            else -> numOfPathsFromSpecificNode(node, 0, sum) +
+                    numOfPaths(node.left, sum) +
+                    numOfPaths(node.right, sum)
         }
-        numOfPathsFromSpecificNode(node, 0, sum, paths)
-        numOfPaths(node.left, sum, paths)
-        numOfPaths(node.right, sum, paths)
     }
 
-    private fun numOfPathsFromSpecificNode(node: Node?, currentSum: Int, totalSum: Int, paths: Paths) {
+    private fun numOfPathsFromSpecificNode(node: Node?, currentSum: Int, totalSum: Int): Int {
         if (node == null) {
-            return
+            return 0
         }
         val sum = currentSum + node.value
+        var numOfPaths = 0
         if (sum == totalSum) {
-            paths.numOfPaths++
+            numOfPaths++
         }
-        numOfPathsFromSpecificNode(node.left, sum, totalSum, paths)
-        numOfPathsFromSpecificNode(node.right, sum, totalSum, paths)
+        numOfPaths += numOfPathsFromSpecificNode(node.left, sum, totalSum)
+        numOfPaths += numOfPathsFromSpecificNode(node.right, sum, totalSum)
+        return numOfPaths
     }
-
 
     fun runTest() {
         val root = TreeUtil.buildBinaryTree7()

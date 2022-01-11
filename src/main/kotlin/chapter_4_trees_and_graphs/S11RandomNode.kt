@@ -2,16 +2,18 @@ package chapter_4_trees_and_graphs
 
 import chapter_4_trees_and_graphs.helpers.trees.binary.Node
 import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
-import com.sun.source.tree.Tree
+import java.util.*
+import kotlin.collections.ArrayList
 
 class S11RandomNode {
     class MyBST {
+        private var root: Node? = null
+
         constructor()
+
         constructor(root: Node?) {
             this.root = root
         }
-
-        private var root: Node? = null
 
         fun root(): Node? {
             return root
@@ -97,6 +99,29 @@ class S11RandomNode {
             }
             current.right = root2
         }
+
+        fun randomNode(): Node? {
+            if (root == null) {
+                return null
+            }
+            val nodeArrayList = this.toArrayList()
+            val randomIndex = Random().nextInt(nodeArrayList.size)
+            return nodeArrayList[randomIndex]
+        }
+
+        private fun toArrayList(): ArrayList<Node> {
+            val result = arrayListOf<Node>()
+            fillArray(root, result)
+            return result
+        }
+
+        private fun fillArray(root: Node?, result: ArrayList<Node>) {
+            if (root != null) {
+                result.add(root)
+                fillArray(root.left, result)
+                fillArray(root.right, result)
+            }
+        }
     }
 
     fun runTest() {
@@ -104,10 +129,10 @@ class S11RandomNode {
         val tree = MyBST(original)
         tree.insert(15)
         TreeUtil.printBinaryTreeViaDepths(tree.root())
-        tree.remove(4)
-        TreeUtil.printBinaryTreeViaDepths(tree.root())
-        val result = tree.find(14)
-        TreeUtil.printBinaryTreeViaDepths(result)
+        val randomNode = tree.randomNode()
+        randomNode?.let {
+            println(it.value)
+        }
     }
 
     private fun buildMinimalTree(array: Array<Int>): Node? {

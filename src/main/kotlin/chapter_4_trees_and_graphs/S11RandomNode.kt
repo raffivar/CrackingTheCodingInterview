@@ -47,7 +47,7 @@ class S11RandomNode {
                 root == null -> return
                 root!!.left == null && root!!.right == null -> root = null
                 root!!.value > num -> remove(root!!, root!!.left!!, num)
-                else -> remove(root!!, root!!.right!!, num)
+                root!!.value < num  -> remove(root!!, root!!.right!!, num)
             }
         }
 

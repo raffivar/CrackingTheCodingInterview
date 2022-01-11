@@ -2,11 +2,11 @@ package chapter_4_trees_and_graphs.helpers
 
 object TreeWithParentsUtil {
     val node0 = TreeNodeWithParent(8)
-    val node1 = TreeNodeWithParent(4, node0)
-    val node2 = TreeNodeWithParent(2, node1)
-    val node3 = TreeNodeWithParent(6, node1)
-    val node4 = TreeNodeWithParent(10, node0)
-    val node5 = TreeNodeWithParent(20, node4)
+    val node1 = TreeNodeWithParent(4, parent = node0)
+    val node2 = TreeNodeWithParent(2, parent = node1)
+    val node3 = TreeNodeWithParent(6, parent = node1)
+    val node4 = TreeNodeWithParent(10, parent = node0)
+    val node5 = TreeNodeWithParent(20, parent = node4)
 
     fun buildTreeWithParents(): TreeNodeWithParent {
         node0.left = node1
@@ -19,7 +19,6 @@ object TreeWithParentsUtil {
 
         return node0
     }
-
 
     fun printBinaryTreeViaDepths(root: TreeNodeWithParent?) {
         printDepthsList(listOfDepth(root))

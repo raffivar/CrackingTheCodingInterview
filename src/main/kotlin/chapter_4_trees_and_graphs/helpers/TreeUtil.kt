@@ -208,23 +208,4 @@ object TreeUtil {
             )
         )
     }
-
-    fun buildTreeWithParents(): TreeNodeWithParent {
-        val node0 = TreeNodeWithParent(8)
-        val node1 = TreeNodeWithParent(4, node0)
-        val node2 = TreeNodeWithParent(2, node1)
-        val node3 = TreeNodeWithParent(6, node1)
-        val node4 = TreeNodeWithParent(10, node0)
-        val node6 = TreeNodeWithParent(20, node4)
-
-        node0.left = node1
-        node0.right = node4
-
-        node1.left = node2
-        node1.right = node3
-
-        node4.right = node6
-
-        return node3
-    }
 }

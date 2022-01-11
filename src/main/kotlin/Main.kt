@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S8FirstCommonAncestor
+import chapter_4_trees_and_graphs.S6Successor
 
 fun main() {
-    val solution = S8FirstCommonAncestor()
+    val solution = S6Successor()
     solution.runTest()
 }

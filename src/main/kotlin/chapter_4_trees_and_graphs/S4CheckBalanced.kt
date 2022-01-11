@@ -6,27 +6,23 @@ import kotlin.math.abs
 import kotlin.math.max
 
 class S4CheckBalanced {
-    private fun checkBalanced(node: Node?): Boolean {
+    private fun isBalanced(node: Node?): Boolean {
         return when {
             node == null -> true
             abs(treeHeight(node.left) - treeHeight(node.right)) > 1 -> false
-            else -> checkBalanced(node.left) && checkBalanced(node.right)
+            else -> isBalanced(node.left) && isBalanced(node.right)
         }
     }
 
     private fun treeHeight(node: Node?): Int {
-        if (node == null) {
-            return 0
+        return when (node) {
+            null -> 0
+            else -> 1 + max(treeHeight(node.left), treeHeight(node.right))
         }
-        var height = 1
-        val heightLeft = treeHeight(node.left)
-        val heightRight = treeHeight(node.right)
-        height += max(heightLeft, heightRight)
-        return height
     }
 
     fun runTest() {
-        val functions = arrayListOf(this::checkBalanced)
+        val functions = arrayListOf(this::isBalanced)
         val testCases = arrayListOf(
             TreeUtil.buildBinaryTree(),
             TreeUtil.buildBinaryTree2(),
@@ -43,7 +39,7 @@ class S4CheckBalanced {
             for (testCase in testCases) {
                 TreeUtil.printBinaryTreeViaDepths(testCase)
                 println("Height: ${treeHeight(testCase)}")
-                println("isBalanced: ${checkBalanced(testCase)}")
+                println("isBalanced: ${isBalanced(testCase)}")
                 println("-----------------------------------------")
             }
         }

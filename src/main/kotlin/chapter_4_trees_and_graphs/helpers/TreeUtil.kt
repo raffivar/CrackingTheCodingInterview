@@ -1,14 +1,11 @@
-package chapter_4_trees_and_graphs.helpers.trees
-
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
-import chapter_4_trees_and_graphs.helpers.trees.binary.NodeWithParent
+package chapter_4_trees_and_graphs.helpers
 
 object TreeUtil {
-    fun printBinaryTree(root: Node?) {
+    fun printBinaryTree(root: TreeNode?) {
         printBinaryTree(root, 0)
     }
 
-    private fun printBinaryTree(root: Node?, level: Int) {
+    private fun printBinaryTree(root: TreeNode?, level: Int) {
         if (root == null) {
             return
         }
@@ -25,12 +22,12 @@ object TreeUtil {
         printBinaryTree(root.left, level + 1)
     }
 
-    fun printBinaryTreeViaDepths(root: Node?) {
+    fun printBinaryTreeViaDepths(root: TreeNode?) {
         printDepthsList(listOfDepth(root))
     }
 
-    private fun listOfDepth(root: Node?): List<List<Node?>> {
-        val lists = mutableListOf<MutableList<Node?>>()
+    private fun listOfDepth(root: TreeNode?): List<List<TreeNode?>> {
+        val lists = mutableListOf<MutableList<TreeNode?>>()
         if (root == null) {
             return lists
         }
@@ -39,9 +36,9 @@ object TreeUtil {
         return lists
     }
 
-    private fun addDepths(root: Node?, lists: MutableList<MutableList<Node?>>, level: Int) {
+    private fun addDepths(root: TreeNode?, lists: MutableList<MutableList<TreeNode?>>, level: Int) {
         if (level >= lists.size) { //new depth
-            val list = mutableListOf<Node?>()
+            val list = mutableListOf<TreeNode?>()
             lists.add(list)
         }
         val depthList = lists[level]
@@ -52,7 +49,7 @@ object TreeUtil {
         }
     }
 
-    fun printDepthsList(list: List<List<Node?>>) {
+    fun printDepthsList(list: List<List<TreeNode?>>) {
         for ((level, depth) in list.withIndex()) {
             val defaultValuePadding = list.size - level + 1
             val defaultLegPadding = list.size - level + 2
@@ -87,93 +84,93 @@ object TreeUtil {
         }
     }
 
-    fun buildBinaryTree(): Node {
-        return Node(
+    fun buildBinaryTree(): TreeNode {
+        return TreeNode(
             1,
-            Node(
+            TreeNode(
                 2,
-                Node(4),
-                Node(5)
+                TreeNode(4),
+                TreeNode(5)
             ),
-            Node(
+            TreeNode(
                 3,
-                Node(6),
-                Node(7)
+                TreeNode(6),
+                TreeNode(7)
             )
         )
     }
 
-    fun buildBinaryTree2(): Node {
-        return Node(
+    fun buildBinaryTree2(): TreeNode {
+        return TreeNode(
             1,
-            Node(
+            TreeNode(
                 2,
-                Node(4),
-                Node(5)
+                TreeNode(4),
+                TreeNode(5)
             ),
-            Node(
+            TreeNode(
                 3,
-                Node(6),
+                TreeNode(6),
             )
         )
     }
 
-    fun buildBinaryTree3(): Node {
-        return Node(
+    fun buildBinaryTree3(): TreeNode {
+        return TreeNode(
             1,
-            Node(
+            TreeNode(
                 2,
-                Node(4),
-                Node(5)
+                TreeNode(4),
+                TreeNode(5)
             ),
-            Node(
+            TreeNode(
                 3,
                 null,
-                Node(7)
+                TreeNode(7)
             )
         )
     }
 
-    fun buildBinaryTree4(): Node {
-        return Node(
+    fun buildBinaryTree4(): TreeNode {
+        return TreeNode(
             1,
-            Node(
+            TreeNode(
                 2,
-                Node(4),
-                Node(
+                TreeNode(4),
+                TreeNode(
                     5,
-                    Node(8),
-                    Node(9)
+                    TreeNode(8),
+                    TreeNode(9)
                 )
             ),
-            Node(
+            TreeNode(
                 3,
                 null,
-                Node(7)
+                TreeNode(7)
             )
         )
     }
 
-    fun buildBinaryTree5(): Node {
-        return Node(1)
+    fun buildBinaryTree5(): TreeNode {
+        return TreeNode(1)
     }
 
-    fun buildBinaryTree6(): Node? {
+    fun buildBinaryTree6(): TreeNode? {
         return null
     }
 
-    fun buildBinaryTree7(): Node {
-        return Node(
+    fun buildBinaryTree7(): TreeNode {
+        return TreeNode(
             1,
-            Node(
+            TreeNode(
                 2,
-                Node(4),
-                Node(5)
+                TreeNode(4),
+                TreeNode(5)
             ),
-            Node(
+            TreeNode(
                 -3,
-                Node(6),
-                Node(
+                TreeNode(6),
+                TreeNode(
                     7
                 )
             )
@@ -181,44 +178,44 @@ object TreeUtil {
     }
 
 
-    fun buildBinaryTree8(): Node {
-        return Node(
+    fun buildBinaryTree8(): TreeNode {
+        return TreeNode(
             1,
-            Node(
+            TreeNode(
                 3,
                 null,
-                Node(
+                TreeNode(
                     7,
-                    Node(8),
-                    Node(9)
+                    TreeNode(8),
+                    TreeNode(9)
                 )
             )
         )
     }
 
-    fun buildBST(): Node {
-        return Node(
+    fun buildBST(): TreeNode {
+        return TreeNode(
             8,
-            Node(
+            TreeNode(
                 4,
-                Node(2),
-                Node(6)
+                TreeNode(2),
+                TreeNode(6)
             ),
-            Node(
+            TreeNode(
                 10,
                 null,
-                Node(20)
+                TreeNode(20)
             )
         )
     }
 
-    fun buildTreeWithParents(): NodeWithParent {
-        val node0 = NodeWithParent(8)
-        val node1 = NodeWithParent(4, node0)
-        val node2 = NodeWithParent(2, node1)
-        val node3 = NodeWithParent(6, node1)
-        val node4 = NodeWithParent(10, node0)
-        val node6 = NodeWithParent(20, node4)
+    fun buildTreeWithParents(): TreeNodeWithParent {
+        val node0 = TreeNodeWithParent(8)
+        val node1 = TreeNodeWithParent(4, node0)
+        val node2 = TreeNodeWithParent(2, node1)
+        val node3 = TreeNodeWithParent(6, node1)
+        val node4 = TreeNodeWithParent(10, node0)
+        val node6 = TreeNodeWithParent(20, node4)
 
         node0.left = node1
         node0.right = node4

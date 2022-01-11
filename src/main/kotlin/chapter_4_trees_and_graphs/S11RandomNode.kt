@@ -1,29 +1,29 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
-import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
+import chapter_4_trees_and_graphs.helpers.TreeNode
+import chapter_4_trees_and_graphs.helpers.TreeUtil
 import java.util.*
 import kotlin.collections.ArrayList
 
 class S11RandomNode {
     class MyBST {
-        private var root: Node? = null
+        private var root: TreeNode? = null
 
         constructor()
 
-        constructor(root: Node?) {
+        constructor(root: TreeNode?) {
             this.root = root
         }
 
-        fun root(): Node? {
+        fun root(): TreeNode? {
             return root
         }
 
-        fun find(num: Int): Node? {
+        fun find(num: Int): TreeNode? {
             return find(root, num)
         }
 
-        private fun find(root: Node?, num: Int): Node? {
+        private fun find(root: TreeNode?, num: Int): TreeNode? {
             return when {
                 root == null -> null // num not found
                 root.value > num -> find(root.left, num)
@@ -33,14 +33,14 @@ class S11RandomNode {
         }
 
         fun insert(num: Int) {
-            val node = Node(num)
+            val node = TreeNode(num)
             when (root) {
                 null -> root = node
                 else -> insert(root!!, node)
             }
         }
 
-        private fun insert(root: Node, node: Node) {
+        private fun insert(root: TreeNode, node: TreeNode) {
             when {
                 root.value > node.value -> {
                     when (root.left) {
@@ -67,7 +67,7 @@ class S11RandomNode {
             }
         }
 
-        private fun remove(parent: Node, root: Node?, num: Int) {
+        private fun remove(parent: TreeNode, root: TreeNode?, num: Int) {
             when {
                 root == null -> return // number not found
                 root.value > num -> remove(root, root.left, num)
@@ -85,14 +85,14 @@ class S11RandomNode {
             }
         }
 
-        private fun skipOverNode(parent: Node, node: Node, child: Node?) {
+        private fun skipOverNode(parent: TreeNode, node: TreeNode, child: TreeNode?) {
             when {
                 parent.left == node -> parent.left = child
                 parent.right == node -> parent.right = child
             }
         }
 
-        private fun joinTrees(root1: Node, root2: Node) {
+        private fun joinTrees(root1: TreeNode, root2: TreeNode) {
             var current = root1
             while (current.right != null) {
                 current = current.right!!
@@ -100,7 +100,7 @@ class S11RandomNode {
             current.right = root2
         }
 
-        fun randomNode(): Node? {
+        fun randomNode(): TreeNode? {
             if (root == null) {
                 return null
             }
@@ -109,13 +109,13 @@ class S11RandomNode {
             return nodeArrayList[randomIndex]
         }
 
-        private fun toArrayList(): ArrayList<Node> {
-            val result = arrayListOf<Node>()
+        private fun toArrayList(): ArrayList<TreeNode> {
+            val result = arrayListOf<TreeNode>()
             fillArray(root, result)
             return result
         }
 
-        private fun fillArray(root: Node?, result: ArrayList<Node>) {
+        private fun fillArray(root: TreeNode?, result: ArrayList<TreeNode>) {
             if (root != null) {
                 result.add(root)
                 fillArray(root.left, result)
@@ -135,13 +135,13 @@ class S11RandomNode {
         }
     }
 
-    private fun buildMinimalTree(array: Array<Int>): Node? {
+    private fun buildMinimalTree(array: Array<Int>): TreeNode? {
         if (array.isEmpty()) {
             return null
         }
 
         val middleIndex = array.size / 2
-        val root = Node(array[middleIndex])
+        val root = TreeNode(array[middleIndex])
 
         root.left = buildMinimalTree(array.sliceArray(0 until middleIndex))
         root.right = buildMinimalTree(array.sliceArray(middleIndex + 1 until array.size))

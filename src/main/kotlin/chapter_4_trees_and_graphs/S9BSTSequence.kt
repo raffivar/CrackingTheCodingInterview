@@ -1,11 +1,10 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
-import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
-import kotlin.math.pow
+import chapter_4_trees_and_graphs.helpers.TreeNode
+import chapter_4_trees_and_graphs.helpers.TreeUtil
 
 class S9BSTSequence {
-    private fun allSequences(root: Node?): MutableList<MutableList<Int>> {
+    private fun allSequences(root: TreeNode?): MutableList<MutableList<Int>> {
         val result = mutableListOf<MutableList<Int>>()
         if (root == null) {
             result.add(mutableListOf())
@@ -56,7 +55,7 @@ class S9BSTSequence {
         printResult(root)
     }
 
-    private fun printResult(root: Node?) {
+    private fun printResult(root: TreeNode?) {
         val result = allSequences(root)
         for (list in result) {
             for (num in list) {
@@ -67,19 +66,19 @@ class S9BSTSequence {
     }
 
     private val nodes = listOf(
-        Node(50),
-        Node(20),
-        Node(60),
-        Node(10),
-        Node(25),
-        Node(70),
-        Node(5),
-        Node(15),
-        Node(65),
-        Node(80)
+        TreeNode(50),
+        TreeNode(20),
+        TreeNode(60),
+        TreeNode(10),
+        TreeNode(25),
+        TreeNode(70),
+        TreeNode(5),
+        TreeNode(15),
+        TreeNode(65),
+        TreeNode(80)
     )
 
-    private fun buildTree(): Node {
+    private fun buildTree(): TreeNode {
         nodes[0].left = nodes[1]
         nodes[0].right = nodes[2]
 

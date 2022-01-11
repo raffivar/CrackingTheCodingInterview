@@ -1,10 +1,10 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
-import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
+import chapter_4_trees_and_graphs.helpers.TreeNode
+import chapter_4_trees_and_graphs.helpers.TreeUtil
 
 class S5ValidateBST {
-    private fun isBinarySearchTree(root: Node?): Boolean {
+    private fun isBinarySearchTree(root: TreeNode?): Boolean {
         return when {
             root == null -> true
             root.left != null && root.left!!.value > root.value -> false

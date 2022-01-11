@@ -1,10 +1,10 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.TreeWithParentsUtil
-import chapter_4_trees_and_graphs.helpers.trees.binary.NodeWithParent
+import chapter_4_trees_and_graphs.helpers.TreeWithParentsUtil
+import chapter_4_trees_and_graphs.helpers.TreeNodeWithParent
 
 class S6Successor {
-    private fun getSuccessor(node: NodeWithParent?): NodeWithParent? {
+    private fun getSuccessor(node: TreeNodeWithParent?): TreeNodeWithParent? {
         if (node == null) {
             return null
         }

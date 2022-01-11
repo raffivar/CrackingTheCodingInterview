@@ -1,11 +1,11 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
-import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
+import chapter_4_trees_and_graphs.helpers.TreeNode
+import chapter_4_trees_and_graphs.helpers.TreeUtil
 
 class S3ListOfDepths {
-    private fun listOfDepths(root: Node?): List<List<Node?>> {
-        val lists = mutableListOf<MutableList<Node?>>()
+    private fun listOfDepths(root: TreeNode?): List<List<TreeNode?>> {
+        val lists = mutableListOf<MutableList<TreeNode?>>()
         if (root == null) {
             return lists
         }
@@ -13,9 +13,9 @@ class S3ListOfDepths {
         return lists
     }
 
-    private fun addDepths(root: Node, lists: MutableList<MutableList<Node?>>, level: Int) {
+    private fun addDepths(root: TreeNode, lists: MutableList<MutableList<TreeNode?>>, level: Int) {
         if (level >= lists.size) { //new depth
-            val list = mutableListOf<Node?>()
+            val list = mutableListOf<TreeNode?>()
             lists.add(list)
         }
         val depthList = lists[level]

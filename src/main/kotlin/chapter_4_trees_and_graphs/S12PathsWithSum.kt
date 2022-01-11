@@ -1,10 +1,10 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
-import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
+import chapter_4_trees_and_graphs.helpers.TreeNode
+import chapter_4_trees_and_graphs.helpers.TreeUtil
 
 class S12PathsWithSum {
-    private fun numOfPaths(node: Node?, sum: Int): Int {
+    private fun numOfPaths(node: TreeNode?, sum: Int): Int {
         return when (node) {
             null -> 0
             else -> numOfPathsFromSpecificNode(node, 0, sum) +
@@ -13,7 +13,7 @@ class S12PathsWithSum {
         }
     }
 
-    private fun numOfPathsFromSpecificNode(node: Node?, currentSum: Int, totalSum: Int): Int {
+    private fun numOfPathsFromSpecificNode(node: TreeNode?, currentSum: Int, totalSum: Int): Int {
         if (node == null) {
             return 0
         }
@@ -35,7 +35,7 @@ class S12PathsWithSum {
         printResult(root, -2)
     }
 
-    private fun printResult(root: Node?, sum: Int) {
+    private fun printResult(root: TreeNode?, sum: Int) {
         println("Number of paths to create [$sum] -> ${numOfPaths(root, sum)}")
     }
 }

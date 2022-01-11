@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S4CheckBalanced
+import chapter_4_trees_and_graphs.S8FirstCommonAncestor
 
 fun main() {
-    val solution = S4CheckBalanced()
+    val solution = S8FirstCommonAncestor()
     solution.runTest()
 }

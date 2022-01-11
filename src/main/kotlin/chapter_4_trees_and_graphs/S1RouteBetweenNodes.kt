@@ -1,10 +1,10 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.graphs.GraphBuilder
-import chapter_4_trees_and_graphs.helpers.graphs.Node
+import chapter_4_trees_and_graphs.helpers.GraphUtil
+import chapter_4_trees_and_graphs.helpers.GraphNode
 
 class S1RouteBetweenNodes {
-    private fun routeBetweenNodes(node1: Node, node2: Node): Boolean {
+    private fun routeBetweenNodes(node1: GraphNode, node2: GraphNode): Boolean {
         val children = node1.children ?: return false
         for (child in children) {
             if (child == node2) {
@@ -21,7 +21,7 @@ class S1RouteBetweenNodes {
     }
 
     fun runTest() {
-        val graph = GraphBuilder.Graph()
+        val graph = GraphUtil.Graph()
         printResult(graph.nodes[3], graph.nodes[2])
         graph.reset()
         printResult(graph.nodes[0], graph.nodes[1])
@@ -37,7 +37,7 @@ class S1RouteBetweenNodes {
         printResult(graph.nodes[2], graph.nodes[4])
     }
 
-    private fun printResult(node1: Node, node2: Node) {
+    private fun printResult(node1: GraphNode, node2: GraphNode) {
         println("${node1.value} -> ${node2.value} -> ${routeBetweenNodes(node1, node2)}")
     }
 }

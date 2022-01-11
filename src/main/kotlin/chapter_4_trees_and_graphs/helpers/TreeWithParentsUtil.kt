@@ -1,16 +1,14 @@
-package chapter_4_trees_and_graphs.helpers.trees
-
-import chapter_4_trees_and_graphs.helpers.trees.binary.NodeWithParent
+package chapter_4_trees_and_graphs.helpers
 
 object TreeWithParentsUtil {
-    val node0 = NodeWithParent(8)
-    val node1 = NodeWithParent(4, node0)
-    val node2 = NodeWithParent(2, node1)
-    val node3 = NodeWithParent(6, node1)
-    val node4 = NodeWithParent(10, node0)
-    val node5 = NodeWithParent(20, node4)
+    val node0 = TreeNodeWithParent(8)
+    val node1 = TreeNodeWithParent(4, node0)
+    val node2 = TreeNodeWithParent(2, node1)
+    val node3 = TreeNodeWithParent(6, node1)
+    val node4 = TreeNodeWithParent(10, node0)
+    val node5 = TreeNodeWithParent(20, node4)
 
-    fun buildTreeWithParents(): NodeWithParent {
+    fun buildTreeWithParents(): TreeNodeWithParent {
         node0.left = node1
         node0.right = node4
 
@@ -23,12 +21,12 @@ object TreeWithParentsUtil {
     }
 
 
-    fun printBinaryTreeViaDepths(root: NodeWithParent?) {
+    fun printBinaryTreeViaDepths(root: TreeNodeWithParent?) {
         printDepthsList(listOfDepth(root))
     }
 
-    private fun listOfDepth(root: NodeWithParent?): List<List<NodeWithParent?>> {
-        val lists = mutableListOf<MutableList<NodeWithParent?>>()
+    private fun listOfDepth(root: TreeNodeWithParent?): List<List<TreeNodeWithParent?>> {
+        val lists = mutableListOf<MutableList<TreeNodeWithParent?>>()
         if (root == null) {
             return lists
         }
@@ -37,9 +35,9 @@ object TreeWithParentsUtil {
         return lists
     }
 
-    private fun addDepths(root: NodeWithParent?, lists: MutableList<MutableList<NodeWithParent?>>, level: Int) {
+    private fun addDepths(root: TreeNodeWithParent?, lists: MutableList<MutableList<TreeNodeWithParent?>>, level: Int) {
         if (level >= lists.size) { //new depth
-            val list = mutableListOf<NodeWithParent?>()
+            val list = mutableListOf<TreeNodeWithParent?>()
             lists.add(list)
         }
         val depthList = lists[level]
@@ -50,7 +48,7 @@ object TreeWithParentsUtil {
         }
     }
 
-    private fun printDepthsList(list: List<List<NodeWithParent?>>) {
+    private fun printDepthsList(list: List<List<TreeNodeWithParent?>>) {
         for ((level, depth) in list.withIndex()) {
             val defaultValuePadding = list.size - level + 1
             val defaultLegPadding = list.size - level + 2

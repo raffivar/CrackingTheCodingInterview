@@ -1,10 +1,10 @@
 package chapter_4_trees_and_graphs
 
-import chapter_4_trees_and_graphs.helpers.trees.binary.Node
-import chapter_4_trees_and_graphs.helpers.trees.TreeUtil
+import chapter_4_trees_and_graphs.helpers.TreeNode
+import chapter_4_trees_and_graphs.helpers.TreeUtil
 
 class S10CheckSubtree {
-    private fun isSubtree(root1: Node?, root2: Node?): Boolean {
+    private fun isSubtree(root1: TreeNode?, root2: TreeNode?): Boolean {
         return when {
             isSameTree(root1, root2) -> true
             root1 == null -> false //root2 is not null, otherwise isSameTree would have already returned 'true'
@@ -14,7 +14,7 @@ class S10CheckSubtree {
         }
     }
 
-    private fun isSameTree(root1: Node?, root2: Node?): Boolean {
+    private fun isSameTree(root1: TreeNode?, root2: TreeNode?): Boolean {
         return when {
             root1 == null && root2 == null -> true
             root1 == null || root2 == null -> false
@@ -34,19 +34,19 @@ class S10CheckSubtree {
     }
 
     private val nodes = listOf(
-        Node(50),
-        Node(20),
-        Node(60),
-        Node(10),
-        Node(25),
-        Node(70),
-        Node(5),
-        Node(15),
-        Node(65),
-        Node(80)
+        TreeNode(50),
+        TreeNode(20),
+        TreeNode(60),
+        TreeNode(10),
+        TreeNode(25),
+        TreeNode(70),
+        TreeNode(5),
+        TreeNode(15),
+        TreeNode(65),
+        TreeNode(80)
     )
 
-    private fun buildTree1(): Node {
+    private fun buildTree1(): TreeNode {
         nodes[0].left = nodes[1]
         nodes[0].right = nodes[2]
 
@@ -64,7 +64,7 @@ class S10CheckSubtree {
         return nodes[0]
     }
 
-    private fun buildTree2(): Node {
+    private fun buildTree2(): TreeNode {
         nodes[0].left = nodes[1]
         nodes[0].right = nodes[2]
 

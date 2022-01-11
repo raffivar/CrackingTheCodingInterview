@@ -4,7 +4,7 @@ import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 
 class S2MinimalTree {
-    private fun buildMinimalTree(array: Array<Int>): TreeNode? {
+    fun buildMinimalTree(array: Array<Int>): TreeNode? {
         if (array.isEmpty()) {
             return null
         }

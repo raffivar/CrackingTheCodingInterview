@@ -125,7 +125,7 @@ class S11RandomNode {
     }
 
     fun runTest() {
-        val original = buildMinimalTree(arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
+        val original = S2MinimalTree().buildMinimalTree(arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         val tree = MyBST(original)
         tree.insert(15)
         TreeUtil.printBinaryTreeViaDepths(tree.root())
@@ -142,18 +142,5 @@ class S11RandomNode {
             null -> println("not found\n")
             else -> println("random node: ${node.value}\n")
         }
-    }
-
-    private fun buildMinimalTree(array: Array<Int>): TreeNode? {
-        if (array.isEmpty()) {
-            return null
-        }
-
-        val middleIndex = array.size / 2
-        val root = TreeNode(array[middleIndex])
-
-        root.left = buildMinimalTree(array.sliceArray(0 until middleIndex))
-        root.right = buildMinimalTree(array.sliceArray(middleIndex + 1 until array.size))
-        return root
     }
 }

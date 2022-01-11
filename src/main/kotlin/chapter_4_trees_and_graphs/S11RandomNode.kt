@@ -44,10 +44,10 @@ class S11RandomNode {
 
         fun remove(num: Int) {
             when {
-                root == null -> return
-                root!!.left == null && root!!.right == null -> root = null
+                root == null -> return // number not found
                 root!!.value > num -> remove(root!!, root!!.left!!, num)
                 root!!.value < num  -> remove(root!!, root!!.right!!, num)
+                else -> root = null // root is the number
             }
         }
 

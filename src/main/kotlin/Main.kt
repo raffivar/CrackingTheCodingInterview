@@ -1,7 +1,6 @@
-import chapter_4_trees_and_graphs.S1RouteBetweenNodes
-import chapter_4_trees_and_graphs.S2MinimalTree
+import chapter_4_trees_and_graphs.S3ListOfDepths
 
 fun main() {
-    val solution = S2MinimalTree()
+    val solution = S3ListOfDepths()
     solution.runTest()
 }

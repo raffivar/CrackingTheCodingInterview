@@ -29,8 +29,22 @@ class S3ListOfDepths {
     }
 
     fun runTest() {
-        val root = TreeUtil.buildBinaryTree()
-        val depthsList = listOfDepths(root)
-        TreeUtil.printDepthsList(depthsList)
+        val functions = arrayListOf(this::listOfDepths)
+        val testCases = arrayListOf(TreeUtil.buildBinaryTree())
+        for (function in functions) {
+            for (case in testCases) {
+                println("----------------------------")
+                val result = function(case)
+                println("As list of depths:")
+                for (depth in result) {
+                    for (item in depth) {
+                        print("${item?.value} -> ")
+                    }
+                    println("||")
+                }
+                println("\nBack into tree:")
+                TreeUtil.printDepthsList(result)
+            }
+        }
     }
 }

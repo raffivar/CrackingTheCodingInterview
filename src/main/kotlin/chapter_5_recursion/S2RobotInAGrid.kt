@@ -30,7 +30,7 @@ class S2RobotInAGrid {
     }
 
     private fun validLocation(x: Int, y: Int, grid: Array<IntArray>): Boolean {
-        return x > 0 && x <= grid.lastIndex && y > 0 && y <= grid[grid.lastIndex].lastIndex
+        return x >= 0 && x <= grid.lastIndex && y >= 0 && y <= grid[grid.lastIndex].lastIndex
     }
 
     private fun isFinishLine(x: Int, y: Int, grid: Array<IntArray>): Boolean {

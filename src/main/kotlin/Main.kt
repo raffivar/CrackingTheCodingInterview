@@ -1,6 +1,6 @@
-import chapter_5_recursion.S2RobotInAGrid
+import chapter_5_recursion.S3MagicIndex
 
 fun main() {
-    val solution = S2RobotInAGrid()
+    val solution = S3MagicIndex()
     solution.runTest()
 }

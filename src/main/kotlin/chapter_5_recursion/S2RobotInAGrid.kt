@@ -2,7 +2,7 @@ package chapter_5_recursion
 
 class S2RobotInAGrid {
     private fun isPath(grid: Array<IntArray>): Boolean {
-        return findPath(startRow, startColumn, grid)
+        return findPath(0, 0, grid)
     }
 
     private fun findPath(curDown: Int, curRight: Int, grid: Array<IntArray>): Boolean {
@@ -51,13 +51,9 @@ class S2RobotInAGrid {
         return r == i && c == j
     }
 
-    private val startRow = 0
-    private val startColumn = 0
-    private val r = 5
-    private val c = 7
-    private val grid = Array(r) { IntArray(c) { 1 } }
+    private fun buildGrid(startRow: Int, startColumn: Int, rows: Int, columns: Int): Array<IntArray> {
+        val grid = Array(rows) { IntArray(columns) { 1 } }
 
-    private fun buildGrid() {
         val forbidden = arrayListOf(
             Pair(0, 0),
             Pair(2, 1),
@@ -68,19 +64,26 @@ class S2RobotInAGrid {
 
         for (tile in forbidden) {
             when {
-                tile.first == startRow && tile.second == startRow -> continue //cannot forbid starting point of robot
+                tile.first == startRow && tile.second == startColumn -> continue //cannot forbid starting point of robot
                 tile.first > grid.size || tile.second >= grid[grid.lastIndex].size -> continue
                 else -> grid[tile.first][tile.second] = 0
             }
         }
+
+        return grid
     }
 
     fun runTest() {
         val functions = arrayListOf(this::isPath)
-        val testCases = arrayListOf(buildGrid())
+        val testCases = arrayListOf(
+            buildGrid(0, 0, 5, 6)
+        )
         for (function in functions) {
             for (case in testCases) {
-                function(grid)
+                when (function(case)) {
+                    true -> println("Path found :)")
+                    false -> println("No path found :(")
+                }
             }
         }
     }

@@ -40,7 +40,7 @@ class S2RobotInAGrid {
     private fun printGrid(curRow: Int, curColumn: Int, grid: Array<IntArray>) {
         for ((i, r) in grid.withIndex()) {
             for ((j, c) in r.withIndex()) {
-                val value = when (isRobot(curRow, curColumn, i, j)) {
+                val value = when (curRow == i && curColumn == j) { //is robot
                     true -> "R"
                     false -> c
                 }
@@ -49,10 +49,6 @@ class S2RobotInAGrid {
             println()
         }
         println("================================================")
-    }
-
-    private fun isRobot(r: Int, c: Int, i: Int, j: Int): Boolean {
-        return r == i && c == j
     }
 
     class Grid(val startRow: Int, val startColumn: Int, private val rows: Int, private val columns: Int) {

@@ -51,7 +51,7 @@ class S2RobotInAGrid {
         println("================================================")
     }
 
-    open class Grid(
+    class Grid(
         val robotStartRow: Int,
         val robotStartColumn: Int,
         private val rows: Int,

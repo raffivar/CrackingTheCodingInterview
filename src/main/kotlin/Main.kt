@@ -1,6 +1,6 @@
-import chapter_5_recursion.S1TripleStep
+import chapter_5_recursion.S2RobotInAGrid
 
 fun main() {
-    val solution = S1TripleStep()
+    val solution = S2RobotInAGrid()
     solution.runTest()
 }

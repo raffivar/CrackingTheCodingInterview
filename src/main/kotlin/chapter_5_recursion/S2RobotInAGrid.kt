@@ -1,10 +1,6 @@
 package chapter_5_recursion
 
 class S2RobotInAGrid {
-    private fun isPath(grid: Array<IntArray>): Boolean {
-        return findPath(0, 0, grid)
-    }
-
     private fun findPath(curDown: Int, curRight: Int, grid: Array<IntArray>): Boolean {
         printGrid(curDown, curRight, grid)
         if (isFinishLine(curDown, curRight, grid)) {
@@ -51,39 +47,41 @@ class S2RobotInAGrid {
         return r == i && c == j
     }
 
-    private fun buildGrid(startRow: Int, startColumn: Int, rows: Int, columns: Int): Array<IntArray> {
-        val grid = Array(rows) { IntArray(columns) { 1 } }
+    class Grid(val startRow: Int, val startColumn: Int, private val rows: Int, private val columns: Int) {
+        fun build(): Array<IntArray> {
+            val grid = Array(rows) { IntArray(columns) { 1 } }
 
-        val forbidden = arrayListOf(
-            Pair(0, 0),
-            Pair(2, 1),
-            Pair(1, 2),
-            Pair(3, 3),
-            Pair(4, 4)
-        )
+            val forbidden = arrayListOf(
+                Pair(0, 0),
+                Pair(2, 1),
+                Pair(1, 2),
+                Pair(3, 3),
+                Pair(4, 4)
+            )
 
-        for (tile in forbidden) {
-            when {
-                tile.first == startRow && tile.second == startColumn -> continue //cannot forbid starting point of robot
-                tile.first > grid.size || tile.second >= grid[grid.lastIndex].size -> continue
-                else -> grid[tile.first][tile.second] = 0
+            for (tile in forbidden) {
+                when {
+                    tile.first == startRow && tile.second == startColumn -> continue //cannot forbid starting point of robot
+                    tile.first > grid.size || tile.second >= grid[grid.lastIndex].size -> continue
+                    else -> grid[tile.first][tile.second] = 0
+                }
             }
-        }
 
-        return grid
+            return grid
+        }
     }
 
     fun runTest() {
-        val functions = arrayListOf(this::isPath)
+        val functions = arrayListOf(this::findPath)
         val testCases = arrayListOf(
-            buildGrid(0, 0, 5, 6)
-        )
+            Grid(0, 0, 3, 3))
         for (function in functions) {
             for (case in testCases) {
-                when (function(case)) {
+                when (function(case.startRow, case.startColumn, case.build())) {
                     true -> println("Path found :)")
                     false -> println("No path found :(")
                 }
+                println()
             }
         }
     }

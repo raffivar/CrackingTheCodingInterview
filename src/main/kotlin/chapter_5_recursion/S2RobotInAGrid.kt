@@ -1,19 +1,61 @@
 package chapter_5_recursion
 
 class S2RobotInAGrid {
-    fun isPath(): Boolean {
+    private fun isPath(grid: Array<IntArray>): Boolean {
+        return findPath(startRow, startColumn, grid)
+    }
+
+    private fun findPath(curDown: Int, curRight: Int, grid: Array<IntArray>): Boolean {
+        printGrid(curDown, curRight, grid)
+        if (isFinishLine(curDown, curRight, grid)) {
+            return true
+        }
+        //attempt go down
+        val nextDown = curDown + 1
+        if (nextDown < grid.size && grid[nextDown][curRight] == 1) {
+            val result = findPath(nextDown, curRight, grid)
+            if (result) {
+                return result
+            }
+        }
+        //attempt go right
+        val nextRight = curRight + 1
+        if (nextRight < grid[curDown].size && grid[curDown][nextRight] == 1) {
+            val result = findPath(curDown, nextRight, grid)
+            if (result) {
+                return result
+            }
+        }
         return false
     }
 
-    class Robot {
-        var x = 0
-        var y = 0
+    private fun isFinishLine(x: Int, y: Int, grid: Array<IntArray>): Boolean {
+        return (x == grid.lastIndex && y == grid[grid.lastIndex].lastIndex)
     }
 
+    private fun printGrid(curRow: Int, curColumn: Int, grid: Array<IntArray>) {
+        for ((i, r) in grid.withIndex()) {
+            for ((j, c) in r.withIndex()) {
+                val value = when (isRobot(curRow, curColumn, i, j)) {
+                    true -> "R"
+                    false -> c
+                }
+                print("$value ")
+            }
+            println()
+        }
+        println("================================================")
+    }
+
+    private fun isRobot(r: Int, c: Int, i: Int, j: Int): Boolean {
+        return r == i && c == j
+    }
+
+    private val startRow = 0
+    private val startColumn = 0
     private val r = 5
     private val c = 7
     private val grid = Array(r) { IntArray(c) { 1 } }
-    private val robot = Robot()
 
     private fun buildGrid() {
         val forbidden = arrayListOf(
@@ -26,37 +68,19 @@ class S2RobotInAGrid {
 
         for (tile in forbidden) {
             when {
-                tile.first == robot.x && tile.second == robot.y -> continue //cannot forbid starting point of robot
-                tile.first >= r || tile.second >= c -> continue
+                tile.first == startRow && tile.second == startRow -> continue //cannot forbid starting point of robot
+                tile.first > grid.size || tile.second >= grid[grid.lastIndex].size -> continue
                 else -> grid[tile.first][tile.second] = 0
             }
         }
     }
 
-    private fun printGrid() {
-        for ((i, r) in grid.withIndex()) {
-            for ((j, c) in r.withIndex()) {
-                val value = when (isRobot(i, j)) {
-                    true -> "R"
-                    false -> c
-                }
-                print("$value ")
-            }
-            println()
-        }
-    }
-
-    private fun isRobot(r: Int, c: Int): Boolean {
-        return robot.x == r && robot.y == c
-    }
-
     fun runTest() {
-        buildGrid()
-        val functions = arrayListOf(this::printGrid)
-        val testCases = arrayListOf(1)
+        val functions = arrayListOf(this::isPath)
+        val testCases = arrayListOf(buildGrid())
         for (function in functions) {
             for (case in testCases) {
-                function()
+                function(grid)
             }
         }
     }

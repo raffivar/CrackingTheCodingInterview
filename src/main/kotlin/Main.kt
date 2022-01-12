@@ -1,6 +1,6 @@
-import chapter_4_trees_and_graphs.S12PathsWithSum
+import chapter_5_recursion.S1TripleStep
 
 fun main() {
-    val solution = S12PathsWithSum()
+    val solution = S1TripleStep()
     solution.runTest()
 }

@@ -3,6 +3,10 @@ package chapter_5_recursion
 class S2RobotInAGrid {
     private fun findPath(curDown: Int, curRight: Int, grid: Array<IntArray>): Boolean {
         printGrid(curDown, curRight, grid)
+        if (!validLocation(curDown, curRight, grid)) {
+            println("Robot is outside the grid")
+            return false
+        }
         if (isFinishLine(curDown, curRight, grid)) {
             return true
         }
@@ -25,8 +29,12 @@ class S2RobotInAGrid {
         return false
     }
 
+    private fun validLocation(x: Int, y: Int, grid: Array<IntArray>): Boolean {
+        return x > 0 && x <= grid.lastIndex && y > 0 && y <= grid[grid.lastIndex].lastIndex
+    }
+
     private fun isFinishLine(x: Int, y: Int, grid: Array<IntArray>): Boolean {
-        return (x == grid.lastIndex && y == grid[grid.lastIndex].lastIndex)
+        return x == grid.lastIndex && y == grid[grid.lastIndex].lastIndex
     }
 
     private fun printGrid(curRow: Int, curColumn: Int, grid: Array<IntArray>) {
@@ -74,7 +82,8 @@ class S2RobotInAGrid {
     fun runTest() {
         val functions = arrayListOf(this::findPath)
         val testCases = arrayListOf(
-            Grid(0, 0, 3, 3))
+            Grid(0, 0, 4, 4)
+        )
         for (function in functions) {
             for (case in testCases) {
                 when (function(case.startRow, case.startColumn, case.build())) {

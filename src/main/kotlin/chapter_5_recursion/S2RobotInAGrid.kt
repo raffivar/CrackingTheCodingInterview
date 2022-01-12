@@ -51,13 +51,12 @@ class S2RobotInAGrid {
         println("================================================")
     }
 
-    open class Grid {
-        open val robotStartRow = 0
-        open val robotStartColumn = 0
-        protected open val rows = 5
-        protected open val columns = 7
-        protected open val forbidden = arrayListOf<Pair<Int, Int>>()
-
+    open class Grid(
+        val robotStartRow: Int,
+        val robotStartColumn: Int,
+        private val rows: Int,
+        private val columns: Int,
+        private val forbidden: ArrayList<Pair<Int, Int>>) {
         fun build(): Array<IntArray> {
             val grid = Array(rows) { IntArray(columns) { 1 } }
             for (tile in forbidden) {
@@ -71,23 +70,23 @@ class S2RobotInAGrid {
         }
     }
 
-    open class Grid1: Grid() {
-        override val robotStartRow = 0
-        override val robotStartColumn = 0
-        override val rows = 5
-        override val columns = 7
-        override val forbidden = arrayListOf(
-            Pair(0, 0),
-            Pair(2, 1),
-            Pair(1, 2),
-            Pair(3, 3),
-            Pair(4, 4))
-    }
-
     fun runTest() {
         val functions = arrayListOf(this::findPath)
         val testCases = arrayListOf(
-            Grid1()
+            Grid(0, 0, 5, 7, arrayListOf(
+                    Pair(0, 0),
+                    Pair(2, 1),
+                    Pair(1, 2),
+                    Pair(3, 3),
+                    Pair(4, 4)
+                )
+            ),
+            Grid(0, 0, 4, 4, arrayListOf(
+                    Pair(0, 0),
+                    Pair(2, 1),
+                    Pair(1, 2)
+                )
+            )
         )
         for (function in functions) {
             for (case in testCases) {

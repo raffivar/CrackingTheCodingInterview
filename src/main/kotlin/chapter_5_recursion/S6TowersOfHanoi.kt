@@ -43,17 +43,16 @@ class S6TowersOfHanoi {
         private fun printLog(towers: ArrayList<Tower>) {
             val sideStack = Stack<Int>()
             for ((i, t) in towers.withIndex()) {
-                val mainStack = t.disks
-                while (mainStack.isNotEmpty()) {
-                    sideStack.push((mainStack.pop()))
-                }
                 println("s${i + 1}:\n----")
-                while (sideStack.isNotEmpty()) {
-                    val value = sideStack.pop()
+                while (t.disks.isNotEmpty()) {
+                    val value = t.disks.pop()
                     println(value)
-                    mainStack.push(value)
+                    sideStack.push(value)
                 }
                 println()
+                while (sideStack.isNotEmpty()) {
+                    t.disks.push(sideStack.pop())
+                }
             }
             println("====================================")
         }

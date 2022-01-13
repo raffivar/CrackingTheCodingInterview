@@ -43,7 +43,6 @@ class S3MagicIndex {
         }
     }
 
-
     private fun sideHasMagicIndex(a: Array<Int>, i: Int, start: Int, end: Int): Boolean {
         printLog(a, i, start, end)
         return when {
@@ -72,6 +71,8 @@ class S3MagicIndex {
             arrayOf(-6, -5, -4, -3, -2, -1)
 
         )
+        println("================================== DISTINCT ==================================")
+
         for (function in functions1) {
             for (case in testCases1) {
                 println(arrayAsString(case))
@@ -81,6 +82,7 @@ class S3MagicIndex {
                 }
             }
         }
+        println("================================== INDISTINCT ==================================")
         val functions2 = arrayListOf(this::magicIndexIndistinct)
         val testCases2 = arrayListOf(
             arrayOf(-1, -1, -1, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 11, 11, 11, 14)

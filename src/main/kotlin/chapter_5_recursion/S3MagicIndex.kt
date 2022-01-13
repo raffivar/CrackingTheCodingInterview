@@ -12,7 +12,7 @@ class S3MagicIndex {
             return false
         }
         val i = start + (end - start) / 2
-        println("[$start, $end] -> a[$i] = ${a[i]}")
+        printLog(a, i, start, end)
         return when {
             a[i] > i -> magicIndex1(a, start, i)
             a[i] < i -> magicIndex1(a, i, end)
@@ -26,11 +26,39 @@ class S3MagicIndex {
     }
 
     private fun magicIndex2(a: Array<Int>, start: Int, end: Int): Boolean {
-        return false
+        if (end - start <= 1) {
+            return false
+        }
+        val i = start + (end - start) / 2
+        //test one side (either entire left or entire right)
+        if (magicSide(a, i, start, end)) {
+            return true
+        }
+        //test other side
+        printLog(a, i, start, end)
+        return when {
+            a[i] > i -> magicIndex2(a, start, i)
+            a[i] < i -> magicIndex2(a, i, end)
+            else -> false
+        }
     }
 
-    private fun printLog(start: Int, end: Int, a: Array<Int>, i: Int) {
-        println("[$start, $end] -> a[$i] = ${a[i]}")
+
+    private fun magicSide(a: Array<Int>, i: Int, start: Int, end: Int): Boolean {
+        printLog(a, i, start, end)
+        return when {
+            i < start || i > end -> false
+            a[i] == i -> true
+            else -> magicSide(a, a[i], start, end)
+        }
+    }
+
+    private fun printLog(a: Array<Int>, i: Int, start: Int, end: Int) {
+        val result = when {
+            i < start || i > end -> "out of bounds"
+            else -> "a[$i] = ${a[i]}"
+        }
+        println("[$start, $end] -> a[$i] = $result")
     }
 
     fun runTest() {

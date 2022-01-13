@@ -4,14 +4,15 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class S6TowersOfHanoi {
-    private fun hanoi(s1: Stack<Int>, s2: Stack<Int>, s3: Stack<Int>): Int {
-        printLog(arrayListOf(s1, s2, s3))
+    private fun hanoi(t1: Tower, t2: Tower, t3: Tower): Int {
+        printLog(arrayListOf(t1, t2, t3))
         return 0
     }
 
-    private fun printLog(stacks: ArrayList<Stack<Int>>) {
+    private fun printLog(towers: ArrayList<Tower>) {
         val sideStack = Stack<Int>()
-        for ((i, mainStack) in stacks.withIndex()) {
+        for ((i, t) in towers.withIndex()) {
+            val mainStack = t.disks
             while (mainStack.isNotEmpty()) {
                 sideStack.push((mainStack.pop()))
             }
@@ -25,20 +26,23 @@ class S6TowersOfHanoi {
         }
     }
 
-    fun runTest() {
-        val functions = arrayListOf(this::hanoi)
-        val testCases = arrayListOf(stack1())
-        for (function in functions) {
-            for (case in testCases) {
-                hanoi(case, Stack(), Stack())
+    class Tower(private val i: Int) {
+        constructor() : this(0)
+        val disks = Stack<Int>()
+        init {
+            for (disk in i downTo 1) {
+                disks.add(disk)
             }
         }
     }
 
-    private fun stack1(): Stack<Int> {
-        val stack = Stack<Int>()
-        val array = arrayListOf(1, 2, 3, 4)
-        stack.addAll(array)
-        return stack
+    fun runTest() {
+        val functions = arrayListOf(this::hanoi)
+        val testCases = arrayListOf(Tower(4))
+        for (function in functions) {
+            for (case in testCases) {
+                hanoi(case, Tower(), Tower())
+            }
+        }
     }
 }

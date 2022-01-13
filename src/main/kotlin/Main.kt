@@ -1,6 +1,6 @@
-import chapter_5_recursion.S4PowerSet
+import chapter_5_recursion.S5RecursiveMultiply
 
 fun main() {
-    val solution = S4PowerSet()
+    val solution = S5RecursiveMultiply()
     solution.runTest()
 }

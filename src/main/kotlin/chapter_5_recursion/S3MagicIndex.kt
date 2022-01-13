@@ -31,10 +31,10 @@ class S3MagicIndex {
         }
         val i = start + (end - start) / 2
         //test one side (either entire left or entire right)
-        if (magicSide(a, i, start, end)) {
+        if (sideHasMagicIndex(a, i, start, end)) {
             return true
         }
-        //test other side
+        //test whatever is left in the middle
         printLog(a, i, start, end)
         return when {
             a[i] > i -> magicIndex2(a, start, i)
@@ -44,12 +44,12 @@ class S3MagicIndex {
     }
 
 
-    private fun magicSide(a: Array<Int>, i: Int, start: Int, end: Int): Boolean {
+    private fun sideHasMagicIndex(a: Array<Int>, i: Int, start: Int, end: Int): Boolean {
         printLog(a, i, start, end)
         return when {
             i < start || i > end -> false
             a[i] == i -> true
-            else -> magicSide(a, a[i], start, end)
+            else -> sideHasMagicIndex(a, a[i], start, end)
         }
     }
 

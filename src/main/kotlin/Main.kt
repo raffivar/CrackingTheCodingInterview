@@ -1,6 +1,6 @@
-import chapter_5_recursion.S5RecursiveMultiply
+import chapter_5_recursion.S6TowersOfHanoi
 
 fun main() {
-    val solution = S5RecursiveMultiply()
+    val solution = S6TowersOfHanoi()
     solution.runTest()
 }

@@ -85,7 +85,8 @@ class S3MagicIndex {
         println("================================== INDISTINCT ==================================")
         val functions2 = arrayListOf(this::magicIndexIndistinct)
         val testCases2 = arrayListOf(
-            arrayOf(-1, -1, -1, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 11, 11, 11, 14)
+            arrayOf(-1, -1, -1, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 11, 11, 11, 14),
+            arrayOf(-5, -3, -1, 4, 5, 6, 6, 8, 9, 10, 44, 44, 44, 44, 44, 44, 44)
         )
         for (function in functions2) {
             for (case in testCases2) {

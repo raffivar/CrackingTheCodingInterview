@@ -72,7 +72,6 @@ class S3MagicIndex {
 
         )
         println("================================== DISTINCT ==================================")
-
         for (function in functions1) {
             for (case in testCases1) {
                 println(arrayAsString(case))

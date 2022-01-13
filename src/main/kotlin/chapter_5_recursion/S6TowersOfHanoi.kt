@@ -4,13 +4,13 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class S6TowersOfHanoi {
-    private fun hanoi(t1: Tower, t2: Tower, t3: Tower): Int {
+    private fun hanoi(t1: Tower, t2: Tower, t3: Tower) {
         t1.moveDisks(t1.i, t3, t2)
-        return 0
     }
 
     class Tower(val i: Int) {
         constructor() : this(0)
+
         private val disks = Stack<Int>()
 
         init {

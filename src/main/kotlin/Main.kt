@@ -1,6 +1,6 @@
-import chapter_5_recursion.S2RobotInAGrid
+import chapter_5_recursion.S10PaintFill
 
 fun main() {
-    val solution = S2RobotInAGrid()
+    val solution = S10PaintFill()
     solution.runTest()
 }

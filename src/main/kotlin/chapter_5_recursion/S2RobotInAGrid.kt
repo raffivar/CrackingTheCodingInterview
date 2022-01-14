@@ -4,7 +4,7 @@ import java.awt.Point
 
 class S2RobotInAGrid {
     private fun findPath(grid: Array<IntArray>, p: Point): Boolean {
-        printGrid(grid, p)
+        printGrid(p, grid)
         if (!validLocation(p, grid)) {
             println("Robot started outside the grid!")
             return false
@@ -37,7 +37,7 @@ class S2RobotInAGrid {
         return p.x == grid.lastIndex && p.y == grid[grid.lastIndex].lastIndex
     }
 
-    private fun printGrid(grid: Array<IntArray>, p: Point) {
+    private fun printGrid(p: Point, grid: Array<IntArray>) {
         for ((i, r) in grid.withIndex()) {
             for ((j, c) in r.withIndex()) {
                 val value = when (p.x == i && p.y == j) { //is robot

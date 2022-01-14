@@ -28,7 +28,7 @@ class S7PermutationsNoDups {
         val testCases = arrayListOf("NYX")
         for (function in functions) {
             for (case in testCases) {
-                val perms = perms(case)
+                val perms = function(case)
                 println("-----------------------------------")
                 println("Permutations of \"$case\":")
                 printPerms(perms)

@@ -26,7 +26,7 @@ class S8PermutationsDups {
         val testCases = arrayListOf("XNYX")
         for (function in functions) {
             for (case in testCases) {
-                val perms = perms(case)
+                val perms = function(case)
                 println("-----------------------------------")
                 println("Permutations of \"$case\":")
                 printPerms(perms)

@@ -62,7 +62,7 @@ class S9Parens {
         val testCases = arrayListOf(3)
         for (function in functions) {
             for (case in testCases) {
-                val perms = parens(case)
+                val perms = function(case)
                 println("-----------------------------------")
                 println("Permutations of $case:")
                 printPerms(perms)

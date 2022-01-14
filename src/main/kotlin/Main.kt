@@ -1,6 +1,6 @@
-import chapter_5_recursion.S8PermutationsDups
+import chapter_5_recursion.S9Parens
 
 fun main() {
-    val solution = S8PermutationsDups()
+    val solution = S9Parens()
     solution.runTest()
 }

@@ -51,12 +51,12 @@ class S2RobotInAGrid {
         println("================================================")
     }
 
-    private fun buildGrid(rows: Int, columns: Int, forbidden: ArrayList<Point>): Array<IntArray> {
+    private fun buildGrid(rows: Int, columns: Int, forbiddenPoints: ArrayList<Point>): Array<IntArray> {
         val grid = Array(rows) { IntArray(columns) { 1 } }
-        for (tile in forbidden) {
+        for (point in forbiddenPoints) {
             when {
-                tile.x > grid.size || tile.y >= grid[grid.lastIndex].size -> continue
-                else -> grid[tile.x][tile.y] = 0
+                point.x > grid.size || point.y >= grid[grid.lastIndex].size -> continue
+                else -> grid[point.x][point.y] = 0
             }
         }
         return grid

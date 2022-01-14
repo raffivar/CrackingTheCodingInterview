@@ -1,10 +1,8 @@
 package chapter_5_recursion
 
-import kotlin.collections.ArrayList
-
 class S8PermutationsDups {
-    private fun perms(s: String): ArrayList<String> {
-        val perms = arrayListOf<String>()
+    private fun perms(s: String): Set<String> {
+        val perms = mutableSetOf<String>()
         if (s.length <= 1) {
             perms.add(s)
         } else {
@@ -13,8 +11,8 @@ class S8PermutationsDups {
             for (perm in perms(restOfTheWord)) {
                 println("Now inserting [$firstChar] into [$perm]")
                 for (i in 0..perm.length) {
-                    val prefix = restOfTheWord.substring(0, i)
-                    val suffix = restOfTheWord.substring(i)
+                    val prefix = perm.substring(0, i)
+                    val suffix = perm.substring(i)
                     println("$prefix + $firstChar + $suffix")
                     perms.add(prefix + firstChar + suffix)
                 }
@@ -25,7 +23,7 @@ class S8PermutationsDups {
 
     fun runTest() {
         val functions = arrayListOf(this::perms)
-        val testCases = arrayListOf("NYXX")
+        val testCases = arrayListOf("XNYX")
         for (function in functions) {
             for (case in testCases) {
                 val perms = perms(case)
@@ -36,7 +34,7 @@ class S8PermutationsDups {
         }
     }
 
-    private fun printPerms(perms: ArrayList<String>) {
+    private fun printPerms(perms: Set<String>) {
         for (perm in perms) {
             println(perm)
         }

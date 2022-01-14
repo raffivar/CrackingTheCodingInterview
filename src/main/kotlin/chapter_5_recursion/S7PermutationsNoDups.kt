@@ -13,8 +13,8 @@ class S7PermutationsNoDups {
             for (perm in perms(restOfTheWord)) {
                 println("Now inserting [$firstChar] into [$perm]")
                 for (i in 0..perm.length) {
-                    val prefix = restOfTheWord.substring(0, i)
-                    val suffix = restOfTheWord.substring(i)
+                    val prefix = perm.substring(0, i)
+                    val suffix = perm.substring(i)
                     println("$prefix + $firstChar + $suffix")
                     perms.add(prefix + firstChar + suffix)
                 }

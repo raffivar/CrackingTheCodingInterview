@@ -3,7 +3,10 @@ package chapter_5_recursion
 import java.awt.Point
 
 class S2RobotInAGrid {
-    private fun findPath(curDown: Int, curRight: Int, grid: Array<IntArray>): Boolean {
+    private fun findPath(grid: Array<IntArray>, startPoint: Point): Boolean {
+        val curDown = startPoint.x
+        val curRight = startPoint.y
+
         printGrid(curDown, curRight, grid)
         if (!validLocation(curDown, curRight, grid)) {
             println("Robot is outside the grid")
@@ -15,7 +18,7 @@ class S2RobotInAGrid {
         //attempt go down
         val nextDown = curDown + 1
         if (nextDown < grid.size && grid[nextDown][curRight] == 1) {
-            val result = findPath(nextDown, curRight, grid)
+            val result = findPath(grid, Point(nextDown, curRight))
             if (result) {
                 return result
             }
@@ -23,7 +26,7 @@ class S2RobotInAGrid {
         //attempt go right
         val nextRight = curRight + 1
         if (nextRight < grid[curDown].size && grid[curDown][nextRight] == 1) {
-            val result = findPath(curDown, nextRight, grid)
+            val result = findPath(grid, Point(curDown, nextRight))
             if (result) {
                 return result
             }
@@ -91,7 +94,7 @@ class S2RobotInAGrid {
         )
         for (function in functions) {
             for (case in testCases) {
-                when (function(case.robotStartingPoint.x, case.robotStartingPoint.y, case.grid)) {
+                when (function(case.grid, case.robotStartingPoint)) {
                     true -> println("Path found :)")
                     false -> println("No path found :(")
                 }

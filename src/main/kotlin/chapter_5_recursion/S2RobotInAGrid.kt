@@ -18,17 +18,13 @@ class S2RobotInAGrid {
         }
         //attempt go down
         val nextX = p.x + 1
-        if (nextX < grid.size && grid[nextX][p.y] == 1) {
-            if (findPath(grid, Point(nextX, p.y))) {
-                return true
-            }
+        if (nextX < grid.size && grid[nextX][p.y] == 1 && findPath(grid, Point(nextX, p.y))) {
+            return true
         }
         //attempt go right
         val nextY = p.y + 1
-        if (nextY < grid[p.x].size && grid[p.x][nextY] == 1) {
-            if (findPath(grid, Point(p.x, nextY))) {
-                return true
-            }
+        if (nextY < grid[p.x].size && grid[p.x][nextY] == 1 && findPath(grid, Point(p.x, nextY))) {
+            return true
         }
         return false
     }

@@ -53,49 +53,45 @@ class S2RobotInAGrid {
         println("================================================")
     }
 
-    class Grid(
-        val robotStartRow: Int,
-        val robotStartColumn: Int,
-        private val rows: Int,
-        private val columns: Int,
-        private val forbidden: ArrayList<Point>
-    ) {
-        fun build(): Array<IntArray> {
+    private fun buildGrid(rows: Int, columns: Int, forbidden: ArrayList<Point>): Array<IntArray> {
             val grid = Array(rows) { IntArray(columns) { 1 } }
             for (tile in forbidden) {
                 when {
-                    tile.x == robotStartRow && tile.y == robotStartColumn -> continue //cannot forbid starting point of robot
                     tile.x > grid.size || tile.y >= grid[grid.lastIndex].size -> continue
                     else -> grid[tile.x][tile.y] = 0
                 }
             }
             return grid
-        }
     }
+
+    class TestCase(
+        val grid: Array<IntArray>,
+        val robotStartingPoint: Point
+    )
 
     fun runTest() {
         val functions = arrayListOf(this::findPath)
         val testCases = arrayListOf(
-            Grid(
-                0, 0, 5, 7, arrayListOf(
+            TestCase (buildGrid(5, 7, arrayListOf(
                     Point(0, 0),
                     Point(2, 1),
                     Point(1, 2),
                     Point(3, 3),
                     Point(4, 4)
-                )
-            ),
-            Grid(
-                0, 0, 4, 4, arrayListOf(
-                    Point(0, 0),
-                    Point(2, 1),
-                    Point(1, 2)
-                )
-            )
+                )),
+                Point(0, 0)),
+            TestCase(buildGrid(4, 4, arrayListOf(
+                Point(0, 0),
+                Point(2, 1),
+                Point(1, 2)
+            )),
+                Point(0, 0))
+
+
         )
         for (function in functions) {
             for (case in testCases) {
-                when (function(case.robotStartRow, case.robotStartColumn, case.build())) {
+                when (function(case.robotStartingPoint.x, case.robotStartingPoint.y, case.grid)) {
                     true -> println("Path found :)")
                     false -> println("No path found :(")
                 }

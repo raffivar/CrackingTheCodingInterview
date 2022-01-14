@@ -67,7 +67,7 @@ class S10PaintFill {
         return grid
     }
 
-    val screen = buildScreen(
+    private val screen1 = buildScreen(
         7, 7, arrayListOf(
             Point(1, 1),
             Point(1, 2),
@@ -91,12 +91,39 @@ class S10PaintFill {
         )
     )
 
+    private val screen2 = buildScreen(
+        8, 8, arrayListOf(
+            Point(1, 1),
+            Point(1, 2),
+            Point(1, 3),
+            Point(1, 4),
+            Point(1, 5),
+            Point(1, 1),
+            Point(2, 1),
+            Point(3, 1),
+            Point(4, 1),
+            Point(5, 1),
+            Point(5, 2),
+            Point(5, 3),
+            Point(5, 4),
+            Point(5, 5),
+            Point(5, 6),
+            Point(5, 7),
+            Point(6, 5),
+            Point(7, 5),
+        )
+    )
+
     fun runTest() {
         val functions = arrayListOf(this::fill)
         val testCases = arrayListOf(
-            TestCase(screen, Point(0, 0), 2), //1 to 2
-            TestCase(screen, Point(0, 0), 1), //2 back to 1
-            TestCase(screen, Point(4, 4), 3) //0 to 3
+            TestCase(screen1, Point(0, 0), 2), //1 to 2
+            TestCase(screen1, Point(0, 0), 1), //2 back to 1
+            TestCase(screen1, Point(4, 4), 3), //0 to 3
+            TestCase(screen2, Point(0, 0), 2), //1 to 2
+            TestCase(screen2, Point(0, 0), 1), //2 back to 1
+            TestCase(screen2, Point(4, 4), 3) //0 to 3
+
         )
         for (function in functions) {
             for ((i, case) in testCases.withIndex()) {

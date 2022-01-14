@@ -11,22 +11,16 @@ class S7PermutationsNoDups {
             val firstChar = s[0]
             val restOfTheWord = s.substring(1)
             for (perm in perms(restOfTheWord)) {
+                println("Now inserting [$firstChar] into [$perm]")
                 for (i in 0..perm.length) {
-                    val str = shiftRight(firstChar, perm, i)
-                    perms.add(str)
+                    val prefix = restOfTheWord.substring(0, i)
+                    val suffix = restOfTheWord.substring(i)
+                    println("$prefix + $firstChar + $suffix")
+                    perms.add(prefix + firstChar + suffix)
                 }
             }
         }
         return perms
-    }
-
-
-    private fun shiftRight(c: Char, s: String, i: Int): String {
-        println("Now inserting [$c] into [$s]")
-        val prefix = s.substring(0, i)
-        val suffix = s.substring(i)
-        println("$prefix + $c + $suffix")
-        return prefix + c + suffix
     }
 
     fun runTest() {
@@ -42,7 +36,7 @@ class S7PermutationsNoDups {
         }
     }
 
-    fun printPerms(perms: ArrayList<String>) {
+    private fun printPerms(perms: ArrayList<String>) {
         for (perm in perms) {
             println(perm)
         }

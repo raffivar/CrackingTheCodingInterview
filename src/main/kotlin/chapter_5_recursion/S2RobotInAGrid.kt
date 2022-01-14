@@ -6,10 +6,13 @@ class S2RobotInAGrid {
     private fun findPath(grid: Array<IntArray>, startPoint: Point): Boolean {
         val curDown = startPoint.x
         val curRight = startPoint.y
-
         printGrid(curDown, curRight, grid)
         if (!validLocation(curDown, curRight, grid)) {
-            println("Robot is outside the grid")
+            println("Robot started outside the grid!")
+            return false
+        }
+        if (grid[curDown][curRight] == 0) {
+            println("Robot started in forbidden point!")
             return false
         }
         if (isFinishLine(curDown, curRight, grid)) {
@@ -57,14 +60,14 @@ class S2RobotInAGrid {
     }
 
     private fun buildGrid(rows: Int, columns: Int, forbidden: ArrayList<Point>): Array<IntArray> {
-            val grid = Array(rows) { IntArray(columns) { 1 } }
-            for (tile in forbidden) {
-                when {
-                    tile.x > grid.size || tile.y >= grid[grid.lastIndex].size -> continue
-                    else -> grid[tile.x][tile.y] = 0
-                }
+        val grid = Array(rows) { IntArray(columns) { 1 } }
+        for (tile in forbidden) {
+            when {
+                tile.x > grid.size || tile.y >= grid[grid.lastIndex].size -> continue
+                else -> grid[tile.x][tile.y] = 0
             }
-            return grid
+        }
+        return grid
     }
 
     class TestCase(
@@ -75,22 +78,26 @@ class S2RobotInAGrid {
     fun runTest() {
         val functions = arrayListOf(this::findPath)
         val testCases = arrayListOf(
-            TestCase (buildGrid(5, 7, arrayListOf(
-                    Point(0, 0),
-                    Point(2, 1),
-                    Point(1, 2),
-                    Point(3, 3),
-                    Point(4, 4)
-                )),
-                Point(0, 0)),
-            TestCase(buildGrid(4, 4, arrayListOf(
-                Point(0, 0),
-                Point(2, 1),
-                Point(1, 2)
-            )),
-                Point(0, 0))
-
-
+            TestCase(
+                buildGrid(
+                    5, 7, arrayListOf(
+                        Point(2, 1),
+                        Point(1, 2),
+                        Point(3, 3),
+                        Point(4, 4)
+                    )
+                ),
+                Point(0, 0)
+            ),
+            TestCase(
+                buildGrid(
+                    4, 4, arrayListOf(
+                        Point(2, 1),
+                        Point(1, 2)
+                    )
+                ),
+                Point(0, 0)
+            )
         )
         for (function in functions) {
             for (case in testCases) {

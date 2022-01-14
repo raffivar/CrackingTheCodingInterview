@@ -5,14 +5,6 @@ import java.awt.Point
 class S2RobotInAGrid {
     private fun findPath(grid: Array<IntArray>, p: Point): Boolean {
         printGrid(p, grid)
-        if (!validLocation(p, grid)) {
-            println("Robot started outside the grid!")
-            return false
-        }
-        if (grid[p.x][p.y] == 0) {
-            println("Robot started in forbidden point!")
-            return false
-        }
         if (isFinishLine(p, grid)) {
             return true
         }
@@ -48,7 +40,7 @@ class S2RobotInAGrid {
             }
             println()
         }
-        println("================================================")
+        println("----------------------------------------------")
     }
 
     private fun buildGrid(rows: Int, columns: Int, forbiddenPoints: ArrayList<Point>): Array<IntArray> {
@@ -85,17 +77,53 @@ class S2RobotInAGrid {
                 buildGrid(
                     4, 4, arrayListOf(
                         Point(2, 1),
-                        Point(1, 2)
+                        Point(1, 2),
+                        Point(2, 3),
+                        Point(3, 2),
                     )
                 ),
                 Point(0, 0)
+            ),
+            TestCase(
+                buildGrid(
+                    4, 4, arrayListOf(
+                        Point(2, 1),
+                        Point(1, 2)
+                    )
+                ),
+                Point(1, 2)
+            ),
+            TestCase(
+                buildGrid(
+                    4, 4, arrayListOf(
+                        Point(2, 1),
+                        Point(1, 2)
+                    )
+                ),
+                Point(6, 7)
             )
         )
         for (function in functions) {
-            for (case in testCases) {
-                when (function(case.grid, case.robotStartingPoint)) {
-                    true -> println("Path found :)")
-                    false -> println("No path found :(")
+            for ((i, case) in testCases.withIndex()) {
+                println("case #${i + 1}")
+                println("========")
+                val grid = case.grid
+                val p = case.robotStartingPoint
+                when {
+                    !validLocation(p, grid) -> {
+                        printGrid(p, grid)
+                        println("Robot started outside the grid! [${p.x}][${p.y}]")
+                    }
+                    grid[p.x][p.y] == 0 -> {
+                        printGrid(p, grid)
+                        println("Robot started in forbidden point!")
+                    }
+                    else -> {
+                        when (function(grid, p)) {
+                            true -> println("Path found :)")
+                            false -> println("No path found :(")
+                        }
+                    }
                 }
                 println()
             }

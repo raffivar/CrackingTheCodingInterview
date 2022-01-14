@@ -21,10 +21,6 @@ class S2RobotInAGrid {
         return false
     }
 
-    private fun validLocation(p: Point, grid: Array<IntArray>): Boolean {
-        return p.x >= 0 && p.x <= grid.lastIndex && p.y >= 0 && p.y <= grid[grid.lastIndex].lastIndex
-    }
-
     private fun isFinishLine(p: Point, grid: Array<IntArray>): Boolean {
         return p.x == grid.lastIndex && p.y == grid[grid.lastIndex].lastIndex
     }
@@ -43,6 +39,11 @@ class S2RobotInAGrid {
         println("----------------------------------------------")
     }
 
+    class TestCase(
+        val grid: Array<IntArray>,
+        val robotStartingPoint: Point
+    )
+
     private fun buildGrid(rows: Int, columns: Int, forbiddenPoints: ArrayList<Point>): Array<IntArray> {
         val grid = Array(rows) { IntArray(columns) { 1 } }
         for (point in forbiddenPoints) {
@@ -54,10 +55,9 @@ class S2RobotInAGrid {
         return grid
     }
 
-    class TestCase(
-        val grid: Array<IntArray>,
-        val robotStartingPoint: Point
-    )
+    private fun validLocation(p: Point, grid: Array<IntArray>): Boolean {
+        return p.x >= 0 && p.x <= grid.lastIndex && p.y >= 0 && p.y <= grid[grid.lastIndex].lastIndex
+    }
 
     fun runTest() {
         val functions = arrayListOf(this::findPath)

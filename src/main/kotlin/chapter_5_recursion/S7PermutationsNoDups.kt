@@ -1,0 +1,50 @@
+package chapter_5_recursion
+
+import kotlin.collections.ArrayList
+
+class S7PermutationsNoDups {
+    private fun perms(s: String): ArrayList<String> {
+        val perms = arrayListOf<String>()
+        if (s.length <= 1) {
+            perms.add(s)
+        } else {
+            val firstChar = s[0]
+            val restOfTheWord = s.substring(1)
+            for (perm in perms(restOfTheWord)) {
+                for (i in 0..perm.length) {
+                    val str = shiftRight(firstChar, perm, i)
+                    perms.add(str)
+                }
+            }
+        }
+        return perms
+    }
+
+
+    private fun shiftRight(c: Char, s: String, i: Int): String {
+        println("Now inserting [$c] into [$s]")
+        val prefix = s.substring(0, i)
+        val suffix = s.substring(i)
+        println("$prefix + $c + $suffix")
+        return prefix + c + suffix
+    }
+
+    fun runTest() {
+        val functions = arrayListOf(this::perms)
+        val testCases = arrayListOf("NYX")
+        for (function in functions) {
+            for (case in testCases) {
+                val perms = perms(case)
+                println("-----------------------------------")
+                println("Permutations of \"$case\":")
+                printPerms(perms)
+            }
+        }
+    }
+
+    fun printPerms(perms: ArrayList<String>) {
+        for (perm in perms) {
+            println(perm)
+        }
+    }
+}

@@ -1,6 +1,6 @@
-import chapter_5_recursion.S6TowersOfHanoi
+import chapter_5_recursion.S7PermutationsNoDups
 
 fun main() {
-    val solution = S6TowersOfHanoi()
+    val solution = S7PermutationsNoDups()
     solution.runTest()
 }

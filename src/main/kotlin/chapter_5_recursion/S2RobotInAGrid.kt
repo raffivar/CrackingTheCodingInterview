@@ -3,33 +3,31 @@ package chapter_5_recursion
 import java.awt.Point
 
 class S2RobotInAGrid {
-    private fun findPath(grid: Array<IntArray>, startPoint: Point): Boolean {
-        val curDown = startPoint.x
-        val curRight = startPoint.y
-        printGrid(curDown, curRight, grid)
-        if (!validLocation(curDown, curRight, grid)) {
+    private fun findPath(grid: Array<IntArray>, p: Point): Boolean {
+        printGrid(grid, p)
+        if (!validLocation(p, grid)) {
             println("Robot started outside the grid!")
             return false
         }
-        if (grid[curDown][curRight] == 0) {
+        if (grid[p.x][p.y] == 0) {
             println("Robot started in forbidden point!")
             return false
         }
-        if (isFinishLine(curDown, curRight, grid)) {
+        if (isFinishLine(p, grid)) {
             return true
         }
         //attempt go down
-        val nextDown = curDown + 1
-        if (nextDown < grid.size && grid[nextDown][curRight] == 1) {
-            val result = findPath(grid, Point(nextDown, curRight))
+        val nextX = p.x + 1
+        if (nextX < grid.size && grid[nextX][p.y] == 1) {
+            val result = findPath(grid, Point(nextX, p.y))
             if (result) {
                 return result
             }
         }
         //attempt go right
-        val nextRight = curRight + 1
-        if (nextRight < grid[curDown].size && grid[curDown][nextRight] == 1) {
-            val result = findPath(grid, Point(curDown, nextRight))
+        val nextY = p.y + 1
+        if (nextY < grid[p.x].size && grid[p.x][nextY] == 1) {
+            val result = findPath(grid, Point(p.x, nextY))
             if (result) {
                 return result
             }
@@ -37,18 +35,18 @@ class S2RobotInAGrid {
         return false
     }
 
-    private fun validLocation(x: Int, y: Int, grid: Array<IntArray>): Boolean {
-        return x >= 0 && x <= grid.lastIndex && y >= 0 && y <= grid[grid.lastIndex].lastIndex
+    private fun validLocation(p: Point, grid: Array<IntArray>): Boolean {
+        return p.x >= 0 && p.x <= grid.lastIndex && p.y >= 0 && p.y <= grid[grid.lastIndex].lastIndex
     }
 
-    private fun isFinishLine(x: Int, y: Int, grid: Array<IntArray>): Boolean {
-        return x == grid.lastIndex && y == grid[grid.lastIndex].lastIndex
+    private fun isFinishLine(p: Point, grid: Array<IntArray>): Boolean {
+        return p.x == grid.lastIndex && p.y == grid[grid.lastIndex].lastIndex
     }
 
-    private fun printGrid(curRow: Int, curColumn: Int, grid: Array<IntArray>) {
+    private fun printGrid(grid: Array<IntArray>, p: Point) {
         for ((i, r) in grid.withIndex()) {
             for ((j, c) in r.withIndex()) {
-                val value = when (curRow == i && curColumn == j) { //is robot
+                val value = when (p.x == i && p.y == j) { //is robot
                     true -> "R"
                     false -> c
                 }

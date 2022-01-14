@@ -1,6 +1,6 @@
-import chapter_5_recursion.S9Parens
+import chapter_5_recursion.S2RobotInAGrid
 
 fun main() {
-    val solution = S9Parens()
+    val solution = S2RobotInAGrid()
     solution.runTest()
 }

@@ -1,5 +1,7 @@
 package chapter_5_recursion
 
+import java.awt.Point
+
 class S2RobotInAGrid {
     private fun findPath(curDown: Int, curRight: Int, grid: Array<IntArray>): Boolean {
         printGrid(curDown, curRight, grid)
@@ -56,14 +58,15 @@ class S2RobotInAGrid {
         val robotStartColumn: Int,
         private val rows: Int,
         private val columns: Int,
-        private val forbidden: ArrayList<Pair<Int, Int>>) {
+        private val forbidden: ArrayList<Point>
+    ) {
         fun build(): Array<IntArray> {
             val grid = Array(rows) { IntArray(columns) { 1 } }
             for (tile in forbidden) {
                 when {
-                    tile.first == robotStartRow && tile.second == robotStartColumn -> continue //cannot forbid starting point of robot
-                    tile.first > grid.size || tile.second >= grid[grid.lastIndex].size -> continue
-                    else -> grid[tile.first][tile.second] = 0
+                    tile.x == robotStartRow && tile.y == robotStartColumn -> continue //cannot forbid starting point of robot
+                    tile.x > grid.size || tile.y >= grid[grid.lastIndex].size -> continue
+                    else -> grid[tile.x][tile.y] = 0
                 }
             }
             return grid
@@ -73,18 +76,20 @@ class S2RobotInAGrid {
     fun runTest() {
         val functions = arrayListOf(this::findPath)
         val testCases = arrayListOf(
-            Grid(0, 0, 5, 7, arrayListOf(
-                    Pair(0, 0),
-                    Pair(2, 1),
-                    Pair(1, 2),
-                    Pair(3, 3),
-                    Pair(4, 4)
+            Grid(
+                0, 0, 5, 7, arrayListOf(
+                    Point(0, 0),
+                    Point(2, 1),
+                    Point(1, 2),
+                    Point(3, 3),
+                    Point(4, 4)
                 )
             ),
-            Grid(0, 0, 4, 4, arrayListOf(
-                    Pair(0, 0),
-                    Pair(2, 1),
-                    Pair(1, 2)
+            Grid(
+                0, 0, 4, 4, arrayListOf(
+                    Point(0, 0),
+                    Point(2, 1),
+                    Point(1, 2)
                 )
             )
         )

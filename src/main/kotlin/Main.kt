@@ -1,7 +1,6 @@
-import chapter_5_recursion.S11Coins
-import chapter_5_recursion.S1TripleStep
+import chapter_5_recursion.S12EightQueens
 
 fun main() {
-    val solution = S11Coins()
+    val solution = S12EightQueens()
     solution.runTest()
 }

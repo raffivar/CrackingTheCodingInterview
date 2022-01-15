@@ -24,9 +24,11 @@ class S11Coins {
 
 
     fun runTest() {
+        val coins = arrayListOf(25, 10, 5, 1)
         val functions = arrayListOf(this::possibleCoins)
         val testCases = arrayListOf(
-            Pair(15, arrayListOf(25, 10, 5, 1))
+            Pair(15, coins),
+            Pair(35, coins)
         )
         for (function in functions) {
             for (case in testCases) {

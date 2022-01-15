@@ -12,10 +12,10 @@ class S1TripleStep {
         }
         var options = 0
         for (step in steps) {
-            if (current + step <= total) {
-                val after = current + step
+            val after = current + step
+            if (after <= total) {
                 println("[$current/$total] -> [$after/$total] -> the boy took $step step(s)")
-                options += steps(current + step, total, steps)
+                options += steps(after, total, steps)
             }
         }
         return options

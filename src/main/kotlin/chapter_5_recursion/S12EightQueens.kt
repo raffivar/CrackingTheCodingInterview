@@ -1,80 +1,115 @@
 package chapter_5_recursion
 
 import java.awt.Point
+import kotlin.math.min
 
 class S12EightQueens {
-    private val board = Array(8) { IntArray(8) { 0 } }
+    private val size = 8
+    private val board = Array(size) { IntArray(size) { 0 } }
+    private val queens = mutableSetOf<Point>()
 
     private fun placeQueens() {
-
+        for ((x, row) in board.withIndex()) {
+            for ((y, column) in row.withIndex()) {
+                val queen = Point(x, y)
+                print("testing queen [${queen.x},${queen.y}]")
+                when (isLegalQueen(queen)) {
+                    true -> {
+                        println(" -> legal!")
+                        addQueen(queen)
+                    }
+                    false -> println(" -> illegal!")
+                }
+            }
+        }
+        println("Final board - ${queens.size} queen(s):")
+        printBoard()
     }
 
-    private fun addQueen(q: Point) {
-        board[q.x][q.y] = 1
+    private fun addQueen(queen: Point) {
+        queens.add(queen)
+        board[queen.x][queen.y] = 1
     }
 
-    private fun removeQueen(q: Point) {
-        board[q.x][q.y] = 0
+    private fun removeQueen(queen: Point) {
+        queens.remove(queen)
+        board[queen.x][queen.y] = 0
     }
 
-    private fun isLegalQueen(q: Point): Boolean {
-        var p = Point(0, 0)
+    private fun isBoardFull(): Boolean {
+        return queens.size == size && isLegalBoard()
+    }
+
+    private fun isLegalBoard(): Boolean {
+        for (queen in queens) {
+            if (!isLegalQueen(queen)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun isLegalQueen(queen: Point): Boolean {
+        var p: Point
 
         //check vertical
         for (i in 0..board.lastIndex) {
-            p = Point(i, p.y)
-            if (isOtherQueen(p, q, board)) {
+            p = Point(i, queen.y)
+            if (isOtherQueen(p, queen, board)) {
                 return false
             }
         }
 
         //Check horizontal
-        for (i in 0..board[0].lastIndex) {
-            p = Point(p.x, i)
-            if (isOtherQueen(p, q, board)) {
+        for (y in 0..board[0].lastIndex) {
+            p = Point(queen.x, y)
+            if (isOtherQueen(p, queen, board)) {
                 return false
             }
         }
 
+        //Check diagonals
+        val min = min(queen.x, queen.y)
+
         //Check diagonal #1
-        var i = 0
-        var j = 0
-        while (i < board.size && j < board.size) {
-            p = Point(i, j)
-            if (isOtherQueen(p, q, board)) {
+        var x = queen.x - min
+        var y = queen.y - min
+        while (x < size && y < size) {
+            p = Point(x, y)
+            if (isOtherQueen(p, queen, board)) {
                 return false
             }
-            i++
-            j++
+            x++
+            y++
         }
 
         //Check diagonal #2
-        i = 0
-        j = board.lastIndex
-        while (i < board.size && j > 0) {
-            p = Point(i, j)
-            if (isOtherQueen(p, q, board)) {
+        x = queen.x - min
+        y = min(queen.y + min, size - 1)
+        while (x >= 0 && y >= 0) {
+            p = Point(x, y)
+            if (isOtherQueen(p, queen, board)) {
                 return false
             }
-            i++
-            j--
+            x--
+            y--
         }
         return true
     }
 
-    private fun isOtherQueen(p: Point, q: Point, board: Array<IntArray>): Boolean {
-        return isQueen(p, board) && !isCurrentQueen(p, q)
+    private fun isOtherQueen(p: Point, queen: Point, board: Array<IntArray>): Boolean {
+        return isQueen(p, board) && !isCurrentQueen(p, queen)
     }
 
     private fun isQueen(p: Point, board: Array<IntArray>): Boolean {
         return board[p.x][p.y] == 1
     }
 
-    private fun isCurrentQueen(p: Point, q: Point): Boolean {
-        return p.x == q.x && p.y == q.y
+    private fun isCurrentQueen(p: Point, queen: Point): Boolean {
+        return p.x == queen.x && p.y == queen.y
     }
 
-    private fun printBoard(board: Array<IntArray>) {
+    private fun printBoard() {
         for (r in board) {
             for (c in r) {
                 print("$c ")

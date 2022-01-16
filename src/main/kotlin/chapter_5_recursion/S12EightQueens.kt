@@ -4,7 +4,6 @@ import java.awt.Point
 import kotlin.math.min
 
 class S12EightQueens {
-    val size = 8
     private val queens = mutableSetOf<Point>()
     private var numOfWays = 0
 
@@ -45,7 +44,7 @@ class S12EightQueens {
 
     private fun isBoardFull(board: Array<IntArray>): Boolean {
         //assuming board is not empty (already checked under "placeQueens()")
-        return queens.size == board[0].size && isLegalBoard(board)
+        return queens.size == board.size && isLegalBoard(board)
     }
 
     private fun isLegalBoard(board: Array<IntArray>): Boolean {
@@ -80,7 +79,7 @@ class S12EightQueens {
         var offset = min(queen.x, queen.y)
         var x = queen.x - offset
         var y = queen.y - offset
-        while (x < size && y < size) {
+        while (x < board.size && y < board.size) {
             p = Point(x, y)
             if (isOtherQueen(p, queen, board)) {
                 return false
@@ -90,10 +89,10 @@ class S12EightQueens {
         }
 
         //Check diagonal #2
-        offset = min(queen.x, size - 1 - queen.y)
+        offset = min(queen.x, board.size - 1 - queen.y)
         y = queen.y + offset
         x = queen.x - offset
-        while (x < size && y >= 0) {
+        while (x < board.size && y >= 0) {
             p = Point(x, y)
             if (isOtherQueen(p, queen, board)) {
                 return false
@@ -128,6 +127,7 @@ class S12EightQueens {
     }
 
     fun runTest() {
+        val size = 8
         val board = Array(size) { IntArray(size) { 0 } }
         placeQueens(board)
         println("Num of ways found: $numOfWays")

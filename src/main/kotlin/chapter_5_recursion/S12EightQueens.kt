@@ -7,23 +7,27 @@ class S12EightQueens {
     private val size = 8
     private val board = Array(size) { IntArray(size) { 0 } }
     private val queens = mutableSetOf<Point>()
+    private var numOfWays = 0
 
     private fun placeQueens() {
-        for ((x, row) in board.withIndex()) {
-            for ((y, column) in row.withIndex()) {
-                val queen = Point(x, y)
-                print("testing queen [${queen.x},${queen.y}]")
-                when (isLegalQueen(queen)) {
+        placeNextQueen(0)
+    }
+
+    private fun placeNextQueen(x: Int) {
+        for (y in 0..board.lastIndex) {
+            val queen = Point(x, y)
+            if (isLegalQueen(queen)) {
+                addQueen(queen)
+                when (isBoardFull()) {
                     true -> {
-                        println(" -> legal!")
-                        addQueen(queen)
+                        printBoard()
+                        numOfWays++
                     }
-                    false -> println(" -> illegal!")
+                    false -> placeNextQueen(x + 1)
                 }
+                removeQueen(queen)
             }
         }
-        println("Final board - ${queens.size} queen(s):")
-        printBoard()
     }
 
     private fun addQueen(queen: Point) {
@@ -68,12 +72,10 @@ class S12EightQueens {
             }
         }
 
-        //Check diagonals
-        val min = min(queen.x, queen.y)
-
         //Check diagonal #1
-        var x = queen.x - min
-        var y = queen.y - min
+        var offset = min(queen.x, queen.y)
+        var x = queen.x - offset
+        var y = queen.y - offset
         while (x < size && y < size) {
             p = Point(x, y)
             if (isOtherQueen(p, queen, board)) {
@@ -84,16 +86,18 @@ class S12EightQueens {
         }
 
         //Check diagonal #2
-        x = queen.x - min
-        y = min(queen.y + min, size - 1)
-        while (x >= 0 && y >= 0) {
+        offset = min(queen.x, size - 1 - queen.y)
+        y = queen.y + offset
+        x = queen.x - offset
+        while (x < size && y >= 0) {
             p = Point(x, y)
             if (isOtherQueen(p, queen, board)) {
                 return false
             }
-            x--
+            x++
             y--
         }
+
         return true
     }
 
@@ -116,10 +120,11 @@ class S12EightQueens {
             }
             println()
         }
-        println("----------------------------------------------")
+        println("---------------------------------")
     }
 
     fun runTest() {
         placeQueens()
+        println("Num of ways found: $numOfWays")
     }
 }

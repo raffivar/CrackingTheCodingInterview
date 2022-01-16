@@ -4,7 +4,6 @@ import java.awt.Point
 import kotlin.math.min
 
 class S12EightQueens {
-    private val queens = mutableSetOf<Point>()
     private var numOfWays = 0
 
     private fun placeQueens(size: Int) {
@@ -13,42 +12,42 @@ class S12EightQueens {
             return
         }
         val board = Array(size) { IntArray(size) { 0 } }
-        placeNextQueen(0, board)
+        placeNextQueen(0, mutableSetOf(), board)
     }
 
-    private fun placeNextQueen(x: Int, board: Array<IntArray>) {
+    private fun placeNextQueen(x: Int, queens: MutableSet<Point>, board: Array<IntArray>) {
         for (y in 0..board.lastIndex) {
             val queen = Point(x, y)
             if (isLegalQueen(queen, board)) {
-                addQueen(queen, board)
-                when (isBoardFull(board)) {
+                addQueen(queen, queens, board)
+                when (isBoardFull(queens, board)) {
                     true -> {
                         printBoard(board)
                         numOfWays++
                     }
-                    false -> placeNextQueen(x + 1, board)
+                    false -> placeNextQueen(x + 1, queens, board)
                 }
-                removeQueen(queen, board)
+                removeQueen(queen, queens, board)
             }
         }
     }
 
-    private fun addQueen(queen: Point, board: Array<IntArray>) {
+    private fun addQueen(queen: Point, queens: MutableSet<Point>, board: Array<IntArray>) {
         queens.add(queen)
         board[queen.x][queen.y] = 1
     }
 
-    private fun removeQueen(queen: Point, board: Array<IntArray>) {
+    private fun removeQueen(queen: Point, queens: MutableSet<Point>, board: Array<IntArray>) {
         queens.remove(queen)
         board[queen.x][queen.y] = 0
     }
 
-    private fun isBoardFull(board: Array<IntArray>): Boolean {
+    private fun isBoardFull(queens: MutableSet<Point>, board: Array<IntArray>): Boolean {
         //assuming board is not empty (already checked under "placeQueens()")
-        return queens.size == board.size && isLegalBoard(board)
+        return queens.size == board.size && isLegalBoard(queens, board)
     }
 
-    private fun isLegalBoard(board: Array<IntArray>): Boolean {
+    private fun isLegalBoard(queens: MutableSet<Point>, board: Array<IntArray>): Boolean {
         for (queen in queens) {
             if (!isLegalQueen(queen, board)) {
                 return false

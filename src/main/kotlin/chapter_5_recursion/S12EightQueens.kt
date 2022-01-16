@@ -2,6 +2,7 @@ package chapter_5_recursion
 
 import java.awt.Point
 import kotlin.math.min
+import kotlin.math.sign
 
 class S12EightQueens {
     private var numOfWays = 0
@@ -12,44 +13,37 @@ class S12EightQueens {
             return
         }
         val board = Array(size) { IntArray(size) { 0 } }
-        placeNextQueen(0, mutableSetOf(), board)
+        placeNextQueen(0, board)
     }
 
-    private fun placeNextQueen(x: Int, queens: MutableSet<Point>, board: Array<IntArray>) {
+    private fun placeNextQueen(x: Int, board: Array<IntArray>) {
         for (y in 0..board.lastIndex) {
             val queen = Point(x, y)
             if (isLegalQueen(queen, board)) {
-                addQueen(queen, queens, board)
-                when (isBoardFull(queens, board)) {
+                addQueen(queen, board)
+                when (isBoardFull(board)) {
                     true -> {
                         printBoard(board)
                         numOfWays++
                     }
-                    false -> placeNextQueen(x + 1, queens, board)
+                    false -> placeNextQueen(x + 1, board)
                 }
-                removeQueen(queen, queens, board)
+                removeQueen(queen, board)
             }
         }
     }
 
-    private fun addQueen(queen: Point, queens: MutableSet<Point>, board: Array<IntArray>) {
-        queens.add(queen)
+    private fun addQueen(queen: Point, board: Array<IntArray>) {
         board[queen.x][queen.y] = 1
     }
 
-    private fun removeQueen(queen: Point, queens: MutableSet<Point>, board: Array<IntArray>) {
-        queens.remove(queen)
+    private fun removeQueen(queen: Point, board: Array<IntArray>) {
         board[queen.x][queen.y] = 0
     }
 
-    private fun isBoardFull(queens: MutableSet<Point>, board: Array<IntArray>): Boolean {
-        //assuming board is not empty (already checked under "placeQueens()")
-        return queens.size == board.size && isLegalBoard(queens, board)
-    }
-
-    private fun isLegalBoard(queens: MutableSet<Point>, board: Array<IntArray>): Boolean {
-        for (queen in queens) {
-            if (!isLegalQueen(queen, board)) {
+    private fun isBoardFull(board: Array<IntArray>): Boolean {
+        for (row in board) {
+            if (!row.contains(1)) {
                 return false
             }
         }

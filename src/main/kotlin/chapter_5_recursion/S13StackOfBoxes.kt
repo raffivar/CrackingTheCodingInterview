@@ -31,10 +31,8 @@ class S13StackOfBoxes {
         }
         val subBoxes = ArrayList(boxes.slice(i..boxes.lastIndex))
         height += maxHeightPerBox(subBoxes)
-        println("height so far: $height")
         return height
     }
-
 
     private fun canStack(b1: Box, b2: Box): Boolean {
         return b1.w > b2.w && b1.h > b2.h && b1.d > b2.d
@@ -45,12 +43,30 @@ class S13StackOfBoxes {
     fun runTest() {
         val functions = arrayListOf(this::highestPossibleStack)
         val testCases = arrayListOf(
-            arrayListOf(Box(1, 2, 3), Box(4, 5, 6), Box(6, 7, 8))
+            arrayListOf(
+                Box(1, 2, 3),
+                Box(4, 5, 6),
+                Box(6, 7, 8)
+            ),
+            arrayListOf(
+                Box(5, 1, 5),
+                Box(6, 2, 6),
+                Box(7, 3, 7),
+                Box(4, 4, 4)
+            ),
         )
         for (function in functions) {
             for (testCase in testCases) {
-                println(highestPossibleStack(testCase))
+                printBoxes(testCase)
+                println("Highest possible stack: ${highestPossibleStack(testCase)}")
+                println("------------------------------------")
             }
+        }
+    }
+
+    private fun printBoxes(boxes: ArrayList<Box>) {
+        for (box in boxes) {
+            println("[${box.w}, ${box.h}, ${box.w}]")
         }
     }
 }

@@ -1,6 +1,6 @@
-import chapter_5_recursion.S12EightQueens
+import chapter_5_recursion.S13StackOfBoxes
 
 fun main() {
-    val solution = S12EightQueens()
+    val solution = S13StackOfBoxes()
     solution.runTest()
 }

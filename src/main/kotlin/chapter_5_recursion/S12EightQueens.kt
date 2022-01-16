@@ -2,7 +2,6 @@ package chapter_5_recursion
 
 import java.awt.Point
 import kotlin.math.min
-import kotlin.math.sign
 
 class S12EightQueens {
     private var numOfWays = 0

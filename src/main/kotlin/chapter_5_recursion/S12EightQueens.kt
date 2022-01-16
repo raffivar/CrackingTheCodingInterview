@@ -7,11 +7,12 @@ class S12EightQueens {
     private val queens = mutableSetOf<Point>()
     private var numOfWays = 0
 
-    private fun placeQueens(board: Array<IntArray>) {
-        if (board.isEmpty()) {
-            println("board is empty")
+    private fun placeQueens(size: Int) {
+        if (size == 0) {
+            println("illegal size")
             return
         }
+        val board = Array(size) { IntArray(size) { 0 } }
         placeNextQueen(0, board)
     }
 
@@ -127,9 +128,14 @@ class S12EightQueens {
     }
 
     fun runTest() {
-        val size = 8
-        val board = Array(size) { IntArray(size) { 0 } }
-        placeQueens(board)
-        println("Num of ways found: $numOfWays")
+        val functions = arrayListOf(this::placeQueens)
+        val testCases = arrayListOf(4, 5, 6, 7, 8)
+        for (function in functions) {
+            for (testCase in testCases) {
+                numOfWays = 0
+                function(testCase)
+                println("Num of ways found for size [$testCase]: $numOfWays\n")
+            }
+        }
     }
 }

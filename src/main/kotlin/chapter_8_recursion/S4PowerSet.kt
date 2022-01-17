@@ -1,4 +1,4 @@
-package chapter_5_recursion
+package chapter_8_recursion
 
 class S4PowerSet {
     private fun powerSet(set: Set<Int>): Set<Set<Int>> {

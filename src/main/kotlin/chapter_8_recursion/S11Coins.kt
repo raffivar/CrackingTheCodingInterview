@@ -1,4 +1,4 @@
-package chapter_5_recursion
+package chapter_8_recursion
 
 class S11Coins {
     private fun possibleCoins(numOfCents: Int, possibleCoins: ArrayList<Int>): Int {

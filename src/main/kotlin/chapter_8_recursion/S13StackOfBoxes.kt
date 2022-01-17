@@ -1,4 +1,4 @@
-package chapter_5_recursion
+package chapter_8_recursion
 
 class S13StackOfBoxes {
     private fun highestPossibleStack(boxes: ArrayList<Box>): Int {

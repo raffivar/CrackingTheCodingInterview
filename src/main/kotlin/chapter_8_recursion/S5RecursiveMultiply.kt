@@ -1,4 +1,4 @@
-package chapter_5_recursion
+package chapter_8_recursion
 
 class S5RecursiveMultiply {
     private fun multiply(num1: Int, num2: Int): Int {

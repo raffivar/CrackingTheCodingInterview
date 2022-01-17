@@ -1,4 +1,4 @@
-package chapter_5_recursion
+package chapter_8_recursion
 
 class S1TripleStep {
     private fun tripleSteps(numOfStairs: Int, possibleSteps: ArrayList<Int>): Int {

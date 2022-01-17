@@ -1,6 +1,6 @@
-import chapter_8_recursion.S10PaintFill
+import chapter_7_oop_design.S1DeckOfCards
 
 fun main() {
-    val solution = S10PaintFill()
+    val solution = S1DeckOfCards()
     solution.runTest()
 }

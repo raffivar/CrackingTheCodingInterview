@@ -1,6 +1,6 @@
-import chapter_7_oop_design.S1DeckOfCards
+import chapter_7_oop_design.S9CircularArray
 
 fun main() {
-    val solution = S1DeckOfCards()
+    val solution = S9CircularArray()
     solution.runTest()
 }

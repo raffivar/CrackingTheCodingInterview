@@ -21,9 +21,8 @@ class S1DeckOfCards {
         init {
             for (shape in Shape.values()) {
                 val names = Name.values()
-                for (num in 0..names.lastIndex) {
-                    val name = names[num]
-                    deck.add(Card(shape, name, num + 1))
+                for (i in 0..names.lastIndex) {
+                    deck.add(Card(shape, names[i], i + 1))
                 }
             }
         }

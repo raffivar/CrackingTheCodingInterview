@@ -26,9 +26,16 @@ class S2CallCenter {
         fun dispatchCall() {
             for (level in Level.values()) {
                 employees[level]?.let {
-                    for (employee in it) {
+                    if (it.isNotEmpty()) {
+                        val employee = it[0] // get first employee
+
                         if (employee.isAvailable) {
                             employee.isAvailable = false
+
+                            //move employee to end of list
+                            it.remove(employee)
+                            it.add(employee)
+
                             println("[${employee.level}] ${employee.name} took a call.")
                             printAllEmployees()
                             return

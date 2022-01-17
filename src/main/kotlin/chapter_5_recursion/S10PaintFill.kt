@@ -9,27 +9,15 @@ class S10PaintFill {
     }
 
     private fun fillPaint(screen: Array<IntArray>, p: Point, old: Int, new: Int) {
+        if (!shouldFill(screen, p, old)) {
+            return
+        }
+
         screen[p.x][p.y] = new
-
-        val top = Point(p.x - 1, p.y)
-        if (shouldFill(screen, top, old)) {
-            fillPaint(screen, top, old, new)
-        }
-
-        val bottom = Point(p.x + 1, p.y)
-        if (shouldFill(screen, bottom, old)) {
-            fillPaint(screen, bottom, old, new)
-        }
-
-        val left = Point(p.x, p.y - 1)
-        if (shouldFill(screen, left, old)) {
-            fillPaint(screen, left, old, new)
-        }
-
-        val right = Point(p.x, p.y + 1)
-        if (shouldFill(screen, right, old)) {
-            fillPaint(screen, right, old, new)
-        }
+        fillPaint(screen, Point(p.x - 1, p.y), old, new)
+        fillPaint(screen, Point(p.x + 1, p.y), old, new)
+        fillPaint(screen, Point(p.x, p.y - 1), old, new)
+        fillPaint(screen, Point(p.x, p.y + 1), old, new)
     }
 
     private fun shouldFill(screen: Array<IntArray>, p: Point, old: Int): Boolean {
@@ -119,10 +107,10 @@ class S10PaintFill {
         val testCases = arrayListOf(
             TestCase(screen1, Point(0, 0), 2), //1 to 2
             TestCase(screen1, Point(0, 0), 1), //2 back to 1
-            TestCase(screen1, Point(4, 4), 3), //0 to 3
+            TestCase(screen1, Point(4, 4), 3), //1 to 3
             TestCase(screen2, Point(0, 0), 2), //1 to 2
             TestCase(screen2, Point(0, 0), 1), //2 back to 1
-            TestCase(screen2, Point(4, 4), 3) //0 to 3
+            TestCase(screen2, Point(4, 4), 3) //1 to 3
 
         )
         for (function in functions) {

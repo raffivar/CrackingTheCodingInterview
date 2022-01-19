@@ -2,10 +2,32 @@ package chapter_7_oop_design
 
 import java.awt.Point
 import kotlin.math.abs
+import kotlin.math.log10
+import kotlin.math.pow
+
+fun Int.length() = when (this) {
+    0 -> 1
+    else -> log10(abs(toDouble())).toInt() + 1
+}
 
 class S6Jigsaw {
     class Piece(var id: Int, x: Int, y: Int) : Point(x, y) {
         val connectedWith = hashSetOf<Piece>()
+
+        fun isConnectedWith(other: Piece): Boolean {
+            return this.connectedWith.contains(other)
+        }
+
+        fun fitsWith(other: Piece): Boolean {
+            return abs(this.x - other.x) == 1 && abs(this.y - other.y) != 1 || //strictly vertical
+                    abs(this.x - other.x) != 1 && abs(this.y - other.y) == 1 //strictly horizontal
+        }
+
+        fun connectWith(other: Piece) {
+            this.connectedWith.add(other)
+            other.connectedWith.add(this)
+            println("Connected [${this.id}] with [${other.id}]!")
+        }
     }
 
     class Jigsaw(private val n: Int) {
@@ -36,8 +58,13 @@ class S6Jigsaw {
 
         private fun printPieces() {
             println("Pieces:")
-            for (piece in piecesById) {
-                print("[${piece.key}] ")
+            for (piece in piecesById.values) {
+                val maxId = n.toDouble().pow(2).toInt()
+                val padLength = maxId.length() - piece.id.length() + 1
+                print("[${piece.id.toString().padStart(padLength, '0')}] ")
+                if (piece.y == n - 1) {
+                    println()
+                }
             }
             println()
         }
@@ -52,28 +79,27 @@ class S6Jigsaw {
         }
 
         private fun attemptConnect(p1: Piece, p2: Piece) {
-            when (fitsWith(p1, p2)) {
-                true -> {
-                    p1.connectedWith.add(p2)
-                    p2.connectedWith.add(p1)
-                    println("Connected [${p1.id}] with [${p2.id}]!")
-                }
-                false -> println("Cannot connect [${p1.id}] with [${p2.id}]!")
+            when {
+                p1.isConnectedWith(p2) -> println("[${p1.id}] already connected with [${p2.id}].")
+                !p1.fitsWith(p2) -> println("[${p1.id}] does not fit with [${p2.id}].")
+                else -> p1.connectWith(p2)
             }
-        }
-
-        private fun fitsWith(p1: Piece, p2: Piece): Boolean {
-            return abs(p1.x - p2.x) == 1 && abs(p1.y - p2.y) != 1 || //strictly vertical
-                    abs(p1.x - p2.x) != 1 && abs(p1.y - p2.y) == 1 //strictly horizontal
         }
 
         private fun isSolved(): Boolean {
             for (piece in piecesById.values) {
-                when {
-                    !isSidePiece(piece) && piece.connectedWith.size < 4 -> return false //center piece
-                    !isCornerPiece(piece) && piece.connectedWith.size < 3 -> return false //side but not corner
-                    piece.connectedWith.size < 2 -> return false //corner piece
+                if (!isPieceComplete(piece)) {
+                    return false
                 }
+            }
+            return true
+        }
+
+        private fun isPieceComplete(piece: Piece): Boolean {
+            when {
+                !isSidePiece(piece) && piece.connectedWith.size < 4 -> return false //center piece
+                !isCornerPiece(piece) && piece.connectedWith.size < 3 -> return false //side but not corner
+                piece.connectedWith.size < 2 -> return false //corner piece
             }
             return true
         }
@@ -94,6 +120,6 @@ class S6Jigsaw {
     }
 
     fun runTest() {
-        Jigsaw(2).start()
+        Jigsaw(4).start()
     }
 }

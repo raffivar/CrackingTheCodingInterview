@@ -70,9 +70,9 @@ class S6Jigsaw {
         private fun isSolved(): Boolean {
             for (piece in piecesById.values) {
                 when {
-                    !isSidePiece(piece) && piece.connectedWith.size < 4 -> return false
-                    !isCornerPiece(piece) && piece.connectedWith.size < 3 -> return false
-                    piece.connectedWith.size < 2 -> return false
+                    !isSidePiece(piece) && piece.connectedWith.size < 4 -> return false //center piece
+                    !isCornerPiece(piece) && piece.connectedWith.size < 3 -> return false //side but not corner
+                    piece.connectedWith.size < 2 -> return false //corner piece
                 }
             }
             return true

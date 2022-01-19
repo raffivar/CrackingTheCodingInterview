@@ -26,7 +26,7 @@ class S6Jigsaw {
         fun connectWith(other: Piece) {
             this.connectedWith.add(other)
             other.connectedWith.add(this)
-            println("Connected [${this.id}] with [${other.id}]!")
+            println("Connected [${this.id}] with [${other.id}].")
         }
     }
 
@@ -44,16 +44,17 @@ class S6Jigsaw {
         }
 
         fun start() {
+            printPieces()
             while (!isSolved()) {
-                printPieces()
-                println("Choose first piece to connect:")
-                val p1 = readPieceId()
-                println("Choose second piece to connect:")
-                val p2 = readPieceId()
-                attemptConnect(piecesById[p1]!!, piecesById[p2]!!)
-                println("------------------------------------------------")
+                for (p1 in piecesById.values) {
+                    for (p2 in piecesById.values) {
+                        if (p1 != p2 && p1.fitsWith(p2)) {
+                            attemptConnect(p1, p2)
+                        }
+                    }
+                }
             }
-            println("Puzzle solved!")
+            println("Puzzle solved.")
         }
 
         private fun printPieces() {
@@ -69,7 +70,7 @@ class S6Jigsaw {
             println()
         }
 
-        private fun readPieceId(): Int {
+        private fun readPieceIdFromUser(): Int {
             var pieceId = readln().toIntOrNull()
             while (pieceId == null || !piecesById.containsKey(pieceId)) {
                 println("Invalid choice, please try again")
@@ -120,6 +121,6 @@ class S6Jigsaw {
     }
 
     fun runTest() {
-        Jigsaw(4).start()
+        Jigsaw(5).start()
     }
 }

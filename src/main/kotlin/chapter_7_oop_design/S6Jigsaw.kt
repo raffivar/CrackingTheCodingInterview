@@ -19,8 +19,8 @@ class S6Jigsaw {
         }
 
         fun fitsWith(other: Piece): Boolean {
-            return abs(this.x - other.x) == 1 && abs(this.y - other.y) != 1 || //strictly vertical
-                    abs(this.x - other.x) != 1 && abs(this.y - other.y) == 1 //strictly horizontal
+            return abs(this.x - other.x) == 1 && this.y == other.y || //strictly vertical
+                    this.x == other.x && abs(this.y - other.y) == 1 //strictly horizontal
         }
 
         fun connectWith(other: Piece) {

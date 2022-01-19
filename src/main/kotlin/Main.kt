@@ -1,6 +1,6 @@
-import chapter_7_oop_design.S9CircularArray
+import chapter_7_oop_design.S6Jigsaw
 
 fun main() {
-    val solution = S9CircularArray()
+    val solution = S6Jigsaw()
     solution.runTest()
 }

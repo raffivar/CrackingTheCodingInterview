@@ -5,7 +5,6 @@ import kotlin.math.min
 
 class TheEggDropProblems {
     /**
-     * In a world with n families -
      * For egg #1, we need to throw it from the floors:
      * X
      * 2X - 1

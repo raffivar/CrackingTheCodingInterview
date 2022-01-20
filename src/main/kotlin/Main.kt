@@ -1,6 +1,6 @@
-import chapter_6_math_and_logic.S1TheHeavyPill
+import chapter_6_math_and_logic.S2Basketball
 
 fun main() {
-    val solution = S1TheHeavyPill()
+    val solution = S2Basketball()
     solution.runTest()
 }

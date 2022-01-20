@@ -3,7 +3,7 @@ package chapter_6_math_and_logic
 import kotlin.math.max
 import kotlin.math.min
 
-class TheEggDropProblems {
+class S8TheEggDropProblems {
     /**
      * For egg #1, we need to throw it from the floors:
      * X

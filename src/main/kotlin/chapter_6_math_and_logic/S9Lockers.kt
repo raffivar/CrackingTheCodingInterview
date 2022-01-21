@@ -24,7 +24,7 @@ class S9Lockers {
     private fun numOfDividers(n: Int): Int {
         var numOfDividers = 0
         for (i in 1..n) {
-            if (n % 1 == 0) {
+            if (n % i == 0) {
                 numOfDividers++
             }
         }

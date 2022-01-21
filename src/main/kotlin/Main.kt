@@ -1,6 +1,6 @@
-import chapter_6_math_and_logic.S8TheEggDropProblems
+import chapter_6_math_and_logic.S9Lockers
 
 fun main() {
-    val solution = S8TheEggDropProblems()
+    val solution = S9Lockers()
     solution.runTest()
 }

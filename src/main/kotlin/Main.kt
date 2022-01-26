@@ -1,6 +1,6 @@
-import chapter_6_math_and_logic.S9Lockers
+import chapter_5_bit_manipulation.S1Insertion
 
 fun main() {
-    val solution = S9Lockers()
+    val solution = S1Insertion()
     solution.runTest()
 }

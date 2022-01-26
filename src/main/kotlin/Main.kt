@@ -1,6 +1,6 @@
-import chapter_5_bit_manipulation.S1Insertion
+import chapter_5_bit_manipulation.S4NextNumber
 
 fun main() {
-    val solution = S1Insertion()
+    val solution = S4NextNumber()
     solution.runTest()
 }

@@ -24,4 +24,19 @@ object BitUtil {
         val mask = (1.shl(i)).inv()
         return (num and mask) or bitValue.shl(i)
     }
+
+    /**
+     * This function is redundant
+     * Already built in - Int.countOneBits
+     * This is just to understand things better
+     */
+    private fun Int.countSetBits(): Int {
+        var num = this
+        var count = 0
+        while (num != 0) {
+            count += num and 1
+            num = num.shr(1)
+        }
+        return count
+    }
 }

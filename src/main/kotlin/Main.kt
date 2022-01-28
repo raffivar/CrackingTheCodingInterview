@@ -1,6 +1,6 @@
-import chapter_5_bit_manipulation.S6Conversion
+import chapter_5_bit_manipulation.S7PairwiseSwap
 
 fun main() {
-    val solution = S6Conversion()
+    val solution = S7PairwiseSwap()
     solution.runTest()
 }

@@ -7,7 +7,6 @@ object BitUtil {
         return String.format("%" + len + "s", this.toString(2)).replace(" ".toRegex(), "0")
     }
 
-
     fun countBits(number: Int): Int {
         // log function in base 2
         // take only integer part

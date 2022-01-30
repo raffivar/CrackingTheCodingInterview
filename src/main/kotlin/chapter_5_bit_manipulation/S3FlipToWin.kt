@@ -6,12 +6,15 @@ import chapter_5_bit_manipulation.BitUtil.toBinaryString
 
 class S3FlipToWin {
     private fun flipToWin(num: Int): Int {
-        if (num == 0) {
+        if (num == 0) { //all 0s
             return 1
         }
 
-        var allOnes = true
         val size = countBits(num)
+        if (num and num + 1 == 0) { //all 1s
+            return size
+        }
+
         var maxSequence = 0
         var i = size - 1
 
@@ -24,9 +27,6 @@ class S3FlipToWin {
                     1 -> {
                         currentSequence++
                         if (i == 0) {
-                            if (allOnes) {
-                                return size
-                            }
                             val result = currentSequence + previousSequence + 1
                             if (result > maxSequence) {
                                 maxSequence = result
@@ -41,9 +41,6 @@ class S3FlipToWin {
                         if (i == 0) {
                             return maxSequence
                         }
-                        if (allOnes) {
-                            allOnes = false
-                        }
                         if (i > 0 && num.getBit(i - 1) == 1) {
                             previousSequence = currentSequence
                             currentSequence = 0
@@ -56,9 +53,6 @@ class S3FlipToWin {
             }
 
             while (i >= 0 && num.getBit(i) == 0 && i - 1 >= 0 && num.getBit(i) == 0) { //Find next sequence of 1's
-                if (allOnes) {
-                    allOnes = false
-                }
                 i--
             }
         }
@@ -69,6 +63,7 @@ class S3FlipToWin {
     fun runTest() {
         val functions = arrayListOf(this::flipToWin)
         val testCases = arrayListOf(1775, 7, 64543, 1032702, 8, 30)
+
         for (function in functions) {
             for (case in testCases) {
                 println("[$case] -> [${case.toBinaryString(1)}]")

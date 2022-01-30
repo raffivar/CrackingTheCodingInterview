@@ -41,7 +41,7 @@ class S3FlipToWin {
                         if (i == 0) {
                             return maxSequence
                         }
-                        if (i > 0 && num.getBit(i - 1) == 1) {
+                        if (num.getBit(i - 1) == 1) {
                             previousSequence = currentSequence
                             currentSequence = 0
                         } else {

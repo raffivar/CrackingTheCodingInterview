@@ -34,15 +34,15 @@ class S3FlipToWin {
                         }
                     }
                     0 -> {
-                        if (allOnes) {
-                            allOnes = false
-                        }
                         val result = previousSequence + currentSequence + 1
                         if (result > maxSequence) {
                             maxSequence = result
                         }
                         if (i == 0) {
                             return maxSequence
+                        }
+                        if (allOnes) {
+                            allOnes = false
                         }
                         if (i > 0 && num.getBit(i - 1) == 1) {
                             previousSequence = currentSequence

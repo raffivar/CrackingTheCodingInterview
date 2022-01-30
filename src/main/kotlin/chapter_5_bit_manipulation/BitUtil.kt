@@ -1,9 +1,19 @@
 package chapter_5_bit_manipulation
 
+import kotlin.math.ln
+
 object BitUtil {
     fun Int.toBinaryString(len: Int): String {
         return String.format("%" + len + "s", this.toString(2)).replace(" ".toRegex(), "0")
     }
+
+
+    fun countBits(number: Int): Int {
+        // log function in base 2
+        // take only integer part
+        return (ln(number.toDouble()) / ln(2.0) + 1).toInt()
+    }
+
 
     fun Int.getBit(i: Int): Int {
         return when (this and 1.shl(i) != 0) {

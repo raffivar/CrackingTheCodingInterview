@@ -1,6 +1,6 @@
-import chapter_5_bit_manipulation.S8DrawLine
+import chapter_15_threads_and_locks.examples.ATM
 
 fun main() {
-    val solution = S8DrawLine()
-    solution.runTest()
+    val solution = ATM()
+    solution.runExample()
 }

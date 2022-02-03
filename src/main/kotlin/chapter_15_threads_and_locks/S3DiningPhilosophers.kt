@@ -5,7 +5,7 @@ import kotlin.random.Random
 
 class S3DiningPhilosophers {
     class Chopstick(val name: String) : ReentrantLock()
-    class Philosopher(private val pName: String, var left: Chopstick?, val right: Chopstick?) : Thread() {
+    class Philosopher(private val pName: String, var left: Chopstick?, var right: Chopstick?) : Thread() {
         var dineTime = 5000L
         var cooldownTime = 500L
         var minWaitTime = 500
@@ -53,16 +53,20 @@ class S3DiningPhilosophers {
         }
 
         private fun freeLeft() {
-            if (left!!.isHeldByCurrentThread) {
-                left!!.unlock()
-                println("$pName put down left [${left!!.name}]")
+            left!!.let {
+                if (it.isHeldByCurrentThread) {
+                    it.unlock()
+                    println("$pName put down left [${it.name}]")
+                }
             }
         }
 
         private fun freeRight() {
-            if (right!!.isHeldByCurrentThread) {
-                right!!.unlock()
-                println("$pName put down right [${right.name}]")
+            right!!.let {
+                if (it.isHeldByCurrentThread) {
+                    it.unlock()
+                    println("$pName put down right [${it.name}]")
+                }
             }
         }
     }

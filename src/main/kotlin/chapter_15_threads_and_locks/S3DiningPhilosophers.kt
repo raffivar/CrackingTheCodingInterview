@@ -13,9 +13,10 @@ class S3DiningPhilosophers {
 
         override fun run() {
             while (true) {
-                //pick up left
-                val timeToPickUpChopsticks = Random.nextInt(minWaitTime, maxWaitTime).toLong()
-                sleep(timeToPickUpChopsticks)
+                //wait a random time to pick up chopsticks
+                sleep(Random.nextInt(minWaitTime, maxWaitTime).toLong())
+
+                //attempt to pick up left
                 when (!left!!.isLocked) {
                     true -> {
                         left!!.lock()
@@ -27,7 +28,8 @@ class S3DiningPhilosophers {
                         continue
                     }
                 }
-                //pick up right
+
+                //attempt to pick up right
                 when (!right!!.isLocked) {
                     true -> {
                         right!!.lock()
@@ -40,6 +42,8 @@ class S3DiningPhilosophers {
                         continue
                     }
                 }
+
+                //dine
                 println("$pName started dining")
                 sleep(dineTime)
                 freeLeft()

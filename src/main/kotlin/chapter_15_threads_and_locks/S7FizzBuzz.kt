@@ -1,12 +1,15 @@
 package chapter_15_threads_and_locks
 
 class S7FizzBuzz {
-    private class FizzBuzzThread(private val n: Int, private val d: Int) : Thread() {
+    private class FizzBuzzThread(private val n: Int, private val div3: Boolean, private val div5: Boolean) : Thread() {
         override fun run() {
             for (i in 1..n) {
                 sleep(100)
-                if (i % d == 0) {
-                    println("$i is divisible by $d")
+                when {
+                    div3 && div5 && i % 15 == 0 -> println("$i [FizzBuzz]")
+                    div3 && !div5 && i % 3 == 0 -> println("$i [Fizz]")
+                    !div3 && div5 && i % 5 == 0 -> println("$i [Buzz]")
+                    !div3 && !div5 && i % 3 != 0 && i % 5 != 0 -> println(i)
                 }
             }
         }
@@ -14,8 +17,9 @@ class S7FizzBuzz {
 
     fun runTest() {
         val n = 100
-        FizzBuzzThread(n, 3).start()
-        FizzBuzzThread(n, 5).start()
-        FizzBuzzThread(n, 15).start()
+        FizzBuzzThread(n, div3 = true, div5 = false).start()
+        FizzBuzzThread(n, div3 = false, div5 = true).start()
+        FizzBuzzThread(n, div3 = true, div5 = true).start()
+        FizzBuzzThread(n, div3 = false, div5 = false).start()
     }
 }

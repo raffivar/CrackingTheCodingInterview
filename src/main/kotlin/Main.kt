@@ -1,6 +1,6 @@
-import chapter_15_threads_and_locks.S5CallInOrder
+import chapter_15_threads_and_locks.S6SynchronizedMethods
 
 fun main() {
-    val solution = S5CallInOrder()
+    val solution = S6SynchronizedMethods()
     solution.runTest()
 }

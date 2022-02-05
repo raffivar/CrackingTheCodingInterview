@@ -1,10 +1,11 @@
 package chapter_15_threads_and_locks
 
+import java.util.function.Predicate
+
 class S7FizzBuzz {
     private class FizzBuzzThread(
         private val n: Int,
-        private val div3: Boolean,
-        private val div5: Boolean,
+        private val validate: Predicate<Int>,
         private val toPrint: String?
     ) : Thread() {
         companion object {
@@ -17,11 +18,11 @@ class S7FizzBuzz {
 
         override fun run() {
             while (true) {
-                if (i >= n) {
-                    return
-                }
                 synchronized(lock) {
-                    if ((i % 3 == 0) == div3 && (i % 5 == 0) == div5) {
+                    if (i > n) {
+                        return
+                    }
+                    if (validate.test(i)) {
                         when (toPrint) {
                             null -> println(i)
                             else -> println(toPrint)
@@ -35,9 +36,9 @@ class S7FizzBuzz {
 
     fun runTest() {
         val n = 100
-        FizzBuzzThread(n, div3 = true, div5 = true, "FizzBuzz").start()
-        FizzBuzzThread(n, div3 = true, div5 = false, "Fizz").start()
-        FizzBuzzThread(n, div3 = false, div5 = true, "Buzz").start()
-        FizzBuzzThread(n, div3 = false, div5 = false, null).start()
+        FizzBuzzThread(n, { i: Int -> i % 3 == 0 && i % 5 == 0 }, "FizzBuzz").start()
+        FizzBuzzThread(n, { i: Int -> i % 3 == 0 && i % 5 != 0 }, "Fizz").start()
+        FizzBuzzThread(n, { i: Int -> i % 3 != 0 && i % 5 == 0 }, "Buzz").start()
+        FizzBuzzThread(n, { i: Int -> i % 3 != 0 && i % 5 != 0 }, null).start()
     }
 }

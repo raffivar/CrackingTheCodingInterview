@@ -1,70 +1,61 @@
 package chapter_15_threads_and_locks
 
-import kotlin.random.Random
+import java.util.concurrent.Semaphore
 
 class S5CallInOrder {
     class Foo {
-        var isSecondLocked = true
-            private set
-        var isThirdLock = true
-            private set
-        
+        private val sem1 = Semaphore(1)
+        private val sem2 = Semaphore(1)
+
+        init {
+            sem1.acquire()
+            sem2.acquire()
+        }
+
         fun first() {
             println("first")
-            isSecondLocked = false
+            sem1.release()
         }
 
         fun second() {
+            sem1.acquire()
+            sem1.release()
             println("second")
-            isThirdLock = false
+            sem2.release()
         }
 
         fun third() {
+            sem2.acquire()
+            sem2.release()
             println("third")
         }
     }
 
     class ThreadA(private val foo: Foo) : Thread() {
         override fun run() {
-            sleep(Random.nextInt(0, 3000).toLong())
+            sleep(3000)
             foo.first()
         }
     }
 
     class ThreadB(private val foo: Foo) : Thread() {
         override fun run() {
-            sleep(Random.nextInt(0, 3000).toLong())
-            when (foo.isSecondLocked) {
-                true -> {
-                    println("ThreadB retries")
-                    run()
-                }
-                false -> foo.second()
-            }
+            sleep(2000)
+            foo.second()
         }
     }
 
     class ThreadC(private val foo: Foo) : Thread() {
         override fun run() {
-            sleep(Random.nextInt(0, 3000).toLong())
-            when (foo.isThirdLock) {
-                true -> {
-                    println("ThreadC retries")
-                    run()
-                }
-                false -> foo.third()
-            }
+            sleep(1000)
+            foo.third()
         }
     }
 
-    private fun runSimulation() {
+    fun runTest() {
         val foo = Foo()
         ThreadA(foo).start()
         ThreadB(foo).start()
         ThreadC(foo).start()
-    }
-
-    fun runTest() {
-        runSimulation()
     }
 }

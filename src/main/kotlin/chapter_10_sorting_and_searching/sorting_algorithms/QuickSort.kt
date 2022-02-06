@@ -2,13 +2,13 @@ package chapter_10_sorting_and_searching.sorting_algorithms
 
 
 class QuickSort {
-    private fun sort(arr: IntArray, left: Int, right: Int) {
+    private fun quickSort(arr: IntArray, left: Int, right: Int) {
         val index = partition(arr, left, right)
         if (left < index - 1) {
-            sort(arr, left, index - 1)
+            quickSort(arr, left, index - 1)
         }
         if (index < right) {
-            sort(arr, index, right)
+            quickSort(arr, index, right)
         }
     }
 
@@ -25,7 +25,7 @@ class QuickSort {
                 right--
             }
             if (left <= right) {
-                Sorting.swap(arr, left, right)
+                swap(arr, left, right)
                 left++
                 right--
             }
@@ -33,9 +33,15 @@ class QuickSort {
         return left
     }
 
+    fun swap(arr: IntArray, i: Int, j: Int) {
+        val temp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = temp
+    }
+
     fun runTest() {
         for (case in Sorting.testCases) {
-            sort(case, 0, case.size - 1)
+            quickSort(case, 0, case.size - 1)
             Sorting.print(case)
         }
     }

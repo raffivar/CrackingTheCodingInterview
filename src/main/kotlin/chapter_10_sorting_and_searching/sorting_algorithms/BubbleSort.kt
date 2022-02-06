@@ -1,7 +1,7 @@
 package chapter_10_sorting_and_searching.sorting_algorithms
 
 class BubbleSort {
-    private fun sort(arr: IntArray): IntArray {
+    private fun bubbleSort(arr: IntArray): IntArray {
         var swap = true
         while (swap) {
             swap = false
@@ -19,7 +19,7 @@ class BubbleSort {
 
     fun runTest() {
         for (case in Sorting.testCases) {
-            val sorted = sort(case)
+            val sorted = bubbleSort(case)
             Sorting.print(sorted)
         }
     }

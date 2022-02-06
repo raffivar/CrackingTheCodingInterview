@@ -1,7 +1,7 @@
 package chapter_10_sorting_and_searching.sorting_algorithms
 
 class SelectionSort {
-    private fun sort(arr: IntArray) {
+    private fun selectionSort(arr: IntArray) {
         val n = arr.size
         var temp: Int
         for (i in 0 until n) {
@@ -20,7 +20,7 @@ class SelectionSort {
 
     fun runTest() {
         for (case in Sorting.testCases) {
-            sort(case)
+            selectionSort(case)
             Sorting.print(case)
         }
     }

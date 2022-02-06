@@ -1,6 +1,11 @@
 package chapter_10_sorting_and_searching.sorting_algorithms
 
 class SelectionSort {
+    /**
+     * Runtime [average + worst case]: O(n^2)
+     * Memory: O(1)
+     */
+
     private fun selectionSort(arr: IntArray) {
         val n = arr.size
         var temp: Int

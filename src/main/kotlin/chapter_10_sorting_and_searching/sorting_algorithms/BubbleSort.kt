@@ -1,6 +1,11 @@
 package chapter_10_sorting_and_searching.sorting_algorithms
 
 class BubbleSort {
+    /**
+     * Runtime [average + worst case]: O(n^2)
+     * Memory: O(1)
+     */
+
     private fun bubbleSort(arr: IntArray): IntArray {
         var swap = true
         while (swap) {

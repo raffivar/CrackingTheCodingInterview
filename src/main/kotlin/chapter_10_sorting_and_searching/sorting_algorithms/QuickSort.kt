@@ -2,6 +2,12 @@ package chapter_10_sorting_and_searching.sorting_algorithms
 
 
 class QuickSort {
+    /**
+     * Runtime [average]: O(n * log(n))
+     * Runtime [worst case]: O(n^2)
+     * Memory: O(n * log(n))
+     */
+
     private fun quickSort(arr: IntArray, left: Int, right: Int) {
         val index = partition(arr, left, right)
         if (left < index - 1) {

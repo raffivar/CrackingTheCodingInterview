@@ -1,6 +1,11 @@
 package chapter_10_sorting_and_searching.sorting_algorithms
 
 class MergeSort {
+    /**
+     * Runtime [average + worst case]: O(n * log(n))
+     * Memory: Depends
+     */
+
     private fun mergeSort(array: IntArray) {
         val helper = IntArray(array.size)
         mergeSort(array, helper, 0, array.lastIndex)

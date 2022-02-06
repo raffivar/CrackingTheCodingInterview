@@ -20,7 +20,11 @@ class Searching {
             println()
         }
     }
-    
+
+    /**
+     * Runtime: O(log(n))
+     * Memory: O(1)
+     */
     private fun binarySearch(array: IntArray, num: Int): Int {
         var low = 0
         var high = array.lastIndex
@@ -38,6 +42,10 @@ class Searching {
         return -1
     }
 
+    /**
+     * Runtime: O(log(n))
+     * Memory: O(log(n))
+     */
     private fun binarySearchRecursive(array: IntArray, num: Int): Int {
         return binarySearchRecursive(array, num, 0, array.lastIndex)
     }

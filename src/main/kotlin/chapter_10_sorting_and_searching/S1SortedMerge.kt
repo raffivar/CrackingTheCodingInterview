@@ -18,6 +18,14 @@ class S1SortedMerge {
             }
             k--
         }
+
+        println("a + b [before moving to beginning]: ${Util.arrayAsString(a)}")
+        while (k < a.lastIndex) {
+            i++
+            k++
+            swap(a, i, k)
+        }
+        println("a + b [after moving to beginning]: ${Util.arrayAsString(a)}")
     }
 
     private fun findEndOfElements(array: IntArray): Int {
@@ -37,8 +45,12 @@ class S1SortedMerge {
     fun runTest() {
         val testCases = arrayListOf(
             Pair(
-                intArrayOf(1, 3, 6, 9, 10, -1, -1, -1, -1, -1),
+                intArrayOf(1, 3, 6, 9, 10, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1),
                 intArrayOf(2, 5, 6, 8, 12)
+            ),
+            Pair(
+                intArrayOf(1, 2, 3, 6, 9, 10, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1),
+                intArrayOf(4, 5, 6, 8, 12)
             )
         )
         for (case in testCases) {
@@ -47,7 +59,7 @@ class S1SortedMerge {
             println("a: ${Util.arrayAsString(a)}")
             println("b: ${Util.arrayAsString(a)}")
             sortedMerge(a, b)
-            println("a + b: ${Util.arrayAsString(a)}")
+            println()
         }
     }
 }

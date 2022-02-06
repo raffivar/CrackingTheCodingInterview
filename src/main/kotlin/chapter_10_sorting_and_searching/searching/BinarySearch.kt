@@ -18,6 +18,23 @@ class BinarySearch {
         return -1
     }
 
+    private fun binarySearchRecursive(array: IntArray, num: Int): Int {
+        return binarySearchRecursive(array, num, 0, array.lastIndex)
+    }
+
+    private fun binarySearchRecursive(array: IntArray, num: Int, low: Int, high: Int): Int {
+        if (low > high) { //not found
+            return -1
+        }
+        
+        val mid = (low + high) / 2
+        return when {
+            array[mid] < num -> binarySearchRecursive(array, num, mid + 1, high)
+            array[mid] > num -> binarySearchRecursive(array, num, low, mid - 1)
+            else -> mid
+        }
+    }
+
     fun search() {
         val testCases = arrayListOf(
             Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3),
@@ -25,11 +42,15 @@ class BinarySearch {
             Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 15)
         )
 
-        for (case in testCases) {
-            when (val index = binarySearch(case.first, case.second)) {
-                -1 -> println("index of ${case.second} in array is: $index [Not found]")
-                else -> println("index of ${case.second} in array is: $index")
+        val functions = arrayListOf(this::binarySearch, this::binarySearchRecursive)
+        for (function in functions) {
+            for (case in testCases) {
+                when (val index = function(case.first, case.second)) {
+                    -1 -> println("index of ${case.second} in array is: $index [Not found]")
+                    else -> println("index of ${case.second} in array is: $index")
+                }
             }
+            println("----------------------------------------------------------------")
         }
     }
 }

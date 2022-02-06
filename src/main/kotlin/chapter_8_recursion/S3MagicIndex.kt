@@ -74,7 +74,7 @@ class S3MagicIndex {
         println("================================== DISTINCT ==================================")
         for (function in functions1) {
             for (case in testCases1) {
-                println(arrayAsString(case))
+                println(Util.arrayAsString(case))
                 when (function(case)) {
                     true -> println("found magic index\n")
                     false -> println("no magic index\n")
@@ -89,20 +89,12 @@ class S3MagicIndex {
         )
         for (function in functions2) {
             for (case in testCases2) {
-                println(arrayAsString(case))
+                println(Util.arrayAsString(case))
                 when (function(case)) {
                     true -> println("found magic index\n")
                     false -> println("no magic index\n")
                 }
             }
         }
-    }
-
-    private fun arrayAsString(array: Array<Int>): String {
-        val sb = StringBuilder()
-        for (num in array) {
-            sb.append("$num, ")
-        }
-        return "[${sb.removeSuffix(", ")}]"
     }
 }

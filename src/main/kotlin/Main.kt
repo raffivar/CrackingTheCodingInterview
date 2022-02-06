@@ -1,6 +1,6 @@
-import chapter_10_sorting_and_searching.searching.Searching
+import chapter_10_sorting_and_searching.S1SortedMerge
 
 fun main() {
-    val solution = Searching()
-    solution.search()
+    val solution = S1SortedMerge()
+    solution.runTest()
 }

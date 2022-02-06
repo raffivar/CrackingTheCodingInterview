@@ -1,4 +1,4 @@
-import chapter_10_sorting_and_searching.sorting_algorithms.Sorting
+import chapter_10_sorting_and_searching.sorting.Sorting
 
 fun main() {
     val solution = Sorting()

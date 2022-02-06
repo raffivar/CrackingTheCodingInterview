@@ -1,4 +1,4 @@
-package chapter_10_sorting_and_searching.sorting_algorithms
+package chapter_10_sorting_and_searching.sorting
 
 class MergeSort {
     /**

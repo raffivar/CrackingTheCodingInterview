@@ -1,6 +1,26 @@
 package chapter_10_sorting_and_searching.searching
 
-class BinarySearch {
+class Searching {
+    fun search() {
+        val testCases = arrayListOf(
+            Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3),
+            Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 6),
+            Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 15)
+        )
+
+        val functions = arrayListOf(this::binarySearch, this::binarySearchRecursive)
+        for (function in functions) {
+            println("${function.name}:")
+            for (case in testCases) {
+                when (val index = function(case.first, case.second)) {
+                    -1 -> println("index of ${case.second} in array is: $index [Not found]")
+                    else -> println("index of ${case.second} in array is: $index")
+                }
+            }
+            println()
+        }
+    }
+    
     private fun binarySearch(array: IntArray, num: Int): Int {
         var low = 0
         var high = array.lastIndex
@@ -26,31 +46,12 @@ class BinarySearch {
         if (low > high) { //not found
             return -1
         }
-        
+
         val mid = (low + high) / 2
         return when {
             array[mid] < num -> binarySearchRecursive(array, num, mid + 1, high)
             array[mid] > num -> binarySearchRecursive(array, num, low, mid - 1)
             else -> mid
-        }
-    }
-
-    fun search() {
-        val testCases = arrayListOf(
-            Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3),
-            Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 6),
-            Pair(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 15)
-        )
-
-        val functions = arrayListOf(this::binarySearch, this::binarySearchRecursive)
-        for (function in functions) {
-            for (case in testCases) {
-                when (val index = function(case.first, case.second)) {
-                    -1 -> println("index of ${case.second} in array is: $index [Not found]")
-                    else -> println("index of ${case.second} in array is: $index")
-                }
-            }
-            println("----------------------------------------------------------------")
         }
     }
 }

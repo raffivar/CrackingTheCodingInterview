@@ -1,7 +1,6 @@
 package chapter_10_sorting_and_searching.sorting
 
 class Sorting {
-
     fun sort() {
         val functions = arrayListOf(this::bubbleSort, this::selectionSort, this::mergeSort)
         for (function in functions) {

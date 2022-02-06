@@ -1,6 +1,6 @@
-import chapter_10_sorting_and_searching.searching.BinarySearch
+import chapter_10_sorting_and_searching.sorting.Sorting
 
 fun main() {
-    val solution = BinarySearch()
-    solution.search()
+    val solution = Sorting()
+    solution.sort()
 }

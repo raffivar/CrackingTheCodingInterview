@@ -6,7 +6,7 @@ class BubbleSort {
      * Memory: O(1)
      */
 
-    private fun bubbleSort(arr: IntArray): IntArray {
+    private fun bubbleSort(arr: IntArray) {
         var swap = true
         while (swap) {
             swap = false
@@ -19,13 +19,12 @@ class BubbleSort {
                 }
             }
         }
-        return arr
     }
 
     fun sort(testCases: ArrayList<IntArray>) {
         for (case in testCases) {
-            val sorted = bubbleSort(case)
-            Sorting.print(sorted)
+            bubbleSort(case)
+            Sorting.print(case)
         }
     }
 }

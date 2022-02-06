@@ -31,15 +31,15 @@ class Sorting {
      * Runtime [average + worst case]: O(n^2)
      * Memory: O(1)
      */
-    private fun bubbleSort(arr: IntArray) {
+    private fun bubbleSort(array: IntArray) {
         var swap = true
         while (swap) {
             swap = false
-            for (i in 0 until arr.size - 1) {
-                if (arr[i] > arr[i + 1]) {
-                    val temp = arr[i]
-                    arr[i] = arr[i + 1]
-                    arr[i + 1] = temp
+            for (i in 0 until array.size - 1) {
+                if (array[i] > array[i + 1]) {
+                    val temp = array[i]
+                    array[i] = array[i + 1]
+                    array[i + 1] = temp
                     swap = true
                 }
             }
@@ -50,19 +50,19 @@ class Sorting {
      * Runtime [average + worst case]: O(n^2)
      * Memory: O(1)
      */
-    private fun selectionSort(arr: IntArray) {
-        val n = arr.size
+    private fun selectionSort(array: IntArray) {
+        val n = array.size
         var temp: Int
         for (i in 0 until n) {
             var indexOfMin = i
             for (j in n - 1 downTo i) {
-                if (arr[j] < arr[indexOfMin])
+                if (array[j] < array[indexOfMin])
                     indexOfMin = j
             }
             if (i != indexOfMin) {
-                temp = arr[i]
-                arr[i] = arr[indexOfMin]
-                arr[indexOfMin] = temp
+                temp = array[i]
+                array[i] = array[indexOfMin]
+                array[indexOfMin] = temp
             }
         }
     }
@@ -119,34 +119,34 @@ class Sorting {
      * Runtime [worst case]: O(n^2)
      * Memory: O(log(n))
      */
-    private fun quickSort(arr: IntArray) {
-        return quickSort(arr, 0, arr.lastIndex)
+    private fun quickSort(array: IntArray) {
+        return quickSort(array, 0, array.lastIndex)
     }
 
-    private fun quickSort(arr: IntArray, left: Int, right: Int) {
-        val index = partition(arr, left, right)
+    private fun quickSort(array: IntArray, left: Int, right: Int) {
+        val index = partition(array, left, right)
         if (left < index - 1) {
-            quickSort(arr, left, index - 1)
+            quickSort(array, left, index - 1)
         }
         if (index < right) {
-            quickSort(arr, index, right)
+            quickSort(array, index, right)
         }
     }
 
-    private fun partition(arr: IntArray, _left: Int, _right: Int): Int {
+    private fun partition(array: IntArray, _left: Int, _right: Int): Int {
         var left = _left
         var right = _right
 
-        val pivot = arr[(left + right) / 2]
+        val pivot = array[(left + right) / 2]
         while (left <= right) {
-            while (arr[left] < pivot) {
+            while (array[left] < pivot) {
                 left++
             }
-            while (arr[right] > pivot) {
+            while (array[right] > pivot) {
                 right--
             }
             if (left <= right) {
-                swap(arr, left, right)
+                swap(array, left, right)
                 left++
                 right--
             }
@@ -154,9 +154,9 @@ class Sorting {
         return left
     }
 
-    private fun swap(arr: IntArray, i: Int, j: Int) {
-        val temp = arr[i]
-        arr[i] = arr[j]
-        arr[j] = temp
+    private fun swap(array: IntArray, i: Int, j: Int) {
+        val temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
     }
 }

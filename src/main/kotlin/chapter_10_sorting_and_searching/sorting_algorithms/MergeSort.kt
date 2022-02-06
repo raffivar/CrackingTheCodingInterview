@@ -44,8 +44,8 @@ class MergeSort {
         }
     }
 
-    fun runTest() {
-        for (case in Sorting.testCases) {
+    fun sort(testCases: ArrayList<IntArray>) {
+        for (case in testCases) {
             mergeSort(case)
             Sorting.print(case)
         }

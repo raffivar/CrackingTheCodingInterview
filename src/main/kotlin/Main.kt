@@ -1,6 +1,6 @@
-import chapter_10_sorting_and_searching.sorting_algorithms.MergeSort
+import chapter_10_sorting_and_searching.sorting_algorithms.Sorting
 
 fun main() {
-    val solution = MergeSort()
-    solution.runTest()
+    val solution = Sorting()
+    solution.sort()
 }

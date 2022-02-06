@@ -18,8 +18,8 @@ class SelectionSort {
         }
     }
 
-    fun runTest() {
-        for (case in Sorting.testCases) {
+    fun sort(testCases: ArrayList<IntArray>) {
+        for (case in testCases) {
             selectionSort(case)
             Sorting.print(case)
         }

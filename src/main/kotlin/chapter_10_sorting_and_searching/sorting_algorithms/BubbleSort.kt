@@ -17,8 +17,8 @@ class BubbleSort {
         return arr
     }
 
-    fun runTest() {
-        for (case in Sorting.testCases) {
+    fun sort(testCases: ArrayList<IntArray>) {
+        for (case in testCases) {
             val sorted = bubbleSort(case)
             Sorting.print(sorted)
         }

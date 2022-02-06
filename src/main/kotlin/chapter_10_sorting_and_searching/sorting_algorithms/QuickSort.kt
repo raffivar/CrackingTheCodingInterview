@@ -33,15 +33,15 @@ class QuickSort {
         return left
     }
 
-    fun swap(arr: IntArray, i: Int, j: Int) {
+    private fun swap(arr: IntArray, i: Int, j: Int) {
         val temp = arr[i]
         arr[i] = arr[j]
         arr[j] = temp
     }
 
-    fun runTest() {
-        for (case in Sorting.testCases) {
-            quickSort(case, 0, case.size - 1)
+    fun sort(testCases: ArrayList<IntArray>) {
+        for (case in testCases) {
+            quickSort(case, 0, case.lastIndex)
             Sorting.print(case)
         }
     }

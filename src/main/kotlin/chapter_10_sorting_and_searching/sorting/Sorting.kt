@@ -117,7 +117,7 @@ class Sorting {
     /**
      * Runtime [average]: O(n * log(n))
      * Runtime [worst case]: O(n^2)
-     * Memory: O(n * log(n))
+     * Memory: O(log(n))
      */
     private fun quickSort(arr: IntArray) {
         return quickSort(arr, 0, arr.lastIndex)

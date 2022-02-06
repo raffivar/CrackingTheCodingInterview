@@ -2,17 +2,21 @@ package chapter_10_sorting_and_searching.sorting
 
 class Sorting {
     fun sort() {
-        val functions = arrayListOf(this::bubbleSort, this::selectionSort, this::mergeSort)
+        val functions = arrayListOf(this::bubbleSort, this::selectionSort, this::mergeSort, this::quickSort)
         for (function in functions) {
             val testCases = arrayListOf(//Need to re-create cases to have them not-ordered
                 intArrayOf(2, 15, 1, 8, 4),
                 intArrayOf(2, 15, 1, 8, 52, 4)
             )
+            println("${function.name}:")
             for (case in testCases) {
+                print("Before: ")
+                printArray(case)
                 function(case)
+                print("After: ")
                 printArray(case)
             }
-            println("-------------------------------")
+            println()
         }
     }
 
@@ -115,6 +119,10 @@ class Sorting {
      * Runtime [worst case]: O(n^2)
      * Memory: O(n * log(n))
      */
+    private fun quickSort(arr: IntArray) {
+        return quickSort(arr, 0, arr.lastIndex)
+    }
+
     private fun quickSort(arr: IntArray, left: Int, right: Int) {
         val index = partition(arr, left, right)
         if (left < index - 1) {

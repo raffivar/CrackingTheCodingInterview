@@ -1,6 +1,7 @@
-import chapter_15_threads_and_locks.S7FizzBuzz
+import chapter_10_sorting_and_searching.sorting_algorithms.BubbleSort
+import chapter_10_sorting_and_searching.sorting_algorithms.SelectionSort
 
 fun main() {
-    val solution = S7FizzBuzz()
+    val solution = SelectionSort()
     solution.runTest()
 }

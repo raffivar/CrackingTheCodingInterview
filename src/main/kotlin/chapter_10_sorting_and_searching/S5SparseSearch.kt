@@ -17,24 +17,46 @@ class S5SparseSearch {
     private fun binarySearch(word: String, array: ArrayList<String>): Int {
         var low = 0
         var high = array.lastIndex
-        while (low <= high) {
-            high = (low + high) / 2
-            while (high < array.size && array[high] != word) {
+        while (low != high) {
+            low = (low + high) / 2
+            high = low + 1
+            while (low >= 0 && array[low] == "") {
+                low--
+            }
+            while (high < array.size && array[high] == "") {
                 high++
             }
             when {
-                high == array.size || word < array[high] -> high = (low + high) / 2
-                word > array[high] -> low = high
-                else -> return high
+                low < 0 && high > array.lastIndex -> return -1 //no words in array
+                low < 0 || word > array[high] -> { //no words in left, or word right of high
+                    low = high
+                    high = (low + high) / 2
+                }
+                high > array.lastIndex || word < array[low] -> { //no words in right, or word left of low
+                    high = low
+                    low /= 2
+                }
+                word == array[low] -> return low
+                word == array[high] -> return high
             }
         }
-        return -1
+        return when (low in 0..array.lastIndex && array[low] == word) {
+            true -> low
+            false -> -1
+        }
     }
 
     fun runTest() {
         val example = arrayListOf("at", "", "", "", "ball", "", "", "car", "", "", "dad", "", "")
         val functions = arrayListOf(this::regularSearch, this::binarySearch)
-        val testCases = arrayListOf(Pair("ball", example))
+        val testCases = arrayListOf(
+            Pair("ball", example),
+            Pair("at", example),
+            Pair("sex", example),
+            Pair("dad", arrayListOf("", "", "", "", "", "", "", "", "", "", "dad", "", "")),
+            Pair("word", arrayListOf("", "", "", "", "", "", "", "", "", "", "", "", "")),
+            Pair("woof", arrayListOf("woof"))
+        )
         for (function in functions) {
             println("${function.name}:")
             for (case in testCases) {
@@ -46,6 +68,5 @@ class S5SparseSearch {
             }
             println("-----------------------------------------------------------------------------------------")
         }
-
     }
 }

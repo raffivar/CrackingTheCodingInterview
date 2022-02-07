@@ -40,7 +40,7 @@ class S5SparseSearch {
                 word == array[high] -> return high
             }
         }
-        return when (low in 0..array.lastIndex && array[low] == word) {
+        return when (low in 0..array.lastIndex && array[low] == word) { //final check
             true -> low
             false -> -1
         }

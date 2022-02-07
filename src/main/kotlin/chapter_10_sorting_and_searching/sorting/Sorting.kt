@@ -59,10 +59,9 @@ class Sorting {
      * Memory: O(1)
      */
     private fun selectionSort(array: IntArray) {
-        val n = array.size
-        for (i in 0 until n) {
+        for (i in array.indices) {
             var indexOfMin = i
-            for (j in n - 1 downTo i) {
+            for (j in array.lastIndex downTo i) {
                 if (array[j] < array[indexOfMin]) {
                     indexOfMin = j
                 }

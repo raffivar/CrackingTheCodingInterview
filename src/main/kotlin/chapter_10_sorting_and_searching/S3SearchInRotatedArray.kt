@@ -3,6 +3,11 @@ package chapter_10_sorting_and_searching
 class S3SearchInRotatedArray {
     private fun search(array: IntArray, num: Int): Int {
         val minIndex = findMin(array)
+
+        if (minIndex == -1) {
+            return -1
+        }
+
         return when (num > array[array.lastIndex]) {
             true -> binarySearch(array, num, 0, minIndex - 1)
             false -> binarySearch(array, num, minIndex, array.lastIndex)
@@ -46,8 +51,9 @@ class S3SearchInRotatedArray {
             Pair(mainExample, 14),
             Pair(mainExample, 1),
             Pair(mainExample, 25),
-            Pair(mainExample, 15)
-        )
+            Pair(mainExample, 15),
+            Pair(intArrayOf(15), 15),
+            Pair(intArrayOf(), 1))
 
         for (case in testCases) {
             println("Searching for [${case.second}] in ${Util.arrayAsString(case.first)}")

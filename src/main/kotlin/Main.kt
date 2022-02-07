@@ -1,5 +1,5 @@
-import chapter_10_sorting_and_searching.S3SearchInRotatedArray
+import chapter_10_sorting_and_searching.S4SortedSearchNoSize
 
 fun main() {
-    S3SearchInRotatedArray().runTest()
+    S4SortedSearchNoSize().runTest()
 }

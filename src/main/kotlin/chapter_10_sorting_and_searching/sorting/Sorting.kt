@@ -5,7 +5,9 @@ class Sorting {
         val functions = arrayListOf(this::bubbleSort, this::selectionSort, this::mergeSort, this::quickSort)
         for (function in functions) {
             val testCases = arrayListOf(//Need to re-create cases to have them not-ordered
-                //intArrayOf(),
+                intArrayOf(),
+                intArrayOf(1),
+                intArrayOf(2, 1),
                 intArrayOf(2, 15, 1, 8, 4),
                 intArrayOf(2, 15, 1, 8, 52, 4)
             )
@@ -125,7 +127,9 @@ class Sorting {
      * Memory: O(log(n))
      */
     private fun quickSort(array: IntArray) {
-        quickSort(array, 0, array.lastIndex)
+        if (array.isNotEmpty()) {
+            quickSort(array, 0, array.lastIndex)
+        }
     }
 
     private fun quickSort(array: IntArray, left: Int, right: Int) {

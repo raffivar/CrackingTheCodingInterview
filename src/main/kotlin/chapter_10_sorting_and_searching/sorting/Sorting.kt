@@ -5,6 +5,7 @@ class Sorting {
         val functions = arrayListOf(this::bubbleSort, this::selectionSort, this::mergeSort, this::quickSort)
         for (function in functions) {
             val testCases = arrayListOf(//Need to re-create cases to have them not-ordered
+                //intArrayOf(),
                 intArrayOf(2, 15, 1, 8, 4),
                 intArrayOf(2, 15, 1, 8, 52, 4)
             )
@@ -28,6 +29,15 @@ class Sorting {
     }
 
     /**
+     * Helper method to all but mergeSort
+     */
+    private fun swap(array: IntArray, i: Int, j: Int) {
+        val temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+    }
+
+    /**
      * Runtime [average + worst case]: O(n^2)
      * Memory: O(1)
      */
@@ -37,9 +47,7 @@ class Sorting {
             swap = false
             for (i in 0 until array.size - 1) {
                 if (array[i] > array[i + 1]) {
-                    val temp = array[i]
-                    array[i] = array[i + 1]
-                    array[i + 1] = temp
+                    swap(array, i, i + 1)
                     swap = true
                 }
             }
@@ -52,17 +60,15 @@ class Sorting {
      */
     private fun selectionSort(array: IntArray) {
         val n = array.size
-        var temp: Int
         for (i in 0 until n) {
             var indexOfMin = i
             for (j in n - 1 downTo i) {
-                if (array[j] < array[indexOfMin])
+                if (array[j] < array[indexOfMin]) {
                     indexOfMin = j
+                }
             }
             if (i != indexOfMin) {
-                temp = array[i]
-                array[i] = array[indexOfMin]
-                array[indexOfMin] = temp
+                swap(array, i, indexOfMin)
             }
         }
     }
@@ -120,7 +126,7 @@ class Sorting {
      * Memory: O(log(n))
      */
     private fun quickSort(array: IntArray) {
-        return quickSort(array, 0, array.lastIndex)
+        quickSort(array, 0, array.lastIndex)
     }
 
     private fun quickSort(array: IntArray, left: Int, right: Int) {
@@ -152,11 +158,5 @@ class Sorting {
             }
         }
         return left
-    }
-
-    private fun swap(array: IntArray, i: Int, j: Int) {
-        val temp = array[i]
-        array[i] = array[j]
-        array[j] = temp
     }
 }

@@ -18,10 +18,10 @@ class S3SearchInRotatedArray {
         if (array.isEmpty()) {
             return -1
         }
-        var minIndex = 0
+        val minIndex = 0
         for (i in array.indices) {
             if (array[i] < array[minIndex]) {
-                minIndex = i
+                return i
             }
         }
         return minIndex
@@ -61,6 +61,7 @@ class S3SearchInRotatedArray {
                 -1 -> println("Not found")
                 else -> println("Found in index [$result]")
             }
+            println("-----------------------------------------------------------------------")
         }
     }
 }

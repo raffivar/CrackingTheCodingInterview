@@ -29,7 +29,7 @@ class S4SortedSearchNoSize {
             mid = (low + high) / 2
             when {
                 listy[mid] < num -> low = mid + 1
-                listy[mid] > num || listy[mid] == -1 /*Added condition*/ -> high = mid - 1
+                listy[mid] > num || (listy[mid] == -1 /*Added condition*/) -> high = mid - 1
                 else -> return mid
             }
         }

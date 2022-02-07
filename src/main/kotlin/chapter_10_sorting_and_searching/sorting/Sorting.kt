@@ -47,7 +47,7 @@ class Sorting {
         var swap = true
         while (swap) {
             swap = false
-            for (i in 0 until array.size - 1) {
+            for (i in 0 until array.lastIndex) {
                 if (array[i] > array[i + 1]) {
                     swap(array, i, i + 1)
                     swap = true

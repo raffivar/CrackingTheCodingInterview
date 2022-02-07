@@ -51,7 +51,7 @@ class Searching {
     }
 
     private fun binarySearchRecursive(array: IntArray, num: Int, low: Int, high: Int): Int {
-        if (low > high) { //not found
+        if (low > high) {
             return -1
         }
 

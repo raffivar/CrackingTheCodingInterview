@@ -1,5 +1,5 @@
-import chapter_10_sorting_and_searching.S4SortedSearchNoSize
+import chapter_10_sorting_and_searching.S5SparseSearch
 
 fun main() {
-    S4SortedSearchNoSize().runTest()
+    S5SparseSearch().runTest()
 }

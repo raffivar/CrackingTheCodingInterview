@@ -17,33 +17,19 @@ class S5SparseSearch {
     private fun binarySearch(word: String, array: ArrayList<String>): Int {
         var low = 0
         var high = array.lastIndex
-        while (low != high) {
-            low = (low + high) / 2
-            high = low + 1
-            while (low >= 0 && array[low] == "") {
-                low--
-            }
-            while (high < array.size && array[high] == "") {
-                high++
+        while (low <= high) {
+            var i = (low + high) / 2
+            while (i < high && array[i] == "") {
+                i++
             }
             when {
-                low < 0 && high > array.lastIndex -> return -1 //no words in array
-                low < 0 || word > array[high] -> { //no words in left, or word right of high
-                    low = high
-                    high = (low + high) / 2
-                }
-                high > array.lastIndex || word < array[low] -> { //no words in right, or word left of low
-                    high = low
-                    low /= 2
-                }
-                word == array[low] -> return low
-                word == array[high] -> return high
+                array[i] == "" -> high = i - 1
+                array[i] > word -> high = i - 1
+                array[i] < word -> low = i + 1
+                else -> return i
             }
         }
-        return when (low in 0..array.lastIndex && array[low] == word) { //final check
-            true -> low
-            false -> -1
-        }
+        return -1
     }
 
     fun runTest() {
@@ -55,7 +41,8 @@ class S5SparseSearch {
             Pair("sex", example),
             Pair("dad", arrayListOf("", "", "", "", "", "", "", "", "", "", "dad", "", "")),
             Pair("word", arrayListOf("", "", "", "", "", "", "", "", "", "", "", "", "")),
-            Pair("woof", arrayListOf("woof"))
+            Pair("woof", arrayListOf("woof")),
+            Pair("test", arrayListOf())
         )
         for (function in functions) {
             println("${function.name}:")

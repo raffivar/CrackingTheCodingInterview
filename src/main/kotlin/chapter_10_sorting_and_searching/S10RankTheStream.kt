@@ -29,9 +29,10 @@ class S10RankTheStream {
             Util.arrayAsString(case)
             for (num in case) {
                 trace(num)
+            }
+            for (num in case) {
                 println("Rank of current $num: ${getRankOfNumber(num)}")
             }
         }
     }
-
 }

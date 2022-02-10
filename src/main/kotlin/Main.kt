@@ -1,5 +1,5 @@
-import chapter_10_sorting_and_searching.S5SparseSearch
+import chapter_10_sorting_and_searching.S2GroupAnagrams
 
 fun main() {
-    S5SparseSearch().runTest()
+    S2GroupAnagrams().runTest()
 }

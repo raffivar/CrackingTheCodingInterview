@@ -1,5 +1,5 @@
-import chapter_10_sorting_and_searching.S2GroupAnagrams
+import chapter_10_sorting_and_searching.S9SortedMatrixSearch
 
 fun main() {
-    S2GroupAnagrams().runTest()
+    S9SortedMatrixSearch().runTest()
 }

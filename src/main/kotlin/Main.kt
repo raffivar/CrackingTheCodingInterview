@@ -1,5 +1,5 @@
-import chapter_10_sorting_and_searching.S9SortedMatrixSearch
+import chapter_10_sorting_and_searching.S11PeaksAndValleys
 
 fun main() {
-    S9SortedMatrixSearch().runTest()
+    S11PeaksAndValleys().runTest()
 }

@@ -46,7 +46,7 @@ class Searching {
          * Runtime: O(log(n))
          * Memory: O(log(n))
          */
-        fun binarySearchRecursive(array: IntArray, num: Int): Int {
+        private fun binarySearchRecursive(array: IntArray, num: Int): Int {
             return binarySearchRecursive(array, num, 0, array.lastIndex)
         }
 

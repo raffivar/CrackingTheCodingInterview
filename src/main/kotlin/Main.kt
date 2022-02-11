@@ -1,5 +1,5 @@
-import chapter_10_sorting_and_searching.S10RankTheStream
+import chapter_10_sorting_and_searching.S11PeaksAndValleys
 
 fun main() {
-    S10RankTheStream().runTest()
+    S11PeaksAndValleys().runTest()
 }

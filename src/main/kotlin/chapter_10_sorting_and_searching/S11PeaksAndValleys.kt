@@ -5,32 +5,22 @@ import chapter_10_sorting_and_searching.sorting.Sorting
 class S11PeaksAndValleys {
     private fun peaksAndValleys(array: IntArray) {
         Sorting.quickSort(array)
-        val result = IntArray(array.size)
-        var k = 0
-        var i = 0
-        var j = array.lastIndex
-        while (i <= j) {
-            result[k] = array[j]
-            if (k < array.lastIndex) {
-                result[k + 1] = array[i]
-            }
-            k += 2
-            i++
-            j--
+        val n = when (array.size % 2) {
+            0 -> array.lastIndex
+            else -> array.lastIndex - 1
         }
-        copyArray(array, result)
-    }
-
-    private fun copyArray(dest: IntArray, src: IntArray) {
-        for (i in 0..dest.lastIndex) {
-            dest[i] = src[i]
+        var i = 0
+        while (i < n) {
+            Util.swap(array, i, i + 1)
+            i += 2
         }
     }
 
     fun runTest() {
         val testCases = arrayListOf(
             intArrayOf(1, 2, 3, 4, 5),
-            intArrayOf(1, 2, 3, 4, 5, 6)
+            intArrayOf(1, 2, 3, 4, 5, 6),
+            intArrayOf(5, 3, 1, 2, 3)
         )
         for (case in testCases) {
             println("before: ${Util.arrayAsString(case)}")

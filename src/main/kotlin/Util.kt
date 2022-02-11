@@ -10,6 +10,12 @@ class Util {
             array[j] = temp
         }
 
+        fun swap(array: IntArray, i: Int, j: Int) {
+            val temp = array[i]
+            array[i] = array[j]
+            array[j] = temp
+        }
+
         fun <T> Collection<T>.asString(): String {
             val sb = StringBuilder()
             for (element in this) {

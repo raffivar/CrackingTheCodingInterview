@@ -1,5 +1,6 @@
 package chapter_10_sorting_and_searching
 
+import chapter_10_sorting_and_searching.searching.Searching
 import java.awt.Point
 
 class S9SortedMatrixSearch {
@@ -14,28 +15,11 @@ class S9SortedMatrixSearch {
             when {
                 midArray[0] > num -> high = mid - 1
                 midArray[midArray.lastIndex] < num -> low = mid + 1
-                else -> return Point(mid, binarySearch(matrix[mid], num))
+                else -> return Point(mid, Searching.binarySearch(matrix[mid], num))
             }
         }
 
         return Point(-1, -1)
-    }
-
-    private fun binarySearch(array: IntArray, num: Int): Int {
-        var low = 0
-        var high = array.lastIndex
-        var mid: Int
-
-        while (low <= high) {
-            mid = (low + high) / 2
-            when {
-                array[mid] < num -> low = mid + 1
-                array[mid] > num -> high = mid - 1
-                else -> return mid
-            }
-        }
-
-        return -1
     }
 
     fun runTest() {

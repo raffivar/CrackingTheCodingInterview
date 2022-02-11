@@ -1,18 +1,14 @@
 package chapter_10_sorting_and_searching
 
-import chapter_10_sorting_and_searching.sorting.Sorting
-
 class S11PeaksAndValleys {
     private fun peaksAndValleys(array: IntArray) {
-        Sorting.quickSort(array)
-        val n = when (array.size % 2) {
-            0 -> array.lastIndex
-            else -> array.lastIndex - 1
-        }
         var i = 0
-        while (i < n) {
-            Util.swap(array, i, i + 1)
-            i += 2
+        while (i < array.lastIndex - 1) {
+            when {
+                i % 2 == 0 && array[i] < array[i + 1] -> Util.swap(array, i, i + 1)
+                i % 2 != 0 && array[i] > array[i + 1] -> Util.swap(array, i, i + 1)
+            }
+            i++
         }
     }
 

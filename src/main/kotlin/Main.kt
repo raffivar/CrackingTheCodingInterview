@@ -1,5 +1,5 @@
-import chapter_10_sorting_and_searching.S9SortedMatrixSearch
+import chapter_13_java.S2ReturnFromFinally
 
 fun main() {
-    S9SortedMatrixSearch().runTest()
+    S2ReturnFromFinally().runTest()
 }

@@ -1,6 +1,6 @@
 package chapter_13_java
 
-class S1toS8 {
+class S1_S8 {
     /**
      * S1 - Private Constructor:
      * Q: In terms of inheritance, what is the effect of keeping a constructor private?

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class S7LambdaExpressionsJava {
-    class Country {
+    static class Country {
         int population;
         String continent;
 
@@ -33,19 +33,10 @@ public class S7LambdaExpressionsJava {
 
     int getPopulationLambda(List<Country> countries, String continent) {
         //Filter countries
-        Stream<Country> sublist = countries.stream().filter(
-                country -> { return country.getContinent().equals(continent); }
-        );
-
+        Stream<Country> sublist = countries.stream().filter(country -> country.getContinent().equals(continent));
         //Convert to list of populations
-        Stream<Integer> populations = sublist.map(
-                c -> c.getPopulation()
-        );
-
-        //Sum list
-        int population = populations.reduce(0, (a, b) -> a + b);
-
-        //Return population
-        return population;
+        Stream<Integer> populations = sublist.map(Country::getPopulation);
+        //Return the sum
+        return populations.reduce(0, Integer::sum);
     }
 }

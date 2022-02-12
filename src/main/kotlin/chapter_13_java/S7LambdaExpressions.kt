@@ -27,16 +27,10 @@ class S7LambdaExpressions {
     fun getPopulationLambda(countries: List<Country>, continent: String): Int {
         //Filter countries
         val sublist = countries.stream().filter { country: Country -> country.continent == continent }
-
         //Convert to list of populations
         val populations = sublist.map { c: Country -> c.population }
-
-        //Sum list
-        val population = populations.reduce(0) { a: Int, b: Int -> a + b }
-
-        //Return population
-        return population
+        //Return the sum
+        return populations.reduce(0) { a: Int, b: Int -> a + b }
     }
-
 }
 

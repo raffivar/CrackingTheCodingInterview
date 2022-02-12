@@ -20,19 +20,12 @@ public class S8LambdaRandomJava {
 
     List<Integer> getRandomSubsetLambda1(List<Integer> list) {
         Random random = new Random();
-        List<Integer> subset = list.stream().filter(
-                k -> { return random.nextBoolean(); }
-        ).collect(Collectors.toList());
-        return subset;
+        return list.stream().filter(k -> random.nextBoolean()).collect(Collectors.toList());
     }
 
     Random random = new Random();
-    Predicate<Object> flipCoin = o -> {
-        return random.nextBoolean();
-    };
-
+    Predicate<Object> flipCoin = o -> random.nextBoolean();
     List<Integer> getRandomSubsetLambda2(List<Integer> list) {
-        List<Integer> subset = list.stream().filter(flipCoin).collect(Collectors.toList());
-        return subset;
+        return list.stream().filter(flipCoin).collect(Collectors.toList());
     }
 }

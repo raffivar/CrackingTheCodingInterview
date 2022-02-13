@@ -6,30 +6,20 @@ class S4TicTacToe {
         val horizontal = Array(n + 1) { true }
         val vertical = Array(n + 1) { true }
         val diagonal = Array(2) { true }
-
         for (i in 0..n) {
             for (j in 0..n) {
-                when (val value = matrix[i][j]) {
-                    0 -> {
-                        vertical[j] = false
-                        horizontal[i] = false
-                        diagonal[0] = false
-                        diagonal[1] = false
-                    }
-                    else -> {
-                        if (vertical[j] && i < n && matrix[i + 1][j] != value) {
-                            vertical[j] = false
-                        }
-                        if (horizontal[i] && j < n && matrix[i][j + 1] != value) {
-                            horizontal[i] = false
-                        }
-                        if (diagonal[0] && i == j && i < n && j < n && matrix[i + 1][j + 1] != value) {
-                            diagonal[0] = false
-                        }
-                        if (diagonal[1] && n - i == j && i < n && j > 0 && matrix[i + 1][j - 1] != value) {
-                            diagonal[1] = false
-                        }
-                    }
+                val value = matrix[i][j]
+                if (vertical[j] && i < n && (value == 0 || matrix[i + 1][j] != value)) {
+                    vertical[j] = false
+                }
+                if (horizontal[i] && j < n && (value == 0 || matrix[i][j + 1] != value)) {
+                    horizontal[i] = false
+                }
+                if (diagonal[0] && i < n && j < n && i == j && (value == 0 || matrix[i + 1][j + 1] != value)) {
+                    diagonal[0] = false
+                }
+                if (diagonal[1] && i < n && j > 0 && n - i == j && (value == 0 || matrix[i + 1][j - 1] != value)) {
+                    diagonal[1] = false
                 }
             }
         }

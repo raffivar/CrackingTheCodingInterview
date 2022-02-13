@@ -1,5 +1,5 @@
-import chapter_16_moderate.S11DivingBoard
+import chapter_16_moderate.S15MasterMind
 
 fun main() {
-    S11DivingBoard().runTest()
+    S15MasterMind().runTest()
 }

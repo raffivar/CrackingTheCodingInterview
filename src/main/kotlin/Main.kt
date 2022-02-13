@@ -1,5 +1,5 @@
-import chapter_16_moderate.S6SmallestDifference
+import chapter_16_moderate.S11DivingBoard
 
 fun main() {
-    S6SmallestDifference().runTest()
+    S11DivingBoard().runTest()
 }

@@ -1,5 +1,5 @@
-import chapter_16_moderate.S1NumberSwapper
+import chapter_16_moderate.S2WordFrequencies
 
 fun main() {
-    S1NumberSwapper().runTest()
+    S2WordFrequencies().runTest()
 }

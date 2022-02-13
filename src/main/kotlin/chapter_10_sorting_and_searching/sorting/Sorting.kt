@@ -2,8 +2,6 @@ package chapter_10_sorting_and_searching.sorting
 
 class Sorting {
     companion object {
-
-
         fun sort() {
             val functions = arrayListOf(this::bubbleSort, this::selectionSort, this::mergeSort, this::quickSort)
             for (function in functions) {
@@ -24,6 +22,10 @@ class Sorting {
                 }
                 println()
             }
+        }
+
+        fun sort(array: IntArray) {
+            quickSort(array)
         }
 
         private fun printArray(array: IntArray) {

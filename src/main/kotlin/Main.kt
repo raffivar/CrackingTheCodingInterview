@@ -1,6 +1,5 @@
-import chapter_16_moderate.S4TicTacToe
-import chapter_16_moderate.S5FactorialZero
+import chapter_16_moderate.S6SmallestDifference
 
 fun main() {
-    S5FactorialZero().runTest()
+    S6SmallestDifference().runTest()
 }

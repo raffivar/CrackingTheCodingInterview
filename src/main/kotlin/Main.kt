@@ -1,5 +1,5 @@
-import chapter_16_moderate.S3Intersection
+import chapter_16_moderate.S4TicTacToe
 
 fun main() {
-    S3Intersection().runTest()
+    S4TicTacToe().runTest()
 }

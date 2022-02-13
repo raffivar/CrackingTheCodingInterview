@@ -1,5 +1,5 @@
-import chapter_13_java.S2ReturnFromFinally
+import chapter_16_moderate.S1NumberSwapper
 
 fun main() {
-    S2ReturnFromFinally().runTest()
+    S1NumberSwapper().runTest()
 }

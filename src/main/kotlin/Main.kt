@@ -1,5 +1,5 @@
-import chapter_16_moderate.S2WordFrequencies
+import chapter_16_moderate.S3Intersection
 
 fun main() {
-    S2WordFrequencies().runTest()
+    S3Intersection().runTest()
 }

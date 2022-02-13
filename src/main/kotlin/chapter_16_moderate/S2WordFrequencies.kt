@@ -35,7 +35,6 @@ class S2WordFrequencies {
         return table
     }
 
-
     private fun getFrequencyRepeatable(book: Array<String>, word: String): Int {
         val trimmedWord = word.trim().lowercase(Locale.getDefault())
         return table[trimmedWord] ?: return 0

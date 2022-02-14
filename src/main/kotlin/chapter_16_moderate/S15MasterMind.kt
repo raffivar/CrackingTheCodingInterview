@@ -12,7 +12,7 @@ class S15MasterMind {
             sb.append(colors.random())
         }
         val secret = sb.toString()
-        println("secret: $secret")
+        //println("secret: $secret")
         do {
             println("Enter your guess:")
             val guess = readln()
@@ -27,7 +27,7 @@ class S15MasterMind {
                 false -> println("input is invalid")
             }
         } while (!guess.equals(secret, true))
-        print("You guessed the word!")
+        print("Good job! The code was $secret!")
     }
 
     private fun isInputValid(input: String): Boolean {

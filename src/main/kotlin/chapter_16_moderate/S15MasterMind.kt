@@ -11,8 +11,7 @@ class S15MasterMind {
         for (i in 1..n) {
             sb.append(colors.random())
         }
-        //val secret = sb.toString()
-        val secret = "GBGG"
+        val secret = sb.toString()
         println("secret: $secret")
         do {
             println("Enter your guess:")
@@ -48,25 +47,27 @@ class S15MasterMind {
     private fun calculateHits(secret: String, guess: String): Array<HitValue> {
         //Init all to be miss
         val result = Array(secret.length) { HitValue.Miss }
-        val secretMap = HashMap<Int, Char>()
+        val secretValuesToCheck = HashMap<Int, Char>()
+        val guessIndicesToCheck = HashSet<Int>()
 
         //Take care of hits
         for ((i, char) in secret.withIndex()) {
             when (secret[i] == guess[i]) {
                 true -> result[i] = HitValue.Hit
-                false -> secretMap[i] = char
+                false -> {
+                    guessIndicesToCheck.add(i)
+                    secretValuesToCheck[i] = char
+                }
             }
         }
 
         //Take care of pseudo hits
-        for (i in 0..guess.lastIndex) {
-            if (result[i] != HitValue.Hit) {
-                for (key in secretMap.keys) {
-                    if (guess[i] == secretMap[key]) {
-                        result[i] = HitValue.PseudoHit
-                        secretMap.remove(key)
-                        break
-                    }
+        for (i in guessIndicesToCheck) {
+            for (key in secretValuesToCheck.keys) {
+                if (guess[i] == secretValuesToCheck[key]) {
+                    result[i] = HitValue.PseudoHit
+                    secretValuesToCheck.remove(key)
+                    break
                 }
             }
         }

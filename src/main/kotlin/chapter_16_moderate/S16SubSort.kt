@@ -20,24 +20,34 @@ class S16SubSort {
         }
 
         var low = 0
-        while (low < left && array[low] <= array[left]) {
-            low++
-        }
-
         var high = array.lastIndex
-        while (high > right && array[high] >= array[right]) {
-            high--
+
+        if (left == -1 && right == -1) {
+            low = -1
+            high = -1
+        } else {
+            while (low < left && array[low] <= array[left]) {
+                low++
+            }
+            while (high > right && array[high] >= array[right]) {
+                high--
+            }
         }
 
         return Pair(low, high)
     }
 
     fun runTest() {
-        val testCases = arrayListOf(intArrayOf(1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19))
+        val testCases = arrayListOf(
+            intArrayOf(1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19),
+            intArrayOf(10, 11, 7, 12, 6, 7),
+            intArrayOf(1, 2, 12, 7),
+            intArrayOf(1, 2, 4, 7)
+        )
         for (case in testCases) {
             println(Util.arrayAsString(case))
             val result = getSubSortIndices(case)
-            println("[${result.first}, ${result.second}]")
+            println("[${result.first}, ${result.second}]\n")
         }
     }
 }

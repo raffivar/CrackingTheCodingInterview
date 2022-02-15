@@ -1,5 +1,5 @@
-import chapter_16_moderate.S20T9
+import chapter_16_moderate.S16SubSort
 
 fun main() {
-    S20T9().runTest()
+    S16SubSort().runTest()
 }

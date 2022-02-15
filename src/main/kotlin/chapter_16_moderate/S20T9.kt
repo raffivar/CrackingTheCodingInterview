@@ -37,7 +37,7 @@ class S20T9 {
     }
 
     fun runTest() {
-        val testCases = arrayListOf("8733", "7363")
+        val testCases = arrayListOf("2", "233", "8733", "7363")
         for (case in testCases) {
             println("$case:")
             for ((i, word) in getPossibleWords(case).withIndex()) {

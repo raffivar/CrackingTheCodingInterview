@@ -1,5 +1,5 @@
-import chapter_16_moderate.S15MasterMind
+import chapter_16_moderate.S20T9
 
 fun main() {
-    S15MasterMind().runTest()
+    S20T9().runTest()
 }

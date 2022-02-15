@@ -1,5 +1,5 @@
-import chapter_16_moderate.S16SubSort
+import chapter_16_moderate.S17ContiguousSequence
 
 fun main() {
-    S16SubSort().runTest()
+    S17ContiguousSequence().runTest()
 }

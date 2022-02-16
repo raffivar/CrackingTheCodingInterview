@@ -47,5 +47,13 @@ class Util {
             }
             return "[${sb.removeSuffix(", ")}]"
         }
+
+        fun sumArray(array: IntArray): Int {
+            var sum = 0
+            for (num in array) {
+                sum += num
+            }
+            return sum
+        }
     }
 }

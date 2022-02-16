@@ -1,5 +1,5 @@
-import chapter_16_moderate.S18PatternMatching
+import chapter_16_moderate.S21SumSwap
 
 fun main() {
-    S18PatternMatching().runTest()
+    S21SumSwap().runTest()
 }

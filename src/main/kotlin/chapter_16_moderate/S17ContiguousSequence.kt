@@ -5,11 +5,9 @@ class S17ContiguousSequence {
         if (array.isEmpty()) {
             return null
         }
-
-        val n = array.size
         val sumArray = ArrayList<Int>()
         var right = 0
-        for (i in 0 until n) {
+        for (i in 0..array.lastIndex) {
             when (i) {
                 0 -> { //first cycle
                     for (num in array) {

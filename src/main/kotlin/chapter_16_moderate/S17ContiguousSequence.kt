@@ -19,8 +19,8 @@ class S17ContiguousSequence {
         var right = sumArray.size
         for (i in 1..array.lastIndex) {
             var j = 0
-            while (j + i < array.size) {
-                val sum = sumArray[left + j] + array[j + i]
+            while (i + j < array.size) {
+                val sum = sumArray[left + j] + array[i + j]
                 if (sum > maxSum) {
                     maxSum = sum
                 }
@@ -30,7 +30,6 @@ class S17ContiguousSequence {
             left = right
             right = sumArray.size
         }
-
         return maxSum
     }
 

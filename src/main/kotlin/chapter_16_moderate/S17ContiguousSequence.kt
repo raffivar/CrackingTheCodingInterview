@@ -5,9 +5,13 @@ class S17ContiguousSequence {
         if (array.isEmpty()) {
             return null
         }
+        var maxSum = Int.MIN_VALUE
         val sumArray = ArrayList<Int>()
-        //Copy the values themselves (each one counts as a sum by it's own)
+        //Copy the values themselves (each one counts as a sum by its own)
         for (num in array) {
+            if (num > maxSum) {
+                maxSum = num
+            }
             sumArray.add(num)
         }
         //The rest of the calculations (more than 1 element per sum)
@@ -16,18 +20,15 @@ class S17ContiguousSequence {
         for (i in 1..array.lastIndex) {
             var j = 0
             while (j < right - left && j + i < array.size) {
-                sumArray.add(sumArray[left + j] + array[j + i])
+                val sum = sumArray[left + j] + array[j + i]
+                if (sum > maxSum) {
+                    maxSum = sum
+                }
+                sumArray.add(sum)
                 j++
             }
             left = right
             right = sumArray.size
-        }
-
-        var maxSum = Int.MIN_VALUE
-        for (sum in sumArray) {
-            if (sum > maxSum) {
-                maxSum = sum
-            }
         }
 
         return maxSum

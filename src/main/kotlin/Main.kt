@@ -1,5 +1,5 @@
-import chapter_16_moderate.S17ContiguousSequence
+import chapter_16_moderate.S18PatternMatching
 
 fun main() {
-    S17ContiguousSequence().runTest()
+    S18PatternMatching().runTest()
 }

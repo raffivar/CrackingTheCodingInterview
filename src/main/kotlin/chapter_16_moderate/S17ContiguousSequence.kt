@@ -3,30 +3,36 @@ package chapter_16_moderate
 class S17ContiguousSequence {
     private fun getMaxSum(array: IntArray): Int {
         val n = array.size
-        val sumMap = HashMap<Int, ArrayList<Int>>()
+
+        val sumArray = ArrayList<Int>()
+        var left = 0
+        var right = 0
+
         for (i in 1..n) {
-            sumMap[i] = arrayListOf()
-            val previousSums = sumMap[i - 1]
-            if (previousSums == null) { //first cycle
+            if (i == 1) { //first cycle
                 for (num in array) {
-                    sumMap[i]!!.add(num)
+                    sumArray.add(num)
                 }
+                left = 0
+                right = sumArray.size
             } else {
-                for ((j, num) in previousSums.withIndex()) {
+                val delta = right - left
+                for (j in 0..delta) {
                     if (j + i - 1 < array.size) {
-                        sumMap[i]!!.add(num + array[j + i - 1])
+                        sumArray.add(sumArray[left + j] + array[j + i - 1])
                     }
                 }
+                left = right
+                right = sumArray.size
             }
         }
         var maxSum = Int.MIN_VALUE
-        for (sums in sumMap.values) {
-            for (sum in sums) {
-                if (sum > maxSum) {
-                    maxSum = sum
-                }
+        for (sum in sumArray) {
+            if (sum > maxSum) {
+                maxSum = sum
             }
         }
+
         return maxSum
     }
 

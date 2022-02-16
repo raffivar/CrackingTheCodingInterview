@@ -1,7 +1,11 @@
 package chapter_16_moderate
 
 class S17ContiguousSequence {
-    private fun getMaxSum(array: IntArray): Int {
+    private fun getMaxSum(array: IntArray): Int? {
+        if (array.isEmpty()) {
+            return null
+        }
+
         val n = array.size
         val sumArray = ArrayList<Int>()
         var right = 0
@@ -35,10 +39,15 @@ class S17ContiguousSequence {
     }
 
     fun runTest() {
-        val testCases = arrayListOf(intArrayOf(2, -8, 3, -2, 4, -10))
+        val testCases = arrayListOf(
+            intArrayOf(2, -8, 3, -2, 4, -10),
+            intArrayOf(2),
+            intArrayOf()
+        )
         for (case in testCases) {
             println(Util.arrayAsString(case))
             println(getMaxSum(case))
+            println("--------------------------------------")
         }
     }
 }

@@ -2,29 +2,32 @@ package chapter_16_moderate
 
 class S17ContiguousSequence {
     private fun getMaxSum(array: IntArray): Int {
-        val arraySum = Util.sumArray(array)
-        val sums = arrayListOf<Int>()
-        populateSums(sums, array, arraySum)
-        var max = Int.MIN_VALUE
-        for (sum in sums) {
-            if (sum > max) {
-                max = sum
+        val n = array.size
+        val sumMap = HashMap<Int, ArrayList<Int>>()
+        for (i in 1..n) {
+            sumMap[i] = arrayListOf()
+            val previousSums = sumMap[i - 1]
+            if (previousSums == null) { //first cycle
+                for (num in array) {
+                    sumMap[i]!!.add(num)
+                }
+            } else {
+                for ((j, num) in previousSums.withIndex()) {
+                    if (j + i - 1 < array.size) {
+                        sumMap[i]!!.add(num + array[j + i - 1])
+                    }
+                }
             }
         }
-        return max
-    }
-
-    private fun populateSums(sums: ArrayList<Int>, array: IntArray, sum: Int) {
-        if (array.isEmpty()) {
-            return
+        var maxSum = Int.MIN_VALUE
+        for (sums in sumMap.values) {
+            for (sum in sums) {
+                if (sum > maxSum) {
+                    maxSum = sum
+                }
+            }
         }
-        sums.add(sum)
-        val sumLeft = sum - array[array.lastIndex]
-        val left = array.slice(0 until array.lastIndex).toIntArray()
-        populateSums(sums, left, sumLeft)
-        val sumRight = sum - array[0]
-        val right = array.slice(1..array.lastIndex).toIntArray()
-        populateSums(sums, right, sumRight)
+        return maxSum
     }
 
     fun runTest() {

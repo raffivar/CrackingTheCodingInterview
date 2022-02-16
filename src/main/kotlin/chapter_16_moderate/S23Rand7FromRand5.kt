@@ -10,8 +10,7 @@ class S23Rand7FromRand5 {
                 in 0..6 -> result = newValue
                 else -> break
             }
-            val ifContinue = rand5() + rand5()
-        } while (ifContinue in 0..4) //0..4 -> continue // 5..9 -> don't
+        } while (rand5() + rand5() in 0..4) //flip coin [0..4 = continue, 5..9 = break]
 
         return result
     }

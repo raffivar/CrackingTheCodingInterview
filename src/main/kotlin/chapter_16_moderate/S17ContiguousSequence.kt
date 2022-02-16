@@ -6,24 +6,21 @@ class S17ContiguousSequence {
             return null
         }
         val sumArray = ArrayList<Int>()
-        var right = 0
-        for (i in 0..array.lastIndex) {
-            when (i) {
-                0 -> { //first cycle
-                    for (num in array) {
-                        sumArray.add(num)
-                    }
-                }
-                else -> {
-                    val left = right
-                    right = sumArray.size
-                    var j = 0
-                    while (j < right - left && j + i < array.size) {
-                        sumArray.add(sumArray[left + j] + array[j + i])
-                        j++
-                    }
-                }
+        //Copy the values themselves (each one counts as a sum by it's own)
+        for (num in array) {
+            sumArray.add(num)
+        }
+        //The rest of the calculations (more than 1 element per sum)
+        var left = 0
+        var right = sumArray.size
+        for (i in 1..array.lastIndex) {
+            var j = 0
+            while (j < right - left && j + i < array.size) {
+                sumArray.add(sumArray[left + j] + array[j + i])
+                j++
             }
+            left = right
+            right = sumArray.size
         }
 
         var maxSum = Int.MIN_VALUE
@@ -39,6 +36,7 @@ class S17ContiguousSequence {
     fun runTest() {
         val testCases = arrayListOf(
             intArrayOf(2, -8, 3, -2, 4, -10),
+            intArrayOf(2, 3),
             intArrayOf(2),
             intArrayOf()
         )

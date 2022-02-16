@@ -15,10 +15,10 @@ class S17ContiguousSequence {
                 else -> {
                     val left = right
                     right = sumArray.size
-                    for (j in 0..right - left) {
-                        if (j + i < array.size) {
-                            sumArray.add(sumArray[left + j] + array[j + i])
-                        }
+                    var j = 0
+                    while (j < right - left && j + i < array.size) {
+                        sumArray.add(sumArray[left + j] + array[j + i])
+                        j++
                     }
                 }
             }

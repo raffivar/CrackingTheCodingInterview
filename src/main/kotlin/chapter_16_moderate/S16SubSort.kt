@@ -3,33 +3,33 @@ package chapter_16_moderate
 class S16SubSort {
     private fun getSubSortIndices(array: IntArray): Pair<Int, Int>? {
         //Search first anomaly from the left
-        var i = 0
-        while (i < array.lastIndex && array[i + 1] > array[i]) {
-            i++
+        var leftAnomalyIndex = 0
+        while (leftAnomalyIndex < array.lastIndex && array[leftAnomalyIndex + 1] > array[leftAnomalyIndex]) {
+            leftAnomalyIndex++
         }
 
         //Determine if anomaly found
-        when (i == array.lastIndex) {
+        when (leftAnomalyIndex == array.lastIndex) {
             true -> return null //Anomaly not found
-            false -> i++ //Anomaly found
+            false -> leftAnomalyIndex++ //Anomaly found
         }
 
         //Search first anomaly from the right
-        var j = array.lastIndex
-        while (array[j - 1] < array[j]) { //Will stop when getting to left anomaly
-            j--
+        var rightAnomalyIndex = array.lastIndex
+        while (array[rightAnomalyIndex - 1] < array[rightAnomalyIndex]) { //Will stop when getting to left anomaly
+            rightAnomalyIndex--
         }
-        j--
+        rightAnomalyIndex--
 
-        //Find closet element from below
+        //Find closet element from below to left anomaly
         var left = 0
-        while (array[left] < array[i]) {
+        while (array[left] < array[leftAnomalyIndex]) {
             left++
         }
 
-        //find closest element from above
+        //find closest element from above to right anomaly
         var right = array.lastIndex
-        while (array[right] > array[j]) {
+        while (array[right] > array[rightAnomalyIndex]) {
             right--
         }
 

@@ -1,5 +1,5 @@
-import chapter_16_moderate.S21SumSwap
+import chapter_16_moderate.S23Rand7FromRand5
 
 fun main() {
-    S21SumSwap().runTest()
+    S23Rand7FromRand5().runTest()
 }

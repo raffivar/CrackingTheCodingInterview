@@ -5,9 +5,9 @@ class S17ContiguousSequence {
         val n = array.size
         val sumArray = ArrayList<Int>()
         var right = 0
-        for (i in 1..n) {
+        for (i in 0 until n) {
             when (i) {
-                1 -> { //first cycle
+                0 -> { //first cycle
                     for (num in array) {
                         sumArray.add(num)
                     }
@@ -16,8 +16,8 @@ class S17ContiguousSequence {
                     val left = right
                     right = sumArray.size
                     for (j in 0..right - left) {
-                        if (j + i - 1 < array.size) {
-                            sumArray.add(sumArray[left + j] + array[j + i - 1])
+                        if (j + i < array.size) {
+                            sumArray.add(sumArray[left + j] + array[j + i])
                         }
                     }
                 }

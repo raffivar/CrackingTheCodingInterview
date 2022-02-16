@@ -19,7 +19,7 @@ class S17ContiguousSequence {
         var right = sumArray.size
         for (i in 1..array.lastIndex) {
             var j = 0
-            while (j < right - left && j + i < array.size) {
+            while (j + i < array.size) {
                 val sum = sumArray[left + j] + array[j + i]
                 if (sum > maxSum) {
                     maxSum = sum
@@ -37,7 +37,7 @@ class S17ContiguousSequence {
     fun runTest() {
         val testCases = arrayListOf(
             intArrayOf(2, -8, 3, -2, 4, -10),
-            intArrayOf(2, 3),
+            intArrayOf(2, 3, -4, 21),
             intArrayOf(2),
             intArrayOf()
         )

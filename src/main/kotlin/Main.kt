@@ -1,5 +1,5 @@
-import chapter_16_moderate.S23Rand7FromRand5
+import chapter_16_moderate.S16SubSort
 
 fun main() {
-    S23Rand7FromRand5().runTest()
+    S16SubSort().runTest()
 }

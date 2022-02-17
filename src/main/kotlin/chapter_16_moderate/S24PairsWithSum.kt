@@ -3,7 +3,13 @@ package chapter_16_moderate
 class S24PairsWithSum {
     private fun getIndices(array: IntArray, sum: Int): ArrayList<Pair<Int, Int>> {
         val result = ArrayList<Pair<Int, Int>>()
-
+        for (i in 0..array.lastIndex) {
+            for (j in i + 1..array.lastIndex) {
+                if (array[i] + array[j] == sum) {
+                    result.add(Pair(array[i], array[j]))
+                }
+            }
+        }
         return result
     }
 
@@ -16,7 +22,7 @@ class S24PairsWithSum {
             println("array: ${Util.arrayAsString(case.first)}")
             val result = getIndices(case.first, case.second)
             for (pair in result) {
-                print("[${pair.first}, ${pair.second}]")
+                print("[${pair.first},${pair.second}] ")
             }
             println("\n-----------------------------------------------------")
         }

@@ -15,20 +15,18 @@ class S17ContiguousSequence {
             sumArray.add(num)
         }
         //The rest of the calculations (more than 1 element per sum)
-        var start = 0
-        var end = sumArray.size
+        var startIndex = 0
         for (i in 1..array.lastIndex) {
             var j = 0
             while (i + j < array.size) {
-                val sum = sumArray[start + j] + array[i + j]
+                val sum = sumArray[startIndex + j] + array[i + j]
                 if (sum > maxSum) {
                     maxSum = sum
                 }
                 sumArray.add(sum)
                 j++
             }
-            start = end
-            end = sumArray.size
+            startIndex = sumArray.size - j
         }
         return maxSum
     }

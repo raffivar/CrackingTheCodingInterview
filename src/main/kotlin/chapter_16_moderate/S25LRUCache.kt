@@ -26,7 +26,7 @@ class S25LRUCache {
             Pair(6, "six"),
             Pair(7, "seven")
         )
-        val cache = LRU(0)
+        val cache = LRU(3)
         for (pair in pairs) {
             cache.add(pair.first, pair.second)
             println("current state:")

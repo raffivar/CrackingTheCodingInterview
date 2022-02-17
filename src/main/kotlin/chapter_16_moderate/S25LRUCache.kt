@@ -4,11 +4,12 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class S25LRUCache {
-    class LRU(private val maxSize: Int): HashMap<Int, String>() {
+    class LRU(private val maxSize: Int) : HashMap<Int, String>() {
         private val queue: Queue<Int> = LinkedList()
         fun add(key: Int, value: String) {
-            if (queue.size == maxSize && queue.isNotEmpty()) {
-                this.remove(queue.remove())
+            when {
+                maxSize <= 0 -> return
+                queue.size == maxSize && queue.isNotEmpty() -> this.remove(queue.remove())
             }
             queue.add(key)
             this[key] = value
@@ -25,7 +26,7 @@ class S25LRUCache {
             Pair(6, "six"),
             Pair(7, "seven")
         )
-        val cache = LRU(3)
+        val cache = LRU(0)
         for (pair in pairs) {
             cache.add(pair.first, pair.second)
             println("current state:")

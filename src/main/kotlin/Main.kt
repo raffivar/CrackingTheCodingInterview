@@ -1,5 +1,5 @@
-import chapter_16_moderate.S17ContiguousSequence
+import chapter_16_moderate.S24PairsWithSum
 
 fun main() {
-    S17ContiguousSequence().runTest()
+    S24PairsWithSum().runTest()
 }

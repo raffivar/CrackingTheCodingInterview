@@ -1,5 +1,5 @@
-import chapter_16_moderate.S25LRUCache
+import chapter_16_moderate.S26Calculator
 
 fun main() {
-    S25LRUCache().runTest()
+    S26Calculator().runTest()
 }

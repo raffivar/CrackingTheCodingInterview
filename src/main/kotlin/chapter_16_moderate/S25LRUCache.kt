@@ -1,38 +1,17 @@
 package chapter_16_moderate
 
+import java.util.*
+import kotlin.collections.HashMap
+
 class S25LRUCache {
-    class LRU(private val maxSize: Int) {
-        private val map = HashMap<Int, StringWithTimeStamp>()
-
+    class LRU(private val maxSize: Int): HashMap<Int, String>() {
+        private val queue: Queue<Int> = LinkedList()
         fun add(key: Int, value: String) {
-            if (map.size == maxSize) {
-                findOldest()?.let {
-                    map.remove(findOldest())
-                }
+            if (queue.size == maxSize && queue.isNotEmpty()) {
+                this.remove(queue.remove())
             }
-            map[key] = StringWithTimeStamp(value)
-        }
-
-        private fun findOldest(): Int? {
-            var minTimeStamp = Long.MAX_VALUE
-            var oldestKey: Int? = null
-            for (pair in map) {
-                if (pair.value.timeStamp < minTimeStamp) {
-                    minTimeStamp = pair.value.timeStamp
-                    oldestKey = pair.key
-                }
-            }
-            return oldestKey
-        }
-
-        fun printState() {
-            for (pair in map) {
-                println("${pair.key} -> ${pair.value.value}")
-            }
-        }
-
-        private class StringWithTimeStamp(val value: String) {
-            val timeStamp = System.currentTimeMillis()
+            queue.add(key)
+            this[key] = value
         }
     }
 
@@ -46,11 +25,13 @@ class S25LRUCache {
             Pair(6, "six"),
             Pair(7, "seven")
         )
-        val cache = LRU(4)
+        val cache = LRU(3)
         for (pair in pairs) {
             cache.add(pair.first, pair.second)
             println("current state:")
-            cache.printState()
+            for (entry in cache) {
+                println("${entry.key} -> ${entry.value}")
+            }
             println("--------------------------")
         }
     }

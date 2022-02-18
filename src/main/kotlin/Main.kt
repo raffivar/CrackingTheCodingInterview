@@ -1,5 +1,5 @@
-import chapter_16_moderate.S10LivingPeople
+import chapter_16_moderate.S19PondSizes
 
 fun main() {
-    S10LivingPeople().runTest()
+    S19PondSizes().runTest()
 }

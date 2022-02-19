@@ -21,8 +21,8 @@ class S8EnglishInt {
         }
 
         val parts = LinkedList<String>()
+        
         var chunkCount = 0
-
         while (num > 0) {
             if (num % 1000 != 0) {
                 val chunk = "${convertChunk(num % 1000)} ${bigs[chunkCount]}"

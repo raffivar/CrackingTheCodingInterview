@@ -15,12 +15,23 @@ class S9Operations {
         return result
     }
 
+    private fun sameSign(a: Int, b: Int): Boolean {
+        return (a >= 0 && b >=0) || (a < 0 && b < 0)
+    }
+
     private fun subtract(a: Int, b: Int): Int {
         return a + negate(b)
     }
 
     private fun multiply(a: Int, b: Int): Int {
-        return 0
+        var sum = 0
+        for (i in 1..abs(b)) {
+            sum += abs(a)
+        }
+        return when {
+            sameSign(a, b) -> sum
+            else -> negate(sum)
+        }
     }
 
     private fun divide(a: Int, b: Int): Int {

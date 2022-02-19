@@ -1,5 +1,5 @@
-import chapter_16_moderate.S7NumberMax
+import chapter_16_moderate.S9Operations
 
 fun main() {
-    S7NumberMax().runTest()
+    S9Operations().runTest()
 }

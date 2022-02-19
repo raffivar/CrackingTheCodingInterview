@@ -17,7 +17,7 @@ class S8EnglishInt {
         var num = number
         when {
             num == 0 -> return smalls[0]
-            num < 0 -> return "$negative ${numAsString(num)}"
+            num < 0 -> return "$negative ${numAsString(-1 * num)}"
         }
 
         val parts = LinkedList<String>()
@@ -48,7 +48,7 @@ class S8EnglishInt {
         when (num) {
             in 10..19 -> parts.addLast(smalls[num])
             in 20..99 -> {
-                parts.addLast(tens[num/10])
+                parts.addLast(tens[num / 10])
                 num %= 10
             }
         }
@@ -71,7 +71,7 @@ class S8EnglishInt {
     }
 
     fun runTest() {
-        val testCases = arrayListOf(1, 20, 3, 1245, 234, 235, 555, 666, 999, 1000, 1324, 23432, 1328450)
+        val testCases = arrayListOf(1, -20, 3, 1245, 234, 999, 1000, -23432, 1328450, Int.MAX_VALUE, Int.MIN_VALUE + 1)
         for (case in testCases) {
             println("$case -> ${numAsString(case)}")
         }

@@ -51,7 +51,10 @@ class S8EnglishInt {
                 parts.addLast(tens[num/10])
                 num %= 10
             }
-            in 1..9 -> parts.addLast(smalls[number])
+        }
+
+        if (num in 1..9) {
+            parts.addLast(smalls[num])
         }
 
         return listToString(parts)
@@ -68,7 +71,7 @@ class S8EnglishInt {
     }
 
     fun runTest() {
-        val testCases = arrayListOf(1, 20, 3, 1245, 234, 235, 1324, 23432, 1328450)
+        val testCases = arrayListOf(1, 20, 3, 1245, 234, 235, 555, 666, 999, 1000, 1324, 23432, 1328450)
         for (case in testCases) {
             println("$case -> ${numAsString(case)}")
         }

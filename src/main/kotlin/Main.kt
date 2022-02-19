@@ -1,5 +1,5 @@
-import chapter_16_moderate.S19PondSizes
+import chapter_16_moderate.S7NumberMax
 
 fun main() {
-    S19PondSizes().runTest()
+    S7NumberMax().runTest()
 }

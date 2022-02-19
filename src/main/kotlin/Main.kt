@@ -1,5 +1,5 @@
-import chapter_16_moderate.S8EnglishInt
+import chapter_16_moderate.S26Calculator
 
 fun main() {
-    S8EnglishInt().runTest()
+    S26Calculator().runTest()
 }

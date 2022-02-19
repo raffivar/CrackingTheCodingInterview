@@ -1,8 +1,22 @@
 package chapter_16_moderate
 
+import kotlin.math.abs
+
 class S9Operations {
+    private fun negate(num: Int): Int {
+        var result = 0
+        val numToAdd = when {
+            num < 0 -> 1
+            else -> -1
+        }
+        for (i in 0 until abs(num)) {
+            result += numToAdd
+        }
+        return result
+    }
+
     private fun subtract(a: Int, b: Int): Int {
-        return 0
+        return a + negate(b)
     }
 
     private fun multiply(a: Int, b: Int): Int {

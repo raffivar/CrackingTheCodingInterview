@@ -1,5 +1,6 @@
 package chapter_16_moderate
 
+import java.lang.ArithmeticException
 import kotlin.math.abs
 
 class S9Operations {
@@ -35,6 +36,9 @@ class S9Operations {
     }
 
     private fun divide(a: Int, b: Int): Int {
+        if (b == 0) {
+            throw ArithmeticException("Cannot divide be zero!")
+        }
         var num = abs(a)
         var sum = 0
         while (num + negate(abs(b)) >= 0) {
@@ -56,7 +60,8 @@ class S9Operations {
             Pair(13, 22),
             Pair(-6, -10),
             Pair(-10, -2),
-            Pair(18, -5)
+            Pair(18, -5),
+            Pair(18, 0)
         )
         for (case in testCases) {
             println("${case.first} - ${case.second} = ${subtract(case.first, case.second)}")

@@ -1,5 +1,5 @@
-import chapter_16_moderate.S9Operations
+import chapter_16_moderate.S8EnglishInt
 
 fun main() {
-    S9Operations().runTest()
+    S8EnglishInt().runTest()
 }

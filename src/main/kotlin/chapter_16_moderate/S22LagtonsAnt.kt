@@ -2,7 +2,6 @@ package chapter_16_moderate
 
 import java.util.*
 
-
 class S22LagtonsAnt {
     enum class Direction { Up, Right, Down, Left }
     enum class Rotation { Clockwise, Counterclockwise }
@@ -36,7 +35,7 @@ class S22LagtonsAnt {
     }
 
     class Ant(val grid: Grid) {
-        private var tile = grid[0][0]
+        var tile = grid[0][0]
         var direction = Direction.Right
         var i = 0
         var j = 0
@@ -100,19 +99,22 @@ class S22LagtonsAnt {
             println("Step #$i:")
             ant.move()
             ant.flip()
-            printGrid(ant.grid)
+            printGrid(ant)
             println("--------------------------------------------------------------------")
         }
     }
 
-    private fun printGrid(grid: Grid) {
-        for (row in grid) {
+    private fun printGrid(ant: Ant) {
+        for (row in ant.grid) {
             for (tile in row) {
-                val color = when (tile.color) {
+                var toPrint = when (tile.color) {
                     TileColor.White -> 'W'
                     TileColor.Black -> 'B'
                 }
-                print("[$color]")
+                if (tile == ant.tile) {
+                    toPrint = 'A'
+                }
+                print("[$toPrint]")
             }
             println()
         }

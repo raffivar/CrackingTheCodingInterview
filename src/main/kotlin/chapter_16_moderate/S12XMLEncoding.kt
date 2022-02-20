@@ -3,6 +3,14 @@ package chapter_16_moderate
 import java.lang.StringBuilder
 
 class S12XMLEncoding {
+    private val mapping = hashMapOf(
+        Pair("family", 1),
+        Pair("person", 2),
+        Pair("firstName", 3),
+        Pair("lastName", 4),
+        Pair("state", 5),
+    )
+
     class Element(
         val tag: String,
         val attributes: List<Attribute>?,
@@ -22,7 +30,7 @@ class S12XMLEncoding {
     }
 
     private fun encode(root: Element, sb: StringBuilder) {
-        encode(root.tag, sb)
+        encode(mapping[root.tag].toString(), sb)
         root.attributes?.let {
             for (a in it) {
                 encode(a, sb)
@@ -43,7 +51,7 @@ class S12XMLEncoding {
     }
 
     private fun encode(attr: Attribute, sb: StringBuilder) {
-        encode(attr.tag, sb)
+        encode(mapping[attr.tag].toString(), sb)
         encode(attr.value, sb)
     }
 

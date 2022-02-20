@@ -1,5 +1,5 @@
-import chapter_16_moderate.S22LagtonsAnt
+import chapter_16_moderate.S12XMLEncoding
 
 fun main() {
-    S22LagtonsAnt().runTest()
+    S12XMLEncoding().runTest()
 }

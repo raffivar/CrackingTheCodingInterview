@@ -1,10 +1,8 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.ListBuilder
+import chapter_2_linked_lists.helpers.LinkedListUtil
 import chapter_2_linked_lists.helpers.Node
 import kotlin.math.abs
-import kotlin.math.log10
-import kotlin.math.pow
 
 class S7Intersection {
     private fun findIntersection(node1: Node?, node2: Node?): Node? {
@@ -63,11 +61,11 @@ class S7Intersection {
 
         for (function in functions) {
             for (testCase in testCases) {
-                println(ListBuilder.listAsString(intersection))
-                println(ListBuilder.listAsString(testCase.first))
-                println(ListBuilder.listAsString(testCase.second))
+                println(LinkedListUtil.listAsString(intersection))
+                println(LinkedListUtil.listAsString(testCase.first))
+                println(LinkedListUtil.listAsString(testCase.second))
                 println("INTERSECTION:")
-                println(ListBuilder.listAsString(function(testCase.first, testCase.second)))
+                println(LinkedListUtil.listAsString(function(testCase.first, testCase.second)))
             }
         }
     }

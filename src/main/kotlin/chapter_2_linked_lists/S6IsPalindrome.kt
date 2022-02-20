@@ -1,6 +1,6 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.ListBuilder
+import chapter_2_linked_lists.helpers.LinkedListUtil
 import chapter_2_linked_lists.helpers.Node
 import java.util.*
 
@@ -71,17 +71,17 @@ class S6IsPalindrome {
         val functions = arrayListOf(this::isPalindrome, this::isPalindrome2)
 
         val testCases = arrayListOf(
-            ListBuilder.list1,
-            ListBuilder.list2,
-            ListBuilder.list3,
-            ListBuilder.list6,
-            ListBuilder.list7,
+            LinkedListUtil.list1,
+            LinkedListUtil.list2,
+            LinkedListUtil.list3,
+            LinkedListUtil.list6,
+            LinkedListUtil.list7,
         )
 
         for (function in functions) {
             println("--------------------------------------------------------------------------")
             for (testCase in testCases) {
-                println("${ListBuilder.listAsString(testCase)} -> ${isPalindrome(testCase)}")
+                println("${LinkedListUtil.listAsString(testCase)} -> ${isPalindrome(testCase)}")
             }
         }
     }

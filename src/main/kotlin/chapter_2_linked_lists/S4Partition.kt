@@ -1,6 +1,6 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.ListBuilder
+import chapter_2_linked_lists.helpers.LinkedListUtil
 import chapter_2_linked_lists.helpers.Node
 
 class S4Partition {
@@ -48,15 +48,15 @@ class S4Partition {
         val functions = arrayListOf(this::partition)
 
         val testCases = arrayListOf(
-            ListBuilder.list4,
-            ListBuilder.list5
+            LinkedListUtil.list4,
+            LinkedListUtil.list5
         )
 
         for (function in functions) {
             for (testCase in testCases) {
                 println("------------------------------------------")
-                println("B: ${ListBuilder.listAsString(testCase)}")
-                println("A: ${ListBuilder.listAsString(function(testCase, 5))}")
+                println("B: ${LinkedListUtil.listAsString(testCase)}")
+                println("A: ${LinkedListUtil.listAsString(function(testCase, 5))}")
             }
         }
     }

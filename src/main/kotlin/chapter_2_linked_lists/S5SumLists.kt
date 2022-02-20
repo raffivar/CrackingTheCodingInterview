@@ -1,6 +1,6 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.ListBuilder
+import chapter_2_linked_lists.helpers.LinkedListUtil
 import chapter_2_linked_lists.helpers.Node
 import kotlin.math.abs
 import kotlin.math.log10
@@ -47,16 +47,16 @@ class S5SumLists {
         val functions = arrayListOf(this::sumLists)
 
         val testCases = arrayListOf(
-            Pair(ListBuilder.sumList1, ListBuilder.sumList2),
-            Pair(ListBuilder.sumList3, ListBuilder.sumList4)
+            Pair(LinkedListUtil.sumList1, LinkedListUtil.sumList2),
+            Pair(LinkedListUtil.sumList3, LinkedListUtil.sumList4)
         )
 
         for (function in functions) {
             for (testCase in testCases) {
                 println("------------------------------------------")
-                println(ListBuilder.listAsString(testCase.first))
+                println(LinkedListUtil.listAsString(testCase.first))
                 println("+")
-                println(ListBuilder.listAsString(testCase.second))
+                println(LinkedListUtil.listAsString(testCase.second))
                 println("=")
                 println((function(testCase.first, testCase.second)))
             }

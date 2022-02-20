@@ -1,6 +1,6 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.ListBuilder
+import chapter_2_linked_lists.helpers.LinkedListUtil
 import chapter_2_linked_lists.helpers.Node
 import java.util.*
 
@@ -45,13 +45,13 @@ class S2KthToLast {
     fun runTest2() {
         val functions = arrayListOf(this::findKthToLast2)
         val testCases = arrayListOf(
-            ListBuilder.list1
+            LinkedListUtil.list1
         )
 
         for (function in functions) {
             println("------------------------------------------")
             for (testCase in testCases) {
-                println("${function.name}(${ListBuilder.listAsString(testCase)}, 3: ${function(testCase, 3)!!.value}")
+                println("${function.name}(${LinkedListUtil.listAsString(testCase)}, 3: ${function(testCase, 3)!!.value}")
             }
         }
     }

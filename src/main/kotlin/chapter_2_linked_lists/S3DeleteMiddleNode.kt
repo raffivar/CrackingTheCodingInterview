@@ -1,6 +1,6 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.ListBuilder
+import chapter_2_linked_lists.helpers.LinkedListUtil
 import chapter_2_linked_lists.helpers.Node
 
 class S3DeleteMiddleNode {
@@ -47,9 +47,9 @@ class S3DeleteMiddleNode {
             )
             for (testCase in testCases) {
                 println("------------------------------------------")
-                println("B: ${ListBuilder.listAsString(testCase)}")
+                println("B: ${LinkedListUtil.listAsString(testCase)}")
                 function(getMiddleNode(testCase))
-                println("A: ${ListBuilder.listAsString(testCase)}")
+                println("A: ${LinkedListUtil.listAsString(testCase)}")
             }
         }
     }

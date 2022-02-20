@@ -1,4 +1,4 @@
-package chapter_2_linked_lists.helpers
+package chapter_2_linked_lists.util
 
 object LinkedListUtil {
     val list1 = Node(1, Node(2, Node(3, Node(4, Node(5, Node(6, Node(7, null)))))))

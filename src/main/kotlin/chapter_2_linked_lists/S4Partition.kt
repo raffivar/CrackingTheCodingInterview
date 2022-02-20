@@ -1,7 +1,7 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.LinkedListUtil
-import chapter_2_linked_lists.helpers.Node
+import chapter_2_linked_lists.util.LinkedListUtil
+import chapter_2_linked_lists.util.Node
 
 class S4Partition {
     private fun partition(node: Node, x: Int): Node? {

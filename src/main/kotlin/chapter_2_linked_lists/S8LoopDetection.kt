@@ -1,6 +1,6 @@
 package chapter_2_linked_lists
 
-import chapter_2_linked_lists.helpers.Node
+import chapter_2_linked_lists.util.Node
 
 class S8LoopDetection {
     private fun hasLoop(node: Node?): Boolean {

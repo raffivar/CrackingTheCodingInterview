@@ -7,7 +7,7 @@ import kotlin.math.log10
 import kotlin.math.pow
 
 class S5SumLists {
-    private fun Int.length() = when(this) {
+    private fun Int.length() = when (this) {
         0 -> 0
         else -> log10(abs(toDouble())).toInt() + 1
     }
@@ -43,8 +43,33 @@ class S5SumLists {
         return result
     }
 
+
+    private fun sumListsRec(l1: Node?, l2: Node?): Node? {
+        return sumListsRec(l1, l2, 0)
+    }
+
+    private fun sumListsRec(l1: Node?, l2: Node?, carry: Int): Node? {
+        if (l1 == null && l2 == null && carry == 0) {
+            return null
+        }
+        val result = Node(0, null)
+        var value = carry
+        if (l1 != null) {
+            value += l1.value
+        }
+        if (l2 != null) {
+            value += l2.value
+        }
+        result.value = value % 10
+        if (l1 != null || l2 != null) {
+            val more = sumListsRec(l1?.next, l2?.next, if (value >= 10) 1 else 0)
+            result.next = more
+        }
+        return result
+    }
+
     fun runTest() {
-        val functions = arrayListOf(this::sumLists)
+        val functions = arrayListOf(this::sumLists, this::sumListsRec)
 
         val testCases = arrayListOf(
             Pair(LinkedListUtil.sumList1, LinkedListUtil.sumList2),
@@ -58,7 +83,10 @@ class S5SumLists {
                 println("+")
                 println(LinkedListUtil.listAsString(testCase.second))
                 println("=")
-                println((function(testCase.first, testCase.second)))
+                when (val result = function(testCase.first, testCase.second)) {
+                    is Int -> println(result)
+                    is Node -> println(LinkedListUtil.listAsString(result))
+                }
             }
         }
     }

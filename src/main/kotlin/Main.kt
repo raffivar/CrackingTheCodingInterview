@@ -1,5 +1,5 @@
-import chapter_16_moderate.S12XMLEncoding
+import chapter_2_linked_lists.S5SumLists
 
 fun main() {
-    S12XMLEncoding().runTest()
+    S5SumLists().runTest()
 }

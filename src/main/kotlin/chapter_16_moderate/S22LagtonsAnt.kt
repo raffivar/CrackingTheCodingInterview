@@ -1,67 +1,124 @@
 package chapter_16_moderate
 
+import java.util.*
+
+
 class S22LagtonsAnt {
-    enum class Direction { Top, Right, Bottom, Left }
-    enum class Pivot { Clockwise, Counterclockwise }
+    enum class Direction { Up, Right, Down, Left }
+    enum class Rotation { Clockwise, Counterclockwise }
     enum class TileColor { White, Black }
-    class Tile(var color: TileColor) {
-        var top: Tile? = null
-        var bottom: Tile? = null
-        var left: Tile? = null
-        var right: Tile? = null
+    class Tile(var color: TileColor = TileColor.White)
+
+    class Grid : ArrayList<ArrayList<Tile>>() {
+        private var rowSize = 0
+        private var columnSize = 0
+
+        init {
+            this.addRow(0)
+            this.addColumn(0)
+        }
+
+        fun addRow(i: Int) {
+            val row: ArrayList<Tile> = ArrayList()
+            for (j in 0 until rowSize) {
+                row.add(Tile())
+            }
+            this.add(i, row)
+            columnSize++
+        }
+
+        fun addColumn(i: Int) {
+            for (row in this) {
+                row.add(i, Tile())
+            }
+            rowSize++
+        }
     }
 
-    class Ant(var tile: Tile?) {
+    class Ant(val grid: Grid) {
+        private var tile = grid[0][0]
         var direction = Direction.Right
+        var i = 0
+        var j = 0
 
-        fun walk() {
+        fun move() {
             when (this.direction) {
-                Direction.Top -> this.tile = this.tile!!.top
-                Direction.Right -> this.tile = this.tile!!.right
-                Direction.Bottom -> this.tile = this.tile!!.bottom
-                Direction.Left -> this.tile = this.tile!!.left
+                Direction.Up -> i--
+                Direction.Right -> j++
+                Direction.Down -> i++
+                Direction.Left -> j--
             }
-            println("Walked $direction")
-            if (this.tile == null) {
-                println("Created new tile")
-                this.tile = Tile(TileColor.White)
+            when {
+                i < 0 -> {
+                    i = 0
+                    grid.addRow(i)
+                }
+                j < 0 -> {
+                    j = 0
+                    grid.addColumn(j)
+                }
+                i > grid.lastIndex -> grid.addRow(i)
+                j > grid[i].lastIndex -> grid.addColumn(j)
             }
+            tile = grid[i][j]
+            println("Moved $direction")
         }
 
         fun flip() {
-            when (this.tile!!.color) {
+            when (this.tile.color) {
                 TileColor.White -> {
-                    TileColor.Black
-                    rotate(Pivot.Clockwise)
-                    println("From White to Black + Clockwise -> New direction is $direction")
+                    tile.color = TileColor.Black
+                    rotate(Rotation.Clockwise)
+                    println("Landed on White -> flipped to Black")
                 }
                 TileColor.Black -> {
-                    TileColor.White
-                    rotate(Pivot.Counterclockwise)
-                    println("From Black to White + Counter-Clockwise -> New direction is $direction")
+                    tile.color = TileColor.White
+                    rotate(Rotation.Counterclockwise)
+                    println("Landed on Black -> flipped to White")
                 }
             }
+            println("New direction: $direction")
         }
 
-        private fun rotate(pivot: Pivot) {
-            val direction = when (pivot) {
-                Pivot.Clockwise -> +1
-                Pivot.Counterclockwise -> -1
+        private fun rotate(rotation: Rotation) {
+            val pivot = when (rotation) {
+                Rotation.Clockwise -> +1
+                Rotation.Counterclockwise -> -1
             }
-            this.direction = Direction.values()[(this.direction.ordinal + direction) % Direction.values().size]
+            var ordinal = this.direction.ordinal + pivot
+            when {
+                ordinal > Direction.values().lastIndex -> ordinal = 0
+                ordinal < 0 -> ordinal = Direction.values().lastIndex
+            }
+            this.direction = Direction.values()[ordinal]
         }
     }
 
-    private fun move(k: Int) {
-        val ant = Ant(Tile(TileColor.White))
+    private fun printKMoves(k: Int) {
+        val ant = Ant(Grid())
         for (i in 1..k) {
-            ant.walk()
+            println("Step #$i:")
+            ant.move()
             ant.flip()
+            printGrid(ant.grid)
+            println("--------------------------------------------------------------------")
+        }
+    }
+
+    private fun printGrid(grid: Grid) {
+        for (row in grid) {
+            for (tile in row) {
+                val color = when (tile.color) {
+                    TileColor.White -> 'W'
+                    TileColor.Black -> 'B'
+                }
+                print("[$color]")
+            }
+            println()
         }
     }
 
     fun runTest() {
-        move(5)
-        move(10)
+        printKMoves(25)
     }
 }

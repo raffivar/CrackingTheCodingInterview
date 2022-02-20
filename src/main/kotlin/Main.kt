@@ -1,5 +1,5 @@
-import chapter_16_moderate.S26Calculator
+import chapter_16_moderate.S22LagtonsAnt
 
 fun main() {
-    S26Calculator().runTest()
+    S22LagtonsAnt().runTest()
 }

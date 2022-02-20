@@ -9,28 +9,22 @@ class S22LagtonsAnt {
     class Tile(var color: TileColor = TileColor.White)
 
     class Grid : ArrayList<ArrayList<Tile>>() {
-        private var rowSize = 0
-        private var columnSize = 0
-
         init {
-            this.addRow(0)
-            this.addColumn(0)
+            this.add(arrayListOf(Tile()))
         }
 
         fun addRow(i: Int) {
             val row: ArrayList<Tile> = ArrayList()
-            for (j in 0 until rowSize) {
+            for (j in 0 until this[0].size) {
                 row.add(Tile())
             }
             this.add(i, row)
-            columnSize++
         }
-
+        
         fun addColumn(i: Int) {
             for (row in this) {
                 row.add(i, Tile())
             }
-            rowSize++
         }
     }
 

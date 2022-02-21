@@ -4,7 +4,7 @@ import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
 
 class S5SumLists {
-    private fun sumLists(node1: Node, node2: Node): Node? {
+    private fun sumLists(node1: Node?, node2: Node?): Node? {
         var head: Node? = null
         var tail: Node? = null
         var curr1: Node? = node1
@@ -70,6 +70,7 @@ class S5SumLists {
         val testCases = arrayListOf(
             Pair(LinkedListUtil.sumList1, LinkedListUtil.sumList2),
             Pair(LinkedListUtil.sumList3, LinkedListUtil.sumList4),
+            Pair(null, null)
         )
 
         for (function in functions) {

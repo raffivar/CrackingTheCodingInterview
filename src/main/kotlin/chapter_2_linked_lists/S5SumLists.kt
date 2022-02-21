@@ -81,7 +81,7 @@ class S5SumLists {
         val sum = addListsHelper(l1, l2)
         return when (sum.carry) {
             0 -> sum.sum
-            else -> insertBefore(sum.sum, sum.carry)
+            else -> Node(sum.carry, sum.sum)
         }
     }
 
@@ -112,14 +112,9 @@ class S5SumLists {
         }
         val sum = addListsHelper(l1!!.next, l2!!.next)
         val value = sum.carry + l1.value + l2.value
-        val fullResult = insertBefore(sum.sum, value % 10)
-        sum.sum = fullResult
+        sum.sum = Node(value % 10, sum.sum)
         sum.carry = value / 10
         return sum
-    }
-
-    private fun insertBefore(node: Node?, value: Int): Node {
-        return Node(value, node)
     }
 
     fun runTest() {

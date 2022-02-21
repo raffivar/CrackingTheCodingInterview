@@ -26,6 +26,11 @@ object LinkedListUtil {
         return sb.toString()
     }
 
+    // length can be found in a more efficient way
+    // if we take a "slow" pointer and a "fast" pointer.
+    // p1 runs 1 step, p2 runs 2 steps,
+    // we are in the middle of the list when p2 hits the end
+    // This way we don not have to run over the list twice.
     fun length(head: Node?): Int {
         var node = head
         var length = 0

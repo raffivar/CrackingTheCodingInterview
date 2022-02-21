@@ -64,8 +64,74 @@ class S5SumLists {
         return result
     }
 
+    class PartialSum(
+        var sum: Node? = null,
+        var carry: Int = 0
+    )
+
+    private fun sumListsForward(list1: Node?, list2: Node?): Node? {
+        var l1 = list1
+        var l2 = list2
+        val len1 = length(l1)
+        val len2 = length(l2)
+        when {
+            len1 > len2 -> l2 = padList(l2, len1 - len2)
+            len2 > len1 -> l1 = padList(l1, len2 - len1)
+        }
+        val sum = addListsHelper(l1, l2)
+        return when (sum.carry) {
+            0 -> sum.sum
+            else -> insertBefore(sum.sum, sum.carry)
+        }
+    }
+
+    private fun length(head: Node?): Int {
+        var node = head
+        var length = 0
+        while (node != null) {
+            length++
+            node = node.next
+        }
+        return length
+    }
+
+    private fun padList(headNode: Node?, padLength: Int): Node? {
+        var head = headNode
+        for (i in 1..padLength) {
+            head = when (headNode) {
+                null -> Node(0, null)
+                else -> {
+                    val newHead = Node(0, head)
+                    newHead
+                }
+            }
+        }
+        return head
+    }
+
+    private fun addListsHelper(l1: Node?, l2: Node?): PartialSum {
+        if (l1 == null && l2 == null) {
+            return PartialSum()
+        }
+        val sum = addListsHelper(l1!!.next, l2!!.next)
+        val value = sum.carry + l1.value + l2.value
+        val fullResult = insertBefore(sum.sum, value % 10)
+        sum.sum = fullResult
+        sum.carry = value / 10
+        return sum
+    }
+
+    private fun insertBefore(l1: Node?, value: Int): Node? {
+        val node = Node(value, null)
+        l1?.let {
+            node.next = it
+        }
+        return node
+    }
+
+
     fun runTest() {
-        val functions = arrayListOf(this::sumLists, this::sumListsRec)
+        val functions = arrayListOf(this::sumLists, this::sumListsRec, this::sumListsForward)
 
         val testCases = arrayListOf(
             Pair(LinkedListUtil.sumList1, LinkedListUtil.sumList2),

@@ -5,41 +5,40 @@ import chapter_2_linked_lists.util.Node
 
 class S5SumLists {
     private fun sumLists(node1: Node, node2: Node): Node? {
-        var result: Node? = null
-        var last: Node? = null
+        var head: Node? = null
+        var tail: Node? = null
         var curr1: Node? = node1
         var curr2: Node? = node2
         var carry = 0
 
         while (curr1 != null || curr2 != null) {
-            var currResult = 0
+            var value = 0
             curr1?.let {
-                currResult += it.value
+                value += it.value
                 curr1 = it.next
             }
             curr2?.let {
-                currResult += it.value
+                value += it.value
                 curr2 = it.next
             }
-            currResult += carry
-            carry = currResult / 10
-            currResult %= 10
-
-            when (result) {
+            value += carry
+            if (value >= 10) {
+                carry = 1
+                value %= 10
+            }
+            when (head) {
                 null -> {
-                    result = Node(currResult, null)
-                    last = result
+                    head = Node(value, null)
+                    tail = head
                 }
                 else -> {
-                    last!!.next = Node(currResult, null)
-                    last = last.next
+                    tail!!.next = Node(value, null)
+                    tail = tail.next
                 }
             }
         }
-
-        return result
+        return head
     }
-
 
     private fun sumListsRec(l1: Node?, l2: Node?): Node? {
         return sumListsRec(l1, l2, 0)

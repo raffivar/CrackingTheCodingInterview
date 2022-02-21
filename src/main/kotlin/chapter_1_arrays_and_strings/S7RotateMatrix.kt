@@ -14,6 +14,23 @@ class S7RotateMatrix {
         return ret
     }
 
+    private fun rotateMatrixLoop(matrix: Array<IntArray>) {
+        var start = 0
+        var end = matrix.lastIndex
+
+        while (start <= end) {
+            for (i in start until end) {
+                val temp = matrix[start][i]
+                matrix[start][i] = matrix[start + end - i][start]
+                matrix[start + end - i][start] = matrix[end][start + end - i]
+                matrix[end][start + end - i] = matrix[i][end]
+                matrix[i][end] = temp
+            }
+            start++
+            end--
+        }
+    }
+
     private fun rotateMatrixRec(matrix: Array<IntArray>) {
         rotateMatrixRec(matrix, 0, matrix.lastIndex)
     }
@@ -33,7 +50,6 @@ class S7RotateMatrix {
 
         rotateMatrixRec(matrix, start + 1, end - 1)
     }
-
 
     fun runTest() {
         val testCases = arrayListOf(
@@ -60,22 +76,12 @@ class S7RotateMatrix {
         )
 
         for (case in testCases) {
-            println("BEFORE:\n${matrixAstString(case)}")
-            println("AFTER [Copying into another matrix]:\n${matrixAstString(rotateMatrix(case))}")
+            println("BEFORE:\n${Util.matrixAsString(case)}")
+            println("AFTER [Copying into another matrix]:\n${Util.matrixAsString(rotateMatrix(case))}")
+            rotateMatrixLoop(case)
+            println("AFTER [Modifying original matrix using loop]:\n${Util.matrixAsString(case)}")
             rotateMatrixRec(case)
-            println("AFTER [Modifying original matrix]:\n${matrixAstString(case)}")
-        }
+            println("AFTER [Modifying original matrix AGAIN using recursion]:\n${Util.matrixAsString(case)}")
+            println("----------------------------------------------------------") }
     }
-
-    private fun matrixAstString(matrix: Array<IntArray>): String {
-        val sb = StringBuilder()
-        for (i in matrix.indices) {
-            for (j in matrix[i].indices) {
-                sb.append("${matrix[i][j]} ")
-            }
-            sb.append("\n")
-        }
-        return sb.toString()
-    }
-
 }

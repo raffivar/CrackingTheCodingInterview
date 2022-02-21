@@ -1,5 +1,5 @@
-import chapter_2_linked_lists.S5SumLists
+import chapter_2_linked_lists.S8LoopDetection
 
 fun main() {
-    S5SumLists().runTest()
+    S8LoopDetection().runTest()
 }

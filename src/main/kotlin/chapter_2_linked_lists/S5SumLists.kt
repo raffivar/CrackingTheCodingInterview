@@ -11,45 +11,27 @@ class S5SumLists {
         var curr2: Node? = node2
         var carry = 0
 
-        while (curr1 != null && curr2 != null) {
-            var currResult = curr1.value + curr2.value + carry
-            carry = currResult / 10
-            currResult %= 10
-            when (result) {
-                null -> {
-                    result = Node(currResult, null)
-                    last = result
+        while (curr1 != null || curr2 != null) {
+            var currResult = 0
+            when {
+                curr1 != null && curr2 != null -> {
+                    currResult = curr1.value + curr2.value + carry
+                    curr1 = curr1.next
+                    curr2 = curr2.next
                 }
-                else -> {
-                    last!!.next = Node(currResult, null)
-                    last = last.next
+                curr1 != null -> {
+                    currResult = curr1.value + carry
+                    curr1 = curr1.next
+                }
+                curr2 != null -> {
+                    currResult = curr2.value + carry
+                    curr2 = curr2.next
                 }
             }
-            curr1 = curr1.next
-            curr2 = curr2.next
-        }
 
-        while (curr1 != null) {
-            var currResult = curr1.value + carry
             carry = currResult / 10
             currResult %= 10
-            when (result) {
-                null -> {
-                    result = Node(currResult, null)
-                    last = result
-                }
-                else -> {
-                    last!!.next = Node(currResult, null)
-                    last = last.next
-                }
-            }
-            curr1 = curr1.next
-        }
 
-        while (curr2 != null) {
-            var currResult = curr2.value + carry
-            carry = currResult / 10
-            currResult %= 10
             when (result) {
                 null -> {
                     result = Node(currResult, null)
@@ -60,7 +42,6 @@ class S5SumLists {
                     last = last.next
                 }
             }
-            curr2 = curr2.next
         }
 
         return result

@@ -13,22 +13,15 @@ class S5SumLists {
 
         while (curr1 != null || curr2 != null) {
             var currResult = 0
-            when {
-                curr1 != null && curr2 != null -> {
-                    currResult = curr1.value + curr2.value + carry
-                    curr1 = curr1.next
-                    curr2 = curr2.next
-                }
-                curr1 != null -> {
-                    currResult = curr1.value + carry
-                    curr1 = curr1.next
-                }
-                curr2 != null -> {
-                    currResult = curr2.value + carry
-                    curr2 = curr2.next
-                }
+            curr1?.let {
+                currResult += it.value
+                curr1 = it.next
             }
-
+            curr2?.let {
+                currResult += it.value
+                curr2 = it.next
+            }
+            currResult += carry
             carry = currResult / 10
             currResult %= 10
 
@@ -77,7 +70,7 @@ class S5SumLists {
 
         val testCases = arrayListOf(
             Pair(LinkedListUtil.sumList1, LinkedListUtil.sumList2),
-            Pair(LinkedListUtil.sumList3, LinkedListUtil.sumList4)
+            Pair(LinkedListUtil.sumList3, LinkedListUtil.sumList4),
         )
 
         for (function in functions) {

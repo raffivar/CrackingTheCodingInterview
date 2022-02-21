@@ -98,12 +98,9 @@ class S5SumLists {
     private fun padList(headNode: Node?, padLength: Int): Node? {
         var head = headNode
         for (i in 1..padLength) {
-            head = when (headNode) {
+            head = when (head) {
                 null -> Node(0, null)
-                else -> {
-                    val newHead = Node(0, head)
-                    newHead
-                }
+                else -> Node(0, head)
             }
         }
         return head
@@ -120,7 +117,7 @@ class S5SumLists {
         sum.carry = value / 10
         return sum
     }
-    
+
     private fun insertBefore(node: Node?, value: Int): Node {
         return Node(value, node)
     }

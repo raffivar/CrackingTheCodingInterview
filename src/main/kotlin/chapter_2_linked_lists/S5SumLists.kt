@@ -30,7 +30,7 @@ class S5SumLists {
         }
 
         while (curr1 != null) {
-            var currResult = curr1.value + 0 + carry
+            var currResult = curr1.value + carry
             carry = currResult / 10
             currResult %= 10
             when (result) {
@@ -47,7 +47,7 @@ class S5SumLists {
         }
 
         while (curr2 != null) {
-            var currResult = 0 + curr2.value + carry
+            var currResult = curr2.value + carry
             carry = currResult / 10
             currResult %= 10
             when (result) {

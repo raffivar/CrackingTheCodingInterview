@@ -25,4 +25,14 @@ object LinkedListUtil {
         sb.append("||")
         return sb.toString()
     }
+
+    fun length(head: Node?): Int {
+        var node = head
+        var length = 0
+        while (node != null) {
+            length++
+            node = node.next
+        }
+        return length
+    }
 }

@@ -72,8 +72,8 @@ class S5SumLists {
     private fun sumListsForward(list1: Node?, list2: Node?): Node? {
         var l1 = list1
         var l2 = list2
-        val len1 = length(l1)
-        val len2 = length(l2)
+        val len1 = LinkedListUtil.length(l1)
+        val len2 = LinkedListUtil.length(l1)
         when {
             len1 > len2 -> l2 = padList(l2, len1 - len2)
             len2 > len1 -> l1 = padList(l1, len2 - len1)
@@ -85,14 +85,15 @@ class S5SumLists {
         }
     }
 
-    private fun length(head: Node?): Int {
-        var node = head
-        var length = 0
-        while (node != null) {
-            length++
-            node = node.next
+    private fun addListsHelper(l1: Node?, l2: Node?): PartialSum {
+        if (l1 == null && l2 == null) {
+            return PartialSum()
         }
-        return length
+        val sum = addListsHelper(l1!!.next, l2!!.next)
+        val value = sum.carry + l1.value + l2.value
+        sum.sum = Node(value % 10, sum.sum)
+        sum.carry = value / 10
+        return sum
     }
 
     private fun padList(headNode: Node?, padLength: Int): Node? {
@@ -106,16 +107,6 @@ class S5SumLists {
         return head
     }
 
-    private fun addListsHelper(l1: Node?, l2: Node?): PartialSum {
-        if (l1 == null && l2 == null) {
-            return PartialSum()
-        }
-        val sum = addListsHelper(l1!!.next, l2!!.next)
-        val value = sum.carry + l1.value + l2.value
-        sum.sum = Node(value % 10, sum.sum)
-        sum.carry = value / 10
-        return sum
-    }
 
     fun runTest() {
         val functions = arrayListOf(this::sumLists, this::sumListsRec, this::sumListsForward)

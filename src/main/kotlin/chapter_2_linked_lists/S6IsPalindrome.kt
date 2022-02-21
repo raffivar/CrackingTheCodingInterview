@@ -67,8 +67,33 @@ class S6IsPalindrome {
         return true
     }
 
+    private class Result(
+        var node: Node?,
+        var result: Boolean
+    )
+
+    private fun isPalindrome3(node: Node?): Boolean {
+        val length = LinkedListUtil.length(node)
+        return isPalindromeRecurse(node, length).result
+    }
+
+    private fun isPalindromeRecurse(head: Node?, length: Int): Result {
+        when {
+            head == null || length <= 0 -> return Result(head, true)
+            length == 1 -> return Result(head.next, true)
+        }
+        val result = isPalindromeRecurse(head?.next, length - 2)
+        if (result.node == null || !result.result) {
+            return result
+        }
+        result.result = (head?.value == result.node?.value)
+        result.node = result.node?.next
+        return result
+    }
+
+
     fun runTest() {
-        val functions = arrayListOf(this::isPalindrome, this::isPalindrome2)
+        val functions = arrayListOf(this::isPalindrome, this::isPalindrome2, this::isPalindrome3)
 
         val testCases = arrayListOf(
             LinkedListUtil.list1,
@@ -80,6 +105,7 @@ class S6IsPalindrome {
 
         for (function in functions) {
             println("--------------------------------------------------------------------------")
+            println("${function.name}:")
             for (testCase in testCases) {
                 println("${LinkedListUtil.listAsString(testCase)} -> ${isPalindrome(testCase)}")
             }

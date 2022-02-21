@@ -52,19 +52,20 @@ class S6IsPalindrome {
 
     private fun isPalindrome2(head: Node?): Boolean {
         val length = LinkedListUtil.length(head)
-        var current = head
+        var curr = head
         val stack = Stack<Int>()
-        for (i in 0..length / 2) {
-            stack.push(current!!.value)
-            current = current.next
+        for (i in 0 until length / 2) {
+            stack.push(curr!!.value)
+            curr = curr.next
         }
         if (length % 2 == 1) {
-            current = current?.next
+            curr = curr!!.next
         }
-        while (current != null) {
-            if (current.value != stack.pop()) {
+        while (curr != null) {
+            if (curr.value != stack.pop()) {
                 return false
             }
+            curr = curr.next
         }
         return true
     }

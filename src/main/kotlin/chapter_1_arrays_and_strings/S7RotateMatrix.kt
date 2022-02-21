@@ -14,9 +14,28 @@ class S7RotateMatrix {
         return ret
     }
 
-    fun runTest() {
-        val functions = arrayListOf(this::rotateMatrix)
+    private fun rotateMatrixRec(matrix: Array<IntArray>) {
+        rotateMatrixRec(matrix, 0, matrix.lastIndex)
+    }
 
+    private fun rotateMatrixRec(matrix: Array<IntArray>, start: Int, end: Int) {
+        if (end - start <= 0) {
+            return
+        }
+
+        for (i in start until end) {
+            val temp = matrix[start][i]
+            matrix[start][i] = matrix[start + end - i][start]
+            matrix[start + end - i][start] = matrix[end][start + end - i]
+            matrix[end][start + end - i] = matrix[i][end]
+            matrix[i][end] = temp
+        }
+
+        rotateMatrixRec(matrix, start + 1, end - 1)
+    }
+
+
+    fun runTest() {
         val testCases = arrayListOf(
             arrayOf(
                 intArrayOf(1, 2, 3),
@@ -40,12 +59,11 @@ class S7RotateMatrix {
             )
         )
 
-        for (function in functions) {
-            println("------------------------------------------")
-            for (testCase in testCases) {
-                println("BEFORE:\n${matrixAstString(testCase)}")
-                println("AFTER:\n${matrixAstString(rotateMatrix(testCase))}")
-            }
+        for (case in testCases) {
+            println("BEFORE:\n${matrixAstString(case)}")
+            println("AFTER [Copying into another matrix]:\n${matrixAstString(rotateMatrix(case))}")
+            rotateMatrixRec(case)
+            println("AFTER [Modifying original matrix]:\n${matrixAstString(case)}")
         }
     }
 

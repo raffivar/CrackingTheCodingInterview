@@ -1,5 +1,5 @@
-import chapter_2_linked_lists.S5SumLists
+import chapter_1_arrays_and_strings.S7RotateMatrix
 
 fun main() {
-    S5SumLists().runTest()
+    S7RotateMatrix().runTest()
 }

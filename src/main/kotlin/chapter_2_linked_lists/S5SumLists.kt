@@ -120,11 +120,10 @@ class S5SumLists {
         sum.carry = value / 10
         return sum
     }
-
+    
     private fun insertBefore(node: Node?, value: Int): Node {
         return Node(value, node)
     }
-
 
     fun runTest() {
         val functions = arrayListOf(this::sumLists, this::sumListsRec, this::sumListsForward)

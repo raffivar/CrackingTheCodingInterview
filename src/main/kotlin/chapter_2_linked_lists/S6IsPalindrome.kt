@@ -4,10 +4,10 @@ import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
 import java.util.*
 
-class S6IsPalindrome { //Another approach: reverse and compare
-    private fun isPalindrome(node: Node?): Boolean {
-        val length = LinkedListUtil.length(node)
-        var start = node
+class S6IsPalindrome {
+    private fun isPalindrome(head: Node?): Boolean {
+        val length = LinkedListUtil.length(head)
+        var start = head
         for (i in 0..length / 2) {
             var end = start
             for (j in i until length - i - 1) {
@@ -21,16 +21,45 @@ class S6IsPalindrome { //Another approach: reverse and compare
         return true
     }
 
-    private fun isPalindrome2(node: Node?): Boolean {
-        val length = LinkedListUtil.length(node)
-        var current = node
+    private fun isPalindrome1(head: Node?): Boolean {
+        val reversed = reverseAndClone(head)
+        println("Reverse and compare:\n${LinkedListUtil.listAsString(reversed)}")
+        return isEqual(head, reversed)
+    }
+
+    private fun reverseAndClone(originalHead: Node?): Node? {
+        var curr = originalHead
+        var head: Node? = null
+        while (curr != null) {
+            head = Node(curr.value, head)
+            curr = curr.next
+        }
+        return head
+    }
+
+    private fun isEqual(head1: Node?, head2: Node?): Boolean {
+        var n1 = head1
+        var n2 = head2
+        while (n1 != null && n2 != null) {
+            if (n1.value != n2.value) {
+                return false
+            }
+            n1 = n1.next
+            n2 = n2.next
+        }
+        return n1 == null && n2 == null
+    }
+
+    private fun isPalindrome2(head: Node?): Boolean {
+        val length = LinkedListUtil.length(head)
+        var current = head
         val stack = Stack<Int>()
         for (i in 0..length / 2) {
             stack.push(current!!.value)
             current = current.next
         }
         if (length % 2 == 1) {
-            current = current!!.next
+            current = current?.next
         }
         while (current != null) {
             if (current.value != stack.pop()) {
@@ -45,9 +74,9 @@ class S6IsPalindrome { //Another approach: reverse and compare
         var result: Boolean
     )
 
-    private fun isPalindrome3(node: Node?): Boolean {
-        val length = LinkedListUtil.length(node)
-        return isPalindromeRecurse(node, length).result
+    private fun isPalindrome3(head: Node?): Boolean {
+        val length = LinkedListUtil.length(head)
+        return isPalindromeRecurse(head, length).result
     }
 
     private fun isPalindromeRecurse(head: Node?, length: Int): Result {
@@ -66,7 +95,7 @@ class S6IsPalindrome { //Another approach: reverse and compare
 
 
     fun runTest() {
-        val functions = arrayListOf(this::isPalindrome, this::isPalindrome2, this::isPalindrome3)
+        val functions = arrayListOf(this::isPalindrome, this::isPalindrome1, this::isPalindrome2, this::isPalindrome3)
 
         val testCases = arrayListOf(
             LinkedListUtil.list1,
@@ -80,7 +109,7 @@ class S6IsPalindrome { //Another approach: reverse and compare
             println("--------------------------------------------------------------------------")
             println("${function.name}:")
             for (testCase in testCases) {
-                println("${LinkedListUtil.listAsString(testCase)} -> ${isPalindrome(testCase)}")
+                println("${LinkedListUtil.listAsString(testCase)} -> ${function(testCase)}")
             }
         }
     }

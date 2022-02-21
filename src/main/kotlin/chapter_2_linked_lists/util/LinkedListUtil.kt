@@ -15,9 +15,9 @@ object LinkedListUtil {
     val sumList3 = Node(7, Node(1, Node(6, null)))
     val sumList4 = Node(5, Node(9, null))
 
-    fun listAsString(node: Node?): String {
+    fun listAsString(head: Node?): String {
         val sb = StringBuilder()
-        var current = node
+        var current = head
         while (current != null) {
             sb.append("${current.value} -> ")
             current = current.next

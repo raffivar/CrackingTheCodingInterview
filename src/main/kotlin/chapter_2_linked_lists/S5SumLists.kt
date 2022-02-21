@@ -121,12 +121,8 @@ class S5SumLists {
         return sum
     }
 
-    private fun insertBefore(l1: Node?, value: Int): Node {
-        val node = Node(value, null)
-        l1?.let {
-            node.next = it
-        }
-        return node
+    private fun insertBefore(node: Node?, value: Int): Node {
+        return Node(value, node)
     }
 
 

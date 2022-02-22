@@ -1,6 +1,8 @@
 package chapter_1_arrays_and_strings
 
-class S7RotateMatrix {
+import Solution
+
+class S7RotateMatrix : Solution {
     private fun rotateMatrix(matrix: Array<IntArray>): Array<IntArray> {
         val n = matrix.size
         val ret = Array(n) { IntArray(n) }
@@ -51,7 +53,7 @@ class S7RotateMatrix {
         rotateMatrixRec(matrix, start + 1, end - 1)
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             arrayOf(
                 intArrayOf(1, 2, 3),
@@ -82,6 +84,7 @@ class S7RotateMatrix {
             println("AFTER [Modifying original matrix using loop]:\n${Util.matrixAsString(case)}")
             rotateMatrixRec(case)
             println("AFTER [Modifying original matrix AGAIN using recursion]:\n${Util.matrixAsString(case)}")
-            println("----------------------------------------------------------") }
+            println("----------------------------------------------------------")
+        }
     }
 }

@@ -1,7 +1,9 @@
 package chapter_1_arrays_and_strings
 
-class S8ZeroMatrix {
-    private fun zeroMatrix(matrix: Array<IntArray>){
+import Solution
+
+class S8ZeroMatrix : Solution {
+    private fun zeroMatrix(matrix: Array<IntArray>) {
         val places = arrayListOf<Pair<Int, Int>>()
 
         for (i in matrix.indices) {
@@ -24,7 +26,7 @@ class S8ZeroMatrix {
     }
 
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::zeroMatrix)
 
         val testCases = arrayListOf(

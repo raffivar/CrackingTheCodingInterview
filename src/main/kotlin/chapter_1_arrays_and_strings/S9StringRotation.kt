@@ -1,6 +1,8 @@
 package chapter_1_arrays_and_strings
 
-class S9StringRotation {
+import Solution
+
+class S9StringRotation : Solution {
     private fun isStringRotation(str1: String, str2: String): Boolean {
         var j = 0
         while (j < str2.length) {
@@ -18,7 +20,7 @@ class S9StringRotation {
         return false
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isStringRotation)
         val testCases = arrayListOf(
             Pair("wawerwottle", "erwottlewaw"),
@@ -28,15 +30,8 @@ class S9StringRotation {
 
         for (function in functions) {
             println("------------------------------------------")
-            for (testCase in testCases) {
-                println(
-                    "${function.name}(\"${testCase.first}\", \"${testCase.second}\"): ${
-                        function(
-                            testCase.first,
-                            testCase.second
-                        )
-                    }"
-                )
+            for (case in testCases) {
+                println("${function.name}(\"${case.first}\", \"${case.second}\"): ${function(case.first, case.second)}")
             }
         }
     }

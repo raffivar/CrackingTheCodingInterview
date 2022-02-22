@@ -1,8 +1,9 @@
 package chapter_1_arrays_and_strings
 
+import Solution
 import java.lang.StringBuilder
 
-class S3URLlify {
+class S3URLlify : Solution {
     private fun urlify(str: String): String {
         val sb = StringBuilder()
         for (char in str) {
@@ -15,13 +16,13 @@ class S3URLlify {
         return sb.toString()
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::urlify)
         val testCases = arrayListOf("This is my string")
         for (function in functions) {
             println("------------------------------------------")
-            for (testCase in testCases) {
-                println("${function.name}(\"$testCase\"): ${function(testCase)}")
+            for (case in testCases) {
+                println("${function.name}(\"$case\"): ${function(case)}")
             }
         }
     }

@@ -1,8 +1,9 @@
 package chapter_1_arrays_and_strings
 
+import Solution
 import java.lang.StringBuilder
 
-class S6StringCompression {
+class S6StringCompression : Solution {
     private fun compressString(str: String): String {
         if (str.isBlank()) {
             return ""
@@ -22,17 +23,16 @@ class S6StringCompression {
             i = j
         }
 
-
         return sb.toString()
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::compressString)
         val testCases = arrayListOf("aabbcccccaaa", "aabbccccca", "abcdcba")
         for (function in functions) {
             println("------------------------------------------")
-            for (testCase in testCases) {
-                println("${function.name}(\"$testCase\"): ${function(testCase)}")
+            for (case in testCases) {
+                println("${function.name}(\"$case\"): ${function(case)}")
             }
         }
     }

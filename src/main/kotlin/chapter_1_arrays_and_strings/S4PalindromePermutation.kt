@@ -1,6 +1,8 @@
 package chapter_1_arrays_and_strings
 
-class S4PalindromePermutation {
+import Solution
+
+class S4PalindromePermutation : Solution {
     private fun isPalindromePermutation(str: String): Boolean {
         val instancesOfChars = HashMap<Char, Int>()
 
@@ -24,13 +26,13 @@ class S4PalindromePermutation {
         return true
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isPalindromePermutation)
         val testCases = arrayListOf("aaabaaa", "Tact Coa")
         for (function in functions) {
             println("------------------------------------------")
-            for (testCase in testCases) {
-                println("${function.name}(\"$testCase\"): ${function(testCase)}")
+            for (case in testCases) {
+                println("${function.name}(\"$case\"): ${function(case)}")
             }
         }
     }

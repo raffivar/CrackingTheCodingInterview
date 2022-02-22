@@ -1,6 +1,8 @@
 package chapter_1_arrays_and_strings
 
-class S1IsUnique {
+import Solution
+
+class S1IsUnique : Solution {
     private fun isUnique1(str: String): Boolean {
         val hasSet = hashSetOf<Char>()
         for (char in str) {
@@ -39,13 +41,13 @@ class S1IsUnique {
         return true
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isUnique1, this::isUnique2, this::isUnique3)
         val testCases = arrayListOf("aaaa", "aBcA", "abcd", "aBAa")
         for (function in functions) {
             println("------------------------------------------")
-            for (testCase in testCases) {
-                println("${function.name}(\"$testCase\"): ${function(testCase)}")
+            for (case in testCases) {
+                println("${function.name}(\"$case\"): ${function(case)}")
             }
         }
     }

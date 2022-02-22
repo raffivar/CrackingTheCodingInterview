@@ -1,13 +1,15 @@
 package chapter_1_arrays_and_strings
 
-class S2CheckPermutation {
+import Solution
+
+class S2CheckPermutation : Solution {
     private fun checkPermutation(str1: String, str2: String): Boolean {
         val sorted1 = String(str1.toCharArray().apply { sort() })
         val sorted2 = String(str2.toCharArray().apply { sort() })
         return sorted1 == sorted2
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::checkPermutation)
         val testCases = arrayListOf(
             Pair("aaaa", "aaaa"),
@@ -16,8 +18,8 @@ class S2CheckPermutation {
         )
         for (function in functions) {
             println("------------------------------------------")
-            for (testCase in testCases) {
-                println("${function.name}(\"${testCase.first}\", \"${testCase.second}\"): ${function(testCase.first, testCase.second)}")
+            for (case in testCases) {
+                println("${function.name}(\"${case.first}\", \"${case.second}\"): ${function(case.first, case.second)}")
             }
         }
     }

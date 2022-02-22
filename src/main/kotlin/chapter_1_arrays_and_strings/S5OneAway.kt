@@ -1,8 +1,9 @@
 package chapter_1_arrays_and_strings
 
+import Solution
 import kotlin.math.abs
 
-class S5OneAway {
+class S5OneAway : Solution {
     private fun isOneAway(str1: String, str2: String): Boolean {
         if (abs(str1.length - str2.length) > 1) {
             return false
@@ -33,7 +34,7 @@ class S5OneAway {
 
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isOneAway)
         val testCases = arrayListOf(
             Pair("aaaa", "aaaa"),
@@ -43,19 +44,12 @@ class S5OneAway {
             Pair("pale", "ple"),
             Pair("pales", "pale"),
             Pair("pale", "bale"),
-            Pair("pale", "bake"))
-        
+            Pair("pale", "bake")
+        )
         for (function in functions) {
             println("------------------------------------------")
-            for (testCase in testCases) {
-                println(
-                    "${function.name}(\"${testCase.first}\", \"${testCase.second}\"): ${
-                        function(
-                            testCase.first,
-                            testCase.second
-                        )
-                    }"
-                )
+            for (case in testCases) {
+                println("${function.name}(\"${case.first}\", \"${case.second}\"): ${function(case.first, case.second)}")
             }
         }
     }

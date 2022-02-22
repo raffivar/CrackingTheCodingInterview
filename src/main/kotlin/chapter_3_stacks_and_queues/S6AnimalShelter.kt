@@ -10,7 +10,6 @@ class S6AnimalShelter : Solution {
      * This way, when performing dequeueAny(), if there are dogs **and** cats available,
      * we compare the timestamp and return the oldest
      */
-
     open class Animal(val name: String)
     class Cat(name: String) : Animal(name)
     class Dog(name: String) : Animal(name)
@@ -24,7 +23,6 @@ class S6AnimalShelter : Solution {
         private var tail: AnimalNode? = null
 
         fun enqueue(animal: Animal) {
-            println("Inserted: ${animal.name} [${animal.javaClass.simpleName}]")
             val newAnimalNode = AnimalNode(animal, null)
             if (tail == null) {
                 head = newAnimalNode
@@ -33,6 +31,7 @@ class S6AnimalShelter : Solution {
                 tail!!.next = newAnimalNode
                 tail = tail!!.next
             }
+            println("Inserted: ${animal.name} [${animal.javaClass.simpleName}]")
         }
 
         fun dequeueAny(): Animal {
@@ -49,7 +48,6 @@ class S6AnimalShelter : Solution {
             println("[Getting Dog]")
             return dequeueSpecific()
         }
-
 
         fun dequeueCat(): Cat {
             println("[Getting Cat]")

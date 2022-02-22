@@ -1,9 +1,10 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 
-class S10CheckSubtree {
+class S10CheckSubtree : Solution {
     private fun isSubtree(root1: TreeNode?, root2: TreeNode?): Boolean {
         return when {
             isSameTree(root1, root2) -> true
@@ -25,7 +26,7 @@ class S10CheckSubtree {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isSubtree)
         val testCases = arrayListOf(Pair(buildTree1(), buildTree2()))
         for (function in functions) {

@@ -1,5 +1,5 @@
-import chapter_4_trees_and_graphs.S9BSTSequence
+import chapter_4_trees_and_graphs.S10CheckSubtree
 
 fun main() {
-    S9BSTSequence().runTest()
+    S10CheckSubtree().runTest()
 }

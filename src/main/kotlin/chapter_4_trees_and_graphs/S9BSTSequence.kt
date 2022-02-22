@@ -1,16 +1,17 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 
-class S9BSTSequence {
-    private fun allSequences(root: TreeNode?): MutableList<MutableList<Int>> {
-        val result = mutableListOf<MutableList<Int>>()
+class S9BSTSequence : Solution {
+    private fun allSequences(root: TreeNode?): ArrayList<ArrayList<Int>> {
+        val result = arrayListOf<ArrayList<Int>>()
         if (root == null) {
-            result.add(mutableListOf())
+            result.add(arrayListOf())
             return result
         }
-        val prefix = mutableListOf<Int>()
+        val prefix = arrayListOf<Int>()
         prefix.add(root.value)
 
         val leftScq = allSequences(root.left)
@@ -18,7 +19,7 @@ class S9BSTSequence {
 
         for (left in leftScq) {
             for (right in rightScq) {
-                val weaved = mutableListOf<MutableList<Int>>()
+                val weaved = arrayListOf<ArrayList<Int>>()
                 weaveLists(left, right, weaved, prefix)
                 result.addAll(weaved)
             }
@@ -26,9 +27,9 @@ class S9BSTSequence {
         return result
     }
 
-    private fun weaveLists(first: MutableList<Int>, second: MutableList<Int>, results: MutableList<MutableList<Int>>, prefix: MutableList<Int>) {
+    private fun weaveLists(first: ArrayList<Int>, second: ArrayList<Int>, results: ArrayList<ArrayList<Int>>, prefix: ArrayList<Int>) {
         if (first.isEmpty() || second.isEmpty()) {
-            val result = prefix.toMutableList()
+            val result = ArrayList(prefix)
             result.addAll(first)
             result.addAll(second)
             results.add(result)
@@ -48,14 +49,9 @@ class S9BSTSequence {
         second.add(0, headSecond)
     }
 
-
-    fun runTest() {
+    override fun runTest() {
         val root = buildTree()
         TreeUtil.printBinaryTreeViaDepths(root)
-        printResult(root)
-    }
-
-    private fun printResult(root: TreeNode?) {
         val result = allSequences(root)
         for (list in result) {
             for (num in list) {

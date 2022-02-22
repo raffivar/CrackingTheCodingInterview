@@ -1,5 +1,5 @@
-import chapter_4_trees_and_graphs.S7BuildOrder
+import chapter_4_trees_and_graphs.S9BSTSequence
 
 fun main() {
-    S7BuildOrder().runTest()
+    S9BSTSequence().runTest()
 }

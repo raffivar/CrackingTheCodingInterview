@@ -30,7 +30,6 @@ class S6StringCompression : Solution {
         val functions = arrayListOf(this::compressString)
         val testCases = arrayListOf("aabbcccccaaa", "aabbccccca", "abcdcba")
         for (function in functions) {
-            println("------------------------------------------")
             for (case in testCases) {
                 println("${function.name}(\"$case\"): ${function(case)}")
             }

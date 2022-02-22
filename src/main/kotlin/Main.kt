@@ -1,5 +1,5 @@
-import chapter_3_stacks_and_queues.S1ThreeInOne
+import chapter_1_arrays_and_strings.S9StringRotation
 
 fun main() {
-    S1ThreeInOne().runTest()
+    S9StringRotation().runTest()
 }

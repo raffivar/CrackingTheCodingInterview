@@ -27,9 +27,7 @@ class S9StringRotation : Solution {
             Pair("waterbottle", "erbottlewat"),
             Pair("waterbottle", "erbotTlewat"),
         )
-
         for (function in functions) {
-            println("------------------------------------------")
             for (case in testCases) {
                 println("${function.name}(\"${case.first}\", \"${case.second}\"): ${function(case.first, case.second)}")
             }

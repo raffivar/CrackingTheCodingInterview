@@ -30,7 +30,6 @@ class S4PalindromePermutation : Solution {
         val functions = arrayListOf(this::isPalindromePermutation)
         val testCases = arrayListOf("aaabaaa", "Tact Coa")
         for (function in functions) {
-            println("------------------------------------------")
             for (case in testCases) {
                 println("${function.name}(\"$case\"): ${function(case)}")
             }

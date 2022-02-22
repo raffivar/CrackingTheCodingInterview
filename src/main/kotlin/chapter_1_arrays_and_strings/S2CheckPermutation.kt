@@ -17,7 +17,6 @@ class S2CheckPermutation : Solution {
             Pair("aaBa", "aBaa")
         )
         for (function in functions) {
-            println("------------------------------------------")
             for (case in testCases) {
                 println("${function.name}(\"${case.first}\", \"${case.second}\"): ${function(case.first, case.second)}")
             }

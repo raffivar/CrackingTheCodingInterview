@@ -47,7 +47,6 @@ class S5OneAway : Solution {
             Pair("pale", "bake")
         )
         for (function in functions) {
-            println("------------------------------------------")
             for (case in testCases) {
                 println("${function.name}(\"${case.first}\", \"${case.second}\"): ${function(case.first, case.second)}")
             }

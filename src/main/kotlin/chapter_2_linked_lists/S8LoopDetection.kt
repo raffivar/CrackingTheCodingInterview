@@ -1,8 +1,9 @@
 package chapter_2_linked_lists
 
+import Solution
 import chapter_2_linked_lists.util.Node
 
-class S8LoopDetection {
+class S8LoopDetection : Solution {
     private fun hasLoop(node: Node?): Boolean {
         var curr1 = node
         var curr2 = node
@@ -34,7 +35,7 @@ class S8LoopDetection {
         return null
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::hasLoop, this::detectLoop)
         val intersection = Node(5, Node(6, (Node(7, Node(8, null)))))
         val list = Node(1, Node(2, Node(3, Node(4, intersection))))
@@ -43,7 +44,9 @@ class S8LoopDetection {
         val list3 = Node(1, Node(2, null))
         val testCases = arrayListOf(list, list2, list3)
         for (function in functions) {
-            for (case in testCases) {
+            println("${function.name}:")
+            for ((i, case) in testCases.withIndex()) {
+                print("case #$i: ")
                 when (val result = function(case)) {
                     null -> println("No loop found")
                     is Boolean -> println("Has loop? - $result")

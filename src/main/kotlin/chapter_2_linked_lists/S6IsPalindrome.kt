@@ -1,10 +1,11 @@
 package chapter_2_linked_lists
 
+import Solution
 import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
 import java.util.*
 
-class S6IsPalindrome {
+class S6IsPalindrome : Solution {
     private fun isPalindrome(head: Node?): Boolean {
         val length = LinkedListUtil.length(head)
         var start = head
@@ -96,9 +97,8 @@ class S6IsPalindrome {
     }
 
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isPalindrome, this::isPalindrome1, this::isPalindrome2, this::isPalindrome3)
-
         val testCases = arrayListOf(
             LinkedListUtil.list1,
             LinkedListUtil.list2,
@@ -106,12 +106,11 @@ class S6IsPalindrome {
             LinkedListUtil.list6,
             LinkedListUtil.list7,
         )
-
         for (function in functions) {
             println("--------------------------------------------------------------------------")
             println("${function.name}:")
-            for (testCase in testCases) {
-                println("${LinkedListUtil.listAsString(testCase)} -> ${function(testCase)}")
+            for (case in testCases) {
+                println("${LinkedListUtil.listAsString(case)} -> ${function(case)}")
             }
         }
     }

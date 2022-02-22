@@ -1,15 +1,11 @@
 package chapter_2_linked_lists
 
+import Solution
 import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
-import java.util.*
 
-class S2KthToLast {
-    private fun findKthToLast(list: LinkedList<Int>, k: Int): Int{
-        return list[list.size - k]
-    }
-
-    private fun findKthToLast2(head: Node?, k: Int): Node?{
+class S2KthToLast : Solution {
+    private fun findKthToLast(head: Node?, k: Int): Node? {
         var p1 = head
         var p2 = head
 
@@ -28,30 +24,18 @@ class S2KthToLast {
         return p1
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::findKthToLast)
         val testCases = arrayListOf(
-            LinkedList(listOf(1, 2, 3, 4, 2, 5, 6, 7, 8, 5))
+            Pair(LinkedListUtil.list1, 3),
+            Pair(LinkedListUtil.list1, 5),
+            Pair(LinkedListUtil.list1, -2),
+            Pair(LinkedListUtil.list1, 12)
         )
-
         for (function in functions) {
-            println("------------------------------------------")
-            for (testCase in testCases) {
-                println("${function.name}($testCase, 3): ${function(testCase, 3)}")
-            }
-        }
-    }
-
-    fun runTest2() {
-        val functions = arrayListOf(this::findKthToLast2)
-        val testCases = arrayListOf(
-            LinkedListUtil.list1
-        )
-
-        for (function in functions) {
-            println("------------------------------------------")
-            for (testCase in testCases) {
-                println("${function.name}(${LinkedListUtil.listAsString(testCase)}, 3: ${function(testCase, 3)!!.value}")
+            for (case in testCases) {
+                val result = function(case.first, case.second)?.value
+                println("${function.name}(${LinkedListUtil.listAsString(case.first)}, ${case.second}): $result")
             }
         }
     }

@@ -1,5 +1,5 @@
-import chapter_1_arrays_and_strings.S9StringRotation
+import chapter_2_linked_lists.S8LoopDetection
 
 fun main() {
-    S9StringRotation().runTest()
+    S8LoopDetection().runTest()
 }

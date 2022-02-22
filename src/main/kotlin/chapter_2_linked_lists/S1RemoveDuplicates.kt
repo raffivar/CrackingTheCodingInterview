@@ -1,10 +1,10 @@
 package chapter_2_linked_lists
 
+import Solution
 import java.util.*
 import kotlin.collections.HashSet
 
-
-class S1RemoveDuplicates {
+class S1RemoveDuplicates : Solution {
     private fun removeDuplicates(list: LinkedList<Int>) {
         val set = HashSet<Int>()
         var i = 0
@@ -18,17 +18,16 @@ class S1RemoveDuplicates {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::removeDuplicates)
         val testCases = arrayListOf(
             LinkedList(listOf(1, 2, 3, 4, 2, 5, 6, 7, 8, 5))
         )
         for (function in functions) {
-            println("------------------------------------------")
-            for (testCase in testCases) {
-                println("B: $testCase")
-                function(testCase)
-                println("A: $testCase")
+            for (case in testCases) {
+                println("B: $case")
+                function(case)
+                println("A: $case")
             }
         }
     }

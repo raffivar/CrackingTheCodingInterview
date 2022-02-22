@@ -1,10 +1,11 @@
 package chapter_2_linked_lists
 
+import Solution
 import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
 import kotlin.math.abs
 
-class S7Intersection {
+class S7Intersection : Solution {
     private fun findIntersection(node1: Node?, node2: Node?): Node? {
         var size1 = 0
         var current1 = node1
@@ -49,23 +50,21 @@ class S7Intersection {
         return null
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::findIntersection)
         val intersection = Node(10, Node(11, (Node(12, null))))
         val list1 = Node(1, Node(2, Node(3, intersection)))
         val list2 = Node(4, Node(5, Node(6, Node(7, Node(8, intersection)))))
-
         val testCases = arrayListOf(
             Pair(list1, list2),
         )
-
         for (function in functions) {
-            for (testCase in testCases) {
+            for (case in testCases) {
                 println(LinkedListUtil.listAsString(intersection))
-                println(LinkedListUtil.listAsString(testCase.first))
-                println(LinkedListUtil.listAsString(testCase.second))
+                println(LinkedListUtil.listAsString(case.first))
+                println(LinkedListUtil.listAsString(case.second))
                 println("INTERSECTION:")
-                println(LinkedListUtil.listAsString(function(testCase.first, testCase.second)))
+                println(LinkedListUtil.listAsString(function(case.first, case.second)))
             }
         }
     }

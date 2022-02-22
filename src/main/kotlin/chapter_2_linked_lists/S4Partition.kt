@@ -1,9 +1,10 @@
 package chapter_2_linked_lists
 
+import Solution
 import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
 
-class S4Partition {
+class S4Partition : Solution {
     private fun partition(node: Node, x: Int): Node? {
         var head1: Node? = null
         var current1: Node? = null
@@ -44,19 +45,16 @@ class S4Partition {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::partition)
-
         val testCases = arrayListOf(
             LinkedListUtil.list4,
             LinkedListUtil.list5
         )
-
         for (function in functions) {
-            for (testCase in testCases) {
-                println("------------------------------------------")
-                println("B: ${LinkedListUtil.listAsString(testCase)}")
-                println("A: ${LinkedListUtil.listAsString(function(testCase, 5))}")
+            for (case in testCases) {
+                println("Before:\n${LinkedListUtil.listAsString(case)}")
+                println("After:\n${LinkedListUtil.listAsString(function(case, 5))}\n")
             }
         }
     }

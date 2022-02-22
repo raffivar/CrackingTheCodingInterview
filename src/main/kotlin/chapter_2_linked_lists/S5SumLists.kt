@@ -1,9 +1,10 @@
 package chapter_2_linked_lists
 
+import Solution
 import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
 
-class S5SumLists {
+class S5SumLists : Solution {
     private fun sumLists(node1: Node?, node2: Node?): Node? {
         var head: Node? = null
         var tail: Node? = null
@@ -108,15 +109,13 @@ class S5SumLists {
     }
 
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::sumLists, this::sumListsRec, this::sumListsForward)
-
         val testCases = arrayListOf(
             Pair(LinkedListUtil.sumList1, LinkedListUtil.sumList2),
             Pair(LinkedListUtil.sumList3, LinkedListUtil.sumList4),
             Pair(null, null)
         )
-
         for (function in functions) {
             println("Using ${function.name}:")
             for (case in testCases) {

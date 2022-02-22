@@ -1,9 +1,10 @@
 package chapter_2_linked_lists
 
+import Solution
 import chapter_2_linked_lists.util.LinkedListUtil
 import chapter_2_linked_lists.util.Node
 
-class S3DeleteMiddleNode {
+class S3DeleteMiddleNode : Solution {
     private fun deleteMiddleNode1(node: Node) {
         var current = node
         while (current.next?.next != null) {
@@ -36,22 +37,21 @@ class S3DeleteMiddleNode {
         return current
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::deleteMiddleNode1, this::deleteMiddleNode2)
-
         for (function in functions) {
+            println("Using ${function.name}:")
             val testCases = arrayListOf(
                 Node(1, Node(2, Node(3, Node(4, Node(5, Node(6, Node(7, null))))))),
                 Node(1, Node(2, Node(3, Node(4, null)))),
                 Node(1, Node(2, null))
             )
-            for (testCase in testCases) {
-                println("------------------------------------------")
-                println("B: ${LinkedListUtil.listAsString(testCase)}")
-                function(getMiddleNode(testCase))
-                println("A: ${LinkedListUtil.listAsString(testCase)}")
+            for (case in testCases) {
+                println("Before:\n${LinkedListUtil.listAsString(case)}")
+                function(getMiddleNode(case))
+                println("After:\n${LinkedListUtil.listAsString(case)}\n")
             }
+            println()
         }
     }
-
 }

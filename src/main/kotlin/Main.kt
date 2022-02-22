@@ -1,5 +1,5 @@
-import chapter_2_linked_lists.S8LoopDetection
+import chapter_3_stacks_and_queues.S6AnimalShelter
 
 fun main() {
-    S8LoopDetection().runTest()
+    S6AnimalShelter().runTest()
 }

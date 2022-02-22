@@ -1,8 +1,9 @@
 package chapter_3_stacks_and_queues
 
+import Solution
 import java.util.*
 
-class S4QueueViaStacks {
+class S4QueueViaStacks : Solution {
     class MyQueue<T> {
         private var first: T? = null
         private val stack1 = Stack<T>()
@@ -84,8 +85,7 @@ class S4QueueViaStacks {
         }
     }
 
-
-    fun runTest() {
+    override fun runTest() {
         val myQueue = MyQueue2<Int>()
         for (num in 1..10) {
             myQueue.push(num)

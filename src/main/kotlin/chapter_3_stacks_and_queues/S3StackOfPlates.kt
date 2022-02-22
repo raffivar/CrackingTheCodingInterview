@@ -1,10 +1,10 @@
 package chapter_3_stacks_and_queues
 
+import Solution
 import java.util.*
 
 
-class S3StackOfPlates {
-
+class S3StackOfPlates : Solution {
     class StackNode<T>(val stack: Stack<T>, val next: StackNode<T>?)
 
     class MyStack<T> {
@@ -51,7 +51,7 @@ class S3StackOfPlates {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val myStack = MyStack<Int>()
         for (i in 15 downTo 1) {
             myStack.push(i)
@@ -59,7 +59,6 @@ class S3StackOfPlates {
         println(myStack.popAt(0))
         println(myStack.popAt(1))
         println(myStack.popAt(2))
-
         println("EMPTYING STACK")
         while (!myStack.isEmpty()) {
             println(myStack.pop())

@@ -1,8 +1,9 @@
 package chapter_3_stacks_and_queues
 
+import Solution
 import java.lang.Exception
 
-class S6AnimalShelter {
+class S6AnimalShelter : Solution {
     /**
      * Another solution to this problem can be two lists (dogs + cats)
      * And for "Animal" to contain "timestamp"
@@ -23,6 +24,7 @@ class S6AnimalShelter {
         private var tail: AnimalNode? = null
 
         fun enqueue(animal: Animal) {
+            println("Inserted: ${animal.name} [${animal.javaClass.simpleName}]")
             val newAnimalNode = AnimalNode(animal, null)
             if (tail == null) {
                 head = newAnimalNode
@@ -34,25 +36,27 @@ class S6AnimalShelter {
         }
 
         fun dequeueAny(): Animal {
+            println("[Getting Any]")
             if (head == null) {
                 throw Exception("Shelter empty exception")
             }
-
             val animal = head!!.animal
             head = head!!.next
             return animal
         }
 
         fun dequeueDog(): Dog {
+            println("[Getting Dog]")
             return dequeueSpecific()
         }
 
 
         fun dequeueCat(): Cat {
+            println("[Getting Cat]")
             return dequeueSpecific()
         }
 
-        private inline fun<reified T> dequeueSpecific(): T {
+        private inline fun <reified T> dequeueSpecific(): T {
             var p = head
             while (p?.next != null && p.animal !is T && p.next!!.animal !is T) {
                 p = p.next
@@ -89,7 +93,7 @@ class S6AnimalShelter {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val shelter = AnimalShelter()
         shelter.enqueue(Dog("Max"))
         shelter.enqueue(Cat("Babe"))

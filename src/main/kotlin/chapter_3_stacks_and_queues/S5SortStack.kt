@@ -1,8 +1,9 @@
 package chapter_3_stacks_and_queues
 
+import Solution
 import java.util.*
 
-class S5SortStack {
+class S5SortStack : Solution {
     private fun sortStack(stack: Stack<Int>) {
         val temp = Stack<Int>()
         var count = 0
@@ -30,7 +31,7 @@ class S5SortStack {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val stack = Stack<Int>()
         stack.push(5)
         stack.push(8)
@@ -39,7 +40,6 @@ class S5SortStack {
         stack.push(3)
         stack.push(11)
         stack.push(2)
-
         sortStack(stack)
     }
 }

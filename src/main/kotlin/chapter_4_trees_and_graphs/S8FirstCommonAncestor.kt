@@ -1,11 +1,12 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeNodeWithParent
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 import chapter_4_trees_and_graphs.helpers.TreeWithParentsUtil
 
-class S8FirstCommonAncestor {
+class S8FirstCommonAncestor : Solution {
     private fun firstCommonAncestor(root: TreeNode?, node1: TreeNode?, node2: TreeNode?): TreeNode? {
         if (root == null || root == node1 || root == node2) {
             return null
@@ -37,7 +38,10 @@ class S8FirstCommonAncestor {
         }
     }
 
-    private fun firstCommonAncestorWithParent(node1: TreeNodeWithParent?, node2: TreeNodeWithParent?): TreeNodeWithParent? {
+    private fun firstCommonAncestorWithParent(
+        node1: TreeNodeWithParent?,
+        node2: TreeNodeWithParent?
+    ): TreeNodeWithParent? {
         return when {
             node1 == null || node2 == null -> null
             node1.parent == null -> null
@@ -55,7 +59,7 @@ class S8FirstCommonAncestor {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::firstCommonAncestor)
         val testCases = arrayListOf(
             Pair(nodes[5], nodes[6]),

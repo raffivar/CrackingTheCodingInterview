@@ -1,6 +1,8 @@
 package chapter_4_trees_and_graphs
 
-class S7BuildOrder {
+import Solution
+
+class S7BuildOrder : Solution {
     private class Project(
         val name: Char,
         val children: MutableList<Project> = mutableListOf(),
@@ -11,31 +13,6 @@ class S7BuildOrder {
         val project: Project,
         var next: ProjectNode?
     )
-
-    private val a = Project('a')
-    private val b = Project('b')
-    private val c = Project('c')
-    private val d = Project('d')
-    private val e = Project('e')
-    private val f = Project('f')
-
-    fun runTest() {
-        val projects = listOf(a, b, c, d, e, f)
-        val dependencies = listOf(
-            Pair(a, d),
-            Pair(f, b),
-            Pair(b, d),
-            Pair(f, a),
-            Pair(d, c),
-        )
-
-        var current = buildOrder(projects, dependencies)
-        while (current != null) {
-            print("${current.project.name} -> ")
-            current = current.next
-        }
-        println("||")
-    }
 
     private fun buildOrder(projects: List<Project>, dependencies: List<Pair<Project, Project>>): ProjectNode? {
         // build graph
@@ -116,5 +93,28 @@ class S7BuildOrder {
         for (project in projects) {
             project.visited = false
         }
+    }
+
+    override fun runTest() {
+        val a = Project('a')
+        val b = Project('b')
+        val c = Project('c')
+        val d = Project('d')
+        val e = Project('e')
+        val f = Project('f')
+        val projects = listOf(a, b, c, d, e, f)
+        val dependencies = listOf(
+            Pair(a, d),
+            Pair(f, b),
+            Pair(b, d),
+            Pair(f, a),
+            Pair(d, c),
+        )
+        var current = buildOrder(projects, dependencies)
+        while (current != null) {
+            print("${current.project.name} -> ")
+            current = current.next
+        }
+        println("||")
     }
 }

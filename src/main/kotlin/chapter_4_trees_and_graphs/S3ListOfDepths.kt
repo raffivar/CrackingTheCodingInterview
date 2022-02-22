@@ -1,9 +1,10 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 
-class S3ListOfDepths {
+class S3ListOfDepths : Solution {
     private fun listOfDepths(root: TreeNode?): List<List<TreeNode?>> {
         val lists = mutableListOf<MutableList<TreeNode?>>()
         if (root == null) {
@@ -28,12 +29,11 @@ class S3ListOfDepths {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::listOfDepths)
         val testCases = arrayListOf(TreeUtil.buildBinaryTree())
         for (function in functions) {
             for (case in testCases) {
-                println("----------------------------")
                 val result = function(case)
                 println("As list of depths:")
                 for (depth in result) {

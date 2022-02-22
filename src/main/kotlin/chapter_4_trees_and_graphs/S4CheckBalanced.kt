@@ -1,11 +1,12 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 import kotlin.math.abs
 import kotlin.math.max
 
-class S4CheckBalanced {
+class S4CheckBalanced : Solution {
     private fun isBalanced(node: TreeNode?): Boolean {
         return when {
             node == null -> true
@@ -21,7 +22,7 @@ class S4CheckBalanced {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isBalanced)
         val testCases = arrayListOf(
             TreeUtil.buildBinaryTree(),
@@ -36,10 +37,10 @@ class S4CheckBalanced {
         )
 
         for (function in functions) {
-            for (testCase in testCases) {
-                TreeUtil.printBinaryTreeViaDepths(testCase)
-                println("Height: ${treeHeight(testCase)}")
-                println("isBalanced: ${isBalanced(testCase)}")
+            for (case in testCases) {
+                TreeUtil.printBinaryTreeViaDepths(case)
+                println("Height: ${treeHeight(case)}")
+                println("isBalanced: ${isBalanced(case)}")
                 println("-----------------------------------------")
             }
         }

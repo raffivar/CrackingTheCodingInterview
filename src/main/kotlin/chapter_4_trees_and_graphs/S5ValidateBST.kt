@@ -1,9 +1,10 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 
-class S5ValidateBST {
+class S5ValidateBST : Solution {
     private fun isBinarySearchTree(root: TreeNode?): Boolean {
         return when {
             root == null -> true
@@ -15,7 +16,7 @@ class S5ValidateBST {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::isBinarySearchTree)
         val testCases = arrayListOf(
             TreeUtil.buildBinaryTree(),
@@ -25,10 +26,10 @@ class S5ValidateBST {
         )
 
         for (function in functions) {
-            for (testCase in testCases) {
+            for (case in testCases) {
                 println("--------------------------------------")
-                println("is BST (Binary Search Tree)? -> ${function(testCase)}\n")
-                TreeUtil.printBinaryTreeViaDepths(testCase)
+                println("is BST (Binary Search Tree)? -> ${function(case)}\n")
+                TreeUtil.printBinaryTreeViaDepths(case)
             }
         }
     }

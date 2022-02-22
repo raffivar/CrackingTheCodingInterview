@@ -1,9 +1,10 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeWithParentsUtil
 import chapter_4_trees_and_graphs.helpers.TreeNodeWithParent
 
-class S6Successor {
+class S6Successor : Solution {
     private fun getSuccessor(node: TreeNodeWithParent?): TreeNodeWithParent? {
         if (node == null) {
             return null
@@ -21,7 +22,7 @@ class S6Successor {
         return current.parent
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::getSuccessor)
         val tree = TreeWithParentsUtil.buildTreeWithParents()
         TreeWithParentsUtil.printBinaryTreeViaDepths(tree)
@@ -32,11 +33,12 @@ class S6Successor {
             TreeWithParentsUtil.node2,
             TreeWithParentsUtil.node3,
             TreeWithParentsUtil.node4,
-            TreeWithParentsUtil.node5)
+            TreeWithParentsUtil.node5
+        )
 
         for (function in functions) {
-            for (testCase in testCases) {
-                println("${testCase.value} -> ${function(testCase)?.value}")
+            for (case in testCases) {
+                println("${case.value} -> ${function(case)?.value}")
             }
         }
     }

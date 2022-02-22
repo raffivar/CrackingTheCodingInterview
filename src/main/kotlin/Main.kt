@@ -1,5 +1,5 @@
-import chapter_3_stacks_and_queues.S2StackMin
+import chapter_4_trees_and_graphs.S7BuildOrder
 
 fun main() {
-    S2StackMin().runTest()
+    S7BuildOrder().runTest()
 }

@@ -1,5 +1,5 @@
-import chapter_4_trees_and_graphs.S10CheckSubtree
+import chapter_4_trees_and_graphs.S12PathsWithSum
 
 fun main() {
-    S10CheckSubtree().runTest()
+    S12PathsWithSum().runTest()
 }

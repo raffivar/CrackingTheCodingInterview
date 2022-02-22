@@ -1,9 +1,11 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 
-class S12PathsWithSum {
+/** There is a more optimal solution that that doesn't sum the same branches twice */
+class S12PathsWithSum : Solution {
     private fun numOfPaths(node: TreeNode?, sum: Int): Int {
         return when (node) {
             null -> 0
@@ -27,7 +29,7 @@ class S12PathsWithSum {
         return numOfPaths
     }
 
-    fun runTest() {
+    override fun runTest() {
         val root = TreeUtil.buildBinaryTree9()
         TreeUtil.printBinaryTreeViaDepths(root)
         printResult(root, 7)

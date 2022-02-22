@@ -1,11 +1,13 @@
 package chapter_4_trees_and_graphs
 
+import Solution
 import chapter_4_trees_and_graphs.helpers.TreeNode
 import chapter_4_trees_and_graphs.helpers.TreeUtil
 import java.util.*
 import kotlin.collections.ArrayList
 
-class S11RandomNode {
+/** There is a more optimal solution that does not involve an array */
+class S11RandomNode : Solution {
     class MyBST {
         private var root: TreeNode? = null
 
@@ -124,7 +126,7 @@ class S11RandomNode {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val original = S2MinimalTree().buildMinimalTree(arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14))
         val tree = MyBST(original)
         tree.insert(15)

@@ -1,5 +1,5 @@
-import chapter_2_linked_lists.S6IsPalindrome
+import chapter_3_stacks_and_queues.S1ThreeInOne
 
 fun main() {
-    S6IsPalindrome().runTest()
+    S1ThreeInOne().runTest()
 }

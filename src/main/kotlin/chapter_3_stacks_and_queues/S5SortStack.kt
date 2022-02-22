@@ -32,14 +32,19 @@ class S5SortStack : Solution {
     }
 
     override fun runTest() {
-        val stack = Stack<Int>()
-        stack.push(5)
-        stack.push(8)
-        stack.push(1)
-        stack.push(7)
-        stack.push(3)
-        stack.push(11)
-        stack.push(2)
-        sortStack(stack)
+        val testCases = arrayListOf(arrayListOf(5, 8, 1, 7, 3, 11, 2))
+        for (case in testCases) {
+            val stack = Stack<Int>()
+            println("[PUSHING]:")
+            for (num in case) {
+                println("Pushed: [${stack.push(num)}]")
+            }
+            println("[SORTING]")
+            sortStack(stack)
+            println("[POPPING]:")
+            while (stack.isNotEmpty()) {
+                println("Popped: [${stack.pop()}]")
+            }
+        }
     }
 }

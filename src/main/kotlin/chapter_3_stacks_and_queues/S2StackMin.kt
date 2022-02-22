@@ -36,8 +36,7 @@ class S2StackMin : Solution {
             val stack = StackWithMin()
             println("PUSHING:")
             for (num in case) {
-                stack.push(num)
-                println("Pushed [$num], current min: [${stack.min()}]")
+                println("Pushed [${stack.push(num)}], current min: [${stack.min()}]")
             }
             println("POPPING:")
             while (stack.isNotEmpty()) {

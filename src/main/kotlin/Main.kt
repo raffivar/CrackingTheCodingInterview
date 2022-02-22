@@ -1,5 +1,5 @@
-import chapter_3_stacks_and_queues.S6AnimalShelter
+import chapter_3_stacks_and_queues.S2StackMin
 
 fun main() {
-    S6AnimalShelter().runTest()
+    S2StackMin().runTest()
 }

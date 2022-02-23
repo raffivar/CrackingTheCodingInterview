@@ -1,5 +1,5 @@
-import chapter_5_bit_manipulation.S3FlipToWin
+import chapter_5_bit_manipulation.S4NextNumber
 
 fun main() {
-    S3FlipToWin().runTest()
+    S4NextNumber().runTest()
 }

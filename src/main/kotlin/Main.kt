@@ -1,5 +1,5 @@
-import chapter_4_trees_and_graphs.S12PathsWithSum
+import chapter_5_bit_manipulation.S1Insertion
 
 fun main() {
-    S12PathsWithSum().runTest()
+    S1Insertion().runTest()
 }

@@ -1,10 +1,9 @@
 package chapter_5_bit_manipulation
 
+import Solution
 import chapter_5_bit_manipulation.BitUtil.toBinaryString
-import chapter_5_bit_manipulation.BitUtil.updateBit
-import kotlin.math.log2
 
-class S5Debugger {
+class S5Debugger : Solution {
     /**
      * ANSWER: This method checks whether or not n is a power of 2
      */
@@ -17,12 +16,12 @@ class S5Debugger {
         return (num and (num - 1)) == 0
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::secret)
         val testCases = arrayListOf(4, 6, 8, 10, 11, 16)
         for (function in functions) {
-            for (testCase in testCases) {
-                println("${function.name}($testCase): ${function(testCase)}")
+            for (case in testCases) {
+                println("${function.name}($case): ${function(case)}")
                 println("------------------------------------------")
             }
         }

@@ -1,6 +1,8 @@
 package chapter_6_math_and_logic
 
-class S1TheHeavyPill {
+import Solution
+
+class S1TheHeavyPill : Solution {
     private fun findHeavyBottle(bottles: ArrayList<Float>) {
         var supposedSum = 0f
         var actualSum = 0f
@@ -14,7 +16,7 @@ class S1TheHeavyPill {
         println("fake bottle: bottle #${(actualSum * 10 - supposedSum * 10).toInt()}")
     }
 
-    fun runTest() {
+    override fun runTest() {
         val bottles = arrayListOf(1f, 1f, 1f, 1f, 1f, 1f, 1.1f, 1f, 1f, 1f)
         findHeavyBottle(bottles)
     }

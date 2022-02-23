@@ -1,6 +1,8 @@
 package chapter_6_math_and_logic
 
-class S2Basketball {
+import Solution
+
+class S2Basketball : Solution {
     private fun calculateProbability(percentage: Float) {
         val p = percentage / 100
         println("1/1: ${p * 100}% of success")
@@ -20,7 +22,7 @@ class S2Basketball {
         return p1 * p2 * p3
     }
 
-    fun runTest() {
+    override fun runTest() {
         for (p in 100 downTo 0) {
             calculateProbability(p.toFloat())
         }

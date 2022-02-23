@@ -1,6 +1,8 @@
 package chapter_6_math_and_logic
 
-class S7Apocalypse {
+import Solution
+
+class S7Apocalypse : Solution {
     /**
      * In a world with n families -
      * Cycle #1
@@ -25,7 +27,7 @@ class S7Apocalypse {
         return (Genders(girls, boys))
     }
 
-    fun runTest() {
+    override fun runTest() {
         val result = calculate(20)
         println("Kingdom #1:")
         println("Boys: ${result.boys}")

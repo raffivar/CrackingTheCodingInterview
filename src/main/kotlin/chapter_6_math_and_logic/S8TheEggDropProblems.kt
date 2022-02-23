@@ -1,9 +1,10 @@
 package chapter_6_math_and_logic
 
+import Solution
 import kotlin.math.max
 import kotlin.math.min
 
-class S8TheEggDropProblems {
+class S8TheEggDropProblems : Solution {
     /**
      * For egg #1, we need to throw it from the floors:
      * X
@@ -49,7 +50,7 @@ class S8TheEggDropProblems {
         println("-----------------------------------------------------")
     }
 
-    fun runTest() {
+    override fun runTest() {
         throwEggs(14, 14)
         throwEggs(15, 14)
         throwEggs(16, 15)

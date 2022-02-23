@@ -1,6 +1,8 @@
 package chapter_6_math_and_logic
 
-class S9Lockers {
+import Solution
+
+class S9Lockers : Solution {
     /**
      * If the locker number has an even number of dividers (including 1 and itself), it's closed
      * Otherwise, it's open
@@ -31,7 +33,7 @@ class S9Lockers {
         return numOfDividers
     }
 
-    fun runTest() {
+    override fun runTest() {
         calculateLockers(100)
     }
 }

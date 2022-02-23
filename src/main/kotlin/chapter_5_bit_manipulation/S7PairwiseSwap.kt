@@ -13,9 +13,9 @@ class S7PairwiseSwap : Solution {
         val testCases = arrayListOf(953)
         for (function in functions) {
             for (case in testCases) {
-                println("B: [${case.toBinaryString(1)}] [$case]")
+                println("Before: [${case.toBinaryString(1)}] [$case]")
                 val result = function(case)
-                println("A: [${result.toBinaryString(1)}] [$result]")
+                println("After: [${result.toBinaryString(1)}] [$result]")
             }
         }
     }

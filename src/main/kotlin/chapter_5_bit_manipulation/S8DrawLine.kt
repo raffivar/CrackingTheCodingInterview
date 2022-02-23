@@ -1,9 +1,10 @@
 package chapter_5_bit_manipulation
 
+import Solution
 import kotlin.experimental.and
 import kotlin.experimental.or
 
-class S8DrawLine {
+class S8DrawLine: Solution {
     private fun drawLine(screen: Array<Byte>, width: Int, x1: Int, x2: Int, y: Int) {
         val startOffset = x1 % 8
         var firstFullByte = x1 / 8
@@ -45,19 +46,14 @@ class S8DrawLine {
         println("||")
     }
 
-
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::drawLine)
-        val testCases = arrayListOf(
-            arrayOf(1.toByte(), 2.toByte(), 3.toByte(), 4.toByte(), 5.toByte(), 6.toByte())
-        )
+        val testCases = arrayListOf(arrayOf(1.toByte(), 2.toByte(), 3.toByte(), 4.toByte(), 5.toByte(), 6.toByte()))
         for (function in functions) {
             for (case in testCases) {
-                println("Before:")
-                printArray(case)
+                println("Before: ${Util.arrayAsString(case)}")
                 function(case, 7, 1, 4, 2)
-                println("After:")
-                printArray(case)
+                println("After: ${Util.arrayAsString(case)}")
             }
         }
     }

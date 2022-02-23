@@ -1,5 +1,5 @@
-import chapter_5_bit_manipulation.S6Conversion
+import chapter_5_bit_manipulation.S8DrawLine
 
 fun main() {
-    S6Conversion().runTest()
+    S8DrawLine().runTest()
 }

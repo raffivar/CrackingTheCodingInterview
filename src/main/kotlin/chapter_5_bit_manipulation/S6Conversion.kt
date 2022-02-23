@@ -1,8 +1,9 @@
 package chapter_5_bit_manipulation
 
+import Solution
 import chapter_5_bit_manipulation.BitUtil.toBinaryString
 
-class S6Conversion {
+class S6Conversion : Solution {
     private fun flip(num1: Int, num2: Int): Int {
         return num1.xor(num2).countOneBits()
     }
@@ -27,7 +28,7 @@ class S6Conversion {
         return count
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::flip, this::flip2, this::flip3)
         val testCases = arrayListOf(
             Pair(29, 15),

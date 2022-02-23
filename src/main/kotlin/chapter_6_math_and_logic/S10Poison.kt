@@ -3,21 +3,51 @@ package chapter_6_math_and_logic
 import Solution
 
 class S10Poison : Solution {
+    private class Bottle(val id: Int, val isPoisoned: Boolean)
+    private class Strip(val id: Int) {
+        fun addDropOnDay(day: Int, bottle: Bottle) {
+            //Add drop
+        }
+
+        fun isPositiveOnDay(day: Int): Boolean {
+            return false
+        }
+    }
+
+    private fun findPoisonedBottle(bottles: ArrayList<Bottle>, strips: ArrayList<Strip>) {
+        for (bottle in bottles) {
+            var id = bottle.id
+            var bitIndex = 0
+            while (id > 0) {
+                if ((id and 1) == 1) {
+                    strips[bitIndex].addDropOnDay(0, bottle)
+                }
+                bitIndex++
+                id = id.shr(1)
+            }
+        }
+    }
+
+    private fun runPositiveOnDay(strips: ArrayList<Strip>, day: Int): ArrayList<Int> {
+        val positive = ArrayList<Int>()
+        for (strip in strips) {
+            val id = strip.id
+            if (strip.isPositiveOnDay(day)) {
+                positive.add(id)
+            }
+        }
+        return positive
+    }
+
+    private fun setBits(positive: ArrayList<Int>): Int {
+        var id = 0
+        for (bitIndex in positive) {
+            id = id or 1.shl(bitIndex)
+        }
+        return id
+    }
+
     override fun runTest() {
-        /**
-         * Cycle #1
-         * 1000 bottles divided to 10 strips (100 drops per strip) ->
-         * 100 of them will come in positive
-         *
-         * Cycle #2
-         * 99 bottles divided to 9 stripes (11 drops per strip) + 1 bottle left out ->
-         * If all negative, the remaining bottle is the poison
-         *
-         * Cycle #3
-         * 8 bottles divided to 8 strips (1 drop per strip) + 1 bottle left out ->
-         * If all negative, the remaining bottle is the poison
-         *
-         * To conclude, it will take exactly either 14 or 21 days to find the poison.
-         */
+        /**TODO: implement simulation*/
     }
 }

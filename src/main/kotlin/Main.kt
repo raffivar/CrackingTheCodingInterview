@@ -1,5 +1,5 @@
-import chapter_5_bit_manipulation.S2BinaryToString
+import chapter_5_bit_manipulation.S3FlipToWin
 
 fun main() {
-    S2BinaryToString().runTest()
+    S3FlipToWin().runTest()
 }

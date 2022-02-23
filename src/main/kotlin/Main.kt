@@ -1,5 +1,5 @@
-import chapter_5_bit_manipulation.S5Debugger
+import chapter_5_bit_manipulation.S6Conversion
 
 fun main() {
-    S5Debugger().runTest()
+    S6Conversion().runTest()
 }

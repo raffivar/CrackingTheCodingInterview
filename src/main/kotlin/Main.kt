@@ -1,5 +1,5 @@
-import chapter_5_bit_manipulation.S8DrawLine
+import chapter_6_math_and_logic.S10Poison
 
 fun main() {
-    S8DrawLine().runTest()
+    S10Poison().runTest()
 }

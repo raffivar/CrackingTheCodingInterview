@@ -1,5 +1,5 @@
-import chapter_5_bit_manipulation.S1Insertion
+import chapter_5_bit_manipulation.S2BinaryToString
 
 fun main() {
-    S1Insertion().runTest()
+    S2BinaryToString().runTest()
 }

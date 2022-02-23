@@ -10,8 +10,8 @@ class S1Insertion {
         var k = 0
         var num = n
         while (i <= j) {
-            val bit = m.getBit(k)
-            num = updateBit(num, i, bit == 1)
+            val bitToInsert = m.getBit(k)
+            num = updateBit(num, i, bitToInsert == 1)
             i++
             k++
         }

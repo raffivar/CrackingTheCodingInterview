@@ -28,8 +28,7 @@ class S2BinaryToString : Solution {
         }
         return binary.toString()
     }
-
-
+    
     override fun runTest() {
         val functions = arrayListOf(this::printBinary)
         val testCases = arrayListOf(0.625, 0.75, 0.5, 0.25, 0.125, 0.1, 0.2, 0.72, 1.1)

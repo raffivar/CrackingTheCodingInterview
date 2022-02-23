@@ -1,10 +1,11 @@
 package chapter_5_bit_manipulation
 
+import Solution
 import chapter_5_bit_manipulation.BitUtil.toBinaryString
 import chapter_5_bit_manipulation.BitUtil.updateBit
 import kotlin.math.log2
 
-class S4NextNumber {
+class S4NextNumber : Solution {
     private fun nextSmallest(n: Int): Int {
         val ones = n.countOneBits()
         var num = 0
@@ -72,7 +73,7 @@ class S4NextNumber {
         return n
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::nextSmallest, this::getPrev, this::nextBiggest, this::getNext)
         val testCases = arrayListOf(4, 7, 567)
         for (n in testCases) {

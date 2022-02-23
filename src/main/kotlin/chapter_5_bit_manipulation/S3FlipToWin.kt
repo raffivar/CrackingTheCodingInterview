@@ -1,11 +1,12 @@
 package chapter_5_bit_manipulation
 
+import Solution
 import chapter_5_bit_manipulation.BitUtil.countBits
 import chapter_5_bit_manipulation.BitUtil.getBit
 import chapter_5_bit_manipulation.BitUtil.toBinaryString
 import java.lang.Integer.max
 
-class S3FlipToWin {
+class S3FlipToWin : Solution {
     private fun flipToWin(num: Int): Int {
         if (num == 0) { //all 0s
             return 1
@@ -83,7 +84,7 @@ class S3FlipToWin {
         return maxLen
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::flipToWin, this::flipToWin2)
         val testCases = arrayListOf(1775, 7, 64543, 1032702, 8, 30)
         for (function in functions) {

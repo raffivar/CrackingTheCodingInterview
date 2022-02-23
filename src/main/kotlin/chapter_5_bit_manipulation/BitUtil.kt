@@ -25,6 +25,11 @@ object BitUtil {
         return n or 1.shl(i)
     }
 
+    fun clearBit(n: Int, i: Int): Int {
+        val mask = 1.shl(i) - 1
+        return n and mask
+    }
+
     fun updateBit(num: Int, i: Int, bit: Boolean): Int {
         val bitValue = when (bit) {
             true -> 1

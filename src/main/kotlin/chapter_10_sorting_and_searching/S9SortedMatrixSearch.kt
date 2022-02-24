@@ -1,9 +1,10 @@
 package chapter_10_sorting_and_searching
 
+import Solution
 import chapter_10_sorting_and_searching.searching.Searching
 import java.awt.Point
 
-class S9SortedMatrixSearch {
+class S9SortedMatrixSearch : Solution {
     private fun findInMatrix(matrix: Array<IntArray>, num: Int): Point {
         var low = 0
         var high = matrix.lastIndex
@@ -22,7 +23,7 @@ class S9SortedMatrixSearch {
         return Point(-1, -1)
     }
 
-    fun runTest() {
+    override fun runTest() {
         val example = arrayOf(
             intArrayOf(1, 2, 3, 4, 5),
             intArrayOf(6, 7, 8, 9, 10),

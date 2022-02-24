@@ -1,6 +1,8 @@
 package chapter_10_sorting_and_searching
 
-class S10RankTheStream {
+import Solution
+
+class S10RankTheStream : Solution {
     private val tracker = HashMap<Int, Int>()
 
     private fun trace(x: Int) {
@@ -21,7 +23,7 @@ class S10RankTheStream {
         return count - 1
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             intArrayOf(5, 1, 4, 4, 5, 9, 7, 13, 3)
         )

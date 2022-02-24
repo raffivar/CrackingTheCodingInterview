@@ -1,6 +1,8 @@
 package chapter_10_sorting_and_searching
 
-class S1SortedMerge {
+import Solution
+
+class S1SortedMerge : Solution {
     private fun sortedMerge(a: IntArray, b: IntArray) {
         var k = a.lastIndex
         var i = findEndOfElements(a)
@@ -49,7 +51,7 @@ class S1SortedMerge {
         array[j] = temp
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             Pair(
                 intArrayOf(1, 3, 6, 9, 10, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1),

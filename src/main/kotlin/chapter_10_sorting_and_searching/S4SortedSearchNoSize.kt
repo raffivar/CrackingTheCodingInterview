@@ -1,10 +1,11 @@
 package chapter_10_sorting_and_searching
 
+import Solution
 import Util.Companion.asString
 import java.lang.IndexOutOfBoundsException
 import kotlin.math.pow
 
-class S4SortedSearchNoSize {
+class S4SortedSearchNoSize : Solution {
     class Listy(src: IntArray) : ArrayList<Int>(src.toList()) {
         override val size: Int
             get() = -1
@@ -46,7 +47,7 @@ class S4SortedSearchNoSize {
         return Pair(low, high)
     }
 
-    fun runTest() {
+    override fun runTest() {
         val listy = Listy(intArrayOf(1, 3, 4, 5, 7, 10, 14, 15, 16, 19, 20, 25))
         val testCases = arrayListOf(
             Pair(listy, 5),

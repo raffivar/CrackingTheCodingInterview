@@ -1,8 +1,9 @@
 package chapter_10_sorting_and_searching
 
+import Solution
 import Util.Companion.asString
 
-class S5SparseSearch {
+class S5SparseSearch : Solution {
     //Brute force
     private fun regularSearch(word: String, array: ArrayList<String>): Int {
         for (i in array.indices) {
@@ -32,7 +33,7 @@ class S5SparseSearch {
         return -1
     }
 
-    fun runTest() {
+    override fun runTest() {
         val example = arrayListOf("at", "", "", "", "ball", "", "", "car", "", "", "dad", "", "")
         val functions = arrayListOf(this::regularSearch, this::binarySearch)
         val testCases = arrayListOf(

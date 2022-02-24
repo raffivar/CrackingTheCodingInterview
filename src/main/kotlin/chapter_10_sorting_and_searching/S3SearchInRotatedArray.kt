@@ -1,6 +1,8 @@
 package chapter_10_sorting_and_searching
 
-class S3SearchInRotatedArray {
+import Solution
+
+class S3SearchInRotatedArray : Solution {
     private fun search(array: IntArray, num: Int): Int {
         val minIndex = findMin(array)
 
@@ -44,7 +46,7 @@ class S3SearchInRotatedArray {
         return -1
     }
 
-    fun runTest() {
+    override fun runTest() {
         val mainExample = intArrayOf(15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14)
         val testCases = arrayListOf(
             Pair(mainExample, 19),
@@ -53,7 +55,8 @@ class S3SearchInRotatedArray {
             Pair(mainExample, 25),
             Pair(mainExample, 15),
             Pair(intArrayOf(15), 15),
-            Pair(intArrayOf(), 1))
+            Pair(intArrayOf(), 1)
+        )
 
         for (case in testCases) {
             println("Searching for [${case.second}] in ${Util.arrayAsString(case.first)}")

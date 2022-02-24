@@ -1,6 +1,8 @@
 package chapter_10_sorting_and_searching
 
-class S11PeaksAndValleys {
+import Solution
+
+class S11PeaksAndValleys : Solution {
     private fun peaksAndValleys(array: IntArray) {
         var i = 0
         while (i < array.lastIndex - 1) {
@@ -12,7 +14,7 @@ class S11PeaksAndValleys {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             intArrayOf(1, 2, 3, 4, 5),
             intArrayOf(1, 2, 3, 4, 5, 6),

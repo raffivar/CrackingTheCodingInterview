@@ -1,8 +1,9 @@
 package chapter_10_sorting_and_searching
 
+import Solution
 import Util.Companion.sorted
 
-class S2GroupAnagrams {
+class S2GroupAnagrams : Solution {
     /**
      * Runtime [average]: O(n * log(n))
      * Runtime [worst case]: O(n^2)
@@ -44,8 +45,8 @@ class S2GroupAnagrams {
         }
         return left
     }
-    
-    fun runTest() {
+
+    override fun runTest() {
         val testCases = arrayListOf(
             arrayOf("hx", "test", "xh", "etts")
         )

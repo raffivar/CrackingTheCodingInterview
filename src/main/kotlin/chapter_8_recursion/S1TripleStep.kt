@@ -37,9 +37,11 @@ class S1TripleStep : Solution {
             n == 0 -> 1
             memo[n] > -1 -> memo[n]
             else -> {
-                memo[n] = countWays(n - possibleSteps[0], possibleSteps, memo) +
-                        countWays(n - possibleSteps[1], possibleSteps, memo) +
-                        countWays(n - possibleSteps[2], possibleSteps, memo)
+                var countWays = 0
+                for (i in 0..possibleSteps.lastIndex) {
+                    countWays += countWays(n - possibleSteps[i], possibleSteps, memo)
+                }
+                memo[n] = countWays
                 memo[n]
             }
         }

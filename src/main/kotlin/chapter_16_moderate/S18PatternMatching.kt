@@ -1,8 +1,9 @@
 package chapter_16_moderate
 
+import Solution
 import java.lang.StringBuilder
 
-class S18PatternMatching {
+class S18PatternMatching : Solution {
     private fun isPattern(pattern: String, str: String): Boolean {
         val substrings = getAllSubstrings(str)
         for (i in 0..substrings.lastIndex) {
@@ -46,7 +47,7 @@ class S18PatternMatching {
         return sb.toString()
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(Pair("aabab", "catcatgocatgo"))
         for (case in testCases) {
             println("pattern: ${case.first}\nvalue: ${case.second}")

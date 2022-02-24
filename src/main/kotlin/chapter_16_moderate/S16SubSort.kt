@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S16SubSort {
+import Solution
+
+class S16SubSort : Solution {
     private fun getSubSortIndices(array: IntArray): Pair<Int, Int>? {
         //Search first anomaly from the left
         var leftAnomalyIndex = 0
@@ -36,7 +38,7 @@ class S16SubSort {
         return Pair(left, right)
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             intArrayOf(1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19),
             intArrayOf(11, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19),

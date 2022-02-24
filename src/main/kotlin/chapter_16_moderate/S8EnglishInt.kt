@@ -1,9 +1,10 @@
 package chapter_16_moderate
 
+import Solution
 import java.lang.StringBuilder
 import java.util.*
 
-class S8EnglishInt {
+class S8EnglishInt : Solution {
     private val negative = "Negative"
     private val smalls = arrayOf(
         "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
@@ -21,7 +22,7 @@ class S8EnglishInt {
         }
 
         val parts = LinkedList<String>()
-        
+
         var chunkCount = 0
         while (num > 0) {
             if (num % 1000 != 0) {
@@ -70,7 +71,7 @@ class S8EnglishInt {
         return sb.toString()
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(1, -20, 3, 1245, 234, 999, 1000, -23432, 1328450, Int.MAX_VALUE, Int.MIN_VALUE + 1)
         for (case in testCases) {
             println("$case -> ${numAsString(case)}")

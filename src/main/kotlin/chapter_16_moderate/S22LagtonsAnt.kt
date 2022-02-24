@@ -1,8 +1,9 @@
 package chapter_16_moderate
 
+import Solution
 import java.util.*
 
-class S22LagtonsAnt {
+class S22LagtonsAnt : Solution {
     enum class Direction { Up, Right, Down, Left }
     enum class Rotation { Clockwise, Counterclockwise }
     enum class TileColor { White, Black }
@@ -20,7 +21,7 @@ class S22LagtonsAnt {
             }
             this.add(i, row)
         }
-        
+
         fun addColumn(i: Int) {
             for (row in this) {
                 row.add(i, Tile())
@@ -114,7 +115,7 @@ class S22LagtonsAnt {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         printKMoves(25)
     }
 }

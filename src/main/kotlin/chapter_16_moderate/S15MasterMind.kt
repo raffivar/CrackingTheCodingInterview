@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S15MasterMind {
+import Solution
+
+class S15MasterMind : Solution {
     private val n = 4
     private val colors = arrayOf('R', 'Y', 'G', 'B')
 
@@ -75,7 +77,7 @@ class S15MasterMind {
         return result
     }
 
-    fun runTest() {
+    override fun runTest() {
         startGame()
     }
 }

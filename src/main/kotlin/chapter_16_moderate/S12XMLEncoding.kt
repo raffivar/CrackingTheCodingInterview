@@ -1,8 +1,9 @@
 package chapter_16_moderate
 
+import Solution
 import java.lang.StringBuilder
 
-class S12XMLEncoding {
+class S12XMLEncoding : Solution {
     private val mapping = hashMapOf(
         Pair("family", 1),
         Pair("person", 2),
@@ -61,7 +62,7 @@ class S12XMLEncoding {
     }
 
 
-    fun runTest() {
+    override fun runTest() {
         val myXml = Element(
             "family",
             listOf(

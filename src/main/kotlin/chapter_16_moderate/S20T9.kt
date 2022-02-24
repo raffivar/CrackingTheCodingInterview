@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S20T9 {
+import Solution
+
+class S20T9 : Solution {
     private val dictionary = Dictionary.words.split(", ")
     private val digitToLetters = hashMapOf(
         Pair('0', ""),
@@ -36,7 +38,7 @@ class S20T9 {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf("2", "233", "8733", "7363")
         for (case in testCases) {
             println("$case:")

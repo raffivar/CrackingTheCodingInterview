@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S17ContiguousSequence {
+import Solution
+
+class S17ContiguousSequence : Solution {
     private fun getMaxSum(array: IntArray): Int? {
         if (array.isEmpty()) {
             return null
@@ -29,7 +31,7 @@ class S17ContiguousSequence {
         return maxSum
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             intArrayOf(2, -8, 3, -2, 4, -10),
             intArrayOf(2, 3, -4, 21),

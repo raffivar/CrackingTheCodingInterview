@@ -1,8 +1,9 @@
 package chapter_16_moderate
 
+import Solution
 import chapter_10_sorting_and_searching.sorting.Sorting
 
-class S10LivingPeople {
+class S10LivingPeople : Solution {
     private fun getMaxYear(people: ArrayList<Person>): Int {
         val yearPopulations = HashMap<Int, Int>()
         for (person in people) {
@@ -35,7 +36,7 @@ class S10LivingPeople {
         val death: Int
     )
 
-    fun runTest() {
+    override fun runTest() {
         val people = arrayListOf(
             Person(1900, 1907),
             Person(1904, 1915),

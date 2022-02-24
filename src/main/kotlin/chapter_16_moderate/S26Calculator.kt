@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S26Calculator {
+import Solution
+
+class S26Calculator : Solution {
     private fun calc(expression: String): Float {
         val result = convertToList(expression)
 
@@ -82,7 +84,7 @@ class S26Calculator {
         return (num1 / num2)
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             "2*3+5/6*3+15",
             "2+3*5/6*3+15",

@@ -1,9 +1,10 @@
 package chapter_16_moderate
 
+import Solution
 import chapter_10_sorting_and_searching.sorting.Sorting
 import kotlin.math.abs
 
-class S6SmallestDifference {
+class S6SmallestDifference : Solution {
     private fun countFactZeros(a1: IntArray, a2: IntArray): Int {
         Sorting.sort(a1)
         Sorting.sort(a2)
@@ -23,7 +24,7 @@ class S6SmallestDifference {
         return difference
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             Pair(
                 intArrayOf(1, 3, 15, 11, 2),

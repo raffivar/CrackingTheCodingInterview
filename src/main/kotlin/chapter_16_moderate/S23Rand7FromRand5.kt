@@ -1,8 +1,9 @@
 package chapter_16_moderate
 
+import Solution
 import java.util.*
 
-class S23Rand7FromRand5 {
+class S23Rand7FromRand5 : Solution {
     private fun rand7(): Int {
         var result = 0
         do {
@@ -32,7 +33,7 @@ class S23Rand7FromRand5 {
         return Random().nextInt(5)
     }
 
-    fun runTest() {
+    override fun runTest() {
         for (i in 1..10) {
             println("rand7: ${rand7()}")
         }

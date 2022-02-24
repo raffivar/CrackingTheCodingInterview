@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S11DivingBoard {
+import Solution
+
+class S11DivingBoard : Solution {
     private fun getLengths(k: Int, shorter: Int, longer: Int): ArrayList<Int> {
         val lengths = ArrayList<Int>()
         if (shorter == longer) {
@@ -13,7 +15,7 @@ class S11DivingBoard {
         return lengths
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             Triple(5, 2, 2),
         )

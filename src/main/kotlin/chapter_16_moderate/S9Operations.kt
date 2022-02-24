@@ -1,9 +1,10 @@
 package chapter_16_moderate
 
+import Solution
 import java.lang.ArithmeticException
 import kotlin.math.abs
 
-class S9Operations {
+class S9Operations : Solution {
     private fun negate(num: Int): Int {
         var result = 0
         val numToAdd = when {
@@ -51,7 +52,7 @@ class S9Operations {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             Pair(5, 10),
             Pair(7, 3),

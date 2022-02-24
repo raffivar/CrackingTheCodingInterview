@@ -28,7 +28,7 @@ class S4TicTacToe : Solution {
         return horizontal.contains(true) || vertical.contains(true) || diagonal.contains(true)
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases: ArrayList<Array<IntArray>> = arrayListOf(
             arrayOf(
                 intArrayOf(1, 0, 0),

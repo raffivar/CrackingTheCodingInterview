@@ -1,8 +1,9 @@
 package chapter_16_moderate
 
+import Solution
 import kotlin.math.abs
 
-class S7NumberMax {
+class S7NumberMax : Solution {
     /**
      * 1. "Step" on the midpoint:
      * (a+b)/2
@@ -15,7 +16,7 @@ class S7NumberMax {
         return (a + b + abs(a - b)) / 2
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             Pair(5, 10),
             Pair(7, 3),

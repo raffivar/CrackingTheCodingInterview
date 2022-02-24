@@ -1,9 +1,10 @@
 package chapter_16_moderate
 
+import Solution
 import Util.Companion.asString
 import java.awt.Point
 
-class S19PondSizes {
+class S19PondSizes : Solution {
     private fun getPondSizes(land: Array<IntArray>): ArrayList<Int> {
         val pondSizes = ArrayList<Int>()
         val pondsVisited = HashSet<Point>()
@@ -34,7 +35,7 @@ class S19PondSizes {
         return pondSize
     }
 
-    fun runTest() {
+    override fun runTest() {
         val land = arrayOf(
             intArrayOf(0, 2, 1, 0),
             intArrayOf(0, 1, 0, 1),

@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S21SumSwap {
+import Solution
+
+class S21SumSwap : Solution {
     /**
      * sum1 - x + y = sum2 - y + x
      * sum1 - sum2 = 2x -2y
@@ -20,7 +22,7 @@ class S21SumSwap {
         return null
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             Pair(
                 intArrayOf(4, 1, 2, 1, 1, 2),

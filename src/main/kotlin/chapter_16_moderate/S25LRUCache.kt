@@ -1,9 +1,10 @@
 package chapter_16_moderate
 
+import Solution
 import java.util.*
 import kotlin.collections.HashMap
 
-class S25LRUCache {
+class S25LRUCache : Solution {
     class LRU(private val maxSize: Int) : HashMap<Int, String>() {
         private val queue: Queue<Int> = LinkedList()
         fun add(key: Int, value: String) {
@@ -16,7 +17,7 @@ class S25LRUCache {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val pairs = arrayListOf(
             Pair(1, "one"),
             Pair(2, "two"),

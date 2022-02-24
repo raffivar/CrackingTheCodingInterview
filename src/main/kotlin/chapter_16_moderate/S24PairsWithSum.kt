@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S24PairsWithSum {
+import Solution
+
+class S24PairsWithSum : Solution {
     private fun getSumPairs(array: IntArray, sum: Int): ArrayList<Pair<Int, Int>> {
         val result = ArrayList<Pair<Int, Int>>()
         for (i in 0..array.lastIndex) {
@@ -13,7 +15,7 @@ class S24PairsWithSum {
         return result
     }
 
-    fun runTest() {
+    override fun runTest() {
         val testCases = arrayListOf(
             Pair(intArrayOf(1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19), 17)
         )

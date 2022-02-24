@@ -1,8 +1,9 @@
 package chapter_15_threads_and_locks
 
+import Solution
 import java.util.function.Predicate
 
-class S7FizzBuzz {
+class S7FizzBuzz : Solution {
     private class FizzBuzzThread(
         private val n: Int,
         private val validate: Predicate<Int>,
@@ -34,7 +35,7 @@ class S7FizzBuzz {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val n = 100
         FizzBuzzThread(n, { i: Int -> i % 3 == 0 && i % 5 == 0 }, "FizzBuzz").start()
         FizzBuzzThread(n, { i: Int -> i % 3 == 0 && i % 5 != 0 }, "Fizz").start()

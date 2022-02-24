@@ -1,8 +1,9 @@
 package chapter_15_threads_and_locks
 
+import Solution
 import java.util.concurrent.Semaphore
 
-class S5CallInOrder {
+class S5CallInOrder : Solution {
     class Foo {
         private val sem1 = Semaphore(1)
         private val sem2 = Semaphore(1)
@@ -52,7 +53,7 @@ class S5CallInOrder {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val foo = Foo()
         ThreadA(foo).start()
         ThreadB(foo).start()

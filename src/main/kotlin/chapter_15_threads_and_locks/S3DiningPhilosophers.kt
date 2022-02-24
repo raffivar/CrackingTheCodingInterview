@@ -1,9 +1,10 @@
 package chapter_15_threads_and_locks
 
+import Solution
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.random.Random
 
-class S3DiningPhilosophers {
+class S3DiningPhilosophers: Solution {
     class Chopstick(val name: String) : ReentrantLock()
     class Philosopher(private val pName: String, var left: Chopstick?, var right: Chopstick?) : Thread() {
         var dineTime = 5000L
@@ -93,7 +94,7 @@ class S3DiningPhilosophers {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val table = DiningTable(4)
         table.startDining()
     }

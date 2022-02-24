@@ -1,6 +1,8 @@
 package chapter_15_threads_and_locks
 
-class S6SynchronizedMethods {
+import Solution
+
+class S6SynchronizedMethods : Solution {
     @Synchronized
     private fun printTableA() {
         val n = 10
@@ -36,7 +38,7 @@ class S6SynchronizedMethods {
         Thread { printTableB() }.start()
     }
 
-    fun runTest() {
+    override fun runTest() {
         /**
          *
          * Given a synchronized method A, and a normal method B,The answer to the question is:

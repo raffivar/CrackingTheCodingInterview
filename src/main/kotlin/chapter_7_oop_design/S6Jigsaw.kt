@@ -1,5 +1,6 @@
 package chapter_7_oop_design
 
+import Solution
 import java.awt.Point
 import kotlin.math.abs
 import kotlin.math.log10
@@ -10,7 +11,7 @@ fun Int.length() = when (this) {
     else -> log10(abs(toDouble())).toInt() + 1
 }
 
-class S6Jigsaw {
+class S6Jigsaw : Solution {
     class Piece(var id: Int, x: Int, y: Int) : Point(x, y) {
         val connectedWith = hashSetOf<Piece>()
 
@@ -120,7 +121,7 @@ class S6Jigsaw {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         Jigsaw(5).start()
     }
 }

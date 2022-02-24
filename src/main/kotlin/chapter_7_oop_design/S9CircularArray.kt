@@ -1,8 +1,9 @@
 package chapter_7_oop_design
 
+import Solution
 import kotlin.collections.ArrayList
 
-class S9CircularArray {
+class S9CircularArray : Solution {
     class CircularArray<T> : ArrayList<T>() {
         fun rotateLeft() {
             val obj = this.removeFirst()
@@ -15,7 +16,7 @@ class S9CircularArray {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val numbers = CircularArray<Int>()
         for (i in 1..5) {
             numbers.add(i)

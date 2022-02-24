@@ -1,8 +1,9 @@
 package chapter_7_oop_design
 
+import Solution
 import kotlin.collections.ArrayList
 
-class S2CallCenter {
+class S2CallCenter : Solution {
     enum class Level { Respondent, Manager, Director }
     class Employee(val name: String, val level: Level, var isAvailable: Boolean = true)
 
@@ -68,7 +69,7 @@ class S2CallCenter {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         startCallCenter()
     }
 }

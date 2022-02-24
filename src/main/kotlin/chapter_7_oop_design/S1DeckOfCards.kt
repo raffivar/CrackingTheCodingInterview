@@ -1,8 +1,9 @@
 package chapter_7_oop_design
 
+import Solution
 import kotlin.collections.ArrayList
 
-class S1DeckOfCards {
+class S1DeckOfCards : Solution {
     enum class Shape { Heart, Diamond, Spade, Club }
     enum class Name { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King }
     class Card(val shape: Shape, val name: Name, value: Int) {
@@ -88,7 +89,7 @@ class S1DeckOfCards {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         startBlackJackGame()
     }
 }

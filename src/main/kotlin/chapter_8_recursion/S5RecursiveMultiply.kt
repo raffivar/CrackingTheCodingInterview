@@ -14,7 +14,7 @@ class S5RecursiveMultiply : Solution {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::multiply)
         val testCases = arrayListOf(Pair(4, 5), Pair(3, 8))
         for (function in functions) {

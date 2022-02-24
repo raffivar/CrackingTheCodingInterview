@@ -21,34 +21,34 @@ class S3MagicIndex : Solution {
         }
     }
 
-    private fun magicIndexIndistinct(a: Array<Int>): Boolean {
-        return magicIndex2(a, 0, a.lastIndex)
+    private fun magicIndexIndistinct(array: Array<Int>): Boolean {
+        return magicIndex2(array, 0, array.lastIndex)
     }
 
-    private fun magicIndex2(a: Array<Int>, start: Int, end: Int): Boolean {
-        if (end - start <= 1) {
+    private fun magicIndex2(array: Array<Int>, start: Int, end: Int): Boolean {
+        if (end < start) {
             return false
         }
-        val i = start + (end - start) / 2
+        val mid = (start + end) / 2
         //test one side (either entire left or entire right)
-        if (sideHasMagicIndex(a, i, start, end)) {
+        if (sideHasMagicIndex(array, mid, start, end)) {
             return true
         }
         //test whatever is left in the middle
-        printLog(a, i, start, end)
+        printLog(array, mid, start, end)
         return when {
-            a[i] > i -> magicIndex2(a, start, i)
-            a[i] < i -> magicIndex2(a, i, end)
+            array[mid] > mid -> magicIndex2(array, start, mid)
+            array[mid] < mid -> magicIndex2(array, mid, end)
             else -> false
         }
     }
 
-    private fun sideHasMagicIndex(a: Array<Int>, i: Int, start: Int, end: Int): Boolean {
-        printLog(a, i, start, end)
-        return when (i) {
+    private fun sideHasMagicIndex(array: Array<Int>, mid: Int, start: Int, end: Int): Boolean {
+        printLog(array, mid, start, end)
+        return when (mid) {
             !in start..end -> false
-            a[i] -> true
-            else -> sideHasMagicIndex(a, a[i], start, end)
+            array[mid] -> true
+            else -> sideHasMagicIndex(array, array[mid], start, end)
         }
     }
 

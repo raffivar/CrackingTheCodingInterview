@@ -1,18 +1,12 @@
 package chapter_13_java
 
-class S7LambdaExpressions {
-    /**
-     * S7 - Lambda Expressions:
-     * Q: There is a class Country that has methods getContinent() and
-     * getPopulation(). Write a function int getPopulation(List<Country> countries,
-     * String continent) that computes the total population of a given continent, given a list of all
-     * countries and the name of a continent.
-     *
-     */
+import Solution
+
+class S7LambdaExpressions : Solution {
     class Country(
         val population: Int,
         val continent: String
-        )
+    )
 
     fun getPopulation(countries: List<Country>, continent: String): Int {
         var sum = 0
@@ -31,6 +25,17 @@ class S7LambdaExpressions {
         val populations = sublist.map { c: Country -> c.population }
         //Return the sum
         return populations.reduce(0) { a: Int, b: Int -> a + b }
+    }
+
+    override fun runTest() {
+        /**
+         * S7 - Lambda Expressions:
+         * Q: There is a class Country that has methods getContinent() and
+         * getPopulation(). Write a function int getPopulation(List<Country> countries,
+         * String continent) that computes the total population of a given continent, given a list of all
+         * countries and the name of a continent.
+         *
+         */
     }
 }
 

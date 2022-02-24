@@ -1,8 +1,9 @@
 package chapter_13_java
 
+import Solution
 import java.lang.Exception
 
-class S2ReturnFromFinally {
+class S2ReturnFromFinally : Solution {
     /**
      * S2 - Return from Finally:
      * Q: In Java, does the finally block get executed if we insert a return statement inside the try block of a try-catch-finally?
@@ -24,7 +25,7 @@ class S2ReturnFromFinally {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         example(false)
         println("-------------------------------")
         example(true)

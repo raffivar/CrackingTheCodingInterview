@@ -1,15 +1,11 @@
 package chapter_7_oop_design
 
 import Solution
+import Util.Companion.length
 import java.awt.Point
 import kotlin.math.abs
 import kotlin.math.log10
 import kotlin.math.pow
-
-fun Int.length() = when (this) {
-    0 -> 1
-    else -> log10(abs(toDouble())).toInt() + 1
-}
 
 class S6Jigsaw : Solution {
     class Piece(var id: Int, x: Int, y: Int) : Point(x, y) {

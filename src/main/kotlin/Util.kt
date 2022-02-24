@@ -1,7 +1,14 @@
 import java.lang.StringBuilder
+import kotlin.math.abs
+import kotlin.math.log10
 
 class Util {
     companion object {
+        fun Int.length() = when (this) {
+            0 -> 1
+            else -> log10(abs(toDouble())).toInt() + 1
+        }
+
         fun String.sorted() = String(toCharArray().apply { sort() })
 
         fun <T> swap(array: Array<T>, i: Int, j: Int) {

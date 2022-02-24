@@ -1,5 +1,5 @@
-import chapter_6_math_and_logic.S10Poison
+import chapter_8_recursion.S1TripleStep
 
 fun main() {
-    S10Poison().runTest()
+    S1TripleStep().runTest()
 }

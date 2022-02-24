@@ -1,5 +1,5 @@
-import chapter_8_recursion.S1TripleStep
+import chapter_8_recursion.S3MagicIndex
 
 fun main() {
-    S1TripleStep().runTest()
+    S3MagicIndex().runTest()
 }

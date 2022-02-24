@@ -3,21 +3,21 @@ package chapter_8_recursion
 import Solution
 
 class S3MagicIndex : Solution {
-    private fun magicIndexDistinct(a: Array<Int>): Boolean {
-        return magicIndex1(a, 0, a.lastIndex)
+    private fun magicIndexDistinct(array: Array<Int>): Boolean {
+        return magicIndex1(array, 0, array.lastIndex)
     }
 
-    private fun magicIndex1(a: Array<Int>, start: Int, end: Int): Boolean {
-        if (end - start <= 1) {
+    private fun magicIndex1(array: Array<Int>, start: Int, end: Int): Boolean {
+        if (end < start) {
             return false
         }
-        val i = start + (end - start) / 2
-        printLog(a, i, start, end)
+        val mid = (start + end) / 2
+        printLog(array, mid, start, end)
         return when {
-            a[i] > i -> magicIndex1(a, start, i)
-            a[i] < i -> magicIndex1(a, i, end)
-            a[i] == i -> true
-            else -> false
+            array[mid] > mid -> magicIndex1(array, start, mid - 1)
+            array[mid] < mid -> magicIndex1(array, mid + 1, end)
+            array[mid] == mid -> true
+            else -> false //Not possible
         }
     }
 

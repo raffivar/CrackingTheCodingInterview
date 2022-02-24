@@ -45,16 +45,16 @@ class S3MagicIndex : Solution {
 
     private fun sideHasMagicIndex(a: Array<Int>, i: Int, start: Int, end: Int): Boolean {
         printLog(a, i, start, end)
-        return when {
-            i < start || i > end -> false
-            a[i] == i -> true
+        return when (i) {
+            !in start..end -> false
+            a[i] -> true
             else -> sideHasMagicIndex(a, a[i], start, end)
         }
     }
 
     private fun printLog(a: Array<Int>, i: Int, start: Int, end: Int) {
-        val result = when {
-            i < start || i > end -> "out of bounds"
+        val result = when (i) {
+            !in start..end -> "out of bounds"
             else -> "a[$i] = ${a[i]}"
         }
         println("[$start, $end] -> a[$i] = $result")

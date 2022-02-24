@@ -1,6 +1,8 @@
 package chapter_8_recursion
 
-class S4PowerSet {
+import Solution
+
+class S4PowerSet : Solution {
     private fun powerSet(set: Set<Int>): Set<Set<Int>> {
         return powerSetRecursion(set, mutableSetOf())
     }
@@ -17,12 +19,12 @@ class S4PowerSet {
         return powerSet
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::powerSet)
         val testCases = arrayListOf(
             setOf(1, 2),
             setOf(1, 2, 3),
-            )
+        )
         for (function in functions) {
             for (case in testCases) {
                 println("------------------------------------------")

@@ -1,8 +1,9 @@
 package chapter_8_recursion
 
+import Solution
 import java.awt.Point
 
-class S2RobotInAGrid {
+class S2RobotInAGrid : Solution {
     private fun findPath(grid: Array<IntArray>, p: Point): Boolean {
         printGrid(p, grid)
         if (isFinishLine(p, grid)) {
@@ -59,7 +60,7 @@ class S2RobotInAGrid {
         return p.x >= 0 && p.x <= grid.lastIndex && p.y >= 0 && p.y <= grid[grid.lastIndex].lastIndex
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::findPath)
         val testCases = arrayListOf(
             TestCase(

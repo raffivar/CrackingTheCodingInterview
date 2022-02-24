@@ -1,8 +1,8 @@
 package chapter_8_recursion
 
-import java.lang.StringBuilder
+import Solution
 
-class S3MagicIndex {
+class S3MagicIndex : Solution {
     private fun magicIndexDistinct(a: Array<Int>): Boolean {
         return magicIndex1(a, 0, a.lastIndex)
     }
@@ -60,7 +60,7 @@ class S3MagicIndex {
         println("[$start, $end] -> a[$i] = $result")
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions1 = arrayListOf(this::magicIndexDistinct)
         val testCases1 = arrayListOf(
             arrayOf(-1, 0, 1, 2, 5, 6, 7, 8),

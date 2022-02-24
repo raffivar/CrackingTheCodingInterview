@@ -1,6 +1,8 @@
 package chapter_8_recursion
 
-class S5RecursiveMultiply {
+import Solution
+
+class S5RecursiveMultiply : Solution {
     private fun multiply(num1: Int, num2: Int): Int {
         return multiplyByAddition(num1, num2, 0, 0)
     }

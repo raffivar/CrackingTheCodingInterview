@@ -1,6 +1,8 @@
 package chapter_16_moderate
 
-class S4TicTacToe {
+import Solution
+
+class S4TicTacToe : Solution {
     private fun gameOver(matrix: Array<IntArray>): Boolean {
         val n = matrix.lastIndex
         val horizontal = Array(n + 1) { true }
@@ -27,7 +29,7 @@ class S4TicTacToe {
     }
 
     fun runTest() {
-        val testCases = arrayListOf(
+        val testCases: ArrayList<Array<IntArray>> = arrayListOf(
             arrayOf(
                 intArrayOf(1, 0, 0),
                 intArrayOf(1, 1, 1),

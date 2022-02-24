@@ -1,9 +1,10 @@
 package chapter_16_moderate
 
+import Solution
 import java.util.*
 import kotlin.collections.HashMap
 
-class S2WordFrequencies {
+class S2WordFrequencies : Solution {
     private val book = arrayOf("this", "is", "my", "book", "and", "it", "is", "stored", "in", "my", "array")
 
     //Only 1 time
@@ -40,7 +41,7 @@ class S2WordFrequencies {
         return table[trimmedWord] ?: return 0
     }
 
-    fun runTest() {
+    override fun runTest() {
         println("using 1st method:")
         println("is -> ${getFrequency(book, "is")}")
         println("in -> ${getFrequency(book, "in")}")

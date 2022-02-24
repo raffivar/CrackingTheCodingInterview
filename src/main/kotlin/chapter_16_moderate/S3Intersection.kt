@@ -1,10 +1,11 @@
 package chapter_16_moderate
 
+import Solution
 import java.awt.Point
 import kotlin.math.max
 import kotlin.math.min
 
-class S3Intersection {
+class S3Intersection : Solution {
     // Given three collinear points p, q, r, the function checks if point q lies on line segment 'pr'
     private fun onSegment(p: Point, q: Point, r: Point): Boolean {
         return q.x <= max(p.x, r.x) &&
@@ -44,7 +45,7 @@ class S3Intersection {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         var p1 = Point(1, 1)
         var q1 = Point(10, 1)
         var p2 = Point(1, 2)

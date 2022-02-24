@@ -1,7 +1,9 @@
 package chapter_16_moderate
 
-class S1NumberSwapper {
-    fun runTest() {
+import Solution
+
+class S1NumberSwapper : Solution {
+    override fun runTest() {
         var x = 10
         var y = 20
         println("Before:")

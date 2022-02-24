@@ -12,7 +12,7 @@ class S3MagicIndex : Solution {
             return false
         }
         val mid = (start + end) / 2
-        printLog(array, mid, start, end)
+        printLog(array, start, mid, end)
         return when {
             array[mid] > mid -> magicIndex1(array, start, mid - 1)
             array[mid] < mid -> magicIndex1(array, mid + 1, end)
@@ -35,7 +35,7 @@ class S3MagicIndex : Solution {
             return true
         }
         //test whatever is left in the middle
-        printLog(array, mid, start, end)
+        printLog(array, start, mid, end)
         return when {
             array[mid] > mid -> magicIndex2(array, start, mid)
             array[mid] < mid -> magicIndex2(array, mid, end)
@@ -44,7 +44,7 @@ class S3MagicIndex : Solution {
     }
 
     private fun sideHasMagicIndex(array: Array<Int>, start: Int, mid: Int, end: Int): Boolean {
-        printLog(array, mid, start, end)
+        printLog(array, start, mid, end)
         return when (mid) {
             !in start..end -> false
             array[mid] -> true
@@ -52,12 +52,12 @@ class S3MagicIndex : Solution {
         }
     }
 
-    private fun printLog(a: Array<Int>, i: Int, start: Int, end: Int) {
-        val result = when (i) {
+    private fun printLog(array: Array<Int>, start: Int, mid: Int, end: Int) {
+        val result = when (mid) {
             !in start..end -> "out of bounds"
-            else -> "a[$i] = ${a[i]}"
+            else -> "a[$mid] = ${array[mid]}"
         }
-        println("[$start, $end] -> a[$i] = $result")
+        println("[$start, $end] -> a[$mid] = $result")
     }
 
     override fun runTest() {

@@ -1,8 +1,15 @@
 package chapter_8_recursion
 
 import Solution
+import java.lang.Integer.max
 
 class S13StackOfBoxes : Solution {
+    class Box(val w: Int, val h: Int, val d: Int)
+
+    private fun canStack(b1: Box, b2: Box): Boolean {
+        return b1.w > b2.w && b1.h > b2.h && b1.d > b2.d
+    }
+
     private fun highestPossibleStack(boxes: ArrayList<Box>): Int {
         sortByHeight(boxes)
         return maxHeight(boxes)
@@ -36,14 +43,31 @@ class S13StackOfBoxes : Solution {
         return height
     }
 
-    private fun canStack(b1: Box, b2: Box): Boolean {
-        return b1.w > b2.w && b1.h > b2.h && b1.d > b2.d
+    private fun createStack(boxes: ArrayList<Box>): Int {
+        sortByHeight(boxes)
+        val stackMap = IntArray(boxes.size)
+        return createStack(boxes, null, 0, stackMap)
     }
 
-    class Box(val w: Int, val h: Int, val d: Int)
+    private fun createStack(boxes: ArrayList<Box>, bottom: Box?, offset: Int, stackMap: IntArray): Int {
+        if (offset >= boxes.size) {
+            return 0
+        }
+        val newBottom = boxes[offset]
+        var heightWithBottom = 0
+        if (bottom == null || canStack(bottom, newBottom)) {
+            if (stackMap[offset] == 0) {
+                stackMap[offset] = createStack(boxes, newBottom, offset + 1, stackMap)
+                stackMap[offset] += newBottom.h
+            }
+            heightWithBottom = stackMap[offset]
+        }
+        val heightWithoutBottom = createStack(boxes, bottom, offset + 1, stackMap)
+        return max(heightWithBottom, heightWithoutBottom)
+    }
 
     override fun runTest() {
-        val functions = arrayListOf(this::highestPossibleStack)
+        val functions = arrayListOf(this::highestPossibleStack, this::createStack)
         val testCases = arrayListOf(
             arrayListOf(
                 Box(1, 2, 3),
@@ -58,11 +82,14 @@ class S13StackOfBoxes : Solution {
             ),
         )
         for (function in functions) {
+            println("------------------------------------")
+            println("Using ${function.name}")
             for (testCase in testCases) {
+                println("------------------------------------")
                 printBoxes(testCase)
                 println("Highest possible stack: ${highestPossibleStack(testCase)}")
-                println("------------------------------------")
             }
+            println()
         }
     }
 

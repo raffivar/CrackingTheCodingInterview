@@ -1,5 +1,5 @@
-import chapter_8_recursion.S3MagicIndex
+import chapter_8_recursion.S13StackOfBoxes
 
 fun main() {
-    S3MagicIndex().runTest()
+    S13StackOfBoxes().runTest()
 }

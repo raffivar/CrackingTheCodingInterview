@@ -1,9 +1,10 @@
 package chapter_8_recursion
 
+import Solution
 import java.lang.StringBuilder
 import java.util.*
 
-class S9Parens {
+class S9Parens : Solution {
     private fun parens(num: Int): Set<String> {
         val sb = StringBuilder()
         for (i in 1..num) {
@@ -57,7 +58,7 @@ class S9Parens {
         return stack.isEmpty()
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::parens)
         val testCases = arrayListOf(3)
         for (function in functions) {

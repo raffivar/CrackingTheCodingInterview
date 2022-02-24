@@ -1,6 +1,8 @@
 package chapter_8_recursion
 
-class S13StackOfBoxes {
+import Solution
+
+class S13StackOfBoxes : Solution {
     private fun highestPossibleStack(boxes: ArrayList<Box>): Int {
         sortByHeight(boxes)
         return maxHeight(boxes)
@@ -40,7 +42,7 @@ class S13StackOfBoxes {
 
     class Box(val w: Int, val h: Int, val d: Int)
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::highestPossibleStack)
         val testCases = arrayListOf(
             arrayListOf(

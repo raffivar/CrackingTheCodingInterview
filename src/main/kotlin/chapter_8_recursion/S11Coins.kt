@@ -1,6 +1,8 @@
 package chapter_8_recursion
 
-class S11Coins {
+import Solution
+
+class S11Coins : Solution {
     private fun possibleCoins(numOfCents: Int, possibleCoins: ArrayList<Int>): Int {
         return coins(0, numOfCents, possibleCoins)
     }
@@ -23,7 +25,7 @@ class S11Coins {
     }
 
 
-    fun runTest() {
+    override fun runTest() {
         val coins = arrayListOf(25, 10, 5, 1)
         val functions = arrayListOf(this::possibleCoins)
         val testCases = arrayListOf(

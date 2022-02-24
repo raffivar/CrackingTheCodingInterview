@@ -1,6 +1,8 @@
 package chapter_8_recursion
 
-class S8PermutationsDups {
+import Solution
+
+class S8PermutationsDups : Solution {
     private fun perms(s: String): Set<String> {
         val perms = mutableSetOf<String>()
         if (s.length <= 1) {
@@ -21,7 +23,7 @@ class S8PermutationsDups {
         return perms
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::perms)
         val testCases = arrayListOf("XNYX")
         for (function in functions) {

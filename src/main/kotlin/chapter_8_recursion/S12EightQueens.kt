@@ -1,9 +1,10 @@
 package chapter_8_recursion
 
+import Solution
 import java.awt.Point
 import kotlin.math.min
 
-class S12EightQueens {
+class S12EightQueens : Solution {
     private var numOfWays = 0
 
     private fun placeQueens(size: Int) {
@@ -119,7 +120,7 @@ class S12EightQueens {
         println("---------------------------------")
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::placeQueens)
         val testCases = arrayListOf(4, 5, 6, 7, 8)
         for (function in functions) {

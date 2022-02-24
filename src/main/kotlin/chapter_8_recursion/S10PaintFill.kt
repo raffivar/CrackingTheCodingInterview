@@ -1,8 +1,9 @@
 package chapter_8_recursion
 
+import Solution
 import java.awt.Point
 
-class S10PaintFill {
+class S10PaintFill : Solution {
     private fun fill(screen: Array<IntArray>, p: Point, new: Int) {
         val old = screen[p.x][p.y]
         fillPaint(screen, p, old, new)
@@ -102,7 +103,7 @@ class S10PaintFill {
         )
     )
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::fill)
         val testCases = arrayListOf(
             TestCase(screen1, Point(0, 0), 2), //1 to 2

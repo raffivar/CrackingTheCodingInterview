@@ -1,9 +1,10 @@
 package chapter_8_recursion
 
+import Solution
 import java.util.*
 import kotlin.collections.ArrayList
 
-class S6TowersOfHanoi {
+class S6TowersOfHanoi : Solution {
     private fun hanoi(t1: Tower, t2: Tower, t3: Tower) {
         t1.moveDisks(t1.i, t3, t2)
     }
@@ -58,7 +59,7 @@ class S6TowersOfHanoi {
         }
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::hanoi)
         val testCases = arrayListOf(Tower(4))
         for (function in functions) {

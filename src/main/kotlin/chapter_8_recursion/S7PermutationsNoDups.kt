@@ -1,8 +1,9 @@
 package chapter_8_recursion
 
+import Solution
 import kotlin.collections.ArrayList
 
-class S7PermutationsNoDups {
+class S7PermutationsNoDups : Solution {
     private fun perms(s: String): ArrayList<String> {
         val perms = arrayListOf<String>()
         if (s.length <= 1) {
@@ -23,7 +24,7 @@ class S7PermutationsNoDups {
         return perms
     }
 
-    fun runTest() {
+    override fun runTest() {
         val functions = arrayListOf(this::perms)
         val testCases = arrayListOf("NYX")
         for (function in functions) {
